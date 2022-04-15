@@ -1,0 +1,28 @@
+book_filename: "biostat_ebook"
+output_dir: _book
+#before_chapter_script: _common.R
+new_session: true
+delete_merged_file: true
+edit: https://github.com/joaobtj/biostat_ebook/edit/main/%s
+view: https://github.com/joaobtj/biostat_ebook/blob/main/%s
+language:
+  label:
+    fig: 'Figura '
+    tab: 'Tabela '
+    eq: 'Equação '
+    thm: 'Teorema '
+    lem: 'Lema '
+    cor: 'Corolário '
+    prp: 'Proposição '
+    cnj: 'Conjetura '
+    def: 'Definição '
+    exm: 'Exemplo '
+    exr: 'Exercício '
+    hyp: 'Hipótese '
+    proof: 'Prova '
+    remark: 'Observação '
+    solution: 'Solução '
+  ui:
+    edit: 'Editar '
+    chapter_name: 'Capítulo '
+    appendix_name: 'Apêndice '

@@ -1,0 +1,36 @@
+/* Personalizações*/
+
+
+/* Hero Image */
+
+.sidebar h1 {
+  visibility: hidden; /*esconder o titulo no sumário - duplicado na imagem hero*/
+}
+
+h1 {
+  text-align: left; 
+  padding-top: 80px; /*deslocar o cabeçalho para baixo para não ficar embaixo da imagem*/
+}
+
+.hero-image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background-color: lightgrey;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  object-position: left;
+}
+
+.page-inner {
+  padding-top: 0px !important;
+}
+
+
+

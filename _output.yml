@@ -1,0 +1,25 @@
+bookdown::bs4_book:
+  template: assets/template.html
+  include:
+    before_body: assets/hero.html
+  css: assets/style.css
+  theme:
+    primary: "#1aba45"   # default .rmdnote = blue
+    danger:  "#dc3545"   # default .rmdcaution = red
+    success: "#198754"   # default .rmdimportant = green
+    info:    "#0dcaf0"   # default .rmdtip = cyan
+    warning: "#ffc107"   # default .rmdwarning = yellow
+    base_font: 
+      google: 
+        family: Montserrat
+        wght: 400
+    heading_font: 
+      google: 
+        family: Signika
+        wght: 400
+  footnotes_inline: true      
+  split_bib: false
+  suppress-bibliography: false
+  repo: 
+    base: https://github.com/joaobtj/biostat_ebook
+    branch: main
