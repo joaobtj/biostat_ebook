@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 2 Começando com o R | Bioestatística aplicada aos ecossistemas agrícolas e naturais</title>
+<meta name="author" content="João B. Tolentino Jr.">
+<meta name="description" content="Neste capítulo, vamos iniciar com o uso do R e do RStudio.  2.1 A interface do RStudio O RStudio possui uma interface simples mas bastante funcional para trabalhar com códigos do R. São quatro...">
+<meta name="generator" content="bookdown 0.26 with bs4_book()">
+<meta property="og:title" content="Capítulo 2 Começando com o R | Bioestatística aplicada aos ecossistemas agrícolas e naturais">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://joaobtj.github.io/biostat_ebook/comeco.html">
+<meta property="og:description" content="Neste capítulo, vamos iniciar com o uso do R e do RStudio.  2.1 A interface do RStudio O RStudio possui uma interface simples mas bastante funcional para trabalhar com códigos do R. São quatro...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 2 Começando com o R | Bioestatística aplicada aos ecossistemas agrícolas e naturais">
+<meta name="twitter:description" content="Neste capítulo, vamos iniciar com o uso do R e do RStudio.  2.1 A interface do RStudio O RStudio possui uma interface simples mas bastante funcional para trabalhar com códigos do R. São quatro...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Montserrat-0.4.1/font.css" rel="stylesheet">
+<link href="libs/_Signika-0.4.1/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 1em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Bioestatística aplicada aos ecossistemas agrícolas e naturais</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Buscar" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Sumário</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Prefácio</a></li>
+<li class="book-part">O ecossistema R</li>
+<li><a class="" href="intro-r.html">Introdução - O ecossistema R</a></li>
+<li><a class="" href="procurando-e-pedindo-ajuda-para-o-r.html"><span class="header-section-number">1</span> Procurando (e pedindo) ajuda para o R</a></li>
+<li><a class="active" href="comeco.html"><span class="header-section-number">2</span> Começando com o R</a></li>
+<li><a class="" href="rmarkdown-1.html"><span class="header-section-number">3</span> RMarkdown</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/joaobtj/biostat_ebook">Código fonte do livro <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><link href="assets/style.css" rel="stylesheet">
+<div class="hero-image-container"> 
+  <img class="hero-image" src="../biostat_ebook/image/biostat.png">
+</div>
+<div id="comeco" class="section level1" number="2">
+<h1>
+<span class="header-section-number">Capítulo 2</span> Começando com o R<a class="anchor" aria-label="anchor" href="#comeco"><i class="fas fa-link"></i></a>
+</h1>
+<p>Neste capítulo, vamos iniciar com o uso do R e do RStudio.</p>
+<div id="a-interface-do-rstudio" class="section level2" number="2.1">
+<h2>
+<span class="header-section-number">2.1</span> A interface do RStudio<a class="anchor" aria-label="anchor" href="#a-interface-do-rstudio"><i class="fas fa-link"></i></a>
+</h2>
+<p>O RStudio possui uma interface simples mas bastante funcional para trabalhar com códigos do R.</p>
+<p>São quatro janelas principais como pode ser visto na Figura <a href="comeco.html#fig:rstudio">2.1</a>.</p>
+<div class="figure">
+<span style="display:block;" id="fig:rstudio"></span>
+<img src="image/rstudio.png" alt="Interface do RStudio" width="99%"><p class="caption">
+Figura 2.1: Interface do RStudio
+</p>
+</div>
+<ul>
+<li><p><strong>Source (Editor)</strong> (canto superior esquerdo): local para editar scripts, que são sequências de comandos que podem ser salvos e utilizados repetidamente. Os comandos desta janela são executados clicando no botão <em>Run</em> ou pelo atalho do teclado <button>Ctrl</button>+<button>Enter</button>. Caso o editor não esteja aparecendo, clique em <em>File -&gt; New File -&gt; R Script</em>, ou pelo atalho <button>Ctrl</button>+<button>Shift</button>+<button>N</button></p></li>
+<li><p><strong>Console</strong> (canto inferior esquerdo): local para digitar e executar os comandos, assim como obter o resultado destes. Também mostra o resutado dos comando executados a partir do editor.</p></li>
+<li><p><strong>Environment (Ambiente)</strong> (canto superior direito): local que mostra as variáveis definidas, entre outros.</p></li>
+<li><p><strong>Files/Plots/Packages/Help/Viewer</strong> (canto inferior direito): local multiuso com várias abas, que mostra e configura várias opções, como arquivos, gráficos, pacotes, ajuda e visualização.</p></li>
+</ul>
+</div>
+<div id="criar-um-projeto-no-rstudio" class="section level2" number="2.2">
+<h2>
+<span class="header-section-number">2.2</span> Criar um projeto no RStudio<a class="anchor" aria-label="anchor" href="#criar-um-projeto-no-rstudio"><i class="fas fa-link"></i></a>
+</h2>
+<p>Um projeto do RStudio mantem todos os arquivos relevantes para a análise, como banco de dados, scripts, resultados e figuras. É uma excelente maneira de evitar ter de lidar com caminhos e diretórios.</p>
+<p>Para começar um novo projeto, clique em <em>File -&gt; New Project</em> e siga os passos nas janelas conforme aparecerem:</p>
+<div class="inline-figure"><img src="image/rstudio-project.png" width="80%"></div>
+<div class="inline-figure"><img src="image/rstudio-project2.png" width="80%"></div>
+<div class="inline-figure"><img src="image/rstudio-project3.png" width="80%"></div>
+<p>Dê um bom nome para seu novo projeto e cuide do local em que este será salvo.</p>
+</div>
+<div id="primeiros-códigos" class="section level2" number="2.3">
+<h2>
+<span class="header-section-number">2.3</span> Primeiros códigos<a class="anchor" aria-label="anchor" href="#primeiros-c%C3%B3digos"><i class="fas fa-link"></i></a>
+</h2>
+<p>Após o projeto criado, vamos digitar os primeiros códigos na janela do Script. Tente digitar o seguinte:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">1</span> <span class="op">+</span> <span class="fl">1</span></code></pre></div>
+<p>Em seguida, posicione o cursor na linha que acabou de digitar, aperte o botao <em>Run</em> ou <button>Ctrl</button> + <button>Enter</button> e veja o resultado.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">1</span> <span class="op">+</span> <span class="fl">1</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p>Esta foi uma operação muito simples, então vamos ver alguns códigos mais interessantes.</p>
+<p>Para criar um objeto e atribuir um valor a ele, primeiro precisamos dar um nome<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;dê preferência para nomes simples mas com algum significado&lt;/p&gt;"><sup>9</sup></a> ao objeto, seguido do símbolo de atribuição <code>&lt;-</code> (atalho: <button>Alt</button> + <button>-</button> ) <a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;O símbolo de igualdade &lt;code&gt;=&lt;/code&gt; também pode ser utilizado para atribuição, mas o símbolo &lt;code&gt;&amp;lt;-&lt;/code&gt; é preferido pela maioria dos programadores em R.&lt;/p&gt;"><sup>10</sup></a> e do valor que desejamos atribuir ao objeto:</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">10</span> <span class="co"># leia-se: x recebe o valor 10</span></code></pre></div>
+<p>Neste exemplo, o objeto denominado <code>x</code>recebeu o valor 10. Notem que ao executar este comando, o objeto recém criado aparece na janela <em>Environment</em>, confirmando a criação do objeto.</p>
+<p>Este exemplo também mostrou como usar um comentário, que é um texto não interpretado pelo programa. Os comentários são bastante úteis para explicar as linhas de código. Os comentários são escritos após o símbolo <code>#</code>. Para comentar uma ou várias linhas, selecione o texto e aperte <button>Ctrl</button>+<button>Shift</button>+<button>C</button>.</p>
+<p>Para verificar o valor que está atribuído a um objeto, basta digitar o nome do objeto<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;a função &lt;code&gt;print&lt;/code&gt; é chamada&lt;/p&gt;"><sup>11</sup></a>:</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<p>Um objeto pode ter seu valor modificado ou copiado com uma nova atribuição:</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">x</span>
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">*</span> <span class="fl">2</span>
+<span class="va">z</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">+</span> <span class="va">y</span>
+
+<span class="va">y</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span></code></pre></div>
+<pre><code>## [1] 20</code></pre>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">z</span></code></pre></div>
+<pre><code>## [1] 30</code></pre>
+<p>Observe que a ordem de execução dos comandos é importante no resultado.</p>
+<p>Um dos objetos mais útil na programação em R é o vetor, que pode ser entendido como uma série de valores armazenada em um objeto. Para criar um vetor, utilizamos a função <code><a href="https://rdrr.io/r/base/c.html">c()</a></code>:</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">primos6</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">11</span>, <span class="fl">13</span><span class="op">)</span>
+<span class="va">primos6</span></code></pre></div>
+<pre><code>## [1]  2  3  5  7 11 13</code></pre>
+<p>A função <code>str</code> nos mostra a estrutura do vetor:</p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">primos6</span><span class="op">)</span></code></pre></div>
+<pre><code>##  num [1:6] 2 3 5 7 11 13</code></pre>
+<p>indicando que o objeto <code>primos6</code> é um vetor numérico (<code>num</code>).</p>
+<p>Uma parte do vetor pode ser extraída como uso de colchetes <code>[ ]</code>:</p>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">primos6</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="co"># acessa o terceiro elemento do vetor</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">primos6</span><span class="op">[</span><span class="fl">4</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span> <span class="co"># acessa do 4° ao 6° elemento do vetor</span></code></pre></div>
+<pre><code>## [1]  7 11 13</code></pre>
+<p>As operações com vetores são aplicadas a todos os elementos dele:</p>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">primos6</span><span class="op">^</span><span class="fl">2</span></code></pre></div>
+<pre><code>## [1]   4   9  25  49 121 169</code></pre>
+<p>Calcular a média dos valores deste vetor com a função <code>mean</code>:</p>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">primos6</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 6.833333</code></pre>
+<p>Muitas funções são disponibilizadas em pacotes. Para acessar uma função de um pacote usamos a sintaxe <code>pacote::função</code>. Por exemplo, para acessar as funções <code>first</code> e <code>last</code> do pacote <code>dplyr</code>:</p>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/nth.html">first</a></span><span class="op">(</span><span class="va">primos6</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/nth.html">last</a></span><span class="op">(</span><span class="va">primos6</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 13</code></pre>
+<p>Alternativamente, é possível carregar o pacote com a função <code>library</code> e depois usar as funções diretamente:</p>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: 'dplyr'</code></pre>
+<pre><code>## The following objects are masked from 'package:stats':
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/nth.html">first</a></span><span class="op">(</span><span class="va">primos6</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/nth.html">last</a></span><span class="op">(</span><span class="va">primos6</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 13</code></pre>
+<p>Para criar uma gráfico, podemos usar várias das funções base do R para esse fim. Neste exemplo, a função <code>hist</code> cria um gráfico do tipo histograma para um conjunto de 10.000 valores gerados aleatoriamente pela função <code>rnorm</code>.</p>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10000</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="002-inicia_files/figure-html/histo-1.png" width="90%"></div>
+<p>Na seção <a href="#graf"><strong>??</strong></a> veremos como utilizar o pacote <code>ggplot2</code> para criar gráficos mais elaborados.</p>
+</div>
+<div id="criar-uma-função-no-r" class="section level2" number="2.4">
+<h2>
+<span class="header-section-number">2.4</span> Criar uma função no R<a class="anchor" aria-label="anchor" href="#criar-uma-fun%C3%A7%C3%A3o-no-r"><i class="fas fa-link"></i></a>
+</h2>
+<p>Funções são usadas para dividir o código em partes mais simples, mas fáceis de manter e de entender. As funções também são facilmente reutilizadas.</p>
+<p>Para criar uma função no R, a sintaxe é a seguinte:</p>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">nome_funcao</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">argumentos</span><span class="op">)</span> <span class="op">{</span>
+<span class="va">declaração</span>
+<span class="op">}</span></code></pre></div>
+<p>Como exemplo, vamos criar uma função que simula o lançamento dado: <code>dado6</code></p>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dado6</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, size <span class="op">=</span> <span class="va">n</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
+<p>Esta função retorna n valores entre 1 e 6 com substituição.</p>
+<p>Para utilizar a função recém criada, chamamos ela pelo nome e passamos um valor para os argumentos:</p>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">dado6</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">dado6</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 4 3 2</code></pre>
+</div>
+<div id="data-frame" class="section level2" number="2.5">
+<h2>
+<span class="header-section-number">2.5</span> <em>Data-frame</em><a class="anchor" aria-label="anchor" href="#data-frame"><i class="fas fa-link"></i></a>
+</h2>
+<p>O <em>data frame</em> é uma estrutura bidimensional em que cada componente forma uma coluna e o conteúdo de cada componente forma as linhas. Em um <em>data frame</em>, é importante que todas as colunas tenham o mesmo commprimento, de modo que a estrutura de dados resulte em um formato retangular. Também podemos imaginá-lo como um agrupamento de vetores de mesmo tamanho.</p>
+<p>Para criá-lo, usamos a função <code>data.frame</code></p>
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>
+  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span>,
+  y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">16</span>, <span class="fl">32</span>, <span class="fl">64</span><span class="op">)</span>
+<span class="op">)</span>
+<span class="va">df</span></code></pre></div>
+<pre><code>##   x  y
+## 1 a 16
+## 2 b 32
+## 3 c 64</code></pre>
+<p>Idem ao anterior, mas com os vetores sendo criado anteriormente e separadamente</p>
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span>
+<span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">16</span>, <span class="fl">32</span>, <span class="fl">64</span><span class="op">)</span>
+<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span>
+<span class="va">df</span></code></pre></div>
+<pre><code>##   x  y
+## 1 a 16
+## 2 b 32
+## 3 c 64</code></pre>
+<p>O pacote <code>tibble</code> foi criado como uma atualização<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Principais diferenças &lt;a href="https://tibble.tidyverse.org/articles/digits.html"&gt;aqui&lt;/a&gt;&lt;/p&gt;'><sup>12</sup></a> do <em>data-frame</em>, e pode ser utilizado de maneira similar:</p>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tb</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>
+  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span>,
+  y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">16</span>, <span class="fl">32</span>, <span class="fl">64</span><span class="op">)</span>
+<span class="op">)</span>
+<span class="va">tb</span></code></pre></div>
+<pre><code>## # A tibble: 3 × 2
+##   x         y
+##   &lt;chr&gt; &lt;dbl&gt;
+## 1 a        16
+## 2 b        32
+## 3 c        64</code></pre>
+<p>O <em>data-frame</em> é o formato adequado para armazenar os dados no formato <em>Tidy Data</em>, junto com o <em>tibble</em> (seção <a href="comeco.html#tidydata">2.8</a>)</p>
+<div id="data-frames-nativos-no-r" class="section level3" number="2.5.1">
+<h3>
+<span class="header-section-number">2.5.1</span> <em>Data-frames</em> nativos no R<a class="anchor" aria-label="anchor" href="#data-frames-nativos-no-r"><i class="fas fa-link"></i></a>
+</h3>
+<p>Existe uma grande quantidade de <em>data-frames</em> pré instalados no R que não necessitam de importação. Alguns dos nossos exemplos irão usar alguns destes <em>data-frames</em>, por exemplo, o <em>data-frame</em> <code>iris</code>, que contém as medidas, em centímetros, do comprimento e largura das pétalas e sépalas de três espécies de plantas: <em>Iris setosa</em>, <em>I. versicolor</em> e <em>I. virginica</em>.</p>
+</div>
+</div>
+<div id="importando-dados-para-o-r" class="section level2" number="2.6">
+<h2>
+<span class="header-section-number">2.6</span> Importando dados para o R<a class="anchor" aria-label="anchor" href="#importando-dados-para-o-r"><i class="fas fa-link"></i></a>
+</h2>
+<p>É muito comum que os dados que utilizaremos em nossas análises estejam armazenadas em fontes externas ao R, como arquivos de texto (*.csv, *.tsv, *.txt), planilhas (*.xlsx, *.ods) ou mesmo grandes bases de dados da internet. A importação consiste na leitura destas fontes para um <em>data-frame</em> no R.</p>
+<p>Apesar de existirem vários pacotes e funções para importação de arquivos, vamos apresentar aqueles que fazem parte do <em>tidyverse</em></p>
+<div id="importar-arquivos-.csv" class="section level3" number="2.6.1">
+<h3>
+<span class="header-section-number">2.6.1</span> Importar arquivos .csv<a class="anchor" aria-label="anchor" href="#importar-arquivos-.csv"><i class="fas fa-link"></i></a>
+</h3>
+<p>Os arquivos *.csv (<em>comma-separated values</em>) estão entre os mais populares para distribuição de dados. É um arquivo de texto, cujos valores são delimitador por vírgula.</p>
+<p>O pacote <code>readr</code> possui a função <code>read_csv</code> para importação destes arquivos, cujo delimitador entre valores é a vírgula e o separador de decimal é o ponto. Outra função semelhante, <code>read_csv2</code> importa arquivos .csv cujo delimitador entre valores é o ponto e vírgula e o separador de decimal é a vírgula<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Para uso mais geral, use a função &lt;code&gt;read_delim&lt;/code&gt;&lt;/p&gt;"><sup>13</sup></a>, mais comum em alguns países como o Brasil.</p>
+<p>O arquivo <a href="data/cbs_jul19.csv">cbs_jul19.csv</a> (Figura <a href="comeco.html#fig:csv">2.2</a>) contém as temperaturas mínimas e máximas diárias para a cidade de Curitibanos-SC registradas nos primeiros 15 dias do mês de julho de 2019.</p>
+
+<div class="figure">
+<span style="display:block;" id="fig:csv"></span>
+<img src="image/csv.png" alt="Arquivo *.csv cujo delimitador entre valores é a vírgula e o separador de decimal é o ponto." width="90%"><p class="caption">
+Figura 2.2: Arquivo *.csv cujo delimitador entre valores é a vírgula e o separador de decimal é o ponto.
+</p>
+</div>
+<p>Os mesmos dados, mas em um arquivo (<a href="data/cbs2_jul19.csv">cbs2_jul19.csv</a> - Figura <a href="comeco.html#fig:csv2">2.3</a>) cujo delimitador de valores é o ponto e vírgula e o separador de decimal é a vírgula:</p>
+
+<div class="figure">
+<span style="display:block;" id="fig:csv2"></span>
+<img src="image/csv2.png" alt="Arquivo *.csv cujo delimitador entre valores é o ponto e vírgula e o separador de decimal é a vírgula" width="90%"><p class="caption">
+Figura 2.3: Arquivo *.csv cujo delimitador entre valores é o ponto e vírgula e o separador de decimal é a vírgula
+</p>
+</div>
+<p>A importação com a função <code>read_csv</code> é feita como no exemplo abaixo:</p>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">temperaturas</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/cbs_jul19.csv"</span><span class="op">)</span></code></pre></div>
+<pre><code>## Rows: 14 Columns: 3
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: ","
+## dbl  (2): temp_min, temp_max
+## date (1): data
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">temperaturas</span></code></pre></div>
+<pre><code>## # A tibble: 14 × 3
+##    data       temp_min temp_max
+##    &lt;date&gt;        &lt;dbl&gt;    &lt;dbl&gt;
+##  1 2019-07-01     10.7     17.1
+##  2 2019-07-02     11       15  
+##  3 2019-07-03      5.9     14.8
+##  4 2019-07-04     -0.3     12.1
+##  5 2019-07-05     -0.8      7.1
+##  6 2019-07-06     -3.3      8.6
+##  7 2019-07-07     -4.4     13.6
+##  8 2019-07-08      2.1     19.2
+##  9 2019-07-09      0       22.5
+## 10 2019-07-10      2       19.5
+## 11 2019-07-11      4.3     21.4
+## 12 2019-07-12      8.7     23.3
+## 13 2019-07-13     12.9     23.1
+## 14 2019-07-14     13       17.4</code></pre>
+<p>E com a função <code>csv2</code>:</p>
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">temperaturas</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv2</a></span><span class="op">(</span><span class="st">"data/cbs2_jul19.csv"</span><span class="op">)</span></code></pre></div>
+<pre><code>## ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.</code></pre>
+<pre><code>## Rows: 14 Columns: 3
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: ";"
+## dbl  (2): temp_min, temp_max
+## date (1): data
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">temperaturas</span></code></pre></div>
+<pre><code>## # A tibble: 14 × 3
+##    data       temp_min temp_max
+##    &lt;date&gt;        &lt;dbl&gt;    &lt;dbl&gt;
+##  1 2019-07-01     10.7     17.1
+##  2 2019-07-02     11       15  
+##  3 2019-07-03      5.9     14.8
+##  4 2019-07-04     -0.3     12.1
+##  5 2019-07-05     -0.8      7.1
+##  6 2019-07-06     -3.3      8.6
+##  7 2019-07-07     -4.4     13.6
+##  8 2019-07-08      2.1     19.2
+##  9 2019-07-09      0       22.5
+## 10 2019-07-10      2       19.5
+## 11 2019-07-11      4.3     21.4
+## 12 2019-07-12      8.7     23.3
+## 13 2019-07-13     12.9     23.1
+## 14 2019-07-14     13       17.4</code></pre>
+</div>
+<div id="importando-arquivos-do-excel" class="section level3" number="2.6.2">
+<h3>
+<span class="header-section-number">2.6.2</span> Importando arquivos do Excel<a class="anchor" aria-label="anchor" href="#importando-arquivos-do-excel"><i class="fas fa-link"></i></a>
+</h3>
+<p>Para importar arquivos do Excel, existem a função <code>read_excel</code> do pacote <code>readxl</code>.</p>
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">bflor</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/bflor.xlsx"</span><span class="op">)</span>
+<span class="va">bflor</span></code></pre></div>
+<pre><code>## # A tibble: 54 × 3
+##    especie     n comprimento
+##    &lt;chr&gt;   &lt;dbl&gt;       &lt;dbl&gt;
+##  1 Hb          1        47.1
+##  2 Hb          2        46.8
+##  3 Hb          3        46.8
+##  4 Hb          4        47.1
+##  5 Hb          5        46.7
+##  6 Hb          6        47.4
+##  7 Hb          7        46.4
+##  8 Hb          8        46.6
+##  9 Hb          9        48.1
+## 10 Hb         10        48.3
+## # … with 44 more rows</code></pre>
+</div>
+</div>
+<div id="o-operador-pipe" class="section level2" number="2.7">
+<h2>
+<span class="header-section-number">2.7</span> O operador <em>pipe</em>: <code>%&gt;%</code><a class="anchor" aria-label="anchor" href="#o-operador-pipe"><i class="fas fa-link"></i></a>
+</h2>
+<p>O operador <em>pipe</em> <code>%&gt;%</code> é uma ferramenta muito útil para expressar uma sequência de ações sobre um objeto. Foi introduzido pela primeira vez no pacote <code>magrittr</code> com o objetivo de facilitar a programação e melhorar e legibilidade do código. Sempre carregue o pacote <code>magrittr</code> antes de usar o <em>pipe</em>.</p>
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org">magrittr</a></span><span class="op">)</span></code></pre></div>
+<p>No exemplo abaixo, as duas linhas de código são equivalentes: aplica-se a função <code>f</code> ao objeto <code>x</code>.</p>
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">f</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="va">x</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">f</span><span class="op">(</span><span class="op">)</span> <span class="co"># O pipe passa o objeto x para dentro da função f</span></code></pre></div>
+<p>Veja abaixo o <em>pipe</em> em ação:</p>
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">8</span>, <span class="fl">13</span>, <span class="fl">21</span><span class="op">)</span> <span class="co"># criar um vetor x</span>
+<span class="va">x</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://magrittr.tidyverse.org/reference/aliases.html">add</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> <span class="co"># somar 2 a cada elemento do vetor x</span></code></pre></div>
+<pre><code>## [1]  3  4  5  7 10 15 23</code></pre>
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="st">"+"</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> <span class="co"># equivalente à operação anterior</span></code></pre></div>
+<pre><code>## [1]  3  4  5  7 10 15 23</code></pre>
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="st">"*"</span><span class="op">(</span><span class="fl">3</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="st">"+"</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="st">"^"</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> <span class="co"># várias operações aplicadas sequencialmente ao vetor x</span></code></pre></div>
+<pre><code>## [1]   16   49  100  256  625 1600 4096</code></pre>
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># soma os elementos do vetor</span></code></pre></div>
+<pre><code>## [1] 53</code></pre>
+<p>No caso de uma função com vários argumentos, o <em>pipe</em> passa o objeto para a primeira posição da função, o argumento mais à esquerda:</p>
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">x</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="co"># idem ao anterior com o pipe passando o objeto x para a função sample</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<p>No caso de ser necessário que o objeto seja passado para outro argumento à direita, que não seja o primeiro, utilizamos um <code>.</code> como marcador:</p>
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">iris</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">Petal.Length</span> <span class="op">~</span> <span class="va">Species</span>, data <span class="op">=</span> <span class="va">.</span><span class="op">)</span> <span class="co"># o objeto iris é passado para o argumento data com um .</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Petal.Length ~ Species, data = .)
+## 
+## Coefficients:
+##       (Intercept)  Speciesversicolor   Speciesvirginica  
+##             1.462              2.798              4.090</code></pre>
+</div>
+<div id="tidydata" class="section level2" number="2.8">
+<h2>
+<span class="header-section-number">2.8</span> Organização dos dados: <em>Tidy data</em><a class="anchor" aria-label="anchor" href="#tidydata"><i class="fas fa-link"></i></a>
+</h2>
+<p>Para facilitar as análises, é importante que os dados estejam organizados em um formato consistente, chamado de <em>Tidy Data</em> (<span class="citation">WICKHAM (<a href="rmarkdown-1.html#ref-tidy-data" role="doc-biblioref">2014</a>)</span>). As regras gerais para este formato são:</p>
+<ol style="list-style-type: decimal">
+<li>Cada variável deve estar em uma coluna;</li>
+<li>Cada observação deve estar em uma linha;</li>
+<li>Cada valor deve ter sua própria célula.</li>
+</ol>
+<p>Uma função bastante útil para organizar os dados no fomato <em>tidy</em> é a função <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">tidyr::pivot_longer</a></code><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;O formato &lt;em&gt;Tidy Data&lt;/em&gt; também é conhecido como &lt;em&gt;Formato Longo&lt;/em&gt;.&lt;/p&gt;"><sup>14</sup></a>.</p>
+<p>Considere o conjunto de dados presente nesta planilha do Excel: <a href="data/liquido.xlsx">liquido.xlsx</a> (Figura <a href="comeco.html#fig:liquido">2.4</a>)</p>
+
+<div class="figure">
+<span style="display:block;" id="fig:liquido"></span>
+<img src="image/liquido_xlsx.png" alt="Exemplo de dados não organizados no formato tidy em uma planilha do Excel."><p class="caption">
+Figura 2.4: Exemplo de dados não organizados no formato <em>tidy</em> em uma planilha do Excel.
+</p>
+</div>
+<p>Os dados foram digitados de modo que os valores da variável tempo estão espalhados por 4 colunas. A variável repetição (implícita) está em uma linha (cabeçalho das colunas) e o nome das colunas (Tempo) está em uma célula mesclada.</p>
+<p>Ao importar este arquivo com a função <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">readxl::read_excel</a></code> temos como resultado:</p>
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">messy_data</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/liquido.xlsx"</span><span class="op">)</span></code></pre></div>
+<pre><code>## New names:
+## • `` -&gt; `...1`
+## • `` -&gt; `...3`
+## • `` -&gt; `...4`
+## • `` -&gt; `...5`</code></pre>
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">messy_data</span></code></pre></div>
+<pre><code>## # A tibble: 4 × 5
+##   ...1    Tempo  ...3  ...4  ...5
+##   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 Líquido     1     2     3     4
+## 2 Água       12    15    14    11
+## 3 Óleo       29    26    24    23
+## 4 Álcool      6     7     9     4</code></pre>
+<p>Observamos que a primeira linha (células mescladas) da planilha bagunçou ainda mais o resultado. Vamos importar novamente exlcuindo a primeira linha com o argumento <code>skip = 1</code>.</p>
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">messy_data</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_xlsx</a></span><span class="op">(</span><span class="st">"data/liquido.xlsx"</span>, skip <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
+<span class="va">messy_data</span></code></pre></div>
+<pre><code>## # A tibble: 3 × 5
+##   Líquido   `1`   `2`   `3`   `4`
+##   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 Água       12    15    14    11
+## 2 Óleo       29    26    24    23
+## 3 Álcool      6     7     9     4</code></pre>
+<p>Para transformar o <em>data-frame</em> no formato <em>tidy</em>, utilizamos a função <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">tidyr::pivot_longer</a></code>:</p>
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tidy_data</span> <span class="op">&lt;-</span> <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span><span class="va">messy_data</span>, cols <span class="op">=</span> <span class="fl">2</span><span class="op">:</span><span class="fl">5</span>, names_to <span class="op">=</span> <span class="st">"rep"</span>, values_to <span class="op">=</span> <span class="st">"tempo"</span><span class="op">)</span>
+<span class="va">tidy_data</span></code></pre></div>
+<pre><code>## # A tibble: 12 × 3
+##    Líquido rep   tempo
+##    &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt;
+##  1 Água    1        12
+##  2 Água    2        15
+##  3 Água    3        14
+##  4 Água    4        11
+##  5 Óleo    1        29
+##  6 Óleo    2        26
+##  7 Óleo    3        24
+##  8 Óleo    4        23
+##  9 Álcool  1         6
+## 10 Álcool  2         7
+## 11 Álcool  3         9
+## 12 Álcool  4         4</code></pre>
+<ul>
+<li>
+<code>cols</code>: colunas a serem transformadas para o formato <em>tidy</em>;</li>
+<li>
+<code>names_to</code>: nome da nova coluna criada a partir das informações armazenadas originalmente nos cabeçalhos das colunas;</li>
+<li>
+<code>values_to</code>: nome da nova coluna criada a partir dos valores armazenados nas células.</li>
+</ul>
+<div class="rmdnote">
+<p>O caminho inverso também pode ser feito, transformando um <em>data-frame</em> do formato longo para o formato <em>wide</em> com a função <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">tidyr::pivot_wider</a></code></p>
+</div>
+
+</div>
+</div>
+
+  <div class="chapter-nav">
+<div class="prev"><a href="procurando-e-pedindo-ajuda-para-o-r.html"><span class="header-section-number">1</span> Procurando (e pedindo) ajuda para o R</a></div>
+<div class="next"><a href="rmarkdown-1.html"><span class="header-section-number">3</span> RMarkdown</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Nesta página</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#comeco"><span class="header-section-number">2</span> Começando com o R</a></li>
+<li><a class="nav-link" href="#a-interface-do-rstudio"><span class="header-section-number">2.1</span> A interface do RStudio</a></li>
+<li><a class="nav-link" href="#criar-um-projeto-no-rstudio"><span class="header-section-number">2.2</span> Criar um projeto no RStudio</a></li>
+<li><a class="nav-link" href="#primeiros-c%C3%B3digos"><span class="header-section-number">2.3</span> Primeiros códigos</a></li>
+<li><a class="nav-link" href="#criar-uma-fun%C3%A7%C3%A3o-no-r"><span class="header-section-number">2.4</span> Criar uma função no R</a></li>
+<li>
+<a class="nav-link" href="#data-frame"><span class="header-section-number">2.5</span> Data-frame</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#data-frames-nativos-no-r"><span class="header-section-number">2.5.1</span> Data-frames nativos no R</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#importando-dados-para-o-r"><span class="header-section-number">2.6</span> Importando dados para o R</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#importar-arquivos-.csv"><span class="header-section-number">2.6.1</span> Importar arquivos .csv</a></li>
+<li><a class="nav-link" href="#importando-arquivos-do-excel"><span class="header-section-number">2.6.2</span> Importando arquivos do Excel</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#o-operador-pipe"><span class="header-section-number">2.7</span> O operador pipe: %&gt;%</a></li>
+<li><a class="nav-link" href="#tidydata"><span class="header-section-number">2.8</span> Organização dos dados: Tidy data</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/joaobtj/biostat_ebook/blob/main/002-inicia.Rmd">Código fonte desta página<i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/joaobtj/biostat_ebook/edit/main/002-inicia.Rmd">Editar esta página <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Bioestatística aplicada aos ecossistemas agrícolas e naturais</strong>" foi escrito por João B. Tolentino Jr.. Última atualização em 2022-04-19.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Introdução - O ecossistema R | Bioestatística aplicada aos ecossistemas agrícolas e naturais</title>
+<meta name="author" content="João B. Tolentino Jr.">
+<meta name="description" content="O R (www.r-project.org) é uma linguagem de programação open-source, distribuído sob a licença GNU, e multiplataforma, disponível para Windows, MacOS e algumas distribuições Linux. Embora esteja se...">
+<meta name="generator" content="bookdown 0.26 with bs4_book()">
+<meta property="og:title" content="Introdução - O ecossistema R | Bioestatística aplicada aos ecossistemas agrícolas e naturais">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://joaobtj.github.io/biostat_ebook/intro-r.html">
+<meta property="og:description" content="O R (www.r-project.org) é uma linguagem de programação open-source, distribuído sob a licença GNU, e multiplataforma, disponível para Windows, MacOS e algumas distribuições Linux. Embora esteja se...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Introdução - O ecossistema R | Bioestatística aplicada aos ecossistemas agrícolas e naturais">
+<meta name="twitter:description" content="O R (www.r-project.org) é uma linguagem de programação open-source, distribuído sob a licença GNU, e multiplataforma, disponível para Windows, MacOS e algumas distribuições Linux. Embora esteja se...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Montserrat-0.4.1/font.css" rel="stylesheet">
+<link href="libs/_Signika-0.4.1/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 1em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Bioestatística aplicada aos ecossistemas agrícolas e naturais</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Buscar" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Sumário</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Prefácio</a></li>
+<li class="book-part">O ecossistema R</li>
+<li><a class="active" href="intro-r.html">Introdução - O ecossistema R</a></li>
+<li><a class="" href="procurando-e-pedindo-ajuda-para-o-r.html"><span class="header-section-number">1</span> Procurando (e pedindo) ajuda para o R</a></li>
+<li><a class="" href="comeco.html"><span class="header-section-number">2</span> Começando com o R</a></li>
+<li><a class="" href="rmarkdown-1.html"><span class="header-section-number">3</span> RMarkdown</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/joaobtj/biostat_ebook">Código fonte do livro <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><link href="assets/style.css" rel="stylesheet">
+<div class="hero-image-container"> 
+  <img class="hero-image" src="../biostat_ebook/image/biostat.png">
+</div>
+<div id="intro-r" class="section level1 unnumbered">
+<h1>Introdução - O ecossistema R<a class="anchor" aria-label="anchor" href="#intro-r"><i class="fas fa-link"></i></a>
+</h1>
+<div class="inline-figure"><img src="https://www.r-project.org/logo/Rlogo.svg" width="50"></div>
+<p>O R (<a href="https://www.r-project.org">www.r-project.org</a>) é uma linguagem de programação <em>open-source</em>, distribuído sob a licença GNU, e multiplataforma, disponível para Windows, MacOS e algumas distribuições Linux. Embora esteja se tornando cada vez mais de uso geral, ele foi originalmente concebido como uma linguagem de programação estatística. Dessa forma, além de análises estatísticas, é capaz de produzir representações gráficas de altíssima qualidade, além de relatórios.</p>
+<p>Foi criado por Ross Ihaka e Robert Gentleman<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;O nome R vem das iniciais dos nomes dos autores.&lt;/p&gt;"><sup>1</sup></a> na Universidade de Auckland, Nova Zelândia. Atualmente, é desenvolvido pela <em>R Foundation</em>.</p>
+<p>É amplamente utilizado pelas grandes empresas, órgãos governamentais e, claro, na pesquisa acadêmica.</p>
+<p>A popularidade do R nas ciências tem sido demonstrada por diversos estudos, como o de <span class="citation">LAI <em>et al.</em> (<a href="rmarkdown-1.html#ref-Recology" role="doc-biblioref">2019</a>)</span>, em que os autores analisaram mais de 60 mil artigos publicados nos principais periódicos da área de Ecologia e observaram um aumento linear do uso do R como ferramenta principal para a análise de dados.</p>
+<div class="inline-figure">
+<img src="https://esajournals.onlinelibrary.wiley.com/cms/asset/ab2bdcf1-af62-4e5e-bd0c-32f60c1138c7/ecs22567-fig-0001-m.png"><!-- -->
+</div>
+<div id="pacotes-do-r" class="section level2 unnumbered">
+<h2>Pacotes do R<a class="anchor" aria-label="anchor" href="#pacotes-do-r"><i class="fas fa-link"></i></a>
+</h2>
+<p>O R conta com uma comunidade grande e ativa <em>(useR!)</em> que está sempre contribuindo com a melhoria do programa por meio do desenvolvimento de pacotes que estendem as funções originais da linguagem R. Atualmente, <a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;ano de 2022&lt;/p&gt;"><sup>2</sup></a> o site do <em>CRAN (Comprehensive R Archive Network)</em> conta com mais de 18 mil<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Consulte o número atualizado em &lt;a href="https://cran.r-project.org/web/packages/" class="uri"&gt;https://cran.r-project.org/web/packages/&lt;/a&gt;&lt;/p&gt;'><sup>3</sup></a> pacotes para o R.</p>
+<p>Os pacotes disponíveis no CRAN são facilmente instalados por meio de funções disponiveis no próprio R. Também há a possibilidade de instalar pacotes diretamente do <a href="https://github.com/">GitHub</a>, local em que muitos dos desenvolvedores de pacotes <em>open-source</em> hospedam seus trabalhos.</p>
+</div>
+<div id="rstudio" class="section level2 unnumbered">
+<h2>RStudio<a class="anchor" aria-label="anchor" href="#rstudio"><i class="fas fa-link"></i></a>
+</h2>
+<p>O <a href="https://www.rstudio.com/">RStudio</a> é um ambiente de desenvolvimento integrado - IDE<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;do inglês &lt;em&gt;Integrated Development Environment&lt;/em&gt;&lt;/p&gt;"><sup>4</sup></a> com versão <em>open-source</em> e comercial.</p>
+<p>Foi desenvolvido para aumentar a produtividade dos usuários. Inclui um console, um editor com destaque visual com suporte a execução direta do código, e ferramentas para manejar arquivos, plotagens, histórico, entre outros.</p>
+</div>
+<div id="rcloud" class="section level2 unnumbered">
+<h2>RStudio Cloud<a class="anchor" aria-label="anchor" href="#rcloud"><i class="fas fa-link"></i></a>
+</h2>
+<p>É uma versão do RStudio que pode ser acessado via navegador, de modo que nada precisa ser instalado na máquina localmente.</p>
+<p>Além de poder utilizar todas as funcionalidades do R e do RStudio, com o RStudio Cloud é mais fácil compartilhar os projetos com sua equipe.</p>
+<p>Para começar a utilizar, basta criar uma conta no site <a href="https://rstudio.cloud/">rstudio.cloud</a>. Existe uma conta gratuita que pode ser suficiente para usuários ocasionais. Para quem necessitar, existem também planos pagos.</p>
+</div>
+<div id="tidyverse" class="section level2 unnumbered">
+<h2>Tidyverse<a class="anchor" aria-label="anchor" href="#tidyverse"><i class="fas fa-link"></i></a>
+</h2>
+<p>O universo <a href="https://www.tidyverse.org/"><em>Tidyverse</em></a> é uma coleção de pacotes para o R elaborados para a ciência dos dados (<em>data science</em>). Todos os pacotes compartilham uma filosofia, gramática e estrutura de dados. As funções facilitam a comunicação entre humanos e máquina em comparação com as funções básicas do R.</p>
+<p>Para instalar todos os pacotes <em>tidyverse</em>:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"tidyverse"</span><span class="op">)</span></code></pre></div>
+<p>Entre os principais pacotes do <em>tidyverse</em> estão:</p>
+<ul>
+<li>
+<code>ggplot2</code>: criar gráficos de altíssima qualidade;</li>
+<li>
+<code>dplyr</code>: manipulação de dados;</li>
+<li>
+<code>tidyr</code>: organização de dados;</li>
+<li>
+<code>readr</code>: leitura de arquivos externos, como csv;</li>
+<li>
+<code>purrr</code>: programação funcional, permite substituir os loops convencionais;</li>
+<li>
+<code>tibble</code>: reinterpretação do quadro de dados (<em>data-frame</em>) original;</li>
+<li>
+<code>stringr</code>: trabalhar com textos (<em>strings</em>);</li>
+<li>
+<code>forcats</code>: trabalhar com fatores (<em>factor</em>).</li>
+</ul>
+<p>Existem ainda muitos outros pacotes que podem ser consultados aqui: <a href="https://www.tidyverse.org/packages/">www.tidyverse.org/packages</a></p>
+</div>
+<div id="rmarkdown" class="section level2 unnumbered">
+<h2>RMarkdown<a class="anchor" aria-label="anchor" href="#rmarkdown"><i class="fas fa-link"></i></a>
+</h2>
+<p>O Markdown é uma linguagem de marcação em texto puro (<em>plain text</em>), em que são utilizadas marcações (muito sutis) para títulos, links e formatações em geral. Seu resultado é bastante legível mesmo sem processamento, diferente de outras linguagens, como HTML ou Latex que requerem muitas tags para formatar o texto.</p>
+<p>Uma extensão do Markdown original é a linguagem RMarkdown. Esta é uma poderosa ferramenta que permite combinar as análises e os relatórios em um mesmo documento, pois permite incluir códigos em R ao longo do documento.</p>
+<p>De modo geral, o pacote <code>knitr</code> executa os códigos em R e converte o documento de RMarkdown para Markdown. O pacote <code>pandoc</code> renderiza o documento Markdown para o formato desejado, que pode ser HTML, PDF, Word, entre muitos outros.
+Mais informações podem ser encontradas em: <a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a> e <a href="https://bookdown.org/yihui/rmarkdown-cookbook/">R Markdown Cookbook</a></p>
+<!-- Os pacotes do *tidyverse* auxiliam nos seguintes passos da análise de dados: -->
+<!-- ```{r echo=FALSE} -->
+<!-- DiagrammeR::grViz( -->
+<!--   "digraph G { -->
+<!-- rankdir=LR -->
+<!--      compound=true -->
+<!--     subgraph cluster { -->
+<!--  node [style=filled] -->
+<!--         Transformar Visualizar Modelar -->
+<!--         label = 'Entender' -->
+<!--         color=blue -->
+<!--     } -->
+<!-- Importar->Organizar -->
+<!-- Transformar->Visualizar -->
+<!-- Visualizar->Modelar -->
+<!-- Modelar->Transformar -->
+<!--     Organizar -> Transformar [lhead=cluster] -->
+<!--     Modelar->Comunicar[ltail=cluster] -->
+<!-- }" -->
+<!-- ) -->
+<!-- ``` -->
+<!-- Adaptado de @R4ds. -->
+
+</div>
+</div>
+
+  <div class="chapter-nav">
+<div class="prev"><a href="index.html">Prefácio</a></div>
+<div class="next"><a href="procurando-e-pedindo-ajuda-para-o-r.html"><span class="header-section-number">1</span> Procurando (e pedindo) ajuda para o R</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Nesta página</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#intro-r">Introdução - O ecossistema R</a></li>
+<li><a class="nav-link" href="#pacotes-do-r">Pacotes do R</a></li>
+<li><a class="nav-link" href="#rstudio">RStudio</a></li>
+<li><a class="nav-link" href="#rcloud">RStudio Cloud</a></li>
+<li><a class="nav-link" href="#tidyverse">Tidyverse</a></li>
+<li><a class="nav-link" href="#rmarkdown">RMarkdown</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/joaobtj/biostat_ebook/blob/main/000-intro-r-eco.Rmd">Código fonte desta página<i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/joaobtj/biostat_ebook/edit/main/000-intro-r-eco.Rmd">Editar esta página <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Bioestatística aplicada aos ecossistemas agrícolas e naturais</strong>" foi escrito por João B. Tolentino Jr.. Última atualização em 2022-04-19.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

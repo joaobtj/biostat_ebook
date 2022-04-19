@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 3 RMarkdown | Bioestatística aplicada aos ecossistemas agrícolas e naturais</title>
+<meta name="author" content="João B. Tolentino Jr.">
+<meta name="description" content="3.1 Criando um arquivo Rmd Para criar um arquivo do tipo Rmd, clique em File -&gt; New File -&gt; R Markdown.  Figura 3.1: Criando um arquivo R Markdown.  Várias opções estão disponíveis por padrão....">
+<meta name="generator" content="bookdown 0.26 with bs4_book()">
+<meta property="og:title" content="Capítulo 3 RMarkdown | Bioestatística aplicada aos ecossistemas agrícolas e naturais">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://joaobtj.github.io/biostat_ebook/rmarkdown-1.html">
+<meta property="og:description" content="3.1 Criando um arquivo Rmd Para criar um arquivo do tipo Rmd, clique em File -&gt; New File -&gt; R Markdown.  Figura 3.1: Criando um arquivo R Markdown.  Várias opções estão disponíveis por padrão....">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 3 RMarkdown | Bioestatística aplicada aos ecossistemas agrícolas e naturais">
+<meta name="twitter:description" content="3.1 Criando um arquivo Rmd Para criar um arquivo do tipo Rmd, clique em File -&gt; New File -&gt; R Markdown.  Figura 3.1: Criando um arquivo R Markdown.  Várias opções estão disponíveis por padrão....">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Montserrat-0.4.1/font.css" rel="stylesheet">
+<link href="libs/_Signika-0.4.1/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 1em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Bioestatística aplicada aos ecossistemas agrícolas e naturais</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Buscar" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Sumário</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Prefácio</a></li>
+<li class="book-part">O ecossistema R</li>
+<li><a class="" href="intro-r.html">Introdução - O ecossistema R</a></li>
+<li><a class="" href="procurando-e-pedindo-ajuda-para-o-r.html"><span class="header-section-number">1</span> Procurando (e pedindo) ajuda para o R</a></li>
+<li><a class="" href="comeco.html"><span class="header-section-number">2</span> Começando com o R</a></li>
+<li><a class="active" href="rmarkdown-1.html"><span class="header-section-number">3</span> RMarkdown</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/joaobtj/biostat_ebook">Código fonte do livro <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><link href="assets/style.css" rel="stylesheet">
+<div class="hero-image-container"> 
+  <img class="hero-image" src="../biostat_ebook/image/biostat.png">
+</div>
+<div id="rmarkdown-1" class="section level1" number="3">
+<h1>
+<span class="header-section-number">Capítulo 3</span> RMarkdown<a class="anchor" aria-label="anchor" href="#rmarkdown-1"><i class="fas fa-link"></i></a>
+</h1>
+<div id="criando-um-arquivo-rmd" class="section level2" number="3.1">
+<h2>
+<span class="header-section-number">3.1</span> Criando um arquivo Rmd<a class="anchor" aria-label="anchor" href="#criando-um-arquivo-rmd"><i class="fas fa-link"></i></a>
+</h2>
+<p>Para criar um arquivo do tipo Rmd, clique em <em>File -&gt; New File -&gt; R Markdown</em>.</p>
+<div class="figure">
+<span style="display:block;" id="fig:rmd"></span>
+<img src="image/Rmd.png" alt="Criando um arquivo R Markdown." width="90%"><p class="caption">
+Figura 3.1: Criando um arquivo R Markdown.
+</p>
+</div>
+<p>Várias opções estão disponíveis por padrão. Escolha aquela que julgar mais adequada ou então clique no botão <em>Create Empty Document</em>.</p>
+<p>Um arquivo Rmd é composto por três componentes básicos: Cabeçalho, Texto e Código.</p>
+<p>Abaixo, um exemplo do cabeçalho de um arquivo Rmd que exporta no formato HTML:</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb90-1"><a href="rmarkdown-1.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb90-2"><a href="rmarkdown-1.html#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Olá R Markdown"</span></span>
+<span id="cb90-3"><a href="rmarkdown-1.html#cb90-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Fulano"</span></span>
+<span id="cb90-4"><a href="rmarkdown-1.html#cb90-4" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"2022-04-19"</span></span>
+<span id="cb90-5"><a href="rmarkdown-1.html#cb90-5" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> html_document</span></span>
+<span id="cb90-6"><a href="rmarkdown-1.html#cb90-6" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<p>Este cabeçalho deve ser escrito entre <code>---</code> (traço triplo) e utiliza a síntaxe YAML <a href="https://pt.wikipedia.org/wiki/YAML">(pt.wikipedia.org/wiki/YAML)</a>.</p>
+<p>O texto (ou narrativa) inicia logo após o cabeçalho e segue a síntaxe demonstrada na seção <a href="rmarkdown-1.html#rmdsintaxe">3.2</a>.</p>
+<p>O código inicia com <code>```{r}</code> (aspas triplas) em que <code>r</code> indica a linguagem utilizada e termina com <code>```</code> (aspas triplas) novamente. Opções do código podem ser escritas dentro das chaves: <code>```{r, out.width="90%"}</code>.</p>
+<p>Para renderizar o arquivo, basta clicar no botão <code>Knit</code> ou então utilizar o atalho <button>Ctrl</button> + <button>Shift</button> + <button>K</button></p>
+</div>
+<div id="rmdsintaxe" class="section level2" number="3.2">
+<h2>
+<span class="header-section-number">3.2</span> Síntaxe da linguagem R Markdown<a class="anchor" aria-label="anchor" href="#rmdsintaxe"><i class="fas fa-link"></i></a>
+</h2>
+<p>A síntaxe da linguagem RMarkdown é bastante simples mas poderosa. Neste capítulo, serão apresentados os principais elementos.</p>
+<p>A separação entre os parágrafos deve ser feita com dois espaços verticais (enter).</p>
+<p>Para deixar um texto em <em>itálico</em>, este deve ser escrito entre <code>*</code> (asterisco simples): <code>*itálico*</code> = <em>itálico</em>. Já para deixar o texto em <strong>negrito</strong>, este deve ser escrito entre <code>**</code> (asterisco duplo): <code>**negrito**</code> = <strong>negrito</strong>. E para <strong><em>itálico e negrito</em></strong>? adivinhem, <code>***</code> (asterisco triplo): <code>***itálico e negrito***</code> = <strong><em>itálico e negrito</em></strong>.</p>
+<p>Sobrescrito deve ficar entre <code>^</code> (circunflexo): <code>m^3^/s</code> = m<sup>3</sup>/s. Já o subscrito é escrito entre <code>~</code> (til): <code>H~2~O</code> = H<sub>2</sub>O.</p>
+<p>Um link para uma página externa: <code>[Site da UFSC](https://ufsc.br)</code> = <a href="https://ufsc.br">Site da UFSC</a></p>
+<p>Uma lista marcada deve ter cada item precedido por um <code>*</code> (asterisco):</p>
+<p><code>* item 1</code></p>
+<p><code>* item 2</code></p>
+<p>Retorna:</p>
+<ul>
+<li>item 1</li>
+<li>item 2</li>
+</ul>
+<p>Uma lista numerada dever ter cada item precedido por um número:</p>
+<p><code>1. item 1</code></p>
+<p><code>1. item 2</code></p>
+<p><code>1. item 3</code></p>
+<p>Retorna:</p>
+<ol style="list-style-type: decimal">
+<li>item 1</li>
+<li>item 2</li>
+<li>item 3</li>
+</ol>
+<p>Os títulos das seções são escritos após <code>#</code> (sustenido ou hashtag).</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb91-1"><a href="rmarkdown-1.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Título nível 1</span></span>
+<span id="cb91-2"><a href="rmarkdown-1.html#cb91-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-3"><a href="rmarkdown-1.html#cb91-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Título nível 2</span></span>
+<span id="cb91-4"><a href="rmarkdown-1.html#cb91-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-5"><a href="rmarkdown-1.html#cb91-5" aria-hidden="true" tabindex="-1"></a><span class="fu">### Título nível 3</span></span></code></pre></div>
+<p>Mais opções podem ser encontradas na folha de dicas do RStudio: <a href="https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">R Markdown Cheat Sheet</a></p>
+<p>Muito mais informações podem ser encontradas neste livro bastante completo: <a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a></p>
+</div>
+<div id="formatos-de-saída" class="section level2" number="3.3">
+<h2>
+<span class="header-section-number">3.3</span> Formatos de saída<a class="anchor" aria-label="anchor" href="#formatos-de-sa%C3%ADda"><i class="fas fa-link"></i></a>
+</h2>
+<p>Os principais formatos de saída para documentos <a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;não irei tratar de apresentações neste livro&lt;/p&gt;"><sup>15</sup></a> são:</p>
+<ul>
+<li>
+<code>html_document</code> - saída em formato HTML</li>
+<li>
+<code>pdf_document</code> - saída em formato PDF</li>
+<li>
+<code>word_document</code> - saída em formato Word (.doc)</li>
+<li>
+<code>odt_document</code> - saída em formato OpenDocument (.odt) para OpenOffice e LibreOffice</li>
+<li>
+<code>rtf_document</code> - saída em formato Rich Text Format (.rtf)</li>
+</ul>
+<div id="refs" class="references csl-bib-body" entry-spacing="1">
+<div id="ref-Recology" class="csl-entry">
+LAI, Jiangshan; LORTIE, Christopher J.; MUENCHEN, Robert A.; YANG, Jian; MA, Keping. Evaluating the popularity of r in ecology. <strong>Ecosphere</strong>, vol. 10, no. 1, p. e02567, 2019. DOI <a href="https://doi.org/10.1002/ecs2.2567">https://doi.org/10.1002/ecs2.2567</a>. Available at: <a href="https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1002/ecs2.2567">https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1002/ecs2.2567</a>.
+</div>
+<div id="ref-tidy-data" class="csl-entry">
+WICKHAM, Hadley. Tidy data. <strong>The Journal of Statistical Software</strong>, vol. 59, 2014. Available at: <a href="http://www.jstatsoft.org/v59/i10/">http://www.jstatsoft.org/v59/i10/</a>.
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="comeco.html"><span class="header-section-number">2</span> Começando com o R</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Nesta página</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#rmarkdown-1"><span class="header-section-number">3</span> RMarkdown</a></li>
+<li><a class="nav-link" href="#criando-um-arquivo-rmd"><span class="header-section-number">3.1</span> Criando um arquivo Rmd</a></li>
+<li><a class="nav-link" href="#rmdsintaxe"><span class="header-section-number">3.2</span> Síntaxe da linguagem R Markdown</a></li>
+<li><a class="nav-link" href="#formatos-de-sa%C3%ADda"><span class="header-section-number">3.3</span> Formatos de saída</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/joaobtj/biostat_ebook/blob/main/003-rmarkdown.Rmd">Código fonte desta página<i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/joaobtj/biostat_ebook/edit/main/003-rmarkdown.Rmd">Editar esta página <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Bioestatística aplicada aos ecossistemas agrícolas e naturais</strong>" foi escrito por João B. Tolentino Jr.. Última atualização em 2022-04-19.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>
