@@ -1,12 +1,12 @@
 --- 
 title: "Bioestatística aplicada aos ecossistemas agrícolas e naturais"
 author: "João B. Tolentino Jr."
-date: "2022-04-19"
+date: "2022-04-20"
 description: " Livro texto da disciplina de Bioestatística do Programa de Pós-graduação em Ecossistemas Agrícolas e Naturais."
 #cover-image: image/cover.jpg
 #apple-touch-icon: image/cover.jpg
 #favicon: image/favicon.ico
-url: 'https\://joaobtj.github.io/biostat_ebook/'
+url: 'https\://bean-ppgean.netlify.app'
 github-repo: joaobtj/ebook_biostat
 site: bookdown::bookdown_site
 documentclass: book
