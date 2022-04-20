@@ -6,7 +6,7 @@ description: " Livro texto da disciplina de Bioestatística do Programa de Pós-
 #cover-image: image/cover.jpg
 #apple-touch-icon: image/cover.jpg
 #favicon: image/favicon.ico
-url: 'https\://bean-ppgean.netlify.app'
+url: 'https\://biostat.tolentino.pro.br'
 github-repo: joaobtj/ebook_biostat
 site: bookdown::bookdown_site
 documentclass: book
