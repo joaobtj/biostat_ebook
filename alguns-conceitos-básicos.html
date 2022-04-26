@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 4 Alguns conceitos básicos | Bioestatística aplicada aos ecossistemas agrícolas e naturais</title>
+<meta name="author" content="João B. Tolentino Jr.">
+<meta name="description" content="4.1 População e amostra População É a coleção inteira de indivíduos ou objetos a ser considerada ou estudada. Em geral, há infinitos objetos em uma população ou, então, tantos que não podemos...">
+<meta name="generator" content="bookdown 0.26 with bs4_book()">
+<meta property="og:title" content="Capítulo 4 Alguns conceitos básicos | Bioestatística aplicada aos ecossistemas agrícolas e naturais">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://biostat.tolentino.pro.br/alguns-conceitos-básicos.html">
+<meta property="og:description" content="4.1 População e amostra População É a coleção inteira de indivíduos ou objetos a ser considerada ou estudada. Em geral, há infinitos objetos em uma população ou, então, tantos que não podemos...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 4 Alguns conceitos básicos | Bioestatística aplicada aos ecossistemas agrícolas e naturais">
+<meta name="twitter:description" content="4.1 População e amostra População É a coleção inteira de indivíduos ou objetos a ser considerada ou estudada. Em geral, há infinitos objetos em uma população ou, então, tantos que não podemos...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Montserrat-0.4.1/font.css" rel="stylesheet">
+<link href="libs/_Signika-0.4.1/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 1em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Bioestatística aplicada aos ecossistemas agrícolas e naturais</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Buscar" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Sumário</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Prefácio</a></li>
+<li class="book-part">O ecossistema R</li>
+<li><a class="" href="intro-r.html">Introdução - O ecossistema R</a></li>
+<li><a class="" href="procurando-e-pedindo-ajuda-para-o-r.html"><span class="header-section-number">1</span> Procurando (e pedindo) ajuda para o R</a></li>
+<li><a class="" href="comeco.html"><span class="header-section-number">2</span> Começando com o R</a></li>
+<li><a class="" href="rmarkdown-1.html"><span class="header-section-number">3</span> RMarkdown</a></li>
+<li class="book-part">(bio)Estatística</li>
+<li><a class="" href="bio.html">Introdução - (bio)Estatística</a></li>
+<li><a class="active" href="alguns-conceitos-b%C3%A1sicos.html"><span class="header-section-number">4</span> Alguns conceitos básicos</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/joaobtj/biostat_ebook">Código fonte do livro <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><link href="assets/style.css" rel="stylesheet">
+<div class="hero-image-container"> 
+  <img class="hero-image" src="../image/biostat.png">
+</div>
+<div id="alguns-conceitos-básicos" class="section level1" number="4">
+<h1>
+<span class="header-section-number">Capítulo 4</span> Alguns conceitos básicos<a class="anchor" aria-label="anchor" href="#alguns-conceitos-b%C3%A1sicos"><i class="fas fa-link"></i></a>
+</h1>
+<div id="população-e-amostra" class="section level2" number="4.1">
+<h2>
+<span class="header-section-number">4.1</span> População e amostra<a class="anchor" aria-label="anchor" href="#popula%C3%A7%C3%A3o-e-amostra"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong>População</strong></p>
+<p>É a coleção inteira de indivíduos ou objetos a ser considerada ou estudada. Em geral, há infinitos objetos em uma população ou, então, tantos que não podemos olhar para todos eles.</p>
+<p><strong>Amostra</strong></p>
+<p>É um subconjunto da população inteira, uma pequena seleção de indivíduos ou objetos extraídos da coleção inteira.</p>
+<div class="figure">
+<span style="display:block;" id="fig:popam"></span>
+<img src="image/pop-am.png" alt="População vs Amostra" width="90%"><p class="caption">
+Figura 4.1: População vs Amostra
+</p>
+</div>
+</div>
+<div id="variável" class="section level2" number="4.2">
+<h2>
+<span class="header-section-number">4.2</span> Variável<a class="anchor" aria-label="anchor" href="#vari%C3%A1vel"><i class="fas fa-link"></i></a>
+</h2>
+<p>É uma característica de um indivíduo em uma população de interesse. Pode assumir valores diferentes para indivíduos diferentes</p>
+<div class="example">
+<p><span id="exm:var1" class="example"><strong>Exemplo 4.1  (Nível de potássio em bananas) </strong></span>Muitos estudos de pesquisa sugerem que as bananas podem ser uma cura natural para diferentes doenças. As bananas tem alto teor de ferro, que pode ajudar as pessoas que sofrem de anemia, e há um antiácido nas bananas que pode ajudar aos que sofrem de azia. Um novo estudo se refere ao nível de potássio em uma banana típica. Cem bananas são selecionadas de todas as partes do mundo e mede-se e registra-se cuidadosamente o nível de potássio em cada uma delas. Descreva a população, a amostra e a variável nesse problema.</p>
+<p><em>SOLUÇÃO</em><br></p>
+<p>A população consiste em todas as bananas em todo o mundo. Embora essa população não seja infinita, certamente não podemos examinar cada banana unitariamente.</p>
+<p>A amostra são as 100 bananas selecionadas aleatoriamente. Esse é um sub-conjunto ou seleção (ou, bem, um cacho) da população.</p>
+<p>A variável nesse problema é o nível de potássio. Essa característica será cuidadosamente medida para cada banana, e os dados serão resumidos ou usados para se tirar uma conclusão.</p>
+</div>
+<div id="tipos-de-variáveis" class="section level3" number="4.2.1">
+<h3>
+<span class="header-section-number">4.2.1</span> Tipos de variáveis<a class="anchor" aria-label="anchor" href="#tipos-de-vari%C3%A1veis"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Qualitativa ou categórica: Posiciona um indivíduo em um de diversos grupos ou categorias.
+<ul>
+<li>Nominais: São puramente qualitativas e não ordenadas, como a cor da flor</li>
+<li>Ordinais: Podem ser colocados em ordem, como a escalas de Likert (por exemplo, classifique de 0 a 5, com 0 para realmente não gosto e 5 para realmente gosto)</li>
+</ul>
+</li>
+<li>Quantitativa ou numérica: Assume valores numéricos e operações aritméticas (adição e cálculo de médias) fazem sentido.
+<ul>
+<li>Contínuas: Podem assumir qualquer valor em um intervalo, como o comprimento do caule de uma planta.</li>
+<li>Discretas: Podem assumir apenas um número limitado de valores, como o número de pétalas de uma flor.</li>
+</ul>
+</li>
+</ul>
+<div class="example">
+<p><span id="exm:var2" class="example"><strong>Exemplo 4.2  (Tipos e variáveis) </strong></span>Dados de um estudo podem conter valores de muitas variáveis para cada um dos sujeitas do estudo. Quais das seguintes variáveis são categóricas e quais são quantitativas?</p>
+<ol style="list-style-type: decimal">
+<li>Gênero</li>
+<li>Idade</li>
+<li>Cor</li>
+<li>Fumante</li>
+<li>Pressão sanguínea sistólica</li>
+<li>Nível de cálcio no sangue</li>
+</ol>
+<p><em>SOLUÇÃO</em></p>
+<p>Categóricas: gênero (masculino ou feminino), cor (asiática, negra, branca, outra), fumante (sim ou não).</p>
+<p>Quantitativas: idade (em anos), pressão sanguínea (milímetros de mercúrio), nível de cálcio(microgramas por mililitro).</p>
+</div>
+</div>
+</div>
+<div id="estatística-descritiva-vs-estatística-inferencial" class="section level2" number="4.3">
+<h2>
+<span class="header-section-number">4.3</span> Estatística descritiva vs Estatística inferencial<a class="anchor" aria-label="anchor" href="#estat%C3%ADstica-descritiva-vs-estat%C3%ADstica-inferencial"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li><p>Estatística descritiva: Utiliza métodos gráficos e numéricos para descrever, organizar e resumir dados. É uma Análise exploratória.</p></li>
+<li><p>Estatística inferencial: Utiliza técnicas e métodos para a análise de um conjunto de dados pequeno e específico para se extrair uma conclusão sobre uma coleção maior, mais geral, de dados. Os procedimentos da inferência estatística nos permitem usar os dados para tirar conclusões e avaliar riscos.</p></li>
+</ul>
+<div class="example">
+<p><span id="exm:estat" class="example"><strong>Exemplo 4.3  (Descritiva vs Inferencial) </strong></span>Determine se cada um dos seguintes problemas é uma estatística descritiva ou inferencial.</p>
+<ol style="list-style-type: lower-alpha">
+<li>O Departamento de Transporte mantém registros referentes a todos os caminhões parados para inspeção. Um relatório sobre essas inspeções lista, por carga, a proporção de todos os caminhões parados.</li>
+<li>Um pesquisador obtém uma amostra aleatória de corujas selvagens e mede o quanto elas podem virar o pescoço. Os dados são usados para se concluir que uma coruja pode virar seu pescoço mais de 120 graus a partir da posição de frente.</li>
+<li>Uma instalação de pesquisa da Marinha faz vários testes para verificar a integridade estrutural de um novo submarino. Um relatório do laboratório afirma que a embarcação pode suportar pressão a profundidades de, no máximo, 800 pés (243,84 m).</li>
+<li>Um inspetor de segurança seleciona uma amostra de prédios de apartamentos e verifica as escadas de incêndio em cada um deles. A proporção de escadas quebradas na amostra é usada para estimar a proporção de escadas quebradas em toda a cidade.</li>
+</ol>
+<p><em>SOLUÇÃO</em></p>
+<ol style="list-style-type: lower-alpha">
+<li>Descritivo</li>
+<li>Inferencial</li>
+<li>Inferencial</li>
+<li>Inferencial</li>
+</ol>
+</div>
+</div>
+<div id="estudo-observacional-vs-estudo-experimental" class="section level2" number="4.4">
+<h2>
+<span class="header-section-number">4.4</span> Estudo observacional vs Estudo experimental<a class="anchor" aria-label="anchor" href="#estudo-observacional-vs-estudo-experimental"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>Estudo observacional: Observamos a resposta para variáveis específicas para cada individuo. O objetivo de um estudo observacional é descrever algum grupo ou situação.</li>
+<li>Estudo experimental: Investigamos os efeitos de certas condições sobre indivíduos ou objetos na amostra. Os indivíduos são associados aleatoriamente a grupos específicos e certos fatores são sistematicamente controlados, ou impostos, para se investigar ou isolar efeitos específicos. O pesquisador impõe deliberadamente algum tratamento aos indivíduos para observar suas respostas.</li>
+</ul>
+<div class="example">
+<p><span id="exm:obs" class="example"><strong>Exemplo 4.4  (Um estudo observacional) </strong></span>Um estudo acompanhou 130 mil pessoas, que bebiam cerveja, vinho ou licor, durante 12 anos. Foram documentados os casos de infarto do miocárdio. O estudo mostrou que ocorriam 35% menos mortes por infarto entre os que tomavam vinho (tinto ou branco) comparado aos que bebiam cerveja.</p>
+<div class="inline-figure">
+<img src="image/vinho.jpg"><!-- -->
+</div>
+</div>
+<div class="example">
+<p><span id="exm:exp" class="example"><strong>Exemplo 4.5  (Um estudo experimental) </strong></span>Um agrônomo afirma que um novo fertilizante orgânico, em comparação com a marca líder, aumenta a produção e o tamanho dos tomates. Para o teste dessa afirmativa, pês de tomate são associados aleatoriamente a um de dois grupos: m grupo é cultivado com o fertilizante líder e o outro grupo, com o novo produto. No tempo da colheita, registram-se o tamanho e o peso de cada tomate, juntamente com o total de tomates por pé. Os dados coletados desse experimento são usados para comparar os dois fertilizantes.</p>
+<div class="inline-figure">
+<img src="image/tomate.jpg"><!-- -->
+</div>
+</div>
+<div id="confundimento" class="section level3" number="4.4.1">
+<h3>
+<span class="header-section-number">4.4.1</span> Confundimento<a class="anchor" aria-label="anchor" href="#confundimento"><i class="fas fa-link"></i></a>
+</h3>
+<p>O confundimento ocorre quando vários fatores juntos contribuem para um efeito, mas nenhuma causa única pode ser isolada.</p>
+<p>Estudos observacionais falham, em geral, porque a variável explicativa se confunde com variáveis ocultas.</p>
+<p><em>Voltando ao exemplo do vinho…</em></p>
+<p>As pessoas que preferem vinho são diferentes daquelas que bebem cerveja. Os bebedores de vinho, como um grupo, são mais ricos e mais bem educados, comem mais frutas e vegetais e menos frituras. Sua dieta contém menos gordura e menos colesterol.</p>
+<p>A variável explicativa (Qual tipo de bebida alcoólica você bebe com mais frequência?) é confundida com muitas variáveis ocultas (educação, riqueza, alimnetação e outras).</p>
+<div class="inline-figure"><img src="image/conf.png" width="90%"></div>
+<p><em>Voltando ao exemplo do tomate…</em></p>
+<p>Suponha que os pés de tomate em um dos grupos sejam regados com mais frequência e/ou expostos a mais luz do sol.</p>
+<p>Se os pés de tomate que receberam o novo fertilizante forem sujeitos a essas condições diferentes (favoráveis) de crescimento, uma diferença na produção não poderá ser atribuída ao novo produto.</p>
+<div class="example">
+<p><span id="exm:aqglobal" class="example"><strong>Exemplo 4.6  (Aquecimento global) </strong></span>Registros instrumentais mostram um aumento nas temperaturas médias globais da superfície aérea e do oceano da ordem de 0,5°C durante o século XX. Essa tendência é também evidente na redução da extensão da capa de neve, da taxa acelerada do aumento do nível do mar e dos tempos de chegada e acasalamento de pássaros migratórios, que estão ocorrendo mais cedo. Esse aquecimento global coincide com mudanças dramáticas na composição do gás atmosférico devido à atividade humana, por exemplo, a queima de combustíveis fósseis.</p>
+<p>Os registros do clima estão sujeitos a um grande e incerto nível de variabilidade.</p>
+<ol style="list-style-type: lower-alpha">
+<li>A evidência do aquecimento global é experimental ou observacional?</li>
+<li>Qual variável explicativa influencia a mudança climática?</li>
+<li>Qual variável oculta pode estar confundida com essa variável explicativa?</li>
+</ol>
+<p><em>SOLUÇÃO</em></p>
+<ol style="list-style-type: lower-alpha">
+<li>Observacional.</li>
+<li>Explicativa: atividade humana.</li>
+<li>Oculta: variabilidade natural no ambiente (por exemplo, idades glaciais anteriores).</li>
+</ol>
+<p>O Comitê da Ciência da Mudança Climática afirma: <em>“Por causa do grande e ainda incerto nível de variabilidade natural inerente ao registro do clima…, uma ligação de causalidade entre o lançamento de gases do efeito estufa na atmosfera e as mudanças climáticas observadas durante o século XX não pode ser estabelecida sem equívocos.”</em></p>
+</div>
+
+<div id="refs" class="references csl-bib-body" entry-spacing="1">
+<div class="csl-entry">
+LAI, Jiangshan; LORTIE, Christopher J.; MUENCHEN, Robert A.; YANG, Jian; MA, Keping. Evaluating the popularity of r in ecology. <strong>Ecosphere</strong>, vol. 10, no. 1, p. e02567, 2019. DOI <a href="https://doi.org/10.1002/ecs2.2567">https://doi.org/10.1002/ecs2.2567</a>. Available at: <a href="https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1002/ecs2.2567">https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1002/ecs2.2567</a>.
+</div>
+<div class="csl-entry">
+WICKHAM, Hadley. Tidy data. <strong>The Journal of Statistical Software</strong>, vol. 59, 2014. Available at: <a href="http://www.jstatsoft.org/v59/i10/">http://www.jstatsoft.org/v59/i10/</a>.
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="bio.html">Introdução - (bio)Estatística</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Nesta página</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#alguns-conceitos-b%C3%A1sicos"><span class="header-section-number">4</span> Alguns conceitos básicos</a></li>
+<li><a class="nav-link" href="#popula%C3%A7%C3%A3o-e-amostra"><span class="header-section-number">4.1</span> População e amostra</a></li>
+<li>
+<a class="nav-link" href="#vari%C3%A1vel"><span class="header-section-number">4.2</span> Variável</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#tipos-de-vari%C3%A1veis"><span class="header-section-number">4.2.1</span> Tipos de variáveis</a></li></ul>
+</li>
+<li><a class="nav-link" href="#estat%C3%ADstica-descritiva-vs-estat%C3%ADstica-inferencial"><span class="header-section-number">4.3</span> Estatística descritiva vs Estatística inferencial</a></li>
+<li>
+<a class="nav-link" href="#estudo-observacional-vs-estudo-experimental"><span class="header-section-number">4.4</span> Estudo observacional vs Estudo experimental</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#confundimento"><span class="header-section-number">4.4.1</span> Confundimento</a></li></ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/joaobtj/biostat_ebook/blob/main/011-conceitos.Rmd">Código fonte desta página<i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/joaobtj/biostat_ebook/edit/main/011-conceitos.Rmd">Editar esta página <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Bioestatística aplicada aos ecossistemas agrícolas e naturais</strong>" foi escrito por João B. Tolentino Jr.. Última atualização em 2022-04-26.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>
