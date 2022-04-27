@@ -38,6 +38,7 @@ alguns-conceitos-básicos
 população-e-amostra
 variável
 tipos-de-variáveis
+variáveis-derivadas
 estatística-descritiva-vs-estatística-inferencial
 estudo-observacional-vs-estudo-experimental
 confundimento

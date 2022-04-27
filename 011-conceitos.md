@@ -70,6 +70,10 @@ Quantitativas: idade (em anos), pressão sanguínea (milímetros de mercúrio), 
 
 Em algumas situações, variáveis categóricas podem ser transformadas em variáveis quantitativas e vice-versa.
 
+### Variáveis derivadas
+
+ A maior parte das variáveissão obtidas por meio de medidas e observações diretas. No entanto, há uma importante classe de variáveis denominadas derivadas, que são baseadas em duas ou mais medições obtidas independentemente. Alguns exemplos são: razão, porcentagem, índice e taxa.
+
 
 ## Estatística descritiva vs Estatística inferencial
 
