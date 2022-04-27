@@ -73,6 +73,7 @@ Em algumas situações, variáveis categóricas podem ser transformadas em vari�
 
  A maior parte das variáveissão obtidas por meio de medidas e observações diretas. No entanto, há uma importante classe de variáveis denominadas derivadas, que são baseadas em duas ou mais medições obtidas independentemente. Alguns exemplos são: razão, porcentagem, índice e taxa.
 
+
 ## Estatística descritiva vs Estatística inferencial
 
 * Estatística descritiva: Utiliza métodos gráficos e numéricos para descrever, organizar e resumir dados. É uma Análise exploratória.
