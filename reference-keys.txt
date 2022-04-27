@@ -6,6 +6,13 @@ fig:csv
 fig:csv2
 fig:liquido
 fig:rmd
+fig:popam
+exm:var1
+exm:var2
+exm:estat
+exm:obs
+exm:exp
+exm:aqglobal
 procurando-e-pedindo-ajuda-para-o-r
 as-funções-help-e
 stack-overflow
@@ -27,3 +34,11 @@ rmarkdown-1
 criando-um-arquivo-rmd
 rmdsintaxe
 formatos-de-saída
+alguns-conceitos-básicos
+população-e-amostra
+variável
+tipos-de-variáveis
+variáveis-derivadas
+estatística-descritiva-vs-estatística-inferencial
+estudo-observacional-vs-estudo-experimental
+confundimento
