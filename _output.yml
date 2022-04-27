@@ -18,7 +18,7 @@ bookdown::bs4_book:
         family: Signika
         wght: 400
   footnotes_inline: true      
-  split_bib: false
+  split_bib: true
   suppress-bibliography: false
   repo: 
     base: https://github.com/joaobtj/biostat_ebook
