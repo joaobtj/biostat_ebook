@@ -2,5 +2,5 @@
 
 # Introdução - (bio)Estatística {-#bio}
 
-A Bioestatística
+
 
