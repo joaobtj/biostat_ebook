@@ -8,7 +8,7 @@
 
 **Amostra**
 
-É um subconjunto da população inteira, uma pequena seleção de indivíduos ou objetos extraídos da coleção inteira.
+É um subconjunto da população inteira, uma pequena seleção de indivíduos ou objetos extraídos da coleção inteira. A seleção de uma amostra envolve a utilização de procedimentos específicos.
 
 <div class="figure">
 <img src="image/pop-am.png" alt="População vs Amostra" width="90%" />
@@ -17,7 +17,7 @@
 
 ## Variável
 
-É uma característica de um indivíduo em uma população de interesse. Pode assumir valores diferentes para indivíduos diferentes
+É uma característica de um indivíduo em uma população de interesse. Pode assumir valores diferentes para indivíduos diferentes. Esta característica pode ser observada ou mensurada nos indivíduos que compõem a amostra ou população.
 
 
 :::{.example #var1 name="Nível de potássio em bananas"}
@@ -26,7 +26,7 @@ Muitos estudos de pesquisa sugerem que as bananas podem ser uma cura natural par
 
 
 
-*SOLUÇÃO*\
+*SOLUÇÃO*
 
 A população consiste em todas as bananas em todo o mundo. Embora essa população não seja infinita, certamente não podemos examinar cada banana unitariamente.
 
@@ -36,15 +36,16 @@ A variável nesse problema é o nível de potássio. Essa característica será 
 
 :::
 
+
 ### Tipos de variáveis
 
-* Qualitativa ou categórica: Posiciona um indivíduo em um de diversos grupos ou categorias.
-  * Nominais: São puramente qualitativas e não ordenadas, como a cor da flor
-  * Ordinais: Podem ser colocados em ordem, como a escalas de Likert (por exemplo, classifique de 0 a 5, com 0 para realmente não gosto e 5 para realmente gosto)
+* Qualitativa ou Categórica: Posiciona um indivíduo em um de diversos grupos ou categorias. Também podemos dizer que expressa uma qualidade do indivíduo.
+  * Nominais: São puramente qualitativas e não ordenadas, como a cor de uma flor, gênero de um mamífero, formato de uma folha, etc.
+  * Ordinais: Podem ser colocados em ordem, como a escalas de Likert (por exemplo, classifique de 0 a 5, com 0 para realmente não gosto e 5 para realmente gosto), comportamento de um animal (agressivo, neutro, submissivo), etc.
 
-* Quantitativa ou numérica: Assume valores numéricos e operações aritméticas (adição e cálculo de médias) fazem sentido.
-  * Contínuas: Podem assumir qualquer valor em um intervalo, como o comprimento do caule de uma planta.
-  * Discretas: Podem assumir apenas um número limitado de valores, como o número de pétalas de uma flor.
+* Quantitativa ou Numérica: Assume valores numéricos e operações aritméticas (adição e cálculo de médias) fazem sentido.
+  * Contínuas: Podem assumir qualquer valor em um intervalo, como o comprimento do caule de uma planta, temperatura corporal de um primata, etc.
+  * Discretas: Podem assumir apenas um número limitado de valores, como o número de pétalas de uma flor, número de filhotes de uma ave, etc.
   
 
 :::{.example #var2 name="Tipos e variáveis"}
@@ -62,9 +63,12 @@ Dados de um estudo podem conter valores de muitas variáveis para cada um dos su
 
 Categóricas: gênero (masculino ou feminino), cor (asiática, negra, branca, outra), fumante (sim ou não).
 
-Quantitativas: idade (em anos), pressão sanguínea (milímetros de mercúrio), nível de cálcio(microgramas por mililitro).
+Quantitativas: idade (em anos), pressão sanguínea (milímetros de mercúrio), nível de cálcio (microgramas por mililitro).
 
 :::
+
+
+Em algumas situações, variáveis categóricas podem ser transformadas em variáveis quantitativas e vice-versa.
 
 
 ## Estatística descritiva vs Estatística inferencial
