@@ -9,14 +9,6 @@
     ]
   },
   "Packages": {
-    "Cairo": {
-      "Package": "Cairo",
-      "Version": "1.5-15",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "c13c98ad29dc1aa5f22f80a9199c4627",
-      "Requirements": []
-    },
     "DBI": {
       "Package": "DBI",
       "Version": "1.1.2",
@@ -493,14 +485,6 @@
         "tibble",
         "withr"
       ]
-    },
-    "gifski": {
-      "Package": "gifski",
-      "Version": "1.6.6-1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "32cfcc7a7a72484e5857645df33ac077",
-      "Requirements": []
     },
     "glue": {
       "Package": "glue",
@@ -1168,22 +1152,6 @@
         "stringi"
       ]
     },
-    "svglite": {
-      "Package": "svglite",
-      "Version": "2.1.0.9000",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "svglite",
-      "RemoteUsername": "r-lib",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "d673908b4ea246aa45fddde56d4d96eb0db87164",
-      "Hash": "a8e71c98de6fb3dc8f8c086276eaaa6a",
-      "Requirements": [
-        "cpp11",
-        "systemfonts"
-      ]
-    },
     "sys": {
       "Package": "sys",
       "Version": "3.4",
@@ -1191,16 +1159,6 @@
       "Repository": "CRAN",
       "Hash": "b227d13e29222b4574486cfcbde077fa",
       "Requirements": []
-    },
-    "systemfonts": {
-      "Package": "systemfonts",
-      "Version": "1.0.4",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "90b28393209827327de889f49935140a",
-      "Requirements": [
-        "cpp11"
-      ]
     },
     "tibble": {
       "Package": "tibble",

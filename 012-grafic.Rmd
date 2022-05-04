@@ -3,9 +3,7 @@ library(ggplot2)
 library(tidyverse)
 library(gganimate)
 library(plotly)
-library(gifski)
-library(Cairo)
-library(svglite)
+
 
 knitr::opts_chunk$set(
   out.width = "95%",
