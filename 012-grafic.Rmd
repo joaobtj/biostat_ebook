@@ -1,7 +1,6 @@
 ```{r include=FALSE}
 library(ggplot2)
 library(tidyverse)
-library(gganimate)
 library(plotly)
 
 
@@ -774,46 +773,3 @@ plotly::ggplotly(p)
 ```
 
 
-## Gráficos animados
-
-O pacote `gganimate` ^[É preciso instalar e carregar o pacote `gganimate` com os comandos `install.packages("gganimate")` e `library(gganimate)`] permite adicionar animações aos gráficos gerados com o `ggplot.`
-
-(ref:gganima) Expectativa de vida vs PIB per capita. A animação mostra a evolução dos valores ao longo dos anos.
-
-```{r anima, fig.cap="(ref:gganima)", gganimate=list(nframes=50), fig.path="image/"}
-
-library(gganimate)
-library(gapminder)
-
-ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
-  geom_point(alpha = 0.7, show.legend = FALSE) +
-  scale_colour_manual(values = country_colors) +
-  scale_size(range = c(2, 12)) +
-  scale_x_log10() +
-  facet_wrap(~continent) +
-  # Início da animação
-  labs(title = "Year: {frame_time}", x = "GDP per capita", y = "life expectancy") +
-  gganimate::transition_time(year) +
-  gganimate::ease_aes("linear")
-```
-
-
-(ref:gganima2) Mediana da expectativa de vida em cada continente. A animação mostra a evolução dos valores ao longo dos anos.
-
-```{r anima2, fig.cap="(ref:gganima2)",fig.show="hold", gganimate=list(nframes=50), fig.path="image/"}
-library(gapminder)
-p <- gapminder %>%
-  group_by(continent, year) %>%
-  summarise(median_lifeExp = median(lifeExp)) %>%
-  ggplot(
-    aes(x = year, y = median_lifeExp, group = continent, color = continent)
-  ) +
-  geom_line() +
-  scale_color_viridis_d() +
-  theme(legend.position = "top")
-p
-
-p +
-  geom_point() +
-  gganimate::transition_reveal(year)
-```
