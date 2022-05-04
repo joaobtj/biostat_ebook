@@ -509,7 +509,7 @@ Figura 5.17: Comprimento de odontoblastos de porquinhos da Índia submetidos a d
 <h2>
 <span class="header-section-number">5.3</span> Gráficos de dispersão<a class="anchor" aria-label="anchor" href="#gr%C3%A1ficos-de-dispers%C3%A3o"><i class="fas fa-link"></i></a>
 </h2>
-<p>São utilizados para mostrar a relação entre duas variáveis numéricas contínuas. Para isso, são utilizados pontos que representam cada observação. A geometria para este tipo de gráfico é <code>geom_point</code>. Veja este exemplo com os dados do conjunto <a href="#iris"><em>iris</em></a>.</p>
+<p>São utilizados para mostrar a relação entre duas variáveis numéricas contínuas. Para isso, são utilizados pontos que representam cada observação. A geometria para este tipo de gráfico é <code>geom_point</code>. Veja este exemplo com os dados do conjunto <a href="conjunto-de-dados-do-r.html#iris"><em>iris</em></a>.</p>
 
 <div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">iris</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Petal.Length</span>, y <span class="op">=</span> <span class="va">Petal.Width</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
@@ -520,7 +520,7 @@ Figura 5.17: Comprimento de odontoblastos de porquinhos da Índia submetidos a d
 Figura 5.18: Relação entre o comprimento e largura de flores de espécies de <em>Iris.</em> Este é um gráfico de dispersão em que cada ponto representa um par de valores.
 </p>
 </div>
-<p>Quando é bem clara a distinção entre as variáveis, sendo uma a variável preditora (independente) e a outra a variável resposta (dependente), estas devem ser organizadas da seguinte forma: a variável preditora é mapeada no eixo <em>x</em> e a variável resposta é mapeada para o eixo <em>y</em>. Veja este exemplo com dados do conjunto <a href="#bod"><em>BOD</em></a></p>
+<p>Quando é bem clara a distinção entre as variáveis, sendo uma a variável preditora (independente) e a outra a variável resposta (dependente), estas devem ser organizadas da seguinte forma: a variável preditora é mapeada no eixo <em>x</em> e a variável resposta é mapeada para o eixo <em>y</em>. Veja este exemplo com dados do conjunto <a href="conjunto-de-dados-do-r.html#bod"><em>BOD</em></a></p>
 
 <div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">BOD</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Time</span>, y <span class="op">=</span> <span class="va">demand</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
@@ -612,7 +612,7 @@ Figura 5.24: Gráfico de dispersão entre o ano de fabricação e o número de c
 Figura 5.25: Gráfico de dispersão entre o ano de fabricação e o número de cilindros de automóveis. Ao utilizar <code>geom_jitter</code>, a localização dos pontos é alterada aleatoriamente, evitando a sobreposição. Assim, é possível ter uma melhor noção da quantidade de pontos em cada nível das variáveis.
 </p>
 </div>
-<p>Outra forma de lidar com sobreposição é alterar o elemento <code>alpha</code>, que determina a transparência dos pontos. É melhor para conjuntos de dados grandes e variáveis contínuas. No exemplo a seguir utilizamos o conjunto de dados <a href="#diamonds"><em>diamonds</em></a>.</p>
+<p>Outra forma de lidar com sobreposição é alterar o elemento <code>alpha</code>, que determina a transparência dos pontos. É melhor para conjuntos de dados grandes e variáveis contínuas. No exemplo a seguir utilizamos o conjunto de dados <a href="conjunto-de-dados-do-r.html#diamonds"><em>diamonds</em></a>.</p>
 
 <div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds_plot</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">carat</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span>
@@ -687,7 +687,7 @@ Figura 5.30: Gráfico de linhas entre a dose de vitamina C, comprimento de odont
 <h3>
 <span class="header-section-number">5.5.1</span> Gráficos de linhas para séries temporais<a class="anchor" aria-label="anchor" href="#gr%C3%A1ficos-de-linhas-para-s%C3%A9ries-temporais"><i class="fas fa-link"></i></a>
 </h3>
-<p>É bastante comum que a variável no eixo <em>x</em> de uma gráfico de linhas seja uma medida de tempo. Neste caso, o gráfico estará representando uma série temporal. A geometria utilizada é <code>geom_line</code>. Para exemplificar, vamos utilizar o conjunto de dados <a href="#economics"><em>economics</em></a>.</p>
+<p>É bastante comum que a variável no eixo <em>x</em> de uma gráfico de linhas seja uma medida de tempo. Neste caso, o gráfico estará representando uma série temporal. A geometria utilizada é <code>geom_line</code>. Para exemplificar, vamos utilizar o conjunto de dados <a href="conjunto-de-dados-do-r.html#economics"><em>economics</em></a>.</p>
 
 <div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">economics</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">unemploy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
@@ -723,7 +723,7 @@ Figura 5.32: Gráfico de linhas com tendência temporal para Despesas de consumo
 <p>O histograma é um tipo especial do gráfico de barras. No histograma, a largura de cada barra representa uma classe, e a altura das barras representa a frequência ou proporção dos valores contidos em cada classe.
 Via de regra, as barras do histograma devem ser apresentadas sem espaço entre elas.</p>
 <p>A geometria para a construção do histograma é <code>geom_histogram</code>.</p>
-<p>Vamos exemplificar com o conjunto de dados <a href="#faithful"><em>faithful</em></a>.</p>
+<p>Vamos exemplificar com o conjunto de dados <a href="conjunto-de-dados-do-r.html#faithful"><em>faithful</em></a>.</p>
 
 <div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">faithful</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">waiting</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
@@ -822,8 +822,8 @@ Figura 5.40: Densidade da distribuição do tempo de espera entre erupções do 
   <span class="fu">geom_density</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"green"</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></code></pre></div>
 <div class="figure">
 <span style="display:block;" id="fig:unnamed-chunk-40"></span>
-<img src="012-grafic_files/figure-html/unnamed-chunk-40-1.png" alt="Densidade da distribuição do tempo de espera entre erupções do gêiser Old Faithful. Ao ajustar o argumento fill pe adicionada uma área preenchida abaixo da curva." width="95%"><p class="caption">
-Figura 5.41: Densidade da distribuição do tempo de espera entre erupções do gêiser Old Faithful. Ao ajustar o argumento <code>fill</code> pe adicionada uma área preenchida abaixo da curva.
+<img src="012-grafic_files/figure-html/unnamed-chunk-40-1.png" alt="Densidade da distribuição do tempo de espera entre erupções do gêiser Old Faithful. Ao ajustar o argumento fill é adicionada uma área preenchida abaixo da curva." width="95%"><p class="caption">
+Figura 5.41: Densidade da distribuição do tempo de espera entre erupções do gêiser Old Faithful. Ao ajustar o argumento <code>fill</code> é adicionada uma área preenchida abaixo da curva.
 </p>
 </div>
 </div>
@@ -905,8 +905,8 @@ Figura 5.46: Consumo de combustível na rodovia segundo a classe dos automóveis
   <span class="fu">geom_boxplot</span><span class="op">(</span>coef <span class="op">=</span> <span class="fl">1.0</span><span class="op">)</span></code></pre></div>
 <div class="figure">
 <span style="display:block;" id="fig:unnamed-chunk-47"></span>
-<img src="012-grafic_files/figure-html/unnamed-chunk-47-1.png" alt="Consumo de combustível na rodovia segundo a classe dos automóveis. O argumento coef = 1.0 ajusta o comprimento dos bigodes para 2 vezes a AIQ." width="95%"><p class="caption">
-Figura 5.47: Consumo de combustível na rodovia segundo a classe dos automóveis. O argumento <code>coef = 1.0</code> ajusta o comprimento dos <em>bigodes</em> para 2 vezes a AIQ.
+<img src="012-grafic_files/figure-html/unnamed-chunk-47-1.png" alt="Consumo de combustível na rodovia segundo a classe dos automóveis. O argumento coef = 1.0 ajusta o comprimento dos bigodes para 1 vez a AIQ." width="95%"><p class="caption">
+Figura 5.47: Consumo de combustível na rodovia segundo a classe dos automóveis. O argumento <code>coef = 1.0</code> ajusta o comprimento dos <em>bigodes</em> para 1 vez a AIQ.
 </p>
 </div>
 <p>É possível adicionar uma marca para a média ao Boxplot. Para isso, utilizamos <code>stat_summary</code> para calcular a média e ajustamos um formato para a marca. O argumento <code>shape=23</code> adiciona um losango (diamante), já que esse formato é bastante comum na representaçao da média.</p>
