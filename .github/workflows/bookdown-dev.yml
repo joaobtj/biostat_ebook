@@ -33,7 +33,7 @@ jobs:
           restore-keys: bookdown-
 
       - name: Install packages
-        run: Rscript -e 'install.packages(c("downlit","xml2","devtools","gifski","magick"))' &&  Rscript -e 'devtools::install_github("r-lib/svglite")'
+        run: Rscript -e 'install.packages(c("downlit","xml2","devtools","gifski"))' &&  Rscript -e 'devtools::install_github("r-lib/svglite")'
 
       - name: Build site
         run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
