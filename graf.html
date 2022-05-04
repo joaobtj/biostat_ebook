@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 5 Gráficos estatísticos | Bioestatística aplicada aos ecossistemas agrícolas e naturais</title>
+<meta name="author" content="João B. Tolentino Jr.">
+<meta name="description" content="Uma imagem vale mais que mil palavras Os gráficos estatísticos são utilizados para fazer uma representação visual dos dados. São elaborados para serem vistos por você e por outras pessoas, por...">
+<meta name="generator" content="bookdown 0.26 with bs4_book()">
+<meta property="og:title" content="Capítulo 5 Gráficos estatísticos | Bioestatística aplicada aos ecossistemas agrícolas e naturais">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://biostat.tolentino.pro.br/graf.html">
+<meta property="og:description" content="Uma imagem vale mais que mil palavras Os gráficos estatísticos são utilizados para fazer uma representação visual dos dados. São elaborados para serem vistos por você e por outras pessoas, por...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 5 Gráficos estatísticos | Bioestatística aplicada aos ecossistemas agrícolas e naturais">
+<meta name="twitter:description" content="Uma imagem vale mais que mil palavras Os gráficos estatísticos são utilizados para fazer uma representação visual dos dados. São elaborados para serem vistos por você e por outras pessoas, por...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Montserrat-0.4.1/font.css" rel="stylesheet">
+<link href="libs/_Signika-0.4.1/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.22/datatables.js"></script><link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 1em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Bioestatística aplicada aos ecossistemas agrícolas e naturais</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Buscar" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Sumário</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Prefácio</a></li>
+<li class="book-part">O ecossistema R</li>
+<li><a class="" href="intro-r.html">Introdução - O ecossistema R</a></li>
+<li><a class="" href="procurando-e-pedindo-ajuda-para-o-r.html"><span class="header-section-number">1</span> Procurando (e pedindo) ajuda para o R</a></li>
+<li><a class="" href="comeco.html"><span class="header-section-number">2</span> Começando com o R</a></li>
+<li><a class="" href="rmarkdown-1.html"><span class="header-section-number">3</span> RMarkdown</a></li>
+<li class="book-part">(bio)Estatística</li>
+<li><a class="" href="bio.html">Introdução - (bio)Estatística</a></li>
+<li><a class="" href="alguns-conceitos-b%C3%A1sicos.html"><span class="header-section-number">4</span> Alguns conceitos básicos</a></li>
+<li><a class="active" href="graf.html"><span class="header-section-number">5</span> Gráficos estatísticos</a></li>
+<li class="book-part">Apêndices</li>
+<li><a class="" href="conjunto-de-dados-do-r.html"><span class="header-section-number">A</span> Conjunto de dados do R</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/joaobtj/biostat_ebook">Código fonte do livro <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><link href="assets/style.css" rel="stylesheet">
+<div class="hero-image-container"> 
+  <img class="hero-image" src="../image/biostat.png">
+</div>
+<div id="graf" class="section level1" number="5">
+<h1>
+<span class="header-section-number">Capítulo 5</span> Gráficos estatísticos<a class="anchor" aria-label="anchor" href="#graf"><i class="fas fa-link"></i></a>
+</h1>
+<blockquote>
+<p>Uma imagem vale mais que mil palavras</p>
+</blockquote>
+<p>Os gráficos estatísticos são utilizados para fazer uma representação visual dos dados. São elaborados para serem vistos por você e por outras pessoas, por isso, sempre haverá um certo nível de subjetividade na interpretação do gráfico.</p>
+<p>Não há (muitas) regras na elaboração dos gráficos, pelo contrário, temos liberdade para elaborá-los das forma que melhor nos convém. No entanto, existem guias gerais bem estabelecidas que facilitam o processo de escolha do tipo de gráfico mais adequado para o seu conjunto de dados. Em outras palavras, uma boa metodologia aplicada na construção dos gráficos é extremamente útil para seu correto entendimento e interpretação, seja qual for o público alvo.</p>
+<p>A Figura <a href="graf.html#fig:bad">5.1</a> vemos um exemplo de um gráfico ruim. Há uma quantidade considerável de poluição visual; as barras são difíceis de comparar devido à perspectiva “3D”; os rótulos estão duplicados, na legenda e no eixo vertical; as sombras não acrescentam nenhuma informação; a escolha das cores não foi muito bem feita.</p>
+
+<div class="figure">
+<span style="display:block;" id="fig:bad"></span>
+<img src="https://socviz.co/assets/ch-01-chartjunk-life-expectancy.png" alt="Um gráfico com poluição visual e de gosto duvidoso." width="95%"><p class="caption">
+Figura 5.1: Um gráfico com poluição visual e de gosto duvidoso.
+</p>
+</div>
+<div id="o-pacote-ggplot2" class="section level2" number="5.1">
+<h2>
+<span class="header-section-number">5.1</span> O pacote <code>ggplot2</code><a class="anchor" aria-label="anchor" href="#o-pacote-ggplot2"><i class="fas fa-link"></i></a>
+</h2>
+<p>O pacote <code>ggplot2</code> foi criado por <em>Hadley Wickham</em> baseado em um conceito denominado “Gramática de Gráficos” (<em>Grammar of Graphics</em>).</p>
+<p>De um modo geral, a criação de gráficos com o <code>ggplot2</code> executa o mapeamento (<code>mapping</code>) dos dados para propriedades estéticas (<code>aes</code>) e geométricas (<code>geom_*</code>). Ainda, podem ser executadas transformações estatísticas (<code>stat_*</code>) e divisões (<code>facet_*</code>).
+Todas essas camadas combinadas irão resultar no gráfico final.</p>
+<p>O primeiro passo é chamar a funçao <code>ggplot</code> (sem o número 2 no final!). O argumento <code>data</code> recebe o conjunto de dados (<em>data.frame</em>) que contém os valores. Para este primeiro exemplo, vamos utilizar o conjunto de dados <a href="conjunto-de-dados-do-r.html#gapminder"><em>gapminder</em></a>.
+Ainda, vamos mapear o eixo <em>x</em> para a variável <em>gdpPercap</em> (do inglês, PIB per capita, em US Dollar) e o eixo <em>y</em> para a variável <em>lifeExp</em> (do inglês, expectativa de vida ao nascer, em anos). Fica assim:</p>
+
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jennybc/gapminder">gapminder</a></span><span class="op">)</span> <span class="co"># carregar os dados gapminder</span>
+<span class="fu">ggplot</span><span class="op">(</span>
+  data <span class="op">=</span> <span class="va">gapminder</span>,
+  mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">gdpPercap</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span>
+<span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:g1"></span>
+<img src="012-grafic_files/figure-html/g1-1.png" alt="“Pano de fundo” para um gráfico criado com o ggplot2" width="95%"><p class="caption">
+Figura 5.2: “Pano de fundo” para um gráfico criado com o <code>ggplot2</code>
+</p>
+</div>
+<p>Ops, o gráfico resultante está vazio! O que aconteceu? Esta função cria apenas o “pano de fundo” para o gráfico, uma vez que ainda não definimos nenhuma geometria para preenchê-lo.</p>
+<p>Para completar o gráfico, basta digitar o sinal de adição <code>+</code> e chamar alguma função do tipo <code>geom_*</code>, por exemplo, <code>geom_point</code> para um gráfico de pontos <a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;também conhecido como gráfico de dispersão&lt;/p&gt;"><sup>16</sup></a>. Na prática, estamos adicionando (<code>+</code>) mais uma camada ao gráfico.</p>
+
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>
+  data <span class="op">=</span> <span class="va">gapminder</span>,
+  mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">gdpPercap</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span>
+<span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:g2"></span>
+<img src="012-grafic_files/figure-html/g2-1.png" alt="Gráfico de dispersão entre o PIB per capita (USS$) e a expectativa de vida ao nascer (anos)." width="95%"><p class="caption">
+Figura 5.3: Gráfico de dispersão entre o PIB per capita (USS$) e a expectativa de vida ao nascer (anos).
+</p>
+</div>
+<p>Em geral, todos os gráficos produzidos com o <code>ggplot</code> seguem praticamente a mesma receita:</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="graf.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb94-2"><a href="graf.html#cb94-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> <span class="sc">&lt;</span>data<span class="sc">&gt;</span>,</span>
+<span id="cb94-3"><a href="graf.html#cb94-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="sc">&lt;</span>variável x<span class="sc">&gt;</span>, </span>
+<span id="cb94-4"><a href="graf.html#cb94-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">y =</span> <span class="sc">&lt;</span>variável y<span class="sc">&gt;</span>,</span>
+<span id="cb94-5"><a href="graf.html#cb94-5" aria-hidden="true" tabindex="-1"></a>                <span class="sc">&lt;</span>...<span class="sc">&gt;</span> <span class="er">=</span> <span class="er">&lt;</span>...<span class="sc">&gt;</span>)</span>
+<span id="cb94-6"><a href="graf.html#cb94-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb94-7"><a href="graf.html#cb94-7" aria-hidden="true" tabindex="-1"></a>  geom_<span class="sc">*</span>(<span class="sc">&lt;</span>...<span class="sc">&gt;</span>) <span class="sc">+</span></span>
+<span id="cb94-8"><a href="graf.html#cb94-8" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>...<span class="sc">&gt;</span></span></code></pre></div>
+<p>Para simplificar ainda mais o código, é possível suprimir o nome dos argumentos <code>data</code> e <code>mapping</code>, pois são argumentos muito comuns em todos os gráficos criados com o <code>ggplot2</code>. Por isso, de agora em diante, neste livro, estes nomes não serão mais escritos.</p>
+
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>
+  <span class="va">gapminder</span>,
+  <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">gdpPercap</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span>
+<span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:g3b"></span>
+<img src="012-grafic_files/figure-html/g3b-1.png" alt="Outro código que produz um gráfico idêntico ao da Figura 5.3" width="95%"><p class="caption">
+Figura 5.4: Outro código que produz um gráfico idêntico ao da Figura <a href="graf.html#fig:g2">5.3</a>
+</p>
+</div>
+<div id="criando-gráficos-do-ggplot-como-objetos" class="section level3" number="5.1.1">
+<h3>
+<span class="header-section-number">5.1.1</span> Criando gráficos do <code>ggplot</code> como objetos<a class="anchor" aria-label="anchor" href="#criando-gr%C3%A1ficos-do-ggplot-como-objetos"><i class="fas fa-link"></i></a>
+</h3>
+<p>Uma forma bastante conveniente de trabalhar com os gráficos é armazenar em objetos.</p>
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span>
+  <span class="va">gapminder</span>,
+  <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">gdpPercap</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span>
+<span class="op">)</span></code></pre></div>
+<p>Neste código, criamos um objeto denominado <code>p</code> <a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt; &lt;code&gt;p&lt;/code&gt; é um nome comum para objetos do &lt;code&gt;ggplot&lt;/code&gt;, mas é recomendável denominar os objetos com nomes mais descritivos quando nencessário&lt;/p&gt;"><sup>17</sup></a> que contém as informações básicas do gráfico. Na sequência, podemos adicionar mais elementos neste mesmo gráfico apenas adicionando (<code>+</code>) alguma função ao objeto.</p>
+
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p</span> <span class="op">+</span>
+  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:ob0"></span>
+<img src="012-grafic_files/figure-html/ob0-1.png" alt="Adicionando uma camada geom_point() ao objeto p" width="95%"><p class="caption">
+Figura 5.5: Adicionando uma camada <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> ao objeto <code>p</code>
+</p>
+</div>
+
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p</span> <span class="op">+</span>
+  <span class="fu">geom_smooth</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = "cs")'</code></pre>
+<div class="figure">
+<span style="display:block;" id="fig:ob1"></span>
+<img src="012-grafic_files/figure-html/ob1-1.png" alt="Adicionando uma camada geom_smooth() ao objeto p" width="95%"><p class="caption">
+Figura 5.6: Adicionando uma camada <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth()</a></code> ao objeto <code>p</code>
+</p>
+</div>
+
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p</span> <span class="op">+</span>
+  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_smooth</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = "cs")'</code></pre>
+<div class="figure">
+<span style="display:block;" id="fig:ob2"></span>
+<img src="012-grafic_files/figure-html/ob2-1.png" alt="Adicionando várias camadas ao objeto p" width="95%"><p class="caption">
+Figura 5.7: Adicionando várias camadas ao objeto <code>p</code>
+</p>
+</div>
+</div>
+<div id="personalizando-os-eixos" class="section level3" number="5.1.2">
+<h3>
+<span class="header-section-number">5.1.2</span> Personalizando os eixos<a class="anchor" aria-label="anchor" href="#personalizando-os-eixos"><i class="fas fa-link"></i></a>
+</h3>
+<p>Muitas vezes precisamos personalizar os eixos do gráfico para aprimorar a visualização.
+A função <code>labs</code> permite alterar vários argumentos, como visto no exemplo a seguir:</p>
+
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p</span> <span class="op">+</span>
+  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">labs</span><span class="op">(</span>
+    x <span class="op">=</span> <span class="st">"PIB per capita (US$)"</span>,
+    y <span class="op">=</span> <span class="st">"Expectativa de vida ao nascer (anos)"</span>,
+    title <span class="op">=</span> <span class="st">"Economia vs Expectativa de Vida"</span>,
+    subtitle <span class="op">=</span> <span class="st">"Cada ponto representa um país e um ano"</span>,
+    caption <span class="op">=</span> <span class="st">"Fonte: Gapminder"</span>
+  <span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-3"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-3-1.png" alt="Personalizando o gráfico alterando o rótulo dos eixos e adicionando título e subtítulo." width="95%"><p class="caption">
+Figura 5.8: Personalizando o gráfico alterando o rótulo dos eixos e adicionando título e subtítulo.
+</p>
+</div>
+<ul>
+<li>
+<code>x</code> altera o rótulo do eixo <em>x</em>
+</li>
+<li>
+<code>y</code> altera o rótulo do eixo <em>y</em>
+</li>
+<li>
+<code>title</code> adiciona um título na parte superior</li>
+<li>
+<code>subtitle</code> adiciona um subtítulo logo abaixo do título</li>
+<li>
+<code>caption</code> rótulo que aparece no canto inferior direito</li>
+</ul>
+</div>
+<div id="aes" class="section level3" number="5.1.3">
+<h3>
+<span class="header-section-number">5.1.3</span> Mapeando atributos estéticos<a class="anchor" aria-label="anchor" href="#aes"><i class="fas fa-link"></i></a>
+</h3>
+<p>Nesta seção, vamos estudar mais sobre os atributos estéticos. Em nosso primeiro gráfico, já utilizamos dois atributos de posição cartesiana: os eixos <em>x</em> e <em>y</em>.
+Entre vários outros atributos estéticos, vamos trabalhar com <code>color</code> e <code>fill</code>, que alteram <a href="#cores">cores</a>.</p>
+
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>
+  <span class="va">gapminder</span>,
+  <span class="fu">aes</span><span class="op">(</span>
+    x <span class="op">=</span> <span class="va">gdpPercap</span>,
+    y <span class="op">=</span> <span class="va">lifeExp</span>,
+    color <span class="op">=</span> <span class="va">continent</span>
+  <span class="op">)</span>
+<span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_x_log10</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:gcolor"></span>
+<img src="012-grafic_files/figure-html/gcolor-1.png" alt="Mapeamento de cores diferentes para cada continente." width="95%"><p class="caption">
+Figura 5.9: Mapeamento de cores diferentes para cada continente.
+</p>
+</div>
+<p>Vejam que ao mapear <code>color</code> para uma variável, foram atribuídas cores aos pontos, uma cor diferente para cada continente. Também foi adicionada uma legenda explicativa.</p>
+<p>Na figura seguinte, vamos adicionar mais uma camada ao gráfico, a linha ajustada com <code>geom_smooth</code>.</p>
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>
+  <span class="va">gapminder</span>,
+  <span class="fu">aes</span><span class="op">(</span>
+    x <span class="op">=</span> <span class="va">gdpPercap</span>,
+    y <span class="op">=</span> <span class="va">lifeExp</span>,
+    color <span class="op">=</span> <span class="va">continent</span>
+  <span class="op">)</span>
+<span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="va">x</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_x_log10</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="012-grafic_files/figure-html/unnamed-chunk-4-1.png" width="95%"></div>
+<p>Veja que foi criada uma linha de ajuste para cada continente. Isso acontece porque foi mapeado o atributo <code>color</code> para os continentes. No entanto, a faixa do interval de confiança não acompanhou as cores, permanecendo na cor cinza. Isso acontece porque, para o <code>ggplot</code>, há dois tipos de objetos: <code>color</code> serve para linhas e pontos e <code>fill</code> serve para preenchimento de áreas e políogonos. Assim, para colorir a faixa do intervalo de confiança, os continentes deve ser mapeada para o atributo <code>fill</code>, como no exemplo a seguir.</p>
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>
+  <span class="va">gapminder</span>,
+  <span class="fu">aes</span><span class="op">(</span>
+    x <span class="op">=</span> <span class="va">gdpPercap</span>,
+    y <span class="op">=</span> <span class="va">lifeExp</span>,
+    color <span class="op">=</span> <span class="va">continent</span>,
+    fill <span class="op">=</span> <span class="va">continent</span>
+  <span class="op">)</span>
+<span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="va">x</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_x_log10</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="012-grafic_files/figure-html/unnamed-chunk-5-1.png" width="95%"></div>
+</div>
+<div id="mapeando-atributos-em-cada-geom_" class="section level3" number="5.1.4">
+<h3>
+<span class="header-section-number">5.1.4</span> Mapeando atributos em cada <code>geom_*</code><a class="anchor" aria-label="anchor" href="#mapeando-atributos-em-cada-geom_"><i class="fas fa-link"></i></a>
+</h3>
+<p>Mas cinco linhas ajustadas podem ser demais. Queremos ajustar apenas uma! E ainda queremos manter os pontos coloridos para cada continente. Para resolver esta situação, podemos mapear os atributos dentro de cada geometria.</p>
+<p>Por padrão, as funções <code>geom_*</code> herdam seus mapeamentos da funçao <code>ggplot</code>. Podemos alterar este comportamento mapeando a estética apenas dentro da função <code>geom_*</code> que queremos que se aplique.</p>
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>
+  <span class="va">gapminder</span>,
+  <span class="fu">aes</span><span class="op">(</span>
+    x <span class="op">=</span> <span class="va">gdpPercap</span>,
+    y <span class="op">=</span> <span class="va">lifeExp</span>
+  <span class="op">)</span>
+<span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_point</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>color <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="va">x</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_x_log10</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="012-grafic_files/figure-html/unnamed-chunk-6-1.png" width="95%"></div>
+<p>Também é possível mapear variáveis numéricas, por exemplo, o logaritmo da população em cada país e ano. Quando fazemos isso, a escala de cor produzida é um gradiente contínuo. A função <code><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html">scale_color_viridis_c()</a></code> especifica a utilização da paleta de cor <em>viridis</em>.</p>
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>
+  <span class="va">gapminder</span>,
+  <span class="fu">aes</span><span class="op">(</span>
+    x <span class="op">=</span> <span class="va">gdpPercap</span>,
+    y <span class="op">=</span> <span class="va">lifeExp</span>
+  <span class="op">)</span>
+<span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_point</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">pop</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="va">x</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_x_log10</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_color_viridis_c</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="012-grafic_files/figure-html/unnamed-chunk-7-1.png" width="95%"></div>
+</div>
+<div id="definindo-atributos-estéticos" class="section level3" number="5.1.5">
+<h3>
+<span class="header-section-number">5.1.5</span> Definindo atributos estéticos<a class="anchor" aria-label="anchor" href="#definindo-atributos-est%C3%A9ticos"><i class="fas fa-link"></i></a>
+</h3>
+<p>Em algumas situações nós apenas queremos definir atributos estéticos, como cores, em vez de mapeá-los para alguma variável. Para isso, devemos definir estes atributos fora da função <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>.</p>
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span>
+  data <span class="op">=</span> <span class="va">gapminder</span>,
+  mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>
+    x <span class="op">=</span> <span class="va">gdpPercap</span>,
+    y <span class="op">=</span> <span class="va">lifeExp</span>
+  <span class="op">)</span>
+<span class="op">)</span>
+
+
+<span class="va">p</span> <span class="op">+</span> 
+  <span class="fu">geom_point</span><span class="op">(</span>color <span class="op">=</span> <span class="st">"purple"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_x_log10</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="012-grafic_files/figure-html/unnamed-chunk-8-1.png" width="95%"></div>
+<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p</span> <span class="op">+</span> 
+  <span class="fu">geom_point</span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">8</span>, size <span class="op">=</span> <span class="fl">2</span>, color <span class="op">=</span> <span class="st">"tomato"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_x_log10</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="012-grafic_files/figure-html/unnamed-chunk-9-1.png" width="95%"></div>
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p</span> <span class="op">+</span> 
+  <span class="fu">geom_point</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_smooth</span><span class="op">(</span>color <span class="op">=</span> <span class="st">"orange"</span>, size <span class="op">=</span> <span class="fl">8</span>, method <span class="op">=</span> <span class="st">"lm"</span>, formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="va">x</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_x_log10</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="012-grafic_files/figure-html/unnamed-chunk-10-1.png" width="95%"></div>
+</div>
+</div>
+<div id="gráfico-de-barras" class="section level2" number="5.2">
+<h2>
+<span class="header-section-number">5.2</span> Gráfico de barras<a class="anchor" aria-label="anchor" href="#gr%C3%A1fico-de-barras"><i class="fas fa-link"></i></a>
+</h2>
+<p>O gráfico de barras, que também pode ser chamado de gráfico de colunas, é um gráfico em que a altura das barras é proporcional ao valor por elas representado.
+Quando ordenado, também pode ser chamado de <a href="https://pt.wikipedia.org/wiki/Diagrama_de_Pareto">Gráfico de Pareto</a></p>
+<p>Este tipo de gráfico é utilizado para representar os dados quando uma das variáveis é categórica ou numérica discreta. <a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Uma variável numérica contínua pode ser representada desde que esteja dividida em classes.&lt;/p&gt;"><sup>18</sup></a></p>
+<p>A maior parte dos exemplos de gráficos de barras utilizará o conjunto de dados <a href="conjunto-de-dados-do-r.html#mpg"><em>mpg</em></a>.</p>
+<div id="gráfico-de-barras-para-uma-variável" class="section level3" number="5.2.1">
+<h3>
+<span class="header-section-number">5.2.1</span> Gráfico de barras para uma variável<a class="anchor" aria-label="anchor" href="#gr%C3%A1fico-de-barras-para-uma-vari%C3%A1vel"><i class="fas fa-link"></i></a>
+</h3>
+<p>No <code>ggplot2</code>, as geometrias deste tipo de gráfico são: <code>geom_bar</code> ou <code>geom_col</code>. A diferença entre elas é que <code>geom_bar</code> tem como padrão a função <code>stat_count</code> que representa o número de casos em cada grupo (contagem) e <code>geom_col</code> tem como padrão a função <code>stat_identity</code> que mantém os dados como estão e pode ser usada para representa valores numéricos de outra variável.</p>
+<p>Quando há apenas uma variável categórica, a altura das barras é proprocional ao número (contagem) de indivíduos em cada categoria. Neste caso, usamos <code>geom_bar</code>, cuja função padrão é <code>stat_count</code>, que realiza a contagem das observações em cada classe.</p>
+
+<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">class</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_bar</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-11"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-11-1.png" alt="Número de automóveis (contagem) em cada classe." width="95%"><p class="caption">
+Figura 5.10: Número de automóveis (contagem) em cada classe.
+</p>
+</div>
+<p>Para ordenar as barras, precisamos organizar o <em>data.frame</em> original. Para isso, utilizamos algumas funções auxiliares presentes no pacote <code>tidyverse</code> <a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;É preciso instalar e carregar o pacote &lt;code&gt;tidyverse&lt;/code&gt; com os comandos &lt;code&gt;install.packages("tidyverse")&lt;/code&gt; e &lt;code&gt;library(tidyverse)&lt;/code&gt;&lt;/p&gt;'><sup>19</sup></a>. Adicionamos uma coluna adicional contendo a contagem de cada grupo e depois procedemos com a reordenação com a função <code>fct_reorder</code>. Observem também a utilização do operador <code>%&gt;%</code> (<em>pipe</em>) que também é carregado junto com o pacote <code>tidyverse</code>. Por fim, a geometria é alterada para <code>geom_col</code>.</p>
+
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">mpg</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">class</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="fu">fct_reorder</span><span class="op">(</span><span class="va">class</span>, <span class="va">n</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_col</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-12"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-12-1.png" alt="Número de automóveis (contagem) em cada classe. As categorias estão ordenadas em ordem crescente (menor para maior)." width="95%"><p class="caption">
+Figura 5.11: Número de automóveis (contagem) em cada classe. As categorias estão ordenadas em ordem crescente (menor para maior).
+</p>
+</div>
+<p>Por padrão, o ordenamento é crescente, ou seja, do menor para o maior. Para inverter, adicionamos o argumento <code>.desc=TRUE</code> à função <code>fct_reorder</code>, que faz o ordenamento decrescente.</p>
+
+<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">mpg</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">class</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="fu">fct_reorder</span><span class="op">(</span><span class="va">class</span>, <span class="va">n</span>, .desc <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_col</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-13"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-13-1.png" alt="Número de automóveis (contagem) em cada classe. As categorias estão ordenadas em ordem decrescente." width="95%"><p class="caption">
+Figura 5.12: Número de automóveis (contagem) em cada classe. As categorias estão ordenadas em ordem decrescente.
+</p>
+</div>
+<p>No caso de uma variável numérica discreta, o código é essencialmente o mesmo, assim como suas variações.</p>
+
+<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">cyl</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_bar</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-14"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-14-1.png" alt="Número de automóveis com 4, 5, 6 ou 8 cilindros." width="95%"><p class="caption">
+Figura 5.13: Número de automóveis com 4, 5, 6 ou 8 cilindros.
+</p>
+</div>
+<p>Por existir uma ordem natural na variável discreta, a ordenação pelo tamanho das barras não é recomendada (na maioria dos casos).</p>
+</div>
+<div id="gráfico-de-barras-para-duas-variáveis" class="section level3" number="5.2.2">
+<h3>
+<span class="header-section-number">5.2.2</span> Gráfico de barras para duas variáveis<a class="anchor" aria-label="anchor" href="#gr%C3%A1fico-de-barras-para-duas-vari%C3%A1veis"><i class="fas fa-link"></i></a>
+</h3>
+<p>O gráfico de barras também pode representar a relação entre duas variáveis, sendo uma delas categórica ou numérica discreta (eixo <em>x</em>) e a outra numérica (eixo <em>y</em>).</p>
+<p>Neste primeiro exemplo, vamos plotar a relação entre uma variável categórica (<em>class</em>) e outra numérica contínua (<em>displ</em>).
+Aqui, é necessário definir uma função para resumir os dados, uma vez que a função padrão (<code>stat_count</code>) não é adequada. Uma opção muito comum é representar a média de cada grupo. Isso é possível com os argumentos <code>stat = "summary"</code>e <code>fun = "mean"</code> dentro da geometria <code>geom_bar</code>. Assim, calculamos a média da variável <em>displ</em> em cada classe.</p>
+
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">class</span>, y <span class="op">=</span> <span class="va">displ</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_bar</span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"summary"</span>, fun <span class="op">=</span> <span class="st">"mean"</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-15"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-15-1.png" alt="Cilindradas (média) dos motores de automóveis em cada classe." width="95%"><p class="caption">
+Figura 5.14: Cilindradas (média) dos motores de automóveis em cada classe.
+</p>
+</div>
+<p>Para plotar este mesmo gráfico com ordenação das colunas, devemos trabalhar no <em>data.frame</em> original. Assim, definimos uma nova variável (<code>media_displ</code>) calculada a partir das médias do agrupamento das classes de automóveis. A função <code>fct_reorder</code> faz a ordenação crescente das médias. A geometria deve ser modificada para <code>geom_col</code>.</p>
+
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">mpg</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">class</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>media_displ <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">displ</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="fu">fct_reorder</span><span class="op">(</span><span class="va">class</span>, <span class="va">media_displ</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">media_displ</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_col</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-16"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-16-1.png" alt="Cilindradas (média) dos motores de automóveis em cada classe. As classes estão ordenadas segundo a média da cilindrada dos motores." width="95%"><p class="caption">
+Figura 5.15: Cilindradas (média) dos motores de automóveis em cada classe. As classes estão ordenadas segundo a média da cilindrada dos motores.
+</p>
+</div>
+</div>
+<div id="gráfico-de-barras-para-três-variáveis." class="section level3" number="5.2.3">
+<h3>
+<span class="header-section-number">5.2.3</span> Gráfico de barras para três variáveis.<a class="anchor" aria-label="anchor" href="#gr%C3%A1fico-de-barras-para-tr%C3%AAs-vari%C3%A1veis."><i class="fas fa-link"></i></a>
+</h3>
+<p>É possível mapear uma terceira variável categórica ou numérica discreta em um gráfico de barras. A terceira variável é passada para o argumento <code>fill</code>, que atribui uma cor diferente para cada nível.
+Devemos explicitá-la como fatorizada, por isso a necessidade de usar a função <code>factor</code>.</p>
+<p>Nestes exemplo, vamos utilizar o conjunto de dados <a href="conjunto-de-dados-do-r.html#tooth"><em>ToothGrowth</em></a>.</p>
+<p>A opção <code>position = "dodge"</code> evita a sobreposição das barras ajustando-as lado a lado. Uma variação é <code>position = "dodge2"</code> que adiciona um pequeno espaço entre as barras.</p>
+
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">ToothGrowth</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">supp</span>, y <span class="op">=</span> <span class="va">len</span>, fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">dose</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_bar</span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"summary"</span>, fun <span class="op">=</span> <span class="st">"mean"</span>, position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_fill_viridis_d</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-17"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-17-1.png" alt="Comprimento de odontoblastos de porquinhos da Índia submetidos a diferentes tipos de suplementos e doses de vitamina C." width="95%"><p class="caption">
+Figura 5.16: Comprimento de odontoblastos de porquinhos da Índia submetidos a diferentes tipos de suplementos e doses de vitamina C.
+</p>
+</div>
+<p>Invertendo as variáveis do eixo <em>x</em> e do elemento <code>fill</code>:</p>
+
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">ToothGrowth</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="op">(</span><span class="va">dose</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">len</span>, fill <span class="op">=</span> <span class="va">supp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_bar</span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"summary"</span>, fun <span class="op">=</span> <span class="st">"mean"</span>, position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_fill_viridis_d</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-18"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-18-1.png" alt="Comprimento de odontoblastos de porquinhos da Índia submetidos a diferentes tipos de suplementos e doses de vitamina C." width="95%"><p class="caption">
+Figura 5.17: Comprimento de odontoblastos de porquinhos da Índia submetidos a diferentes tipos de suplementos e doses de vitamina C.
+</p>
+</div>
+</div>
+</div>
+<div id="gráficos-de-dispersão" class="section level2" number="5.3">
+<h2>
+<span class="header-section-number">5.3</span> Gráficos de dispersão<a class="anchor" aria-label="anchor" href="#gr%C3%A1ficos-de-dispers%C3%A3o"><i class="fas fa-link"></i></a>
+</h2>
+<p>São utilizados para mostrar a relação entre duas variáveis numéricas contínuas. Para isso, são utilizados pontos que representam cada observação. A geometria para este tipo de gráfico é <code>geom_point</code>. Veja este exemplo com os dados do conjunto <a href="#iris"><em>iris</em></a>.</p>
+
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">iris</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Petal.Length</span>, y <span class="op">=</span> <span class="va">Petal.Width</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-19"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-19-1.png" alt="Relação entre o comprimento e largura de flores de espécies de Iris. Este é um gráfico de dispersão em que cada ponto representa um par de valores." width="95%"><p class="caption">
+Figura 5.18: Relação entre o comprimento e largura de flores de espécies de <em>Iris.</em> Este é um gráfico de dispersão em que cada ponto representa um par de valores.
+</p>
+</div>
+<p>Quando é bem clara a distinção entre as variáveis, sendo uma a variável preditora (independente) e a outra a variável resposta (dependente), estas devem ser organizadas da seguinte forma: a variável preditora é mapeada no eixo <em>x</em> e a variável resposta é mapeada para o eixo <em>y</em>. Veja este exemplo com dados do conjunto <a href="#bod"><em>BOD</em></a></p>
+
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">BOD</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Time</span>, y <span class="op">=</span> <span class="va">demand</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-20"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-20-1.png" alt="Relação entre a demanda bioquímica de oxigênio (BOD) e o tempo na avaliação da qualidade da água. Neste exemplo, o tempo é usado como um preditor para a demanda bioquímica do oxigênio. Por isso, o tempo está mapeado no eixo x e a BOD está mapeada no eixo y." width="95%"><p class="caption">
+Figura 5.19: Relação entre a demanda bioquímica de oxigênio (BOD) e o tempo na avaliação da qualidade da água. Neste exemplo, o tempo é usado como um preditor para a demanda bioquímica do oxigênio. Por isso, o tempo está mapeado no eixo <em>x</em> e a BOD está mapeada no eixo <em>y</em>.
+</p>
+</div>
+<div id="linha-de-tendência" class="section level3" number="5.3.1">
+<h3>
+<span class="header-section-number">5.3.1</span> Linha de tendência<a class="anchor" aria-label="anchor" href="#linha-de-tend%C3%AAncia"><i class="fas fa-link"></i></a>
+</h3>
+<p>É bastante comum que seja traçada uma linha para os valores preditos baseados em algum modelo estatístico
+Pra isso, utilizaremos a função <code>geom_smooth</code>, que já realiza o ajuste estatístico do modelo linear. Vamos definir o método (<code>method = "lm"</code>) para <code>lm</code> de modelo linear (ou <em>linear model</em> em inglês). O argumento <code>se = FALSE</code> impede de traçar o intervalo de confiança.</p>
+
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">iris</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Petal.Length</span>, y <span class="op">=</span> <span class="va">Petal.Width</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="va">x</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-21"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-21-1.png" alt="Relação entre o comprimento e largura de flores de espécies de Iris. Neste gráfico existe uma linha de tendência linear ajustada por geom_smooth." width="95%"><p class="caption">
+Figura 5.20: Relação entre o comprimento e largura de flores de espécies de <em>Iris</em>. Neste gráfico existe uma linha de tendência linear ajustada por <code>geom_smooth</code>.
+</p>
+</div>
+<p>Por padrão, é adicionado uma região de confiança de 95% para a regressão. A probabilidade pode ser alterada modificando o argumento <code>level</code>, ou pode ser suprimida com o argumento <code>se = FALSE</code>.</p>
+
+<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">iris_disp_plot</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span><span class="va">iris</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Petal.Length</span>, y <span class="op">=</span> <span class="va">Petal.Width</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span>
+
+<span class="va">iris_disp_plot</span> <span class="op">+</span> 
+  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="va">x</span>, level <span class="op">=</span><span class="fl">0.99</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-22"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-22-1.png" alt="Relação entre o comprimento e largura de flores de espécies de Iris. A linha de tendência linear é acompanhada de um intervalo de confiança de 99%. O nível de confiança é ajustado pelo argumento level." width="95%"><p class="caption">
+Figura 5.21: Relação entre o comprimento e largura de flores de espécies de <em>Iris</em>. A linha de tendência linear é acompanhada de um intervalo de confiança de 99%. O nível de confiança é ajustado pelo argumento <code>level</code>.
+</p>
+</div>
+
+<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">iris_disp_plot</span> <span class="op">+</span> 
+  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="va">x</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-23"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-23-1.png" alt="Relação entre o comprimento e largura de flores de espécies de Iris. O intervalo de confiança é suprimido com o argumento se = FALSE." width="95%"><p class="caption">
+Figura 5.22: Relação entre o comprimento e largura de flores de espécies de <em>Iris.</em> O intervalo de confiança é suprimido com o argumento <code>se = FALSE</code>.
+</p>
+</div>
+<p>Neste mesmo exemplo, é possível ajustar uma linha para cada espécie de <em>Iris</em>, mapeando as espécies para a cor.</p>
+
+<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">iris</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Petal.Length</span>, y <span class="op">=</span> <span class="va">Petal.Width</span>, color <span class="op">=</span> <span class="va">Species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="va">x</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-24"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-24-1.png" alt="Relação entre o comprimento e largura de flores de espécies de Iris. As linhas de tendência são ajustadas para cada espécie que foram mapeadas para color." width="95%"><p class="caption">
+Figura 5.23: Relação entre o comprimento e largura de flores de espécies de <em>Iris.</em> As linhas de tendência são ajustadas para cada espécie que foram mapeadas para <code>color</code>.
+</p>
+</div>
+</div>
+</div>
+<div id="sobreposição-de-elementos" class="section level2" number="5.4">
+<h2>
+<span class="header-section-number">5.4</span> Sobreposição de elementos<a class="anchor" aria-label="anchor" href="#sobreposi%C3%A7%C3%A3o-de-elementos"><i class="fas fa-link"></i></a>
+</h2>
+<p>Existem algumas situações em que, ao plotar os pontos, estes aparecem sobrepostos entre si. É mais comum quando ambas as variáveis são discretas, pois pode ocorrer a sobreposição perfeita.</p>
+
+<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">cyl</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-25"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-25-1.png" alt="Gráfico de dispersão entre o ano de fabricação e o número de cilindros de automóveis. As duas variáveis são numéricas discretas e os pontos são mostrados com sobreposição “perfeita”." width="95%"><p class="caption">
+Figura 5.24: Gráfico de dispersão entre o ano de fabricação e o número de cilindros de automóveis. As duas variáveis são numéricas discretas e os pontos são mostrados com sobreposição “perfeita”.
+</p>
+</div>
+<p>Para contornar este problema, pode-se fazer uso da geometria <code>geom_jitter</code>. Ela adiciona uma pequena quantidade de variação aleatória à localização dos pontos, o que evita a sobreposição. Funciona melhor em conjuntos de dados pequenos.</p>
+
+<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">cyl</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_jitter</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.2</span>, height <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-26"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-26-1.png" alt="Gráfico de dispersão entre o ano de fabricação e o número de cilindros de automóveis. Ao utilizar geom_jitter, a localização dos pontos é alterada aleatoriamente, evitando a sobreposição. Assim, é possível ter uma melhor noção da quantidade de pontos em cada nível das variáveis." width="95%"><p class="caption">
+Figura 5.25: Gráfico de dispersão entre o ano de fabricação e o número de cilindros de automóveis. Ao utilizar <code>geom_jitter</code>, a localização dos pontos é alterada aleatoriamente, evitando a sobreposição. Assim, é possível ter uma melhor noção da quantidade de pontos em cada nível das variáveis.
+</p>
+</div>
+<p>Outra forma de lidar com sobreposição é alterar o elemento <code>alpha</code>, que determina a transparência dos pontos. É melhor para conjuntos de dados grandes e variáveis contínuas. No exemplo a seguir utilizamos o conjunto de dados <a href="#diamonds"><em>diamonds</em></a>.</p>
+
+<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">diamonds_plot</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">carat</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span>
+
+<span class="va">diamonds_plot</span> <span class="op">+</span> <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-27-1"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-27-1.png" alt="Relação entre o peso (quilates) de diamantes e seu preço. O conjunto de dados contém um número grande de observações que causa uma grande sobreposição em algumas regiões. Ao determinar a transparência (alpha), é possível melhorar a observação da distribuição e verificar em quais regiões do gráfico há maior concentração de pontos." width="95%"><p class="caption">
+Figura 5.26: Relação entre o peso (quilates) de diamantes e seu preço. O conjunto de dados contém um número grande de observações que causa uma grande sobreposição em algumas regiões. Ao determinar a transparência (<code>alpha</code>), é possível melhorar a observação da distribuição e verificar em quais regiões do gráfico há maior concentração de pontos.
+</p>
+</div>
+<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">diamonds_plot</span> <span class="op">+</span> <span class="fu">geom_point</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-27-2"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-27-2.png" alt="Relação entre o peso (quilates) de diamantes e seu preço. O conjunto de dados contém um número grande de observações que causa uma grande sobreposição em algumas regiões. Ao determinar a transparência (alpha), é possível melhorar a observação da distribuição e verificar em quais regiões do gráfico há maior concentração de pontos." width="95%"><p class="caption">
+Figura 5.27: Relação entre o peso (quilates) de diamantes e seu preço. O conjunto de dados contém um número grande de observações que causa uma grande sobreposição em algumas regiões. Ao determinar a transparência (<code>alpha</code>), é possível melhorar a observação da distribuição e verificar em quais regiões do gráfico há maior concentração de pontos.
+</p>
+</div>
+</div>
+<div id="gráficos-de-linhas" class="section level2" number="5.5">
+<h2>
+<span class="header-section-number">5.5</span> Gráficos de linhas<a class="anchor" aria-label="anchor" href="#gr%C3%A1ficos-de-linhas"><i class="fas fa-link"></i></a>
+</h2>
+<p>Os gráficos de linhas são utilizados quando queremos representar uma variável numérica contínua no eixo <em>x</em>. Em alguns casos, também podem ser utilizados para variáveis categóricas ou discretas, mas desde que tenham uma ordenação natural.</p>
+<p>Voltamos ao conjunto de dados <a href="conjunto-de-dados-do-r.html#tooth"><em>ToothGrowth</em></a>. A dose, por ser uma variável numérica, pode ser representada no eixo <em>x</em>. Os valores de comprimento foram resumidos para cada observação.</p>
+
+<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ToothGrowth</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">dose</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>len_mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">len</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">dose</span>, y <span class="op">=</span> <span class="va">len_mean</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-28"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-28-1.png" alt="Gráfico de linhas entre a dose de vitamina C e comprimento de odontoblastos de porquinhos da Índia. A dose, por ser uma variável numérica, é plotada no eixo x e é possível utilizar linhas para ligar os pontos." width="95%"><p class="caption">
+Figura 5.28: Gráfico de linhas entre a dose de vitamina C e comprimento de odontoblastos de porquinhos da Índia. A dose, por ser uma variável numérica, é plotada no eixo <em>x</em> e é possível utilizar linhas para ligar os pontos.
+</p>
+</div>
+<p>É bastante comum a sobreposição dos pontos observados às linhas, com a adição de uma camada <code>geom_point</code>.</p>
+
+<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ToothGrowth</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">dose</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>len_mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">len</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">dose</span>, y <span class="op">=</span> <span class="va">len_mean</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-29"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-29-1.png" alt="Gráfico de linhas entre a dose de vitamina C e comprimento de odontoblastos de porquinhos da Índia. A adição de uma camada geom_point mostra os pontos observados." width="95%"><p class="caption">
+Figura 5.29: Gráfico de linhas entre a dose de vitamina C e comprimento de odontoblastos de porquinhos da Índia. A adição de uma camada <code>geom_point</code> mostra os pontos observados.
+</p>
+</div>
+<p>Ainda há a possibilidade de mapear uma terceira variável para o elemento <code>color</code>.</p>
+
+<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ToothGrowth</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">supp</span>, <span class="va">dose</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>len_mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">len</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">dose</span>, y <span class="op">=</span> <span class="va">len_mean</span>, color <span class="op">=</span> <span class="va">supp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by 'supp'. You can override using the
+## `.groups` argument.</code></pre>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-30"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-30-1.png" alt="Gráfico de linhas entre a dose de vitamina C, comprimento de odontoblastos de porquinhos da Índia e forma de suplementação. A terceira variável é mapeada para diferentes cores e mostrada no mesmo gráfico." width="95%"><p class="caption">
+Figura 5.30: Gráfico de linhas entre a dose de vitamina C, comprimento de odontoblastos de porquinhos da Índia e forma de suplementação. A terceira variável é mapeada para diferentes cores e mostrada no mesmo gráfico.
+</p>
+</div>
+<div id="gráficos-de-linhas-para-séries-temporais" class="section level3" number="5.5.1">
+<h3>
+<span class="header-section-number">5.5.1</span> Gráficos de linhas para séries temporais<a class="anchor" aria-label="anchor" href="#gr%C3%A1ficos-de-linhas-para-s%C3%A9ries-temporais"><i class="fas fa-link"></i></a>
+</h3>
+<p>É bastante comum que a variável no eixo <em>x</em> de uma gráfico de linhas seja uma medida de tempo. Neste caso, o gráfico estará representando uma série temporal. A geometria utilizada é <code>geom_line</code>. Para exemplificar, vamos utilizar o conjunto de dados <a href="#economics"><em>economics</em></a>.</p>
+
+<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">economics</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">unemploy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-31"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-31-1.png" alt="Gráfico de linhas com tendência temporal para Número de desemprego. As linhas são ótimas para mostrar as tendências temporais, inclusive as variações sazonais." width="95%"><p class="caption">
+Figura 5.31: Gráfico de linhas com tendência temporal para Número de desemprego. As linhas são ótimas para mostrar as tendências temporais, inclusive as variações sazonais.
+</p>
+</div>
+
+<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">economics</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">pce</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-32"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-32-1.png" alt="Gráfico de linhas com tendência temporal para Despesas de consumo pessoal (US$ Bi). As linhas são ótimas para mostrar as tendências temporais, inclusive algumas anomalias pontuais." width="95%"><p class="caption">
+Figura 5.32: Gráfico de linhas com tendência temporal para Despesas de consumo pessoal (US$ Bi). As linhas são ótimas para mostrar as tendências temporais, inclusive algumas anomalias pontuais.
+</p>
+</div>
+</div>
+</div>
+<div id="gráficos-para-distribuição" class="section level2" number="5.6">
+<h2>
+<span class="header-section-number">5.6</span> Gráficos para distribuição<a class="anchor" aria-label="anchor" href="#gr%C3%A1ficos-para-distribui%C3%A7%C3%A3o"><i class="fas fa-link"></i></a>
+</h2>
+<p>Uma distribuição de frequência é uma forma de resumir uma quantidade de dados distribuídos em classes ou intervalos. A frequência é o número de observações que pertencem a cada classe.</p>
+<p>Nesta seção, serão apresentados vários tipos de gráficos utilizados para esta finalidade.</p>
+<div id="histograma" class="section level3" number="5.6.1">
+<h3>
+<span class="header-section-number">5.6.1</span> Histograma<a class="anchor" aria-label="anchor" href="#histograma"><i class="fas fa-link"></i></a>
+</h3>
+<p>O histograma é um tipo especial do gráfico de barras. No histograma, a largura de cada barra representa uma classe, e a altura das barras representa a frequência ou proporção dos valores contidos em cada classe.
+Via de regra, as barras do histograma devem ser apresentadas sem espaço entre elas.</p>
+<p>A geometria para a construção do histograma é <code>geom_histogram</code>.</p>
+<p>Vamos exemplificar com o conjunto de dados <a href="#faithful"><em>faithful</em></a>.</p>
+
+<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">faithful</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">waiting</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_histogram</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<div class="figure">
+<span style="display:block;" id="fig:histb"></span>
+<img src="012-grafic_files/figure-html/histb-1.png" alt="Histograma da distribuição de frequência do tempo de espera entre erupções do gêiser Old Faithful." width="95%"><p class="caption">
+Figura 5.33: Histograma da distribuição de frequência do tempo de espera entre erupções do gêiser Old Faithful.
+</p>
+</div>
+<p>A cor padrão do histograma do <code>ggplot</code> dificulta a separação das classes. É possível aprimorar este aspecto definindo uma cor para o contorno das barras.</p>
+
+<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">faithful</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">waiting</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_histogram</span><span class="op">(</span>color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-33"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-33-1.png" alt="Histograma da distribuição de frequência do tempo de espera entre erupções do gêiser Old Faithful. Foi definida uma cor para o contorno das barras (color = " black afim de melhorar a visualiza destas. width="95%"><p class="caption">
+Figura 5.34: Histograma da distribuição de frequência do tempo de espera entre erupções do gêiser Old Faithful. Foi definida uma cor para o contorno das barras (<code>color = "black"</code>) afim de melhorar a visualização destas.
+</p>
+</div>
+<p>Por padrão, o histograma feito com o <code>ggplot</code> é dividido em 30 classes (<code>bins = 30</code>. Este é um valor aleatório e não serve para a maioria dos casos. <a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Na verdade, este valor padrão é uma tentativa de forçar o usuário a determinar um valor adequado para o seu histograma.&lt;/p&gt;"><sup>20</sup></a>
+Para alterar a quantidade de classes representada, há duas opções:</p>
+<ol style="list-style-type: decimal">
+<li>Determinar o número de classes diretamente, modificando o argumento <code>bins</code>.</li>
+<li>Determinar a dimensão das classes, modificando o argumento <code>binwidth</code>.</li>
+</ol>
+<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ff_plot</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span><span class="va">faithful</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">waiting</span><span class="op">)</span><span class="op">)</span>
+<span class="va">ff_plot</span> <span class="op">+</span> <span class="fu">geom_histogram</span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">20</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-34"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-34-1.png" alt="Histograma da distribuição de frequência do tempo de espera entre erupções do gêiser Old Faithful. Este histograma foi contruído com 20 classes (bins = 20)." width="95%"><p class="caption">
+Figura 5.35: Histograma da distribuição de frequência do tempo de espera entre erupções do gêiser Old Faithful. Este histograma foi contruído com 20 classes (<code>bins = 20</code>).
+</p>
+</div>
+<div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ff_plot</span> <span class="op">+</span> <span class="fu">geom_histogram</span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">10</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-35"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-35-1.png" alt="Histograma da distribuição de frequência do tempo de espera entre erupções do gêiser Old Faithful. Este histograma foi contruído com 10 classes (bins = 10)." width="95%"><p class="caption">
+Figura 5.36: Histograma da distribuição de frequência do tempo de espera entre erupções do gêiser Old Faithful. Este histograma foi contruído com 10 classes (<code>bins = 10</code>).
+</p>
+</div>
+<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ff_plot</span> <span class="op">+</span> <span class="fu">geom_histogram</span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">1</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-36"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-36-1.png" alt="Histograma da distribuição de frequência do tempo de espera entre erupções do gêiser Old Faithful. Este histograma foi contruído com o intervalo das classes igual a 1 minuto (binwidth = 1)." width="95%"><p class="caption">
+Figura 5.37: Histograma da distribuição de frequência do tempo de espera entre erupções do gêiser Old Faithful. Este histograma foi contruído com o intervalo das classes igual a 1 minuto (<code>binwidth = 1</code>).
+</p>
+</div>
+<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ff_plot</span> <span class="op">+</span> <span class="fu">geom_histogram</span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">6</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-37"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-37-1.png" alt="Histograma da distribuição de frequência do tempo de espera entre erupções do gêiser Old Faithful. Este histograma foi contruído com o intervalo das classes igual a 6 minutos (binwidth = 6)." width="95%"><p class="caption">
+Figura 5.38: Histograma da distribuição de frequência do tempo de espera entre erupções do gêiser Old Faithful. Este histograma foi contruído com o intervalo das classes igual a 6 minutos (<code>binwidth = 6</code>).
+</p>
+</div>
+<p>Quando temos vários grupos, podemos criar os histogramas separadamente para cada grupo coma função <code>fecet_grid</code>. O argumento <code>scales='free'</code> permite que a escala do eixo <em>y</em> seja redimensionada independentemente para cada grupo.</p>
+
+<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">iris</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Petal.Length</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_histogram</span><span class="op">(</span>color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">facet_grid</span><span class="op">(</span><span class="va">Species</span> <span class="op">~</span> <span class="va">.</span>, scales <span class="op">=</span> <span class="st">"free"</span><span class="op">)</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-38"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-38-1.png" alt="Histograma para distribuição do comprimento das pétalas de três espécies de Iris." width="95%"><p class="caption">
+Figura 5.39: Histograma para distribuição do comprimento das pétalas de três espécies de <em>Iris</em>.
+</p>
+</div>
+</div>
+<div id="gráfico-de-densidade-da-distribuição" class="section level3" number="5.6.2">
+<h3>
+<span class="header-section-number">5.6.2</span> Gráfico de densidade da distribuição<a class="anchor" aria-label="anchor" href="#gr%C3%A1fico-de-densidade-da-distribui%C3%A7%C3%A3o"><i class="fas fa-link"></i></a>
+</h3>
+<p>O gráfico de densidade da distribuição é uma versão suavizada do histograma. Para isso, este gráfico utiliza uma linha no lugar de barras (compare com a Figura <a href="graf.html#fig:histb">5.33</a>).</p>
+
+<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">faithful</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">waiting</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_density</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-39"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-39-1.png" alt="Densidade da distribuição do tempo de espera entre erupções do gêiser Old Faithful." width="95%"><p class="caption">
+Figura 5.40: Densidade da distribuição do tempo de espera entre erupções do gêiser Old Faithful.
+</p>
+</div>
+<p>Uma forma popular de apresentar este gráfico é preenchendo a área abaixo da linha. Isto é possível ajustando o argumento <code>fill</code>.</p>
+
+<div class="sourceCode" id="cb146"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">faithful</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">waiting</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_density</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"green"</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-40"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-40-1.png" alt="Densidade da distribuição do tempo de espera entre erupções do gêiser Old Faithful. Ao ajustar o argumento fill pe adicionada uma área preenchida abaixo da curva." width="95%"><p class="caption">
+Figura 5.41: Densidade da distribuição do tempo de espera entre erupções do gêiser Old Faithful. Ao ajustar o argumento <code>fill</code> pe adicionada uma área preenchida abaixo da curva.
+</p>
+</div>
+</div>
+<div id="box-plot" class="section level3" number="5.6.3">
+<h3>
+<span class="header-section-number">5.6.3</span> Box Plot<a class="anchor" aria-label="anchor" href="#box-plot"><i class="fas fa-link"></i></a>
+</h3>
+<p>O Box plot, também conhecido como diagrama de caixa, representa uma distribuição por meio do resumo de cinco números:</p>
+<ol style="list-style-type: decimal">
+<li>Limite inferior</li>
+<li>Primeiro quartil</li>
+<li>Mediana</li>
+<li>Terceiro quartil</li>
+<li>Limite superior</li>
+</ol>
+<p>A figura abaixo mostra como estes valores formam o gráfico Box plot. A “caixa” (<em>box</em>) tem como limites o 1° e 3° quartis, medida que também é conhecida como Amplitude Interquartil (AIQ). Neste intervalo estão presentes 50% das observações. A linha dentro da caixa representa a mediana. Os “bigodes” (<em>whiskers</em>) se estendem até uma medida predeterminada, que pode ser:</p>
+<ol style="list-style-type: decimal">
+<li>O mínimo e o máximo entre todos os valores;</li>
+<li>Os valores mais próximos a um limite inferior e um limite superior calculados por: <span class="math inline">\(L_i=Q_1-c \times AIQ\)</span> e <span class="math inline">\(L_s=Q_3+c \times AIQ\)</span>, em que <em>AIQ</em> é a amplitude interquartil e <em>c</em> é um coeficiente cujo valor padrão é 1,5 <a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;O valor de c=1,5 é capaz de abranger cerca de 99% das observações para uma distribuição Normal&lt;/p&gt;"><sup>21</sup></a>.</li>
+</ol>
+<p>Os valores discrepantes, mais extremos que os limites, são plotados como pontos individuais.</p>
+<div class="inline-figure"><img src="012-grafic_files/figure-html/unnamed-chunk-41-1.png" width="95%"></div>
+<p>O Box plot utiliza a geometria <code>geom_boxplot</code>. A direção do gráfico (horizontal ou vertical) é ajustada mapeando a variável para o eixo <em>x</em> ou <em>y</em></p>
+
+
+<div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">faithful</span>, <span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">waiting</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-42"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-42-1.png" alt="Box plot do tempo de espera entre erupções do gêiser Old Faithful. Mapear a variável para o eixo y resulta no boxplot vertical." width="95%"><p class="caption">
+Figura 5.42: Box plot do tempo de espera entre erupções do gêiser Old Faithful. Mapear a variável para o eixo <em>y</em> resulta no boxplot vertical.
+</p>
+</div>
+<div class="sourceCode" id="cb148"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">faithful</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">waiting</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-43"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-43-1.png" alt="Box plot do tempo de espera entre erupções do gêiser Old Faithful. Mapear a variável para o eixo y resulta no boxplot horizontal." width="95%"><p class="caption">
+Figura 5.43: Box plot do tempo de espera entre erupções do gêiser Old Faithful. Mapear a variável para o eixo <em>y</em> resulta no boxplot horizontal.
+</p>
+</div>
+<p>Uma utilização bastante comum do Box plot é para comparar diferentes grupos. Para isso, plotamos o Boxplot para cada grupo dentro do mesmo gráfico.</p>
+
+<div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">class</span>, y <span class="op">=</span> <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-44"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-44-1.png" alt="Consumo de combustível na rodovia segundo a classe dos automóveis. O Box plot é uma excelente alternativa para a comparação entre diferentes classes." width="95%"><p class="caption">
+Figura 5.44: Consumo de combustível na rodovia segundo a classe dos automóveis. O Box plot é uma excelente alternativa para a comparação entre diferentes classes.
+</p>
+</div>
+<p>O argumento <code>coef</code> ajusta o comprimentos dos <em>bigodes</em> como um múltiplo da AIQ. Por padrão, seu valor é de 1,5. Para que os <em>bigodes</em> se estendam até os valores máximos/mínimos, modificamos o argumento <code>coef</code> para <code>NULL</code>. Outros valores numéricos são possíveis para <code>coef</code>.</p>
+
+
+
+<div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">class</span>, y <span class="op">=</span> <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_boxplot</span><span class="op">(</span>coef <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-45"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-45-1.png" alt="Consumo de combustível na rodovia segundo a classe dos automóveis. O comprimento dos bigodes alcança os valores mais extremos com o argumento coef = NULL." width="95%"><p class="caption">
+Figura 5.45: Consumo de combustível na rodovia segundo a classe dos automóveis. O comprimento dos <em>bigodes</em> alcança os valores mais extremos com o argumento <code>coef = NULL</code>.
+</p>
+</div>
+<div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">class</span>, y <span class="op">=</span> <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_boxplot</span><span class="op">(</span>coef <span class="op">=</span> <span class="fl">2.0</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-46"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-46-1.png" alt="Consumo de combustível na rodovia segundo a classe dos automóveis. O argumento coef = 2.0 ajusta o comprimento dos bigodes para 2 vezes a AIQ." width="95%"><p class="caption">
+Figura 5.46: Consumo de combustível na rodovia segundo a classe dos automóveis. O argumento <code>coef = 2.0</code> ajusta o comprimento dos <em>bigodes</em> para 2 vezes a AIQ.
+</p>
+</div>
+<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">class</span>, y <span class="op">=</span> <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_boxplot</span><span class="op">(</span>coef <span class="op">=</span> <span class="fl">1.0</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-47"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-47-1.png" alt="Consumo de combustível na rodovia segundo a classe dos automóveis. O argumento coef = 1.0 ajusta o comprimento dos bigodes para 2 vezes a AIQ." width="95%"><p class="caption">
+Figura 5.47: Consumo de combustível na rodovia segundo a classe dos automóveis. O argumento <code>coef = 1.0</code> ajusta o comprimento dos <em>bigodes</em> para 2 vezes a AIQ.
+</p>
+</div>
+<p>É possível adicionar uma marca para a média ao Boxplot. Para isso, utilizamos <code>stat_summary</code> para calcular a média e ajustamos um formato para a marca. O argumento <code>shape=23</code> adiciona um losango (diamante), já que esse formato é bastante comum na representaçao da média.</p>
+
+<div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">class</span>, y <span class="op">=</span> <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">stat_summary</span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"mean"</span>, shape <span class="op">=</span> <span class="fl">23</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-48"></span>
+<img src="012-grafic_files/figure-html/unnamed-chunk-48-1.png" alt="Consumo de combustível na rodovia segundo a classe dos automóveis. Uma marca em forma de losango foi adicionada para representar a média dos valores." width="95%"><p class="caption">
+Figura 5.48: Consumo de combustível na rodovia segundo a classe dos automóveis. Uma marca em forma de losango foi adicionada para representar a média dos valores.
+</p>
+</div>
+</div>
+</div>
+<div id="gráficos-interativos" class="section level2" number="5.7">
+<h2>
+<span class="header-section-number">5.7</span> Gráficos interativos<a class="anchor" aria-label="anchor" href="#gr%C3%A1ficos-interativos"><i class="fas fa-link"></i></a>
+</h2>
+<p>O pacote <code>plotly</code> <a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;É preciso instalar e carregar o pacote &lt;code&gt;plotly&lt;/code&gt; com os comandos &lt;code&gt;install.packages("plotly")&lt;/code&gt; e &lt;code&gt;library(plotly)&lt;/code&gt;&lt;/p&gt;'><sup>22</sup></a> permite a criação de gráficos interativos para a web.</p>
+<div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span><span class="va">iris</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Petal.Length</span>, y <span class="op">=</span> <span class="va">Petal.Width</span>, color <span class="op">=</span> <span class="va">Species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span>
+<span class="fu">plotly</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/plotly/man/ggplotly.html">ggplotly</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-e1be17cd5af71e454042" style="width:95%;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e1be17cd5af71e454042">{"x":{"data":[{"x":[1.4,1.4,1.3,1.5,1.4,1.7,1.4,1.5,1.4,1.5,1.5,1.6,1.4,1.1,1.2,1.5,1.3,1.4,1.7,1.5,1.7,1.5,1,1.7,1.9,1.6,1.6,1.5,1.4,1.6,1.6,1.5,1.5,1.4,1.5,1.2,1.3,1.4,1.3,1.5,1.3,1.3,1.3,1.6,1.9,1.4,1.6,1.4,1.5,1.4],"y":[0.2,0.2,0.2,0.2,0.2,0.4,0.3,0.2,0.2,0.1,0.2,0.2,0.1,0.1,0.2,0.4,0.4,0.3,0.3,0.3,0.2,0.4,0.2,0.5,0.2,0.2,0.4,0.2,0.2,0.2,0.2,0.4,0.1,0.2,0.2,0.2,0.2,0.1,0.2,0.2,0.3,0.3,0.2,0.6,0.4,0.3,0.2,0.2,0.2,0.2],"text":["Petal.Length: 1.4<br />Petal.Width: 0.2<br />Species: setosa","Petal.Length: 1.4<br />Petal.Width: 0.2<br />Species: setosa","Petal.Length: 1.3<br />Petal.Width: 0.2<br />Species: setosa","Petal.Length: 1.5<br />Petal.Width: 0.2<br />Species: setosa","Petal.Length: 1.4<br />Petal.Width: 0.2<br />Species: setosa","Petal.Length: 1.7<br />Petal.Width: 0.4<br />Species: setosa","Petal.Length: 1.4<br />Petal.Width: 0.3<br />Species: setosa","Petal.Length: 1.5<br />Petal.Width: 0.2<br />Species: setosa","Petal.Length: 1.4<br />Petal.Width: 0.2<br />Species: setosa","Petal.Length: 1.5<br />Petal.Width: 0.1<br />Species: setosa","Petal.Length: 1.5<br />Petal.Width: 0.2<br />Species: setosa","Petal.Length: 1.6<br />Petal.Width: 0.2<br />Species: setosa","Petal.Length: 1.4<br />Petal.Width: 0.1<br />Species: setosa","Petal.Length: 1.1<br />Petal.Width: 0.1<br />Species: setosa","Petal.Length: 1.2<br />Petal.Width: 0.2<br />Species: setosa","Petal.Length: 1.5<br />Petal.Width: 0.4<br />Species: setosa","Petal.Length: 1.3<br />Petal.Width: 0.4<br />Species: setosa","Petal.Length: 1.4<br />Petal.Width: 0.3<br />Species: setosa","Petal.Length: 1.7<br />Petal.Width: 0.3<br />Species: setosa","Petal.Length: 1.5<br />Petal.Width: 0.3<br />Species: setosa","Petal.Length: 1.7<br />Petal.Width: 0.2<br />Species: setosa","Petal.Length: 1.5<br />Petal.Width: 0.4<br />Species: setosa","Petal.Length: 1.0<br />Petal.Width: 0.2<br />Species: setosa","Petal.Length: 1.7<br />Petal.Width: 0.5<br />Species: setosa","Petal.Length: 1.9<br />Petal.Width: 0.2<br />Species: setosa","Petal.Length: 1.6<br />Petal.Width: 0.2<br />Species: setosa","Petal.Length: 1.6<br />Petal.Width: 0.4<br />Species: setosa","Petal.Length: 1.5<br />Petal.Width: 0.2<br />Species: setosa","Petal.Length: 1.4<br />Petal.Width: 0.2<br />Species: setosa","Petal.Length: 1.6<br />Petal.Width: 0.2<br />Species: setosa","Petal.Length: 1.6<br />Petal.Width: 0.2<br />Species: setosa","Petal.Length: 1.5<br />Petal.Width: 0.4<br />Species: setosa","Petal.Length: 1.5<br />Petal.Width: 0.1<br />Species: setosa","Petal.Length: 1.4<br />Petal.Width: 0.2<br />Species: setosa","Petal.Length: 1.5<br />Petal.Width: 0.2<br />Species: setosa","Petal.Length: 1.2<br />Petal.Width: 0.2<br />Species: setosa","Petal.Length: 1.3<br />Petal.Width: 0.2<br />Species: setosa","Petal.Length: 1.4<br />Petal.Width: 0.1<br />Species: setosa","Petal.Length: 1.3<br />Petal.Width: 0.2<br />Species: setosa","Petal.Length: 1.5<br />Petal.Width: 0.2<br />Species: setosa","Petal.Length: 1.3<br />Petal.Width: 0.3<br />Species: setosa","Petal.Length: 1.3<br />Petal.Width: 0.3<br />Species: setosa","Petal.Length: 1.3<br />Petal.Width: 0.2<br />Species: setosa","Petal.Length: 1.6<br />Petal.Width: 0.6<br />Species: setosa","Petal.Length: 1.9<br />Petal.Width: 0.4<br />Species: setosa","Petal.Length: 1.4<br />Petal.Width: 0.3<br />Species: setosa","Petal.Length: 1.6<br />Petal.Width: 0.2<br />Species: setosa","Petal.Length: 1.4<br />Petal.Width: 0.2<br />Species: setosa","Petal.Length: 1.5<br />Petal.Width: 0.2<br />Species: setosa","Petal.Length: 1.4<br />Petal.Width: 0.2<br />Species: setosa"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(248,118,109,1)"}},"hoveron":"points","name":"setosa","legendgroup":"setosa","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[4.7,4.5,4.9,4,4.6,4.5,4.7,3.3,4.6,3.9,3.5,4.2,4,4.7,3.6,4.4,4.5,4.1,4.5,3.9,4.8,4,4.9,4.7,4.3,4.4,4.8,5,4.5,3.5,3.8,3.7,3.9,5.1,4.5,4.5,4.7,4.4,4.1,4,4.4,4.6,4,3.3,4.2,4.2,4.2,4.3,3,4.1],"y":[1.4,1.5,1.5,1.3,1.5,1.3,1.6,1,1.3,1.4,1,1.5,1,1.4,1.3,1.4,1.5,1,1.5,1.1,1.8,1.3,1.5,1.2,1.3,1.4,1.4,1.7,1.5,1,1.1,1,1.2,1.6,1.5,1.6,1.5,1.3,1.3,1.3,1.2,1.4,1.2,1,1.3,1.2,1.3,1.3,1.1,1.3],"text":["Petal.Length: 4.7<br />Petal.Width: 1.4<br />Species: versicolor","Petal.Length: 4.5<br />Petal.Width: 1.5<br />Species: versicolor","Petal.Length: 4.9<br />Petal.Width: 1.5<br />Species: versicolor","Petal.Length: 4.0<br />Petal.Width: 1.3<br />Species: versicolor","Petal.Length: 4.6<br />Petal.Width: 1.5<br />Species: versicolor","Petal.Length: 4.5<br />Petal.Width: 1.3<br />Species: versicolor","Petal.Length: 4.7<br />Petal.Width: 1.6<br />Species: versicolor","Petal.Length: 3.3<br />Petal.Width: 1.0<br />Species: versicolor","Petal.Length: 4.6<br />Petal.Width: 1.3<br />Species: versicolor","Petal.Length: 3.9<br />Petal.Width: 1.4<br />Species: versicolor","Petal.Length: 3.5<br />Petal.Width: 1.0<br />Species: versicolor","Petal.Length: 4.2<br />Petal.Width: 1.5<br />Species: versicolor","Petal.Length: 4.0<br />Petal.Width: 1.0<br />Species: versicolor","Petal.Length: 4.7<br />Petal.Width: 1.4<br />Species: versicolor","Petal.Length: 3.6<br />Petal.Width: 1.3<br />Species: versicolor","Petal.Length: 4.4<br />Petal.Width: 1.4<br />Species: versicolor","Petal.Length: 4.5<br />Petal.Width: 1.5<br />Species: versicolor","Petal.Length: 4.1<br />Petal.Width: 1.0<br />Species: versicolor","Petal.Length: 4.5<br />Petal.Width: 1.5<br />Species: versicolor","Petal.Length: 3.9<br />Petal.Width: 1.1<br />Species: versicolor","Petal.Length: 4.8<br />Petal.Width: 1.8<br />Species: versicolor","Petal.Length: 4.0<br />Petal.Width: 1.3<br />Species: versicolor","Petal.Length: 4.9<br />Petal.Width: 1.5<br />Species: versicolor","Petal.Length: 4.7<br />Petal.Width: 1.2<br />Species: versicolor","Petal.Length: 4.3<br />Petal.Width: 1.3<br />Species: versicolor","Petal.Length: 4.4<br />Petal.Width: 1.4<br />Species: versicolor","Petal.Length: 4.8<br />Petal.Width: 1.4<br />Species: versicolor","Petal.Length: 5.0<br />Petal.Width: 1.7<br />Species: versicolor","Petal.Length: 4.5<br />Petal.Width: 1.5<br />Species: versicolor","Petal.Length: 3.5<br />Petal.Width: 1.0<br />Species: versicolor","Petal.Length: 3.8<br />Petal.Width: 1.1<br />Species: versicolor","Petal.Length: 3.7<br />Petal.Width: 1.0<br />Species: versicolor","Petal.Length: 3.9<br />Petal.Width: 1.2<br />Species: versicolor","Petal.Length: 5.1<br />Petal.Width: 1.6<br />Species: versicolor","Petal.Length: 4.5<br />Petal.Width: 1.5<br />Species: versicolor","Petal.Length: 4.5<br />Petal.Width: 1.6<br />Species: versicolor","Petal.Length: 4.7<br />Petal.Width: 1.5<br />Species: versicolor","Petal.Length: 4.4<br />Petal.Width: 1.3<br />Species: versicolor","Petal.Length: 4.1<br />Petal.Width: 1.3<br />Species: versicolor","Petal.Length: 4.0<br />Petal.Width: 1.3<br />Species: versicolor","Petal.Length: 4.4<br />Petal.Width: 1.2<br />Species: versicolor","Petal.Length: 4.6<br />Petal.Width: 1.4<br />Species: versicolor","Petal.Length: 4.0<br />Petal.Width: 1.2<br />Species: versicolor","Petal.Length: 3.3<br />Petal.Width: 1.0<br />Species: versicolor","Petal.Length: 4.2<br />Petal.Width: 1.3<br />Species: versicolor","Petal.Length: 4.2<br />Petal.Width: 1.2<br />Species: versicolor","Petal.Length: 4.2<br />Petal.Width: 1.3<br />Species: versicolor","Petal.Length: 4.3<br />Petal.Width: 1.3<br />Species: versicolor","Petal.Length: 3.0<br />Petal.Width: 1.1<br />Species: versicolor","Petal.Length: 4.1<br />Petal.Width: 1.3<br />Species: versicolor"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,186,56,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,186,56,1)"}},"hoveron":"points","name":"versicolor","legendgroup":"versicolor","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[6,5.1,5.9,5.6,5.8,6.6,4.5,6.3,5.8,6.1,5.1,5.3,5.5,5,5.1,5.3,5.5,6.7,6.9,5,5.7,4.9,6.7,4.9,5.7,6,4.8,4.9,5.6,5.8,6.1,6.4,5.6,5.1,5.6,6.1,5.6,5.5,4.8,5.4,5.6,5.1,5.1,5.9,5.7,5.2,5,5.2,5.4,5.1],"y":[2.5,1.9,2.1,1.8,2.2,2.1,1.7,1.8,1.8,2.5,2,1.9,2.1,2,2.4,2.3,1.8,2.2,2.3,1.5,2.3,2,2,1.8,2.1,1.8,1.8,1.8,2.1,1.6,1.9,2,2.2,1.5,1.4,2.3,2.4,1.8,1.8,2.1,2.4,2.3,1.9,2.3,2.5,2.3,1.9,2,2.3,1.8],"text":["Petal.Length: 6.0<br />Petal.Width: 2.5<br />Species: virginica","Petal.Length: 5.1<br />Petal.Width: 1.9<br />Species: virginica","Petal.Length: 5.9<br />Petal.Width: 2.1<br />Species: virginica","Petal.Length: 5.6<br />Petal.Width: 1.8<br />Species: virginica","Petal.Length: 5.8<br />Petal.Width: 2.2<br />Species: virginica","Petal.Length: 6.6<br />Petal.Width: 2.1<br />Species: virginica","Petal.Length: 4.5<br />Petal.Width: 1.7<br />Species: virginica","Petal.Length: 6.3<br />Petal.Width: 1.8<br />Species: virginica","Petal.Length: 5.8<br />Petal.Width: 1.8<br />Species: virginica","Petal.Length: 6.1<br />Petal.Width: 2.5<br />Species: virginica","Petal.Length: 5.1<br />Petal.Width: 2.0<br />Species: virginica","Petal.Length: 5.3<br />Petal.Width: 1.9<br />Species: virginica","Petal.Length: 5.5<br />Petal.Width: 2.1<br />Species: virginica","Petal.Length: 5.0<br />Petal.Width: 2.0<br />Species: virginica","Petal.Length: 5.1<br />Petal.Width: 2.4<br />Species: virginica","Petal.Length: 5.3<br />Petal.Width: 2.3<br />Species: virginica","Petal.Length: 5.5<br />Petal.Width: 1.8<br />Species: virginica","Petal.Length: 6.7<br />Petal.Width: 2.2<br />Species: virginica","Petal.Length: 6.9<br />Petal.Width: 2.3<br />Species: virginica","Petal.Length: 5.0<br />Petal.Width: 1.5<br />Species: virginica","Petal.Length: 5.7<br />Petal.Width: 2.3<br />Species: virginica","Petal.Length: 4.9<br />Petal.Width: 2.0<br />Species: virginica","Petal.Length: 6.7<br />Petal.Width: 2.0<br />Species: virginica","Petal.Length: 4.9<br />Petal.Width: 1.8<br />Species: virginica","Petal.Length: 5.7<br />Petal.Width: 2.1<br />Species: virginica","Petal.Length: 6.0<br />Petal.Width: 1.8<br />Species: virginica","Petal.Length: 4.8<br />Petal.Width: 1.8<br />Species: virginica","Petal.Length: 4.9<br />Petal.Width: 1.8<br />Species: virginica","Petal.Length: 5.6<br />Petal.Width: 2.1<br />Species: virginica","Petal.Length: 5.8<br />Petal.Width: 1.6<br />Species: virginica","Petal.Length: 6.1<br />Petal.Width: 1.9<br />Species: virginica","Petal.Length: 6.4<br />Petal.Width: 2.0<br />Species: virginica","Petal.Length: 5.6<br />Petal.Width: 2.2<br />Species: virginica","Petal.Length: 5.1<br />Petal.Width: 1.5<br />Species: virginica","Petal.Length: 5.6<br />Petal.Width: 1.4<br />Species: virginica","Petal.Length: 6.1<br />Petal.Width: 2.3<br />Species: virginica","Petal.Length: 5.6<br />Petal.Width: 2.4<br />Species: virginica","Petal.Length: 5.5<br />Petal.Width: 1.8<br />Species: virginica","Petal.Length: 4.8<br />Petal.Width: 1.8<br />Species: virginica","Petal.Length: 5.4<br />Petal.Width: 2.1<br />Species: virginica","Petal.Length: 5.6<br />Petal.Width: 2.4<br />Species: virginica","Petal.Length: 5.1<br />Petal.Width: 2.3<br />Species: virginica","Petal.Length: 5.1<br />Petal.Width: 1.9<br />Species: virginica","Petal.Length: 5.9<br />Petal.Width: 2.3<br />Species: virginica","Petal.Length: 5.7<br />Petal.Width: 2.5<br />Species: virginica","Petal.Length: 5.2<br />Petal.Width: 2.3<br />Species: virginica","Petal.Length: 5.0<br />Petal.Width: 1.9<br />Species: virginica","Petal.Length: 5.2<br />Petal.Width: 2.0<br />Species: virginica","Petal.Length: 5.4<br />Petal.Width: 2.3<br />Species: virginica","Petal.Length: 5.1<br />Petal.Width: 1.8<br />Species: virginica"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(97,156,255,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(97,156,255,1)"}},"hoveron":"points","name":"virginica","legendgroup":"virginica","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.2283105022831,"r":7.30593607305936,"b":40.1826484018265,"l":43.1050228310502},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.705,7.195],"tickmode":"array","ticktext":["2","4","6"],"tickvals":[2,4,6],"categoryorder":"array","categoryarray":["2","4","6"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"Petal.Length","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.02,2.62],"tickmode":"array","ticktext":["0.0","0.5","1.0","1.5","2.0","2.5"],"tickvals":[0,0.5,1,1.5,2,2.5],"categoryorder":"array","categoryarray":["0.0","0.5","1.0","1.5","2.0","2.5"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Petal.Width","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895},"title":{"text":"Species","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"3e756e0de290":{"x":{},"y":{},"colour":{},"type":"scatter"}},"cur_data":"3e756e0de290","visdat":{"3e756e0de290":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="gráficos-animados" class="section level2" number="5.8">
+<h2>
+<span class="header-section-number">5.8</span> Gráficos animados<a class="anchor" aria-label="anchor" href="#gr%C3%A1ficos-animados"><i class="fas fa-link"></i></a>
+</h2>
+<p>O pacote <code>gganimate</code> <a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;É preciso instalar e carregar o pacote &lt;code&gt;gganimate&lt;/code&gt; com os comandos &lt;code&gt;install.packages("gganimate")&lt;/code&gt; e &lt;code&gt;library(gganimate)&lt;/code&gt;&lt;/p&gt;'><sup>23</sup></a> permite adicionar animações aos gráficos gerados com o <code>ggplot.</code></p>
+
+<div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gganimate.com">gganimate</a></span><span class="op">)</span></code></pre></div>
+<pre><code>## No renderer backend detected. gganimate will default to writing frames to separate files
+## Consider installing:
+## - the `gifski` package for gif output
+## - the `av` package for video output
+## and restarting the R session</code></pre>
+<div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jennybc/gapminder">gapminder</a></span><span class="op">)</span>
+
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">gdpPercap</span>, <span class="va">lifeExp</span>, size <span class="op">=</span> <span class="va">pop</span>, colour <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.7</span>, show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_colour_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="va">country_colors</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_size.html">scale_size</a></span><span class="op">(</span>range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">12</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">continent</span><span class="op">)</span> <span class="op">+</span>
+  <span class="co"># Início da animação</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Year: {frame_time}"</span>, x <span class="op">=</span> <span class="st">"GDP per capita"</span>, y <span class="op">=</span> <span class="st">"life expectancy"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">gganimate</span><span class="fu">::</span><span class="fu"><a href="https://gganimate.com/reference/transition_time.html">transition_time</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">gganimate</span><span class="fu">::</span><span class="fu"><a href="https://gganimate.com/reference/ease_aes.html">ease_aes</a></span><span class="op">(</span><span class="st">"linear"</span><span class="op">)</span></code></pre></div>
+<pre><code>## Warning: No renderer available. Please install the gifski, av, or magick package
+## to create animated output</code></pre>
+<pre><code>## NULL</code></pre>
+
+<div class="sourceCode" id="cb160"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jennybc/gapminder">gapminder</a></span><span class="op">)</span>
+<span class="va">p</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span>, <span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>median_lifeExp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">median_lifeExp</span>, group <span class="op">=</span> <span class="va">continent</span>, color <span class="op">=</span> <span class="va">continent</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html">scale_color_viridis_d</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"top"</span><span class="op">)</span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by 'continent'. You can override using the
+## `.groups` argument.</code></pre>
+<div class="sourceCode" id="cb162"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p</span>
+
+<span class="va">p</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">gganimate</span><span class="fu">::</span><span class="fu"><a href="https://gganimate.com/reference/transition_reveal.html">transition_reveal</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span></code></pre></div>
+<pre><code>## Warning: No renderer available. Please install the gifski, av, or magick package
+## to create animated output</code></pre>
+<pre><code>## NULL</code></pre>
+<div class="figure">
+<span style="display:block;" id="fig:anima2"></span>
+<img src="image/anima2-1.png" alt="Mediana da expectativa de vida em cada continente. A animação mostra a evolução dos valores ao longo dos anos." width="95%"><p class="caption">
+Figura 5.49: Mediana da expectativa de vida em cada continente. A animação mostra a evolução dos valores ao longo dos anos.
+</p>
+</div>
+
+</div>
+</div>
+
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="alguns-conceitos-b%C3%A1sicos.html"><span class="header-section-number">4</span> Alguns conceitos básicos</a></div>
+<div class="next"><a href="conjunto-de-dados-do-r.html"><span class="header-section-number">A</span> Conjunto de dados do R</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Nesta página</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#graf"><span class="header-section-number">5</span> Gráficos estatísticos</a></li>
+<li>
+<a class="nav-link" href="#o-pacote-ggplot2"><span class="header-section-number">5.1</span> O pacote ggplot2</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#criando-gr%C3%A1ficos-do-ggplot-como-objetos"><span class="header-section-number">5.1.1</span> Criando gráficos do ggplot como objetos</a></li>
+<li><a class="nav-link" href="#personalizando-os-eixos"><span class="header-section-number">5.1.2</span> Personalizando os eixos</a></li>
+<li><a class="nav-link" href="#aes"><span class="header-section-number">5.1.3</span> Mapeando atributos estéticos</a></li>
+<li><a class="nav-link" href="#mapeando-atributos-em-cada-geom_"><span class="header-section-number">5.1.4</span> Mapeando atributos em cada geom_*</a></li>
+<li><a class="nav-link" href="#definindo-atributos-est%C3%A9ticos"><span class="header-section-number">5.1.5</span> Definindo atributos estéticos</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#gr%C3%A1fico-de-barras"><span class="header-section-number">5.2</span> Gráfico de barras</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#gr%C3%A1fico-de-barras-para-uma-vari%C3%A1vel"><span class="header-section-number">5.2.1</span> Gráfico de barras para uma variável</a></li>
+<li><a class="nav-link" href="#gr%C3%A1fico-de-barras-para-duas-vari%C3%A1veis"><span class="header-section-number">5.2.2</span> Gráfico de barras para duas variáveis</a></li>
+<li><a class="nav-link" href="#gr%C3%A1fico-de-barras-para-tr%C3%AAs-vari%C3%A1veis."><span class="header-section-number">5.2.3</span> Gráfico de barras para três variáveis.</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#gr%C3%A1ficos-de-dispers%C3%A3o"><span class="header-section-number">5.3</span> Gráficos de dispersão</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#linha-de-tend%C3%AAncia"><span class="header-section-number">5.3.1</span> Linha de tendência</a></li></ul>
+</li>
+<li><a class="nav-link" href="#sobreposi%C3%A7%C3%A3o-de-elementos"><span class="header-section-number">5.4</span> Sobreposição de elementos</a></li>
+<li>
+<a class="nav-link" href="#gr%C3%A1ficos-de-linhas"><span class="header-section-number">5.5</span> Gráficos de linhas</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#gr%C3%A1ficos-de-linhas-para-s%C3%A9ries-temporais"><span class="header-section-number">5.5.1</span> Gráficos de linhas para séries temporais</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#gr%C3%A1ficos-para-distribui%C3%A7%C3%A3o"><span class="header-section-number">5.6</span> Gráficos para distribuição</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#histograma"><span class="header-section-number">5.6.1</span> Histograma</a></li>
+<li><a class="nav-link" href="#gr%C3%A1fico-de-densidade-da-distribui%C3%A7%C3%A3o"><span class="header-section-number">5.6.2</span> Gráfico de densidade da distribuição</a></li>
+<li><a class="nav-link" href="#box-plot"><span class="header-section-number">5.6.3</span> Box Plot</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#gr%C3%A1ficos-interativos"><span class="header-section-number">5.7</span> Gráficos interativos</a></li>
+<li><a class="nav-link" href="#gr%C3%A1ficos-animados"><span class="header-section-number">5.8</span> Gráficos animados</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/joaobtj/biostat_ebook/blob/main/012-grafic.Rmd">Código fonte desta página<i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/joaobtj/biostat_ebook/edit/main/012-grafic.Rmd">Editar esta página <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Bioestatística aplicada aos ecossistemas agrícolas e naturais</strong>" foi escrito por João B. Tolentino Jr.. Última atualização em 2022-05-04.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

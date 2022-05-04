@@ -79,7 +79,7 @@ Para conseguir ajuda mais rápida e com maior chance de ser adequadamente respon
 
 
 * Compacte^[Com algum programa como o [7-zip.com](https://www.7-zip.org/)] e compartilhe todo o diretório do seu projeto;
-* Compartilhe seu projeto do RStudio Cloud (Seção \@ref(rcloud));
+* Compartilhe seu projeto do [RStudio Cloud](https://biostat.tolentino.pro.br/intro-r.html#rcloud);
 * Utilize o pacote `reprex` (Seção \@ref(reprex)).
 
 
