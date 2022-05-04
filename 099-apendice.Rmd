@@ -1,0 +1,68 @@
+# (APPENDIX) Apêndices {-} 
+
+# Conjunto de dados do R
+
+Existe uma variedade de base de dados (datasets) incluídos com o R. Segue uma breve descrição de alguns destes datasets que serão utilizados neste curso.
+
+## `gapminder` {#gapminder}
+
+Este conjunto de dados contém um recorte dos dados do [Instituto Gapminder](https://www.gapminder.org/data/). São 1704 linhas com 6 variáveis:
+
+1. `country`: país, com 142 níveis
+1. `continent`: continente, com 5 níveis
+1. `year`: ano, entre 1952 e 2007 com incremente de 5 anos
+1. `lifeExp`: expectativa de vida ao nascer, em anos
+1. `pop`: população
+1. `gdpPercap`: PIB per capita, em US Dollar (ajustado para a inflação)
+
+Para acessá-lo, antes é preciso instalar o pacote `gapminder` e carregá-lo.
+```r
+install.packages("gapminder")
+library(gapminder)
+```
+
+```{r echo=FALSE}
+DT::datatable(gapminder::gapminder)
+```
+
+
+
+## `mpg` {#mpg}
+
+Este conjunto de dados é parte do pacote `ggplot2` e contém dados relacionados à economia de combustível (https://fueleconomy.gov/) de 38 modelos de carros nos anos de 1999 e 2008. São 234 linhas com 11 variáveis:
+
+1. `manufacturer`: nome da montadora
+1. `model`: nome do modelo
+1. `displ`: cilindrada do motor, em litros
+1. `year`: ano de fabricação
+1. `cyl`: número de cilindros
+1. `trans`: tipo de transmissão
+1. `drv`: tipo de tração, em que f = tração dianteira, r = tração traseira, 4 = tração 4x4
+1. `cty`: consumo na cidade em milhas por galão 
+1. `hwy`: consumo na rodovia milhas por galão
+1. `fl`: tipo de combustível
+1. `class`: categoria do carro
+
+
+Para acessá-lo, é preciso ter o pacote `ggplot2` instalado e carregado.
+
+```r
+install.packages("ggplot2") #caso não esteja instalado
+library(ggplot2)
+```
+
+```{r echo=FALSE}
+DT::datatable(ggplot2::mpg)
+```
+
+## `ToothGrowth` {#tooth}
+
+Este conjunto contém dados de um experimento em que foi medido o comprimento de odontoblastos (células responsáveis pelo crescimento dos dentes) em 60 porquinhos da Índia ^[Fonte: https://doi.org/10.1093/jn/33.5.491]. Cada animal recebeu uma dose diferente de vitamina C (0,5, 1,0 ou 2,0 mg/dia) por um tipo de suplemento: suco de laranja (OJ) ou ácido ascórbico (VC). São 60 linhas com 3 variáveis:
+
+1. `len`: comprimento de odontoblastos
+1. `supp`: tipo de suplemento de vitamina C
+1. `dose`: dose de vitamina C
+
+```{r , echo=FALSE}
+DT::datatable(ToothGrowth)
+```
