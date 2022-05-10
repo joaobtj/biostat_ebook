@@ -111,6 +111,8 @@ histograma
 gráfico-de-densidade-da-distribuição
 box-plot
 gráficos-interativos
+estatística-básica
+medidas-de-centro
 conjunto-de-dados-do-r
 gapminder
 mpg
