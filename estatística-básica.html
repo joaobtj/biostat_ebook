@@ -763,7 +763,7 @@
 <p>O desvio-padrão s é a raiz quadrada da variância s<sup>2</sup>.</p>
 <div class="example">
 <p><span id="exm:desvio" class="example"><strong>Exemplo 6.3  (Variância e desvio-padrão) </strong></span>Considere o conjunto de dados <a href="data/dap.csv">dap.csv</a>.</p>
-<p>Qual a variância e o desvio-padrão destes dados?</p>
+<p>Qual a variância e o desvio-padrão destes dados?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;As funções &lt;code&gt;var&lt;/code&gt; e &lt;code&gt;sd&lt;/code&gt; utilizam o denominador n-1 no cálculo, que não é adequado para o cálculo da variância e desvio-padrão de uma população. No entanto, para uma população de tamanho grande, as diferenças são desprezíveis.&lt;/p&gt;"><sup>23</sup></a></p>
 <div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Variância</span>
 <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">dap</span><span class="op">)</span></code></pre></div>
@@ -902,7 +902,7 @@
 </div>
 <p>Por fim, pode haver nas distribuições um ou alguns poucos valores discrepantes, ou seja, valores que diferem consideravelmente dos demais. Muito frequentemente, também são chamados de <em>outliers.</em></p>
 <div class="example">
-<p><span id="exm:desc3" class="example"><strong>Exemplo 6.6  (Descrição de uma distribuição com valores discrepantes) </strong></span>Considere os dados de produção de morango (em g/planta) contidos no arquivo <a href="data/morango.csv">morango.csv</a>.</p>
+<p><span id="exm:descdiscrepante" class="example"><strong>Exemplo 6.7  (Descrição de uma distribuição com valores discrepantes) </strong></span>Considere os dados de produção de morango (em g/planta) contidos no arquivo <a href="data/morango.csv">morango.csv</a>.</p>
 <div class="sourceCode" id="cb178"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Histograma</span>
  <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">morango</span><span class="op">)</span></code></pre></div>
@@ -913,17 +913,20 @@
 <pre><code>## 
 ##   The decimal point is 3 digit(s) to the right of the |
 ## 
-##   0 | 66666666677777888888
+##   0 | 6666666666666777777778888888888
+##   1 | 
 ##   2 | 
+##   3 | 
 ##   4 | 
+##   5 | 
 ##   6 | 9</code></pre>
 <div class="sourceCode" id="cb181"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Box-plot</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">morango</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="013-estbas_files/figure-html/unnamed-chunk-16-2.png" width="672"></div>
 <p>Esta distribuição apresenta claramente um valor discrepante: 6870 g na posição 10 do conjunto de dados.</p>
-<p>A média da distribuição é 977.3 g e a mediana é 663 g.</p>
-<p>O desvio-padrão é 1352.3 e o resumo de cinco números é 587, 630, 663, 771, 6870.</p>
+<p>A média da distribuição é 883.8 g e a mediana é 670 g.</p>
+<p>O desvio-padrão é 1095.4 e o resumo de cinco números é 568, 628.25, 670, 772.25, 6870.</p>
 <p>Ao se excluir este valor discrepante (<em>outlier</em>), veja como fica a distribuição.</p>
 <div class="sourceCode" id="cb182"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">morango2</span> <span class="op">&lt;-</span> <span class="va">morango</span> 
@@ -938,27 +941,37 @@
 <pre><code>## 
 ##   The decimal point is 2 digit(s) to the right of the |
 ## 
-##   5 | 999
-##   6 | 02334
-##   6 | 55669
-##   7 | 3
-##   7 | 67799
-##   8 | 3</code></pre>
+##   5 | 79999
+##   6 | 0023334
+##   6 | 556689
+##   7 | 344
+##   7 | 6777899
+##   8 | 233</code></pre>
 <div class="sourceCode" id="cb185"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Box-plot</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">morango2</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="013-estbas_files/figure-html/unnamed-chunk-17-2.png" width="672"></div>
-<p>A média da distribuição é 682.7 g e a mediana é 658.5 g.</p>
-<p>O desvio-padrão é 77.5 e o resumo de cinco números é 587, 628.25, 658.5, 761.25, 829.</p>
+<p>Agora, conseguimos ver que a distribuição é simétrica.</p>
+<p>A média é 690.7 g e a mediana é 664 g.</p>
+<p>O desvio-padrão é 83.4 e o resumo de cinco números é 568, 626.5, 664, 771.5, 829.</p>
 </div>
 </div>
-<div id="comparação-médiamediana-e-desvio-padrãoquartis" class="section level2" number="6.4">
+<div id="comparação-médiamediana" class="section level2" number="6.4">
 <h2>
-<span class="header-section-number">6.4</span> Comparação média/mediana e desvio-padrão/quartis<a class="anchor" aria-label="anchor" href="#compara%C3%A7%C3%A3o-m%C3%A9diamediana-e-desvio-padr%C3%A3oquartis"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.4</span> Comparação média/mediana<a class="anchor" aria-label="anchor" href="#compara%C3%A7%C3%A3o-m%C3%A9diamediana"><i class="fas fa-link"></i></a>
 </h2>
+<p>O exemplo <a href="estat%C3%ADstica-b%C3%A1sica.html#exm:descdiscrepante">6.7</a> ilustra um fato importante sobre a média como medida de centro: ela é muito sensível a observações extremas, como em uma distribuição assimétrica ou na presença de valores atípicos.</p>
+<p>Como a média não pode resistir à influência de observações extremas, dizemos que ela não é uma medida resistente de centro.</p>
+<p>Ao contrário, a mediana é influenciada apenas pelo número total de pontos de dados e pelo valor numérico do ponto, ou pontos, localizado no centro da distribuição.</p>
+<p>A média e a mediana de uma distribuição razoavelmente simétrica estão bem próximas uma da outra.</p>
+<p>Se a distribuição for exatamente simétrica, a média e a mediana serão exatamente iguais.</p>
+<p>Em uma distribuição assimétrica, a média está, em geral, numa posição mais extrema na cauda longa do que a mediana.</p>
+<p>Assim como a média, o desvio-padrão <em>s</em> não é resistente. Algumas observações atípicas podem tornar <em>s</em> bastante grande.</p>
+<p>Como o desvio-padrão mede a dispersão em torno da média, deve ser usado apenas quando a média for escolhida como a medida de centro.</p>
 
 </div>
 </div>
+
 
 
 
@@ -977,7 +990,7 @@
 </ul>
 </li>
 <li><a class="nav-link" href="#descri%C3%A7%C3%A3o-de-uma-distribui%C3%A7%C3%A3o"><span class="header-section-number">6.3</span> Descrição de uma distribuição</a></li>
-<li><a class="nav-link" href="#compara%C3%A7%C3%A3o-m%C3%A9diamediana-e-desvio-padr%C3%A3oquartis"><span class="header-section-number">6.4</span> Comparação média/mediana e desvio-padrão/quartis</a></li>
+<li><a class="nav-link" href="#compara%C3%A7%C3%A3o-m%C3%A9diamediana"><span class="header-section-number">6.4</span> Comparação média/mediana</a></li>
 </ul>
 
       <div class="book-extra">

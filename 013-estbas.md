@@ -689,7 +689,7 @@ O desvio-padrão s é a raiz quadrada da variância s^2^.
 
 Considere o conjunto de dados [dap.csv](data/dap.csv).
 
-Qual a variância e o desvio-padrão destes dados?
+Qual a variância e o desvio-padrão destes dados?^[As funções `var` e `sd` utilizam o denominador n-1 no cálculo, que não é adequado para o cálculo da variância e desvio-padrão de uma população. No entanto, para uma população de tamanho grande, as diferenças são desprezíveis.]
 
 
 ```r
@@ -921,7 +921,7 @@ A média do tamanho dos peixes machos é 39.1 cm e dos peixes fêmeas é 20.3 cm
 Por fim, pode haver nas distribuições um ou alguns poucos valores discrepantes, ou seja, valores que diferem consideravelmente dos demais. Muito frequentemente, também são chamados de *outliers.*
 
 
-:::{.example #desc3 name="Descrição de uma distribuição com valores discrepantes"}
+:::{.example #descdiscrepante name="Descrição de uma distribuição com valores discrepantes"}
 
 
 
@@ -945,9 +945,12 @@ stem(morango)
 ## 
 ##   The decimal point is 3 digit(s) to the right of the |
 ## 
-##   0 | 66666666677777888888
+##   0 | 6666666666666777777778888888888
+##   1 | 
 ##   2 | 
+##   3 | 
 ##   4 | 
+##   5 | 
 ##   6 | 9
 ```
 
@@ -960,9 +963,9 @@ boxplot(morango)
 
 Esta distribuição apresenta claramente um valor discrepante: 6870 g na posição 10 do conjunto de dados.
 
-A média da distribuição é 977.3 g e a mediana é 663 g.
+A média da distribuição é 883.8 g e a mediana é 670 g.
 
-O desvio-padrão é 1352.3 e o resumo de cinco números é 587, 630, 663, 771, 6870.
+O desvio-padrão é 1095.4 e o resumo de cinco números é 568, 628.25, 670, 772.25, 6870.
 
 
 Ao se excluir este valor discrepante (*outlier*), veja como fica a distribuição.
@@ -987,12 +990,12 @@ stem(morango2)
 ## 
 ##   The decimal point is 2 digit(s) to the right of the |
 ## 
-##   5 | 999
-##   6 | 02334
-##   6 | 55669
-##   7 | 3
-##   7 | 67799
-##   8 | 3
+##   5 | 79999
+##   6 | 0023334
+##   6 | 556689
+##   7 | 344
+##   7 | 6777899
+##   8 | 233
 ```
 
 ```r
@@ -1002,13 +1005,30 @@ boxplot(morango2)
 
 <img src="013-estbas_files/figure-html/unnamed-chunk-17-2.png" width="672" />
 
-A média da distribuição é 682.7 g e a mediana é 658.5 g.
+Agora, conseguimos ver que a distribuição é simétrica. 
 
-O desvio-padrão é 77.5 e o resumo de cinco números é 587, 628.25, 658.5, 761.25, 829.
+A média é 690.7 g e a mediana é 664 g.
+
+O desvio-padrão é 83.4 e o resumo de cinco números é 568, 626.5, 664, 771.5, 829.
 
 :::
 
-## Comparação média/mediana e desvio-padrão/quartis
+## Comparação média/mediana
+
+O exemplo \@ref(exm:descdiscrepante) ilustra um fato importante sobre a média como medida de centro: ela é muito sensível a observações extremas, como em uma distribuição assimétrica ou na presença de valores atípicos.
+
+Como a média não pode resistir à influência de observações extremas, dizemos que ela não é uma medida resistente de centro. 
+
+Ao contrário, a mediana é influenciada apenas pelo número total de pontos de dados e pelo valor numérico do ponto, ou pontos, localizado no centro da distribuição. 
+
+A média e a mediana de uma distribuição razoavelmente simétrica estão bem próximas uma da outra. 
+
+Se a distribuição for exatamente simétrica, a média e a mediana serão exatamente iguais.
+
+Em uma distribuição assimétrica, a média está, em geral, numa posição mais extrema na cauda longa do que a mediana.
 
 
+Assim como a média, o desvio-padrão *s* não é resistente. Algumas observações atípicas podem tornar *s* bastante grande.
+
+Como o desvio-padrão mede a dispersão em torno da média, deve ser usado apenas quando a média for escolhida como a medida de centro.
 
