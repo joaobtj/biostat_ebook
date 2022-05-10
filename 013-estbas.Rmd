@@ -124,6 +124,7 @@ var(dap)
 
 # Desvio-padrão
 sd(dap)
+
 ```
 
 :::
@@ -259,17 +260,53 @@ Por fim, pode haver nas distribuições um ou alguns poucos valores discrepantes
 :::{.example #desc3 name="Descrição de uma distribuição com valores discrepantes"}
 
 ```{r, include=FALSE}
-morango <- rnorm(50, 3.5,0.5)
+set.seed("21102015")
+morango <- rnorm(21, 700, 100) %>% round(0)
 morango[10] <- morango[10]*10
-
 readr::write_csv(data.frame(morango), "data/morango.csv")
-
 ```
 
 
-Considere os dados de produção de morango (em kg/ha) coletados de 50 plantas contidos no arquivo [morango.csv](data/morango.csv)
+Considere os dados de produção de morango (em g/planta) contidos no arquivo [morango.csv](data/morango.csv).
+
+```{r}
+# Histograma
+ hist(morango)
+
+# Diagrama de ramo e folhas
+stem(morango)
+
+# Box-plot
+boxplot(morango)
+
+```
+
+Esta distribuição apresenta claramente um valor discrepante: `r max(morango)` g na posição `r which(morango  == max(morango))` do conjunto de dados.
+
+A média da distribuição é `r mean(morango) %>% round(1)` g e a mediana é `r median(morango)` g.
+
+O desvio-padrão é `r sd(morango) %>% round(1)` e o resumo de cinco números é `r quantile(morango)`.
 
 
+Ao se excluir este valor discrepante (*outlier*), veja como fica a distribuição.
+
+```{r}
+morango2 <- morango 
+morango2[10] <- NA
+
+# Histograma
+ hist(morango2)
+
+# Diagrama de ramo e folhas
+stem(morango2)
+
+# Box-plot
+boxplot(morango2)
+```
+
+A média da distribuição é `r mean(morango2, na.rm=TRUE) %>% round(1)` g e a mediana é `r median(morango2, na.rm=TRUE)` g.
+
+O desvio-padrão é `r sd(morango2, na.rm=TRUE) %>% round(1)` e o resumo de cinco números é `r quantile(morango2, na.rm=TRUE)`.
 
 :::
 
