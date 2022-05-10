@@ -13,7 +13,8 @@ jobs:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v2
-      
+
+     
       - name: linux-packages
         run: sudo apt-get update && sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
 
@@ -33,6 +34,7 @@ jobs:
           restore-keys: bookdown-
 
       - name: Install packages
+
         run: Rscript -e 'install.packages(c("downlit","xml2"))' 
 
       - name: Build site
