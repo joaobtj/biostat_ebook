@@ -129,3 +129,8 @@ conjunto-de-dados-do-r
 gapminder
 mpg
 tooth
+economics
+iris
+bod
+diamonds
+faithful
