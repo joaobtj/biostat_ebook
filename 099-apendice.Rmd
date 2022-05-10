@@ -66,3 +66,84 @@ Este conjunto contém dados de um experimento em que foi medido o comprimento de
 ```{r , echo=FALSE}
 DT::datatable(ToothGrowth)
 ```
+
+
+## `economics` {#economics}
+
+Este conjunto de dados traz uma série temporal de dados econômicos dos Estados Unidos ^[Fonte: https://fred.stlouisfed.org/]. São 574 linhas com 6 variáveis
+
+1. `date`: Mês de aquisição dos dados
+1. `pce`: despesas de consumo pessoal, em bilhões de dólares
+1. `pop`: população total, em milhares
+1. `psavert`: taxa de poupança pessoal
+1. `uempmed`: duração mediana do desemprego, em semanas
+1. `unemploy`: número de desempregados, em milhares
+
+
+```{r , echo=FALSE}
+DT::datatable(ggplot2::economics)
+```
+
+
+
+
+## `iris` {#iris}
+
+Este dataset contém as medidas, em centímetros, do comprimento e largura das pétalas e sépalas de três espécies de plantas: *Iris setosa*, *I. versicolor* e *I. virginica*. São 150 linhas com 5 variáveis.
+
+1. `Sepal.Length`: comprimento das sépalas
+1. `Sepal.Width`: largura das sépalas
+1. `Petal.Length`: comprimento das pétalas
+1. `Petal.Width`: largura das sépalas
+1. `Species`: espécies de *Iris* 
+
+
+```{r echo=FALSE}
+DT::datatable(iris)
+```
+
+
+
+## `BOD` {#bod}
+
+Este dataset contém a demanda bioquímica de oxigênio em função do tempo em uma avaliação da qualidade da água.
+
+1. `Time`: tempo em dias
+2. `demand`: BOD em mg/L
+
+```{r, echo=FALSE}
+DT::datatable(BOD)
+```
+
+
+## `diamonds`{#diamonds}
+
+Este conjunto de dados contém atributos de aproximadamento 54.000 diamantes. As variáveis são:
+
+1. `price`: preço em dólares
+1. `carat`: peso em quilates
+1. `cut`: qualidade do corte (Razoável, Bom, Muito Bom, Premium, Ideal)
+1. `color`: cor do diamante, de D (melhor) a J (pior)
+1. `clarity`: uma medida de quão claro é o diamante (I1 (pior), SI2, SI1, VS2, VS1, VVS2, VVS1, IF (melhor))
+1. `x`: comprimento em mm
+1. `y`: largura em mm
+1. `z`: profundidade em mm
+1. `depth`: porcentagem de profundidade total = z / média (x, y) = 2 * z / (x + y)
+1. `table`: largura do topo do diamante em relação ao ponto mais largo
+
+```{r, echo=FALSE}
+DT::datatable(ggplot2::diamonds)
+```
+
+
+## `faithful` {#faithful}
+
+Descreve o tempo entre erupções e duração das erupções do gêiser Old Faithful do Parque Yellowstone. São 272 observações de 2 variáveis.
+
+1. `eruptions`: duração da erupção, em minutos
+1. `waiting`: tempo de epera até a próxima erupção, em minutos
+
+```{r, echo=FALSE}
+DT::datatable(faithful)
+```
+
