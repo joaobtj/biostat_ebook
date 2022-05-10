@@ -771,7 +771,9 @@ ggplot(economics, aes(x = date, y = pce)) +
 <p class="caption">(\#fig:unnamed-chunk-32)(ref:tempob)</p>
 </div>
 
-## Gráficos para distribuição
+
+## Gráficos para distribuição (#graf_dist)
+
 
 Uma distribuição de frequência é uma forma de resumir uma quantidade de dados distribuídos em classes ou intervalos. A frequência é o número de observações que pertencem a cada classe. 
 
@@ -918,7 +920,9 @@ ggplot(faithful, aes(x = waiting)) +
 
 Uma forma popular de apresentar este gráfico é preenchendo a área abaixo da linha. Isto é possível ajustando o argumento `fill`.
 
+
 (ref:densf) Densidade da distribuição do tempo de espera entre erupções do gêiser Old Faithful. Ao ajustar o argumento `fill` é adicionada uma área preenchida abaixo da curva.
+
 
 
 ```r
@@ -1001,7 +1005,9 @@ O argumento `coef` ajusta o comprimentos dos *bigodes* como um múltiplo da AIQ.
 
 (ref:bpmpgbig2) Consumo de combustível na rodovia segundo a classe dos automóveis. O argumento `coef = 2.0` ajusta o comprimento dos *bigodes* para 2 vezes a AIQ.
 
+
 (ref:bpmpgbig1) Consumo de combustível na rodovia segundo a classe dos automóveis. O argumento `coef = 1.0` ajusta o comprimento dos *bigodes* para 1 vez a AIQ.
+
 
 
 ```r
