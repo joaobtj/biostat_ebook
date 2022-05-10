@@ -127,6 +127,16 @@
         "bit"
       ]
     },
+
+    "bitops": {
+      "Package": "bitops",
+      "Version": "1.0-7",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "b7d8d8ee39869c18d8846a184dd8a1af",
+      "Requirements": []
+    },
+
     "blob": {
       "Package": "blob",
       "Version": "1.2.3",
@@ -210,6 +220,16 @@
         "tibble"
       ]
     },
+    "checkmate": {
+      "Package": "checkmate",
+      "Version": "2.1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "147e4db6909d8814bb30f671b49d7e06",
+      "Requirements": [
+        "backports"
+      ]
+    },
     "cli": {
       "Package": "cli",
       "Version": "3.3.0",
@@ -236,6 +256,16 @@
       "Hash": "bb4341986bc8b914f0f0acf2e4a3f2f7",
       "Requirements": []
     },
+
+    "commonmark": {
+      "Package": "commonmark",
+      "Version": "1.8.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "2ba81b120c1655ab696c935ef33ea716",
+      "Requirements": []
+    },
+
     "cpp11": {
       "Package": "cpp11",
       "Version": "0.4.2",
@@ -450,23 +480,7 @@
       "Hash": "177475892cf4a55865868527654a7741",
       "Requirements": []
     },
-    "gganimate": {
-      "Package": "gganimate",
-      "Version": "1.0.7",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "729026083340f1076e622886c5b337b7",
-      "Requirements": [
-        "ggplot2",
-        "glue",
-        "plyr",
-        "progress",
-        "rlang",
-        "scales",
-        "stringi",
-        "tweenr"
-      ]
-    },
+
     "ggplot2": {
       "Package": "ggplot2",
       "Version": "3.3.6",
@@ -540,6 +554,33 @@
         "vctrs"
       ]
     },
+
+    "gt": {
+      "Package": "gt",
+      "Version": "0.5.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "f2640b730afa504e9a62755041b598c3",
+      "Requirements": [
+        "base64enc",
+        "bitops",
+        "checkmate",
+        "commonmark",
+        "dplyr",
+        "fs",
+        "ggplot2",
+        "glue",
+        "htmltools",
+        "magrittr",
+        "rlang",
+        "sass",
+        "scales",
+        "stringr",
+        "tibble",
+        "tidyselect"
+      ]
+    },
+
     "gtable": {
       "Package": "gtable",
       "Version": "0.3.0",
@@ -868,6 +909,7 @@
         "viridisLite"
       ]
     },
+
     "plyr": {
       "Package": "plyr",
       "Version": "1.8.7",
@@ -878,6 +920,7 @@
         "Rcpp"
       ]
     },
+
     "prettyunits": {
       "Package": "prettyunits",
       "Version": "1.1.1",

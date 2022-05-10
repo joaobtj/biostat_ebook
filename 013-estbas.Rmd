@@ -1,0 +1,333 @@
+
+```{r include=FALSE}
+library(magrittr)
+library(tibble)
+```
+
+
+# Estatística Básica 
+
+Neste capítulo, iremos estudar alguns itens que podem ser compreendidos como a base das análises estatísticas, pois são usados transversalmente em muitos outros assuntos tratados posteriormente.
+
+Para facilitar o entendimento, alguns dos próximos exemplos (deste e dos próximos capítulos) utilizarão os dados obtidos em uma população conforme descrito a seguir.
+
+Considere uma população com 150 árvores pertencente a um reflorestamento de Mogno Africano. O DAP destas árvores foi medido aos 5 anos após o plantio e os dados são mostrados na tabela abaixo:
+
+```{r, include=FALSE}
+# https://ainfo.cnptia.embrapa.br/digital/bitstream/item/155396/1/Enaag2016-p106.pdf
+set.seed("21102015")
+dap <- rnorm(150, mean = 13, sd = 2) %>% round(2)
+readr::write_csv(data.frame(dap), "data/dap.csv")
+
+```
+
+```{r, include=FALSE}
+library(gt)
+dap_matrix <- matrix(dap, ncol=10) %>% as_tibble(.name_repair = "unique")
+```
+
+```{r, echo=FALSE}
+dap_matrix %>% gt()%>% tab_options(column_labels.hidden = TRUE)
+
+```
+
+
+Os dados também podem ser acessados no arquivo [dap.csv](data/dap.csv).
+
+
+
+
+## Medidas de centro
+
+**Média**
+
+A média aritmética é a medida de centro mais comum.
+
+**Mediana**
+
+É o ponto do meio de uma distribuição, o número em relação ao qual metade das observações é menor, e metade, maior.
+
+
+:::{.example #centro name="Medidas de centro"}
+
+Considere o conjunto de dados [dap.csv](data/dap.csv).
+
+Qual a média e qual a mediana destes dados?
+
+
+```{r}
+# média
+mean(dap)
+
+# mediana
+median(dap)
+```
+
+
+:::
+
+
+## Medidas de dispersão
+
+As medidas de dispersão descrevem a variabilidade dos dados.
+
+### Quartil
+
+Os *quartis* delimitam a metade central. 
+
+* O primeiro quartil (Q1) cai em um quarto do caminho da lista. 
+* O terceiro quartil (Q3) cai em três quartos do caminho na lista.
+* A Amplitude interquartil (AIQ) é a diferença entre o 3º e 1º quartil
+
+Conhecendo os quartis, podemos descrever uma distribuição com um Resumo de cinco números. São eles:
+
+* menor observação
+* primeiro quartil
+* mediana
+* terceiro quartil
+* maior observação
+
+
+
+
+:::{.example #cinco name="Resumo dos cinco números"}
+
+Considere o conjunto de dados [dap.csv](data/dap.csv).
+
+Qual o Resumo de cinco números para estes dados?
+
+```{r}
+
+quantile(dap)
+
+```
+
+:::
+
+### Variância e desvio-padrão
+
+São as descrições numéricas mais comuns de uma distribuição.
+
+A variância s^2^ de um conjunto de observações é a média dos quadrados dos desvios das observações a partir de sua média.
+
+O desvio-padrão s é a raiz quadrada da variância s^2^.
+
+:::{.example #desvio name="Variância e desvio-padrão"}
+
+Considere o conjunto de dados [dap.csv](data/dap.csv).
+
+Qual a variância e o desvio-padrão destes dados?^[As funções `var` e `sd` utilizam o denominador n-1 no cálculo, que não é adequado para o cálculo da variância e desvio-padrão de uma população. No entanto, para uma população de tamanho grande, as diferenças são desprezíveis.]
+
+```{r}
+# Variância
+var(dap)
+
+# Desvio-padrão
+sd(dap)
+
+```
+
+:::
+
+
+## Descrição de uma distribuição
+
+Qualquer conjunto de dados pode (e deve) ser descrito por meio dos resumos numéricos juntamente com a análise gráfica (Seção \@ref(graf_dist).
+
+Essa descrição visa também verificar a assimetria dos dados e a presença de valores discrepantes.
+
+:::{.example #desc1 name="Descrição de uma distribuição simétrica"}
+
+Considere o conjunto de dados [dap.csv](data/dap.csv).
+
+Descreva esta distribuição com o uso de gráficos e resumos numéricos.
+
+
+```{r}
+# Histograma
+ hist(dap)
+
+# Diagrama de ramo e folhas
+stem(dap)
+
+# Box-plot
+boxplot(dap)
+
+```
+
+Esta é uma distribuição simétrica e que não possui valores atípicos. 
+
+O DAP média da população é de `r mean(dap) %>% round(2)` cm com desvio-padrão de `r sd(dap) %>% round(2)`.
+
+::: 
+
+
+Vejamos outro exemplo com uma distribuição bastante diferente
+
+
+:::{.example #desc2 name="Descrição de uma distribuição assimétrica"}
+
+Considere os dados do tempo de sobrevivência de porquinhos-da-índia após terem recebido uma injeção de bactéria infecciosa em um experimento médico.
+
+Os dados podem ser encontrados no arquivo [porquinho.xlsx](data/porquinho.xlsx)
+
+```{r, include=FALSE}
+porq <- readxl::read_excel("data/porquinho.xlsx") %>% as.vector %>% unlist
+```
+
+```{r}
+# Histograma
+ hist(porq)
+
+# Diagrama de ramo e folhas
+stem(porq)
+
+# Box-plot
+boxplot(porq)
+
+
+
+```
+
+A distribuição é assimétrica á direita. A mediana da distribuição é `r median(porq)`. 
+
+O resumo de cinco números é `r quantile(porq)`
+
+Metade dos porquinhos-da-índia morrem dentro dos primeiros `r median(porq)%>% round(0)` dias. Quase todos não sobrevivem até `r quantile(porq)[4] %>% round(0)` dias.
+
+No entanto, alguns poucos animais sobrevivem mais, de modo que o gráfico se estende mais para a direita do pico, até o valor mais alto de `r max(porq)` dias.
+
+Tempos de sobrevivência, seja de máquinas sob esforço ou de pacientes depois de um tratamento, em geral, são assimétricos à direita.
+
+::: 
+
+
+Muitas vezes, uma distribuição pode apresentar dois (ou mais) picos. A existência de mais de um pico sugere que indívíduos de vários tipos estão misturados no conjunto de dados.
+
+:::{.example #desc3 name="Descrição de uma distribuição bimodal"}
+
+```{r, include=FALSE}
+set.seed("21102015")
+f <- rnorm(100, 20, 5) %>% round(1)
+m <- rnorm(100, 40, 5) %>% round(1)
+peixe <- c(m,f)
+readr::write_csv(data.frame(peixe), "data/peixe.csv")
+```
+
+  
+Considere o conjunto de dados [peixe.csv](data/peixe.csv) que contém o comprimento (em cm) de vários peixes apanhados em um rio.
+
+
+```{r}
+# Histograma
+ hist(peixe)
+
+# Diagrama de ramo e folhas
+stem(peixe)
+```
+
+Esta é uma distribuição bimodal, ou seja, tem dois picos, que representam peixes menores e maiores. 
+
+A média da distribuição é `r mean(peixe) %>% round(2)` cm. Veja que este valor pouco representa a distribuição, pois a média está no *"vale"* entre os picos, ou seja, uma região que contém poucos valores. 
+
+Os dois picos podem refletir um dimorfismo sexual (machos maiores que fêmeas ou vice-versa) ou a presença de duas raças de peixes no rio.
+
+```{r, include=FALSE}
+peixe2 <- data.frame(m=m, f=f)
+readr::write_csv(peixe2, "data/peixe2.csv")
+```
+
+A descrição separada das duas distribuições pode ser bem mais útil. Veja o arquivo [peixe2.csv](data/peixe2.csv)
+
+
+```{r}
+# Histograma para peixes machos
+hist(peixe2$m)
+
+# Histograma para peixes fêmeas
+hist(peixe2$f)
+```
+
+A média do tamanho dos peixes machos é `r mean(peixe2$m) %>% round(1)` cm e dos peixes fêmeas é `r mean(peixe2$f) %>% round(1)` cm.
+
+
+:::
+
+
+Por fim, pode haver nas distribuições um ou alguns poucos valores discrepantes, ou seja, valores que diferem consideravelmente dos demais. Muito frequentemente, também são chamados de *outliers.*
+
+
+:::{.example #descdiscrepante name="Descrição de uma distribuição com valores discrepantes"}
+
+```{r, include=FALSE}
+set.seed("21102015")
+morango <- rnorm(32, 700, 100) %>% round(0)
+morango[10] <- morango[10]*10
+readr::write_csv(data.frame(morango), "data/morango.csv")
+```
+
+
+Considere os dados de produção de morango (em g/planta) contidos no arquivo [morango.csv](data/morango.csv).
+
+```{r}
+# Histograma
+ hist(morango)
+
+# Diagrama de ramo e folhas
+stem(morango)
+
+# Box-plot
+boxplot(morango)
+
+```
+
+Esta distribuição apresenta claramente um valor discrepante: `r max(morango)` g na posição `r which(morango  == max(morango))` do conjunto de dados.
+
+A média da distribuição é `r mean(morango) %>% round(1)` g e a mediana é `r median(morango)` g.
+
+O desvio-padrão é `r sd(morango) %>% round(1)` e o resumo de cinco números é `r quantile(morango)`.
+
+
+Ao se excluir este valor discrepante (*outlier*), veja como fica a distribuição.
+
+```{r}
+morango2 <- morango 
+morango2[10] <- NA
+
+# Histograma
+ hist(morango2)
+
+# Diagrama de ramo e folhas
+stem(morango2)
+
+# Box-plot
+boxplot(morango2)
+```
+
+Agora, conseguimos ver que a distribuição é simétrica. 
+
+A média é `r mean(morango2, na.rm=TRUE) %>% round(1)` g e a mediana é `r median(morango2, na.rm=TRUE)` g.
+
+O desvio-padrão é `r sd(morango2, na.rm=TRUE) %>% round(1)` e o resumo de cinco números é `r quantile(morango2, na.rm=TRUE)`.
+
+:::
+
+## Comparação média/mediana
+
+O exemplo \@ref(exm:descdiscrepante) ilustra um fato importante sobre a média como medida de centro: ela é muito sensível a observações extremas, como em uma distribuição assimétrica ou na presença de valores atípicos.
+
+Como a média não pode resistir à influência de observações extremas, dizemos que ela não é uma medida resistente de centro. 
+
+Ao contrário, a mediana é influenciada apenas pelo número total de pontos de dados e pelo valor numérico do ponto, ou pontos, localizado no centro da distribuição. 
+
+A média e a mediana de uma distribuição razoavelmente simétrica estão bem próximas uma da outra. 
+
+Se a distribuição for exatamente simétrica, a média e a mediana serão exatamente iguais.
+
+Em uma distribuição assimétrica, a média está, em geral, numa posição mais extrema na cauda longa do que a mediana.
+
+
+Assim como a média, o desvio-padrão *s* não é resistente. Algumas observações atípicas podem tornar *s* bastante grande.
+
+Como o desvio-padrão mede a dispersão em torno da média, deve ser usado apenas quando a média for escolhida como a medida de centro.
+

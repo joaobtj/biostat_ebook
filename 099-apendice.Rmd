@@ -67,6 +67,7 @@ Este conjunto contém dados de um experimento em que foi medido o comprimento de
 DT::datatable(ToothGrowth)
 ```
 
+
 ## `economics` {#economics}
 
 Este conjunto de dados traz uma série temporal de dados econômicos dos Estados Unidos ^[Fonte: https://fred.stlouisfed.org/]. São 574 linhas com 6 variáveis
@@ -145,3 +146,4 @@ Descreve o tempo entre erupções e duração das erupções do gêiser Old Fait
 ```{r, echo=FALSE}
 DT::datatable(faithful)
 ```
+
