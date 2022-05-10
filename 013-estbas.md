@@ -926,9 +926,85 @@ Por fim, pode haver nas distribuições um ou alguns poucos valores discrepantes
 
 
 
-Considere os dados de produção de morango (em kg/ha) coletados de 50 plantas contidos no arquivo [morango.csv](data/morango.csv)
+Considere os dados de produção de morango (em g/planta) contidos no arquivo [morango.csv](data/morango.csv).
 
 
+```r
+# Histograma
+ hist(morango)
+```
+
+<img src="013-estbas_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+
+```r
+# Diagrama de ramo e folhas
+stem(morango)
+```
+
+```
+## 
+##   The decimal point is 3 digit(s) to the right of the |
+## 
+##   0 | 66666666677777888888
+##   2 | 
+##   4 | 
+##   6 | 9
+```
+
+```r
+# Box-plot
+boxplot(morango)
+```
+
+<img src="013-estbas_files/figure-html/unnamed-chunk-16-2.png" width="672" />
+
+Esta distribuição apresenta claramente um valor discrepante: 6870 g na posição 10 do conjunto de dados.
+
+A média da distribuição é 977.3 g e a mediana é 663 g.
+
+O desvio-padrão é 1352.3 e o resumo de cinco números é 587, 630, 663, 771, 6870.
+
+
+Ao se excluir este valor discrepante (*outlier*), veja como fica a distribuição.
+
+
+```r
+morango2 <- morango 
+morango2[10] <- NA
+
+# Histograma
+ hist(morango2)
+```
+
+<img src="013-estbas_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+
+```r
+# Diagrama de ramo e folhas
+stem(morango2)
+```
+
+```
+## 
+##   The decimal point is 2 digit(s) to the right of the |
+## 
+##   5 | 999
+##   6 | 02334
+##   6 | 55669
+##   7 | 3
+##   7 | 67799
+##   8 | 3
+```
+
+```r
+# Box-plot
+boxplot(morango2)
+```
+
+<img src="013-estbas_files/figure-html/unnamed-chunk-17-2.png" width="672" />
+
+A média da distribuição é 682.7 g e a mediana é 658.5 g.
+
+O desvio-padrão é 77.5 e o resumo de cinco números é 587, 628.25, 658.5, 761.25, 829.
 
 :::
 
