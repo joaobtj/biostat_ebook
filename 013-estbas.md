@@ -604,3 +604,335 @@ A média aritmética é a medida de centro mais comum.
 **Mediana**
 
 É o ponto do meio de uma distribuição, o número em relação ao qual metade das observações é menor, e metade, maior.
+
+
+:::{.example #centro name="Medidas de centro"}
+
+Considere o conjunto de dados [dap.csv](data/dap.csv).
+
+Qual a média e qual a mediana destes dados?
+
+
+
+```r
+# média
+mean(dap)
+```
+
+```
+## [1] 12.94553
+```
+
+```r
+# mediana
+median(dap)
+```
+
+```
+## [1] 12.815
+```
+
+
+:::
+
+
+## Medidas de dispersão
+
+As medidas de dispersão descrevem a variabilidade dos dados.
+
+### Quartil
+
+Os *quartis* delimitam a metade central. 
+
+* O primeiro quartil (Q1) cai em um quarto do caminho da lista. 
+* O terceiro quartil (Q3) cai em três quartos do caminho na lista.
+* A Amplitude interquartil (AIQ) é a diferença entre o 3º e 1º quartil
+
+Conhecendo os quartis, podemos descrever uma distribuição com um Resumo de cinco números. São eles:
+
+* menor observação
+* primeiro quartil
+* mediana
+* terceiro quartil
+* maior observação
+
+
+
+
+:::{.example #cinco name="Resumo dos cinco números"}
+
+Considere o conjunto de dados [dap.csv](data/dap.csv).
+
+Qual o Resumo de cinco números para estes dados?
+
+
+```r
+quantile(dap)
+```
+
+```
+##     0%    25%    50%    75%   100% 
+##  7.920 11.620 12.815 14.325 16.830
+```
+
+:::
+
+### Variância e desvio-padrão
+
+São as descrições numéricas mais comuns de uma distribuição.
+
+A variância s^2^ de um conjunto de observações é a média dos quadrados dos desvios das observações a partir de sua média.
+
+O desvio-padrão s é a raiz quadrada da variância s^2^.
+
+:::{.example #desvio name="Variância e desvio-padrão"}
+
+Considere o conjunto de dados [dap.csv](data/dap.csv).
+
+Qual a variância e o desvio-padrão destes dados?
+
+
+```r
+# Variância
+var(dap)
+```
+
+```
+## [1] 3.168652
+```
+
+```r
+# Desvio-padrão
+sd(dap)
+```
+
+```
+## [1] 1.780071
+```
+
+:::
+
+
+## Descrição de uma distribuição
+
+Qualquer conjunto de dados pode (e deve) ser descrito por meio dos resumos numéricos juntamente com a análise gráfica (Seção \@ref(graf_dist).
+
+Essa descrição visa também verificar a assimetria dos dados e a presença de valores discrepantes.
+
+:::{.example #desc1 name="Descrição de uma distribuição simétrica"}
+
+Considere o conjunto de dados [dap.csv](data/dap.csv).
+
+Descreva esta distribuição com o uso de gráficos e resumos numéricos.
+
+
+
+```r
+# Histograma
+ hist(dap)
+```
+
+<img src="013-estbas_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+
+```r
+# Diagrama de ramo e folhas
+stem(dap)
+```
+
+```
+## 
+##   The decimal point is at the |
+## 
+##    7 | 9
+##    8 | 
+##    8 | 8
+##    9 | 
+##    9 | 89
+##   10 | 002344
+##   10 | 667889999
+##   11 | 0001111223444
+##   11 | 5556667777888889
+##   12 | 000000111122334
+##   12 | 5555666688888999999
+##   13 | 0133
+##   13 | 5555556678888888999
+##   14 | 11122233444
+##   14 | 55666788899
+##   15 | 000012234
+##   15 | 5666668
+##   16 | 02
+##   16 | 55778
+```
+
+```r
+# Box-plot
+boxplot(dap)
+```
+
+<img src="013-estbas_files/figure-html/unnamed-chunk-8-2.png" width="672" />
+
+Esta é uma distribuição simétrica e que não possui valores atípicos. 
+
+O DAP média da população é de 12.95 cm com desvio-padrão de 1.78.
+
+::: 
+
+
+Vejamos outro exemplo com uma distribuição bastante diferente
+
+
+:::{.example #desc2 name="Descrição de uma distribuição assimétrica"}
+
+Considere os dados do tempo de sobrevivência de porquinhos-da-índia após terem recebido uma injeção de bactéria infecciosa em um experimento médico.
+
+Os dados podem ser encontrados no arquivo [porquinho.xlsx](data/porquinho.xlsx)
+
+
+
+
+```r
+# Histograma
+ hist(porq)
+```
+
+<img src="013-estbas_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+
+```r
+# Diagrama de ramo e folhas
+stem(porq)
+```
+
+```
+## 
+##   The decimal point is 2 digit(s) to the right of the |
+## 
+##   0 | 455666677778888888888999999
+##   1 | 0000000000011111222334444556678889
+##   2 | 01145
+##   3 | 38
+##   4 | 0
+##   5 | 12
+##   6 | 0
+```
+
+```r
+# Box-plot
+boxplot(porq)
+```
+
+<img src="013-estbas_files/figure-html/unnamed-chunk-10-2.png" width="672" />
+
+A distribuição é assimétrica á direita. A mediana da distribuição é 102.5. 
+
+O resumo de cinco números é 43, 82.75, 102.5, 149.25, 598
+
+Metade dos porquinhos-da-índia morrem dentro dos primeiros 102 dias. Quase todos não sobrevivem até 149 dias.
+
+No entanto, alguns poucos animais sobrevivem mais, de modo que o gráfico se estende mais para a direita do pico, até o valor mais alto de 598 dias.
+
+Tempos de sobrevivência, seja de máquinas sob esforço ou de pacientes depois de um tratamento, em geral, são assimétricos à direita.
+
+::: 
+
+
+Muitas vezes, uma distribuição pode apresentar dois (ou mais) picos. A existência de mais de um pico sugere que indívíduos de vários tipos estão misturados no conjunto de dados.
+
+:::{.example #desc3 name="Descrição de uma distribuição bimodal"}
+
+
+
+  
+Considere o conjunto de dados [peixe.csv](data/peixe.csv) que contém o comprimento (em cm) de vários peixes apanhados em um rio.
+
+
+
+```r
+# Histograma
+ hist(peixe)
+```
+
+<img src="013-estbas_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+
+```r
+# Diagrama de ramo e folhas
+stem(peixe)
+```
+
+```
+## 
+##   The decimal point is at the |
+## 
+##    8 | 5
+##   10 | 
+##   12 | 646
+##   14 | 013467789114579
+##   16 | 0122557900144577
+##   18 | 1277780145566788
+##   20 | 0822222458999
+##   22 | 022389125668999
+##   24 | 4579900348
+##   26 | 02456135
+##   28 | 072356
+##   30 | 15
+##   32 | 012591234
+##   34 | 336801236
+##   36 | 000344678901145556679
+##   38 | 00159001335577
+##   40 | 025682556899
+##   42 | 03555578012356
+##   44 | 02475569
+##   46 | 456815
+##   48 | 6
+##   50 | 2
+```
+
+Esta é uma distribuição bimodal, ou seja, tem dois picos, que representam peixes menores e maiores. 
+
+A média da distribuição é 29.67 cm. Veja que este valor pouco representa a distribuição, pois a média está no *"vale"* entre os picos, ou seja, uma região que contém poucos valores. 
+
+Os dois picos podem refletir um dimorfismo sexual (machos maiores que fêmeas ou vice-versa) ou a presença de duas raças de peixes no rio.
+
+
+
+A descrição separada das duas distribuições pode ser bem mais útil. Veja o arquivo [peixe2.csv](data/peixe2.csv)
+
+
+
+```r
+# Histograma para peixes machos
+hist(peixe2$m)
+```
+
+<img src="013-estbas_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+
+```r
+# Histograma para peixes fêmeas
+hist(peixe2$f)
+```
+
+<img src="013-estbas_files/figure-html/unnamed-chunk-14-2.png" width="672" />
+
+A média do tamanho dos peixes machos é 39.1 cm e dos peixes fêmeas é 20.3 cm.
+
+
+:::
+
+
+Por fim, pode haver nas distribuições um ou alguns poucos valores discrepantes, ou seja, valores que diferem consideravelmente dos demais. Muito frequentemente, também são chamados de *outliers.*
+
+
+:::{.example #desc3 name="Descrição de uma distribuição com valores discrepantes"}
+
+
+
+
+Considere os dados de produção de morango (em kg/ha) coletados de 50 plantas contidos no arquivo [morango.csv](data/morango.csv)
+
+
+
+:::
+
+## Comparação média/mediana e desvio-padrão/quartis
+
+
+

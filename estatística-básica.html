@@ -709,6 +709,206 @@
 <p>A média aritmética é a medida de centro mais comum.</p>
 <p><strong>Mediana</strong></p>
 <p>É o ponto do meio de uma distribuição, o número em relação ao qual metade das observações é menor, e metade, maior.</p>
+<div class="example">
+<p><span id="exm:centro" class="example"><strong>Exemplo 6.1  (Medidas de centro) </strong></span>Considere o conjunto de dados <a href="data/dap.csv">dap.csv</a>.</p>
+<p>Qual a média e qual a mediana destes dados?</p>
+<div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># média</span>
+<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dap</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 12.94553</code></pre>
+<div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># mediana</span>
+<span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">dap</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 12.815</code></pre>
+</div>
+</div>
+<div id="medidas-de-dispersão" class="section level2" number="6.2">
+<h2>
+<span class="header-section-number">6.2</span> Medidas de dispersão<a class="anchor" aria-label="anchor" href="#medidas-de-dispers%C3%A3o"><i class="fas fa-link"></i></a>
+</h2>
+<p>As medidas de dispersão descrevem a variabilidade dos dados.</p>
+<div id="quartil" class="section level3" number="6.2.1">
+<h3>
+<span class="header-section-number">6.2.1</span> Quartil<a class="anchor" aria-label="anchor" href="#quartil"><i class="fas fa-link"></i></a>
+</h3>
+<p>Os <em>quartis</em> delimitam a metade central.</p>
+<ul>
+<li>O primeiro quartil (Q1) cai em um quarto do caminho da lista.</li>
+<li>O terceiro quartil (Q3) cai em três quartos do caminho na lista.</li>
+<li>A Amplitude interquartil (AIQ) é a diferença entre o 3º e 1º quartil</li>
+</ul>
+<p>Conhecendo os quartis, podemos descrever uma distribuição com um Resumo de cinco números. São eles:</p>
+<ul>
+<li>menor observação</li>
+<li>primeiro quartil</li>
+<li>mediana</li>
+<li>terceiro quartil</li>
+<li>maior observação</li>
+</ul>
+<div class="example">
+<p><span id="exm:cinco" class="example"><strong>Exemplo 6.2  (Resumo dos cinco números) </strong></span>Considere o conjunto de dados <a href="data/dap.csv">dap.csv</a>.</p>
+<p>Qual o Resumo de cinco números para estes dados?</p>
+<div class="sourceCode" id="cb159"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">dap</span><span class="op">)</span></code></pre></div>
+<pre><code>##     0%    25%    50%    75%   100% 
+##  7.920 11.620 12.815 14.325 16.830</code></pre>
+</div>
+</div>
+<div id="variância-e-desvio-padrão" class="section level3" number="6.2.2">
+<h3>
+<span class="header-section-number">6.2.2</span> Variância e desvio-padrão<a class="anchor" aria-label="anchor" href="#vari%C3%A2ncia-e-desvio-padr%C3%A3o"><i class="fas fa-link"></i></a>
+</h3>
+<p>São as descrições numéricas mais comuns de uma distribuição.</p>
+<p>A variância s<sup>2</sup> de um conjunto de observações é a média dos quadrados dos desvios das observações a partir de sua média.</p>
+<p>O desvio-padrão s é a raiz quadrada da variância s<sup>2</sup>.</p>
+<div class="example">
+<p><span id="exm:desvio" class="example"><strong>Exemplo 6.3  (Variância e desvio-padrão) </strong></span>Considere o conjunto de dados <a href="data/dap.csv">dap.csv</a>.</p>
+<p>Qual a variância e o desvio-padrão destes dados?</p>
+<div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Variância</span>
+<span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">dap</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 3.168652</code></pre>
+<div class="sourceCode" id="cb163"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Desvio-padrão</span>
+<span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">dap</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 1.780071</code></pre>
+</div>
+</div>
+</div>
+<div id="descrição-de-uma-distribuição" class="section level2" number="6.3">
+<h2>
+<span class="header-section-number">6.3</span> Descrição de uma distribuição<a class="anchor" aria-label="anchor" href="#descri%C3%A7%C3%A3o-de-uma-distribui%C3%A7%C3%A3o"><i class="fas fa-link"></i></a>
+</h2>
+<p>Qualquer conjunto de dados pode (e deve) ser descrito por meio dos resumos numéricos juntamente com a análise gráfica (Seção @ref(graf_dist).</p>
+<p>Essa descrição visa também verificar a assimetria dos dados e a presença de valores discrepantes.</p>
+<div class="example">
+<p><span id="exm:desc1" class="example"><strong>Exemplo 6.4  (Descrição de uma distribuição simétrica) </strong></span>Considere o conjunto de dados <a href="data/dap.csv">dap.csv</a>.</p>
+<p>Descreva esta distribuição com o uso de gráficos e resumos numéricos.</p>
+<div class="sourceCode" id="cb165"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Histograma</span>
+ <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">dap</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="013-estbas_files/figure-html/unnamed-chunk-8-1.png" width="672"></div>
+<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Diagrama de ramo e folhas</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/stem.html">stem</a></span><span class="op">(</span><span class="va">dap</span><span class="op">)</span></code></pre></div>
+<pre><code>## 
+##   The decimal point is at the |
+## 
+##    7 | 9
+##    8 | 
+##    8 | 8
+##    9 | 
+##    9 | 89
+##   10 | 002344
+##   10 | 667889999
+##   11 | 0001111223444
+##   11 | 5556667777888889
+##   12 | 000000111122334
+##   12 | 5555666688888999999
+##   13 | 0133
+##   13 | 5555556678888888999
+##   14 | 11122233444
+##   14 | 55666788899
+##   15 | 000012234
+##   15 | 5666668
+##   16 | 02
+##   16 | 55778</code></pre>
+<div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Box-plot</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">dap</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="013-estbas_files/figure-html/unnamed-chunk-8-2.png" width="672"></div>
+<p>Esta é uma distribuição simétrica e que não possui valores atípicos.</p>
+<p>O DAP média da população é de 12.95 cm com desvio-padrão de 1.78.</p>
+</div>
+<p>Vejamos outro exemplo com uma distribuição bastante diferente</p>
+<div class="example">
+<p><span id="exm:desc2" class="example"><strong>Exemplo 6.5  (Descrição de uma distribuição assimétrica) </strong></span>Considere os dados do tempo de sobrevivência de porquinhos-da-índia após terem recebido uma injeção de bactéria infecciosa em um experimento médico.</p>
+<p>Os dados podem ser encontrados no arquivo <a href="data/porquinho.xlsx">porquinho.xlsx</a></p>
+<div class="sourceCode" id="cb169"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Histograma</span>
+ <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">porq</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="013-estbas_files/figure-html/unnamed-chunk-10-1.png" width="672"></div>
+<div class="sourceCode" id="cb170"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Diagrama de ramo e folhas</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/stem.html">stem</a></span><span class="op">(</span><span class="va">porq</span><span class="op">)</span></code></pre></div>
+<pre><code>## 
+##   The decimal point is 2 digit(s) to the right of the |
+## 
+##   0 | 455666677778888888888999999
+##   1 | 0000000000011111222334444556678889
+##   2 | 01145
+##   3 | 38
+##   4 | 0
+##   5 | 12
+##   6 | 0</code></pre>
+<div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Box-plot</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">porq</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="013-estbas_files/figure-html/unnamed-chunk-10-2.png" width="672"></div>
+<p>A distribuição é assimétrica á direita. A mediana da distribuição é 102.5.</p>
+<p>O resumo de cinco números é 43, 82.75, 102.5, 149.25, 598</p>
+<p>Metade dos porquinhos-da-índia morrem dentro dos primeiros 102 dias. Quase todos não sobrevivem até 149 dias.</p>
+<p>No entanto, alguns poucos animais sobrevivem mais, de modo que o gráfico se estende mais para a direita do pico, até o valor mais alto de 598 dias.</p>
+<p>Tempos de sobrevivência, seja de máquinas sob esforço ou de pacientes depois de um tratamento, em geral, são assimétricos à direita.</p>
+</div>
+<p>Muitas vezes, uma distribuição pode apresentar dois (ou mais) picos. A existência de mais de um pico sugere que indívíduos de vários tipos estão misturados no conjunto de dados.</p>
+<div class="example">
+<p><span id="exm:desc3" class="example"><strong>Exemplo 6.6  (Descrição de uma distribuição bimodal) </strong></span>Considere o conjunto de dados <a href="data/peixe.csv">peixe.csv</a> que contém o comprimento (em cm) de vários peixes apanhados em um rio.</p>
+<div class="sourceCode" id="cb173"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Histograma</span>
+ <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">peixe</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="013-estbas_files/figure-html/unnamed-chunk-12-1.png" width="672"></div>
+<div class="sourceCode" id="cb174"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Diagrama de ramo e folhas</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/stem.html">stem</a></span><span class="op">(</span><span class="va">peixe</span><span class="op">)</span></code></pre></div>
+<pre><code>## 
+##   The decimal point is at the |
+## 
+##    8 | 5
+##   10 | 
+##   12 | 646
+##   14 | 013467789114579
+##   16 | 0122557900144577
+##   18 | 1277780145566788
+##   20 | 0822222458999
+##   22 | 022389125668999
+##   24 | 4579900348
+##   26 | 02456135
+##   28 | 072356
+##   30 | 15
+##   32 | 012591234
+##   34 | 336801236
+##   36 | 000344678901145556679
+##   38 | 00159001335577
+##   40 | 025682556899
+##   42 | 03555578012356
+##   44 | 02475569
+##   46 | 456815
+##   48 | 6
+##   50 | 2</code></pre>
+<p>Esta é uma distribuição bimodal, ou seja, tem dois picos, que representam peixes menores e maiores.</p>
+<p>A média da distribuição é 29.67 cm. Veja que este valor pouco representa a distribuição, pois a média está no <em>“vale”</em> entre os picos, ou seja, uma região que contém poucos valores.</p>
+<p>Os dois picos podem refletir um dimorfismo sexual (machos maiores que fêmeas ou vice-versa) ou a presença de duas raças de peixes no rio.</p>
+<p>A descrição separada das duas distribuições pode ser bem mais útil. Veja o arquivo <a href="data/peixe2.csv">peixe2.csv</a></p>
+<div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Histograma para peixes machos</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">peixe2</span><span class="op">$</span><span class="va">m</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="013-estbas_files/figure-html/unnamed-chunk-14-1.png" width="672"></div>
+<div class="sourceCode" id="cb177"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Histograma para peixes fêmeas</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">peixe2</span><span class="op">$</span><span class="va">f</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="013-estbas_files/figure-html/unnamed-chunk-14-2.png" width="672"></div>
+<p>A média do tamanho dos peixes machos é 39.1 cm e dos peixes fêmeas é 20.3 cm.</p>
+</div>
+<p>Por fim, pode haver nas distribuições um ou alguns poucos valores discrepantes, ou seja, valores que diferem consideravelmente dos demais. Muito frequentemente, também são chamados de <em>outliers.</em></p>
+<div class="example">
+<p><span id="exm:desc3" class="example"><strong>Exemplo 6.6  (Descrição de uma distribuição com valores discrepantes) </strong></span>Considere os dados de produção de morango (em kg/ha) coletados de 50 plantas contidos no arquivo <a href="data/morango.csv">morango.csv</a></p>
+</div>
+</div>
+<div id="comparação-médiamediana-e-desvio-padrãoquartis" class="section level2" number="6.4">
+<h2>
+<span class="header-section-number">6.4</span> Comparação média/mediana e desvio-padrão/quartis<a class="anchor" aria-label="anchor" href="#compara%C3%A7%C3%A3o-m%C3%A9diamediana-e-desvio-padr%C3%A3oquartis"><i class="fas fa-link"></i></a>
+</h2>
 
 </div>
 </div>
@@ -723,6 +923,14 @@
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#estat%C3%ADstica-b%C3%A1sica"><span class="header-section-number">6</span> Estatística Básica</a></li>
 <li><a class="nav-link" href="#medidas-de-centro"><span class="header-section-number">6.1</span> Medidas de centro</a></li>
+<li>
+<a class="nav-link" href="#medidas-de-dispers%C3%A3o"><span class="header-section-number">6.2</span> Medidas de dispersão</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#quartil"><span class="header-section-number">6.2.1</span> Quartil</a></li>
+<li><a class="nav-link" href="#vari%C3%A2ncia-e-desvio-padr%C3%A3o"><span class="header-section-number">6.2.2</span> Variância e desvio-padrão</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#descri%C3%A7%C3%A3o-de-uma-distribui%C3%A7%C3%A3o"><span class="header-section-number">6.3</span> Descrição de uma distribuição</a></li>
+<li><a class="nav-link" href="#compara%C3%A7%C3%A3o-m%C3%A9diamediana-e-desvio-padr%C3%A3oquartis"><span class="header-section-number">6.4</span> Comparação média/mediana e desvio-padrão/quartis</a></li>
 </ul>
 
       <div class="book-extra">

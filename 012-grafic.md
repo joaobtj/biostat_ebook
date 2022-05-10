@@ -771,7 +771,7 @@ ggplot(economics, aes(x = date, y = pce)) +
 <p class="caption">(\#fig:unnamed-chunk-32)(ref:tempob)</p>
 </div>
 
-## Gráficos para distribuição
+## Gráficos para distribuição (#graf_dist)
 
 Uma distribuição de frequência é uma forma de resumir uma quantidade de dados distribuídos em classes ou intervalos. A frequência é o número de observações que pertencem a cada classe. 
 
