@@ -1,0 +1,48 @@
+
+```{r include=FALSE}
+library(magrittr)
+library(tibble)
+```
+
+
+# Estatística Básica 
+
+Neste capítulo, iremos estudar alguns itens que podem ser compreendidos como a base das análises estatísticas, pois são usados transversalmente em muitos outros assuntos tratados posteriormente.
+
+Para facilitar o entendimento, alguns dos próximos exemplos utilizarão os dados obtidos em uma população conforme descrito a seguir.
+
+Considere uma população com 150 árvores pertencente a um reflorestamento de Mogno Africano. O DAP destas árvores foi medido aos 5 anos após o plantio e os dados são mostrados na tabela abaixo:
+
+```{r, include=FALSE}
+# https://ainfo.cnptia.embrapa.br/digital/bitstream/item/155396/1/Enaag2016-p106.pdf
+set.seed("21102015")
+dap <- rnorm(150, mean = 13, sd = 2) %>% round(2)
+readr::write_csv(data.frame(dap), "data/dap.csv")
+
+```
+
+```{r, include=FALSE}
+library(gt)
+dap_matrix <- matrix(dap, ncol=10) %>% as_tibble(.name_repair = "unique")
+```
+
+```{r, echo=FALSE}
+dap_matrix %>% gt()%>% tab_options(column_labels.hidden = TRUE)
+
+```
+
+
+Os dados também podem ser acessados no arquivo [dap.csv](data/dap.csv).
+
+
+
+
+## Medidas de centro
+
+**Média**
+
+A média aritmética é a medida de centro mais comum.
+
+**Mediana**
+
+É o ponto do meio de uma distribuição, o número em relação ao qual metade das observações é menor, e metade, maior.
