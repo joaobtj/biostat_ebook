@@ -130,6 +130,7 @@ descrição-de-uma-distribuição
 comparação-médiamediana
 introdução-à-inferência
 intervalo-de-confiança-para-a-média-populacional
+o-teste-t-para-uma-amostra
 conjunto-de-dados-do-r
 gapminder
 mpg

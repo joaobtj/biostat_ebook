@@ -11,7 +11,7 @@ editor_options:
 
 A inferência estatística fornece métodos para se tirarem conclusões sobre uma população a partir de dados amostrais.
 
-* Intervalos de confiança: para se estimar o valor de um parâmetro de uma população
+* Intervalos de confiança: para se estimar o valor de um parâmetro de uma população;
 * Testes de significância ou Teste de hipóteses: para se avaliar a evidência a favor ou contra uma afirmativa sobre uma população. 
 
 Assim, o objetivo de uma amostragem é inferirmos, a partir dos dados amostrais, alguma conclusão sobre a população mais ampla que a amostra representa, associada a uma probabilidade. 
@@ -133,6 +133,29 @@ Calculando a proporção de ICs que não contém a média populacional.
 ## [1] 0.06
 ```
 
-Estes resultados mostram que 6 dos 100 ICs simulados não contém a média populacional. 
+Estes resultados mostram que 6 dos 100 ICs simulados não contém a média populacional. Para um IC de 95%, está 
+bem próximo do valor esperado. 
 
 :::
+
+
+## O teste t para uma amostra
+
+O teste t para uma amostra compara uma média amostral com um valor sob hipótese nula. 
+
+O teste é planejado para se avaliar a força da evidência contra a hipótese nula, ou seja, a hipótese nula é verdadeira até que se prove o contrário.
+
+Como regra de decisão, comparamos o p-valor do teste com um valor de probabilidade definido anteriormente, formalmente conhecido como α.
+
+O p-valor é definido como a probabilidade calculada de que, supondo a hipótese nula verdadeira, o teste assuma um valor tão ou mais extremo que o valor realmente observado.
+
+O valor de α mais comumente utilizado é de 0,05 ou 5%. No entanto, dependendo da área de conhecimento, este valor pode ser maior ou menor. 
+
+Antes de realizar qualquer teste de hipóteses, como o teste t, as hipóteses devem ser claramente descritas.
+
+Hipóteses:
+* H~0~: hipótese nula, ou seja, a afirmativa a ser testada.
+
+* H~1~ ou H~a~: a hipótese alternativa, ou seja, uma afirmativa que contradiz a hipótese nula. 
+
+

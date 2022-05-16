@@ -105,7 +105,7 @@
 </h1>
 <p>A inferência estatística fornece métodos para se tirarem conclusões sobre uma população a partir de dados amostrais.</p>
 <ul>
-<li>Intervalos de confiança: para se estimar o valor de um parâmetro de uma população</li>
+<li>Intervalos de confiança: para se estimar o valor de um parâmetro de uma população;</li>
 <li>Testes de significância ou Teste de hipóteses: para se avaliar a evidência a favor ou contra uma afirmativa sobre uma população.</li>
 </ul>
 <p>Assim, o objetivo de uma amostragem é inferirmos, a partir dos dados amostrais, alguma conclusão sobre a população mais ampla que a amostra representa, associada a uma probabilidade.</p>
@@ -176,9 +176,25 @@ Figura 7.1: Intervalos de confiança simulados para várias amostragens de uma p
 <div class="sourceCode" id="cb191"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="op">(</span><span class="va">ic_simul</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span> <span class="op">&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dap</span><span class="op">)</span> <span class="op">|</span> <span class="va">ic_simul</span><span class="op">[</span><span class="fl">2</span>, <span class="op">]</span> <span class="op">&lt;</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dap</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 0.06</code></pre>
-<p>Estes resultados mostram que 6 dos 100 ICs simulados não contém a média populacional.</p>
+<p>Estes resultados mostram que 6 dos 100 ICs simulados não contém a média populacional. Para um IC de 95%, está
+bem próximo do valor esperado.</p>
 </div>
-
+</div>
+<div id="o-teste-t-para-uma-amostra" class="section level2" number="7.2">
+<h2>
+<span class="header-section-number">7.2</span> O teste t para uma amostra<a class="anchor" aria-label="anchor" href="#o-teste-t-para-uma-amostra"><i class="fas fa-link"></i></a>
+</h2>
+<p>O teste t para uma amostra compara uma média amostral com um valor sob hipótese nula.</p>
+<p>O teste é planejado para se avaliar a força da evidência contra a hipótese nula, ou seja, a hipótese nula é verdadeira até que se prove o contrário.</p>
+<p>Como regra de decisão, comparamos o p-valor do teste com um valor de probabilidade definido anteriormente, formalmente conhecido como α.</p>
+<p>O p-valor é definido como a probabilidade calculada de que, supondo a hipótese nula verdadeira, o teste assuma um valor tão ou mais extremo que o valor realmente observado.</p>
+<p>O valor de α mais comumente utilizado é de 0,05 ou 5%. No entanto, dependendo da área de conhecimento, este valor pode ser maior ou menor.</p>
+<p>Antes de realizar qualquer teste de hipóteses, como o teste t, as hipóteses devem ser claramente descritas.</p>
+<p>Hipóteses:
+* H<sub>0</sub>: hipótese nula, ou seja, a afirmativa a ser testada.</p>
+<ul>
+<li>H<sub>1</sub> ou H<sub>a</sub>: a hipótese alternativa, ou seja, uma afirmativa que contradiz a hipótese nula.</li>
+</ul>
 </div>
 </div>
 
@@ -193,6 +209,7 @@ Figura 7.1: Intervalos de confiança simulados para várias amostragens de uma p
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#introdu%C3%A7%C3%A3o-%C3%A0-infer%C3%AAncia"><span class="header-section-number">7</span> Introdução à inferência</a></li>
 <li><a class="nav-link" href="#intervalo-de-confian%C3%A7a-para-a-m%C3%A9dia-populacional"><span class="header-section-number">7.1</span> Intervalo de Confiança para a média populacional</a></li>
+<li><a class="nav-link" href="#o-teste-t-para-uma-amostra"><span class="header-section-number">7.2</span> O teste t para uma amostra</a></li>
 </ul>
 
       <div class="book-extra">
