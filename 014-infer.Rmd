@@ -1,0 +1,135 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+```{r, include=FALSE}
+library(magrittr)
+dap <- readr::read_csv("data/dap.csv") %>%
+  as.vector() %>%
+  unname() %>%
+  unlist()
+```
+
+
+
+# Introdução à inferência
+
+A inferência estatística fornece métodos para se tirarem conclusões sobre uma população a partir de dados amostrais.
+
+* Intervalos de confiança: para se estimar o valor de um parâmetro de uma população
+* Testes de significância ou Teste de hipóteses: para se avaliar a evidência a favor ou contra uma afirmativa sobre uma população. 
+
+Assim, o objetivo de uma amostragem é inferirmos, a partir dos dados amostrais, alguma conclusão sobre a população mais ampla que a amostra representa, associada a uma probabilidade. 
+
+Nos exemplos deste capítulo, utilizaremos a população descrita no início do capítulo \@ref(estbas). Também iremos utilizar um processo de amostragem aleatório para extrair amostra(s) desta população.
+
+
+## Intervalo de Confiança para a média populacional
+
+O Intervalo de Confiança (IC) é uma estimativa de um intervalo que contém um parâmetro populacional.
+
+Utilizaremos a função `t.test` para calcular um Intervalo de Confiança para a média.
+
+
+:::{.example #icm name="Intervalo de Confiança para a média"}
+
+Considere o conjunto de dados [dap.csv](data/dap.csv). Por serem dados de uma população, vamos fazer uma amostragem (`sample`) de 10 indivíduos e calcular o IC de 95% ^[valor padrão da função `t.test`].
+
+
+
+```{r, include=FALSE}
+set.seed("21102015")
+ic <- sample(dap, 10) %>% t.test()
+ic$conf.int[1]
+ic$estimate
+set.seed("21102015")
+```
+
+```{r}
+sample(dap, 10) %>% t.test()
+```
+
+O *output* da função `t.test` contém muitas informções, mas por hora, vamos nos focar apenas no intervalo de confiança, indicado pelo texto *95 percent confidence interval*
+
+Assim, o intervalo de confiança para a média populacional desta amostra está entre `r ic$conf.int[1] %>% round(2)` e `r ic$conf.int[2] %>% round(2)`. Em outras palavras, estamos 95% confiantes que a média populacional do DAP de árvores de Mogno Africano está compreendidade entre `r ic$conf.int[1] %>% round(2)` cm e `r ic$conf.int[2] %>% round(2)` cm.
+
+O valor da média amostral, `r ic$estimate %>% round(2)` cm, é a estimativa central e pode ser entendida como uma estimativa não enviesada da média populacional. 
+
+:::
+
+A amostra deste exemplo vem de uma população conhecida, cuja média populacional é `r mean(dap) %>% round(2)` cm. Vejam que a média amostral e a média populacional diferem entre si, mas o IC calculado contém a média populacional. 
+
+A interpretação que devemos fazer do IC de 95% é que 95 em 100 amostras feitas na população irão conter a média populacional. Vejamos a explicação no exemplo \@ref(exm:icsimula) com o uso de simulação.
+
+
+:::{.example #icsimula name="Intervalo de Confiança para a média - simulações"}
+
+Considere o conjunto de dados [dap.csv](data/dap.csv). 
+
+Inicialmente, criamos uma função que faz uma amostragem de *n* elementos e retorna os valores inferior e superior do IC calculado. 
+
+
+
+```{r}
+## Função que amostra n elementos e retorna os valores inferior e superior do IC calculado
+## data = conjunto de dados de onde será retirada a amostra
+## n_sample = tamanho da amostra
+ic <- function(data, n_sample) {
+  ic_sample <- sample(data, n_sample) %>% t.test()
+  return(ic_sample$conf.int)
+}
+```
+
+Em seguida, com o uso da função `replicate`, realizamos 100 simulações deste processo:
+
+```{r, include=FALSE}
+set.seed("21102015")
+```
+
+```{r}
+## 100 simulações com a função replicate
+ic_simul <- replicate(100, ic(dap, 10))
+
+## mostrar apenas os primeiros valores do resultado
+ic_simul %>%
+  t() %>%
+  head()
+```
+
+Quantos dos IC simulados não contém a verdadeira média^[Este valor já é conhecido: `r mean(dap) %>% round(2)`] populacional?
+
+
+
+
+Por meio de uma análise gráfica:
+
+```{r, echo=FALSE, fig.cap="Intervalos de confiança simulados para várias amostragens de uma população. A média populacional é representada pela linha vertical violeta "}
+
+library(ggplot2)
+tibble::tibble(
+  low = ic_simul[1, ],
+  hi = ic_simul[2, ]
+) %>%
+  dplyr::bind_cols(n = factor(1:dim(ic_simul)[2])) %>%
+  tidyr::pivot_longer(cols = where(is.numeric), names_to = "ic") %>%
+  ggplot(aes(x = value, y = n)) +
+  geom_line(aes(group = n)) +
+  geom_vline(xintercept = mean(dap), color = "darkviolet", size = 0.5) +
+  theme(
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank()
+  )
+```
+
+Calculando a proporção de ICs que não contém a média populacional.
+
+```{r}
+(ic_simul[1, ] > mean(dap) | ic_simul[2, ] < mean(dap)) %>% mean()
+```
+
+Estes resultados mostram que 6 dos 100 ICs simulados não contém a média populacional. 
+
+:::
