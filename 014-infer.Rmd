@@ -41,8 +41,6 @@ Considere o conjunto de dados [dap.csv](data/dap.csv). Por serem dados de uma po
 ```{r, include=FALSE}
 set.seed("21102015")
 ic <- sample(dap, 10) %>% t.test()
-ic$conf.int[1]
-ic$estimate
 set.seed("21102015")
 ```
 
@@ -75,13 +73,13 @@ Inicialmente, criamos uma função que faz uma amostragem de *n* elementos e ret
 ## Função que amostra n elementos e retorna os valores inferior e superior do IC calculado
 ## data = conjunto de dados de onde será retirada a amostra
 ## n_sample = tamanho da amostra
-ic_amostr <- function(data, n_sample) {
-  ic_sample <- sample(data, n_sample) %>% t.test()
+ic_amostr <- function(data, n_sample, ...) {
+  ic_sample <- sample(data, n_sample) %>% t.test(...)
   return(ic_sample$conf.int)
 }
 ```
 
-Em seguida, com o uso da função `replicate`, realizamos 100 simulações deste processo:
+Em seguida, com o uso da função `replicate`, realizamos 100^[É possível realizar mais simulações, por exemplo, 10 mil] simulações deste processo:
 
 ```{r, include=FALSE}
 set.seed("21102015")
@@ -98,8 +96,6 @@ ic_simul %>%
 ```
 
 Quantos dos IC simulados não contém a verdadeira média^[Este valor já é conhecido: `r mean(dap) %>% round(2)`] populacional?
-
-
 
 
 Por meio de uma análise gráfica:
@@ -135,6 +131,22 @@ bem próximo do valor esperado.
 
 :::
 
+Também é possível alterar a probabilidade do IC, com o argumento `conf.level` da função `t.test`.
+
+
+```{r, include=FALSE}
+set.seed("21102015")
+ic99 <- sample(dap, 10) %>% t.test(conf.level=0.99)
+set.seed("21102015")
+```
+
+```{r}
+sample(dap, 10) %>% t.test(conf.level=0.99)
+```
+
+O Intervalo de confiança para a média com 99% de probabilidade está entre `r ic99$conf.int[1] %>% round(2)` e `r ic99$conf.int[2] %>% round(2)`. Estamos 99% confiantes de que o valor da média populacional esteja entre `r ic99$conf.int[1] %>% round(2)` e `r ic99$conf.int[2] %>% round(2)`. Observe que o intervalo do IC é maior quando aumentamos o nível de significância.
+
+
 
 ## O teste t para uma amostra
 
@@ -167,16 +179,43 @@ As hipóteses alternativas podem ter três configurações, conforme o tipo do t
 
 :::{.example #t1 name="Teste t para uma amostra"}
 
-Considere o conjunto de dados [dap.csv](data/dap.csv). 
+Considere o conjunto de dados [dap.csv](data/dap.csv). Faça uma amostra de 10 indivíduos da população e verifique a hipótese de que a média amostral difere da média populacional.
 
+Primeiramente, devemos estabelecer as hipóteses:
+
+* H~0~: esta amostra vem de uma população cuja média populacional é igual a `r mean(dap) %>% round(2)`
+* H~1~: esta amostra vem de uma população cuja média populacional é diferente de `r mean(dap) %>% round(2)`
+
+Na função `t.test`, passamos o valor da média da hipótese H~0~ para o argumento `mu`. Neste exemplo, vamos passar na forma de uma função `mean(dap)` para evitar arredondamentos.
 
 ```{r, include=FALSE}
 set.seed("21102015")
+t1 <- sample(dap, 10) %>% t.test(mu = mean(dap))
+set.seed("21102015")
+
 ```
 
 ```{r}
-sample(dap, 10) %>% t.test(mu = 12.94553)
+sample(dap, 10) %>% t.test(mu = mean(dap))
 ```
+
+
+A média desta amostra é `r t1$estimate %>% round(2)` cm. Este valor difere (numericamente) da média populacional de `r mean(dap) %>% round(2)` cm. No entanto, o p-valor do teste de `r t1$p.value %>% round(3)` nos leva a não rejeitar a hipótese H~0~, ou seja,  não há evidências de que a média amostral seja estatisticamente diferente da média populacional, como esperado.
+
+:::
+
+
+
+
+Vejamos como podemos interpretar o teste t com o uso de simulações:
+
+
+
+:::{.example #t1simul name="Teste t para uma amostra - simulações"}
+
+Considere o conjunto de dados [dap.csv](data/dap.csv).
+
+Criamos uma função que faz uma amostragem de *n* elementos e retorna o p-valor do teste t. 
 
 ```{r}
 ## Função que amostra n elementos e retorna o p-valor do teste t
@@ -188,9 +227,13 @@ t1_amostr <- function(data, n_sample, ...) {
 }
 ```
 
+
+Em seguida, procedemos com 100 simulações do teste t como descrito no Exemplo \@ref(exm:t1).
+
 ```{r, include=FALSE}
 set.seed("21102015")
 ```
+
 
 ```{r}
 ## 100 simulações com a função replicate
@@ -203,8 +246,7 @@ head(t1_simul)
 
 
 
-
-Em quantas amostras o valor da média amostral é estatisticamente maior do que o valor da média sob a hipótese nula?
+Em quantas amostras o valor da média amostral é estatisticamente diferente do que o valor da média sob a hipótese nula? Utilize 5% de probabilidade.
 
 Por meio de uma análise gráfica:
 
@@ -220,6 +262,8 @@ t1_simul %>%
     axis.ticks.y = element_blank()
   )
 ```
+
+
 
 Calculando a proporção de p-valores menores que o α pré-estabelecido de 5%:
 
