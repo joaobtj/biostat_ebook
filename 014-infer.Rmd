@@ -75,7 +75,7 @@ Inicialmente, criamos uma função que faz uma amostragem de *n* elementos e ret
 ## Função que amostra n elementos e retorna os valores inferior e superior do IC calculado
 ## data = conjunto de dados de onde será retirada a amostra
 ## n_sample = tamanho da amostra
-ic <- function(data, n_sample) {
+ic_amostr <- function(data, n_sample) {
   ic_sample <- sample(data, n_sample) %>% t.test()
   return(ic_sample$conf.int)
 }
@@ -89,7 +89,7 @@ set.seed("21102015")
 
 ```{r}
 ## 100 simulações com a função replicate
-ic_simul <- replicate(100, ic(dap, 10))
+ic_simul <- replicate(100, ic_amostr(dap, 10))
 
 ## mostrar apenas os primeiros valores do resultado
 ic_simul %>%
@@ -104,7 +104,7 @@ Quantos dos IC simulados não contém a verdadeira média^[Este valor já é con
 
 Por meio de uma análise gráfica:
 
-```{r, echo=FALSE, fig.cap="Intervalos de confiança simulados para várias amostragens de uma população. A média populacional é representada pela linha vertical violeta "}
+```{r, echo=FALSE, fig.cap="Intervalos de confiança simulados para várias amostragens de uma população. A média populacional é representada pela linha vertical violeta."}
 
 library(ggplot2)
 tibble::tibble(
@@ -124,13 +124,13 @@ tibble::tibble(
   )
 ```
 
-Calculando a proporção de ICs que não contém a média populacional.
+Calculando a proporção de ICs que não contém a média populacional:
 
 ```{r}
 (ic_simul[1, ] > mean(dap) | ic_simul[2, ] < mean(dap)) %>% mean()
 ```
 
-Estes resultados mostram que 6 dos 100 ICs simulados não contém a média populacional. Para um IC de 95%, está 
+Estes resultados mostram que `r which(ic_simul[1, ] > mean(dap) | ic_simul[2, ] < mean(dap)) %>% length()` dos 100 ICs simulados não contém a média populacional. Para um IC de 95%, está 
 bem próximo do valor esperado. 
 
 :::
@@ -143,8 +143,11 @@ O teste t para uma amostra compara uma média amostral com um valor sob hipótes
 O teste é planejado para se avaliar a força da evidência contra a hipótese nula, ou seja, a hipótese nula é verdadeira até que se prove o contrário.
 
 Como regra de decisão, comparamos o p-valor do teste com um valor de probabilidade definido anteriormente, formalmente conhecido como α.
+  
+  * Se p-valor < α então rejeito a hipótese H~0~
+  * Se p-valor >= α então não rejeito a hipótese H~0~
 
-O p-valor é definido como a probabilidade calculada de que, supondo a hipótese nula verdadeira, o teste assuma um valor tão ou mais extremo que o valor realmente observado.
+O p-valor é definido como a probabilidade calculada de que, supondo a hipótese nula verdadeira, o teste assuma um valor tão ou mais extremo que o valor realmente observado. Em outras palavras, é o menor valor de α para o qual ainda rejeitamos a hipótese H~0~.
 
 O valor de α mais comumente utilizado é de 0,05 ou 5%. No entanto, dependendo da área de conhecimento, este valor pode ser maior ou menor. 
 
@@ -155,4 +158,75 @@ Hipóteses:
 
 * H~1~ ou H~a~: a hipótese alternativa, ou seja, uma afirmativa que contradiz a hipótese nula. 
 
+As hipóteses alternativas podem ter três configurações, conforme o tipo do teste:
 
+1. Teste bilateral: quando H~1~ afirma que o valor é diferente do valor da hipótese nula;
+1. Teste unilateral à direita: quando H~1~ afirma que o valor é maior que o valor da hipótese nula;
+1. Teste unilateral à esquerda: quando H~1~ afirma que o valor é menor que o valor da hipótese nula.
+
+
+:::{.example #t1 name="Teste t para uma amostra"}
+
+Considere o conjunto de dados [dap.csv](data/dap.csv). 
+
+
+```{r, include=FALSE}
+set.seed("21102015")
+```
+
+```{r}
+sample(dap, 10) %>% t.test(mu = 12.94553)
+```
+
+```{r}
+## Função que amostra n elementos e retorna o p-valor do teste t
+## data = conjunto de dados de onde será retirada a amostra
+## n_sample = tamanho da amostra
+t1_amostr <- function(data, n_sample, ...) {
+  ic_sample <- sample(data, n_sample) %>% t.test(...)
+  return(ic_sample$p.value)
+}
+```
+
+```{r, include=FALSE}
+set.seed("21102015")
+```
+
+```{r}
+## 100 simulações com a função replicate
+t1_simul <- replicate(100, t1_amostr(dap, 10, mu = 12.94553))
+
+## mostrar apenas os primeiros valores do resultado
+head(t1_simul)
+```
+
+
+
+
+
+Em quantas amostras o valor da média amostral é estatisticamente maior do que o valor da média sob a hipótese nula?
+
+Por meio de uma análise gráfica:
+
+```{r, echo=FALSE, fig.cap="p-valores simulados para várias amostragens de uma população. A probabilidade de 5% é representada pela linha vertical verde."}
+t1_simul %>%
+  data.frame() %>%
+  ggplot(aes(x = .)) +
+  geom_dotplot(binwidth = .05) +
+  geom_vline(xintercept = 0.05, color = "seagreen4", size = 1.5)+
+  labs(y="")+
+  theme(
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank()
+  )
+```
+
+Calculando a proporção de p-valores menores que o α pré-estabelecido de 5%:
+
+```{r}
+mean(t1_simul < 0.05)
+```
+
+Os resultados mostram que em `r which(t1_simul < 0.05) %>% length()` de 100 amostras o teste t rejeitou a hipótese nula, ou seja, indicou uma diferença significativa entre a média amostral e a média populacional. 
+
+:::
