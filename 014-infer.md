@@ -79,13 +79,13 @@ Inicialmente, criamos uma função que faz uma amostragem de *n* elementos e ret
 ## Função que amostra n elementos e retorna os valores inferior e superior do IC calculado
 ## data = conjunto de dados de onde será retirada a amostra
 ## n_sample = tamanho da amostra
-ic_amostr <- function(data, n_sample) {
-  ic_sample <- sample(data, n_sample) %>% t.test()
+ic_amostr <- function(data, n_sample, ...) {
+  ic_sample <- sample(data, n_sample) %>% t.test(...)
   return(ic_sample$conf.int)
 }
 ```
 
-Em seguida, com o uso da função `replicate`, realizamos 100 simulações deste processo:
+Em seguida, com o uso da função `replicate`, realizamos 100^[É possível realizar mais simulações, por exemplo, 10 mil] simulações deste processo:
 
 
 
@@ -113,8 +113,6 @@ ic_simul %>%
 Quantos dos IC simulados não contém a verdadeira média^[Este valor já é conhecido: 12.95] populacional?
 
 
-
-
 Por meio de uma análise gráfica:
 
 <div class="figure">
@@ -137,6 +135,33 @@ Estes resultados mostram que 6 dos 100 ICs simulados não contém a média popul
 bem próximo do valor esperado. 
 
 :::
+
+Também é possível alterar a probabilidade do IC, com o argumento `conf.level` da função `t.test`.
+
+
+
+
+
+```r
+sample(dap, 10) %>% t.test(conf.level=0.99)
+```
+
+```
+## 
+## 	One Sample t-test
+## 
+## data:  .
+## t = 23.04, df = 9, p-value = 2.598e-09
+## alternative hypothesis: true mean is not equal to 0
+## 99 percent confidence interval:
+##  11.44546 15.20454
+## sample estimates:
+## mean of x 
+##    13.325
+```
+
+O Intervalo de confiança para a média com 99% de probabilidade está entre 11.45 e 15.2. Estamos 99% confiantes de que o valor da média populacional esteja entre 11.45 e 15.2. Observe que o intervalo do IC é maior quando aumentamos o nível de significância.
+
 
 
 ## O teste t para uma amostra
@@ -170,14 +195,20 @@ As hipóteses alternativas podem ter três configurações, conforme o tipo do t
 
 :::{.example #t1 name="Teste t para uma amostra"}
 
-Considere o conjunto de dados [dap.csv](data/dap.csv). 
+Considere o conjunto de dados [dap.csv](data/dap.csv). Faça uma amostra de 10 indivíduos da população e verifique a hipótese de que a média amostral difere da média populacional.
 
+Primeiramente, devemos estabelecer as hipóteses:
+
+* H~0~: esta amostra vem de uma população cuja média populacional é igual a 12.95
+* H~1~: esta amostra vem de uma população cuja média populacional é diferente de 12.95
+
+Na função `t.test`, passamos o valor da média da hipótese H~0~ para o argumento `mu`. Neste exemplo, vamos passar na forma de uma função `mean(dap)` para evitar arredondamentos.
 
 
 
 
 ```r
-sample(dap, 10) %>% t.test(mu = 12.94553)
+sample(dap, 10) %>% t.test(mu = mean(dap))
 ```
 
 ```
@@ -195,6 +226,24 @@ sample(dap, 10) %>% t.test(mu = 12.94553)
 ```
 
 
+A média desta amostra é 13.33 cm. Este valor difere (numericamente) da média populacional de 12.95 cm. No entanto, o p-valor do teste de 0.528 nos leva a não rejeitar a hipótese H~0~, ou seja,  não há evidências de que a média amostral seja estatisticamente diferente da média populacional, como esperado.
+
+:::
+
+
+
+
+Vejamos como podemos interpretar o teste t com o uso de simulações:
+
+
+
+:::{.example #t1simul name="Teste t para uma amostra - simulações"}
+
+Considere o conjunto de dados [dap.csv](data/dap.csv).
+
+Criamos uma função que faz uma amostragem de *n* elementos e retorna o p-valor do teste t. 
+
+
 ```r
 ## Função que amostra n elementos e retorna o p-valor do teste t
 ## data = conjunto de dados de onde será retirada a amostra
@@ -204,6 +253,10 @@ t1_amostr <- function(data, n_sample, ...) {
   return(ic_sample$p.value)
 }
 ```
+
+
+Em seguida, procedemos com 100 simulações do teste t como descrito no Exemplo \@ref(exm:t1).
+
 
 
 
@@ -223,15 +276,16 @@ head(t1_simul)
 
 
 
-
-Em quantas amostras o valor da média amostral é estatisticamente maior do que o valor da média sob a hipótese nula?
+Em quantas amostras o valor da média amostral é estatisticamente diferente do que o valor da média sob a hipótese nula? Utilize 5% de probabilidade.
 
 Por meio de uma análise gráfica:
 
 <div class="figure">
-<img src="014-infer_files/figure-html/unnamed-chunk-14-1.png" alt="p-valores simulados para várias amostragens de uma população. A probabilidade de 5% é representada pela linha vertical verde." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-14)p-valores simulados para várias amostragens de uma população. A probabilidade de 5% é representada pela linha vertical verde.</p>
+<img src="014-infer_files/figure-html/unnamed-chunk-16-1.png" alt="p-valores simulados para várias amostragens de uma população. A probabilidade de 5% é representada pela linha vertical verde." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-16)p-valores simulados para várias amostragens de uma população. A probabilidade de 5% é representada pela linha vertical verde.</p>
 </div>
+
+
 
 Calculando a proporção de p-valores menores que o α pré-estabelecido de 5%:
 
