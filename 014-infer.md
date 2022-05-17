@@ -79,7 +79,7 @@ Inicialmente, criamos uma função que faz uma amostragem de *n* elementos e ret
 ## Função que amostra n elementos e retorna os valores inferior e superior do IC calculado
 ## data = conjunto de dados de onde será retirada a amostra
 ## n_sample = tamanho da amostra
-ic <- function(data, n_sample) {
+ic_amostr <- function(data, n_sample) {
   ic_sample <- sample(data, n_sample) %>% t.test()
   return(ic_sample$conf.int)
 }
@@ -92,7 +92,7 @@ Em seguida, com o uso da função `replicate`, realizamos 100 simulações deste
 
 ```r
 ## 100 simulações com a função replicate
-ic_simul <- replicate(100, ic(dap, 10))
+ic_simul <- replicate(100, ic_amostr(dap, 10))
 
 ## mostrar apenas os primeiros valores do resultado
 ic_simul %>%
@@ -118,11 +118,11 @@ Quantos dos IC simulados não contém a verdadeira média^[Este valor já é con
 Por meio de uma análise gráfica:
 
 <div class="figure">
-<img src="014-infer_files/figure-html/unnamed-chunk-7-1.png" alt="Intervalos de confiança simulados para várias amostragens de uma população. A média populacional é representada pela linha vertical violeta " width="672" />
-<p class="caption">(\#fig:unnamed-chunk-7)Intervalos de confiança simulados para várias amostragens de uma população. A média populacional é representada pela linha vertical violeta </p>
+<img src="014-infer_files/figure-html/unnamed-chunk-7-1.png" alt="Intervalos de confiança simulados para várias amostragens de uma população. A média populacional é representada pela linha vertical violeta." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-7)Intervalos de confiança simulados para várias amostragens de uma população. A média populacional é representada pela linha vertical violeta.</p>
 </div>
 
-Calculando a proporção de ICs que não contém a média populacional.
+Calculando a proporção de ICs que não contém a média populacional:
 
 
 ```r
@@ -146,8 +146,11 @@ O teste t para uma amostra compara uma média amostral com um valor sob hipótes
 O teste é planejado para se avaliar a força da evidência contra a hipótese nula, ou seja, a hipótese nula é verdadeira até que se prove o contrário.
 
 Como regra de decisão, comparamos o p-valor do teste com um valor de probabilidade definido anteriormente, formalmente conhecido como α.
+  
+  * Se p-valor < α então rejeito a hipótese H~0~
+  * Se p-valor >= α então não rejeito a hipótese H~0~
 
-O p-valor é definido como a probabilidade calculada de que, supondo a hipótese nula verdadeira, o teste assuma um valor tão ou mais extremo que o valor realmente observado.
+O p-valor é definido como a probabilidade calculada de que, supondo a hipótese nula verdadeira, o teste assuma um valor tão ou mais extremo que o valor realmente observado. Em outras palavras, é o menor valor de α para o qual ainda rejeitamos a hipótese H~0~.
 
 O valor de α mais comumente utilizado é de 0,05 ou 5%. No entanto, dependendo da área de conhecimento, este valor pode ser maior ou menor. 
 
@@ -158,4 +161,89 @@ Hipóteses:
 
 * H~1~ ou H~a~: a hipótese alternativa, ou seja, uma afirmativa que contradiz a hipótese nula. 
 
+As hipóteses alternativas podem ter três configurações, conforme o tipo do teste:
 
+1. Teste bilateral: quando H~1~ afirma que o valor é diferente do valor da hipótese nula;
+1. Teste unilateral à direita: quando H~1~ afirma que o valor é maior que o valor da hipótese nula;
+1. Teste unilateral à esquerda: quando H~1~ afirma que o valor é menor que o valor da hipótese nula.
+
+
+:::{.example #t1 name="Teste t para uma amostra"}
+
+Considere o conjunto de dados [dap.csv](data/dap.csv). 
+
+
+
+
+
+```r
+sample(dap, 10) %>% t.test(mu = 12.94553)
+```
+
+```
+## 
+## 	One Sample t-test
+## 
+## data:  .
+## t = 0.65612, df = 9, p-value = 0.5282
+## alternative hypothesis: true mean is not equal to 12.94553
+## 95 percent confidence interval:
+##  12.01668 14.63332
+## sample estimates:
+## mean of x 
+##    13.325
+```
+
+
+```r
+## Função que amostra n elementos e retorna o p-valor do teste t
+## data = conjunto de dados de onde será retirada a amostra
+## n_sample = tamanho da amostra
+t1_amostr <- function(data, n_sample, ...) {
+  ic_sample <- sample(data, n_sample) %>% t.test(...)
+  return(ic_sample$p.value)
+}
+```
+
+
+
+
+```r
+## 100 simulações com a função replicate
+t1_simul <- replicate(100, t1_amostr(dap, 10, mu = 12.94553))
+
+## mostrar apenas os primeiros valores do resultado
+head(t1_simul)
+```
+
+```
+## [1] 0.52816007 0.73107989 0.67524680 0.92873704 0.92824148 0.03814826
+```
+
+
+
+
+
+Em quantas amostras o valor da média amostral é estatisticamente maior do que o valor da média sob a hipótese nula?
+
+Por meio de uma análise gráfica:
+
+<div class="figure">
+<img src="014-infer_files/figure-html/unnamed-chunk-14-1.png" alt="p-valores simulados para várias amostragens de uma população. A probabilidade de 5% é representada pela linha vertical verde." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-14)p-valores simulados para várias amostragens de uma população. A probabilidade de 5% é representada pela linha vertical verde.</p>
+</div>
+
+Calculando a proporção de p-valores menores que o α pré-estabelecido de 5%:
+
+
+```r
+mean(t1_simul < 0.05)
+```
+
+```
+## [1] 0.06
+```
+
+Os resultados mostram que em 6 de 100 amostras o teste t rejeitou a hipótese nula, ou seja, indicou uma diferença significativa entre a média amostral e a média populacional. 
+
+:::

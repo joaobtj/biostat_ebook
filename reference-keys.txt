@@ -71,6 +71,7 @@ exm:descdiscrepante
 exm:icm
 exm:icsimula
 fig:unnamed-chunk-7
+exm:t1
 procurando-e-pedindo-ajuda-para-o-r
 as-funções-help-e
 stack-overflow
