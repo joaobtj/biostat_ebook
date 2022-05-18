@@ -1,0 +1,276 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+```{r, include=FALSE}
+library(magrittr)
+dap <- readr::read_csv("data/dap.csv") %>%
+  as.vector() %>%
+  unname() %>%
+  unlist()
+```
+
+
+
+# Introdução à inferência
+
+A inferência estatística fornece métodos para se tirarem conclusões sobre uma população a partir de dados amostrais.
+
+* Intervalos de confiança: para se estimar o valor de um parâmetro de uma população;
+* Testes de significância ou Teste de hipóteses: para se avaliar a evidência a favor ou contra uma afirmativa sobre uma população. 
+
+Assim, o objetivo de uma amostragem é inferirmos, a partir dos dados amostrais, alguma conclusão sobre a população mais ampla que a amostra representa, associada a uma probabilidade. 
+
+Nos exemplos deste capítulo, utilizaremos a população descrita no início do capítulo \@ref(estbas). Também iremos utilizar um processo de amostragem aleatório para extrair amostra(s) desta população.
+
+
+## Intervalo de Confiança para a média populacional
+
+O Intervalo de Confiança (IC) é uma estimativa de um intervalo que contém um parâmetro populacional.
+
+Utilizaremos a função `t.test` para calcular um Intervalo de Confiança para a média.
+
+
+:::{.example #icm name="Intervalo de Confiança para a média"}
+
+Considere o conjunto de dados [dap.csv](data/dap.csv). Por serem dados de uma população, vamos fazer uma amostragem (`sample`) de 10 indivíduos e calcular o IC de 95% ^[valor padrão da função `t.test`].
+
+
+
+```{r, include=FALSE}
+set.seed("21102015")
+ic <- sample(dap, 10) %>% t.test()
+set.seed("21102015")
+```
+
+```{r}
+sample(dap, 10) %>% t.test()
+```
+
+O *output* da função `t.test` contém muitas informções, mas por hora, vamos nos focar apenas no intervalo de confiança, indicado pelo texto *95 percent confidence interval*
+
+Assim, o intervalo de confiança para a média populacional desta amostra está entre `r ic$conf.int[1] %>% round(2)` e `r ic$conf.int[2] %>% round(2)`. Em outras palavras, estamos 95% confiantes que a média populacional do DAP de árvores de Mogno Africano está compreendidade entre `r ic$conf.int[1] %>% round(2)` cm e `r ic$conf.int[2] %>% round(2)` cm.
+
+O valor da média amostral, `r ic$estimate %>% round(2)` cm, é a estimativa central e pode ser entendida como uma estimativa não enviesada da média populacional. 
+
+:::
+
+A amostra deste exemplo vem de uma população conhecida, cuja média populacional é `r mean(dap) %>% round(2)` cm. Vejam que a média amostral e a média populacional diferem entre si, mas o IC calculado contém a média populacional. 
+
+A interpretação que devemos fazer do IC de 95% é que 95 em 100 amostras feitas na população irão conter a média populacional. Vejamos a explicação no exemplo \@ref(exm:icsimula) com o uso de simulação.
+
+
+:::{.example #icsimula name="Intervalo de Confiança para a média - simulações"}
+
+Considere o conjunto de dados [dap.csv](data/dap.csv). 
+
+Inicialmente, criamos uma função que faz uma amostragem de *n* elementos e retorna os valores inferior e superior do IC calculado. 
+
+
+
+```{r}
+## Função que amostra n elementos e retorna os valores inferior e superior do IC calculado
+## data = conjunto de dados de onde será retirada a amostra
+## n_sample = tamanho da amostra
+ic_amostr <- function(data, n_sample, ...) {
+  ic_sample <- sample(data, n_sample) %>% t.test(...)
+  return(ic_sample$conf.int)
+}
+```
+
+Em seguida, com o uso da função `replicate`, realizamos 100^[É possível realizar mais simulações, por exemplo, 10 mil] simulações deste processo:
+
+```{r, include=FALSE}
+set.seed("21102015")
+```
+
+```{r}
+## 100 simulações com a função replicate
+ic_simul <- replicate(100, ic_amostr(dap, 10))
+
+## mostrar apenas os primeiros valores do resultado
+ic_simul %>%
+  t() %>%
+  head()
+```
+
+Quantos dos IC simulados não contém a verdadeira média^[Este valor já é conhecido: `r mean(dap) %>% round(2)`] populacional?
+
+
+Por meio de uma análise gráfica:
+
+```{r, echo=FALSE, fig.cap="Intervalos de confiança simulados para várias amostragens de uma população. A média populacional é representada pela linha vertical violeta."}
+
+library(ggplot2)
+tibble::tibble(
+  low = ic_simul[1, ],
+  hi = ic_simul[2, ]
+) %>%
+  dplyr::bind_cols(n = factor(1:dim(ic_simul)[2])) %>%
+  tidyr::pivot_longer(cols = where(is.numeric), names_to = "ic") %>%
+  ggplot(aes(x = value, y = n)) +
+  geom_line(aes(group = n)) +
+  geom_vline(xintercept = mean(dap), color = "darkviolet", size = 0.5) +
+  theme(
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank()
+  )
+```
+
+Calculando a proporção de ICs que não contém a média populacional:
+
+```{r}
+(ic_simul[1, ] > mean(dap) | ic_simul[2, ] < mean(dap)) %>% mean()
+```
+
+Estes resultados mostram que `r which(ic_simul[1, ] > mean(dap) | ic_simul[2, ] < mean(dap)) %>% length()` dos 100 ICs simulados não contém a média populacional. Para um IC de 95%, está 
+bem próximo do valor esperado. 
+
+:::
+
+Também é possível alterar a probabilidade do IC, com o argumento `conf.level` da função `t.test`.
+
+
+```{r, include=FALSE}
+set.seed("21102015")
+ic99 <- sample(dap, 10) %>% t.test(conf.level=0.99)
+set.seed("21102015")
+```
+
+```{r}
+sample(dap, 10) %>% t.test(conf.level=0.99)
+```
+
+O Intervalo de confiança para a média com 99% de probabilidade está entre `r ic99$conf.int[1] %>% round(2)` e `r ic99$conf.int[2] %>% round(2)`. Estamos 99% confiantes de que o valor da média populacional esteja entre `r ic99$conf.int[1] %>% round(2)` e `r ic99$conf.int[2] %>% round(2)`. Observe que o intervalo do IC é maior quando aumentamos o nível de significância.
+
+
+
+## O teste t para uma amostra
+
+O teste t para uma amostra compara uma média amostral com um valor sob hipótese nula. 
+
+O teste é planejado para se avaliar a força da evidência contra a hipótese nula, ou seja, a hipótese nula é verdadeira até que se prove o contrário.
+
+Como regra de decisão, comparamos o p-valor do teste com um valor de probabilidade definido anteriormente, formalmente conhecido como α.
+  
+  * Se p-valor < α então rejeito a hipótese H~0~
+  * Se p-valor >= α então não rejeito a hipótese H~0~
+
+O p-valor é definido como a probabilidade calculada de que, supondo a hipótese nula verdadeira, o teste assuma um valor tão ou mais extremo que o valor realmente observado. Em outras palavras, é o menor valor de α para o qual ainda rejeitamos a hipótese H~0~.
+
+O valor de α mais comumente utilizado é de 0,05 ou 5%. No entanto, dependendo da área de conhecimento, este valor pode ser maior ou menor. 
+
+Antes de realizar qualquer teste de hipóteses, como o teste t, as hipóteses devem ser claramente descritas.
+
+Hipóteses:
+* H~0~: hipótese nula, ou seja, a afirmativa a ser testada.
+
+* H~1~ ou H~a~: a hipótese alternativa, ou seja, uma afirmativa que contradiz a hipótese nula. 
+
+As hipóteses alternativas podem ter três configurações, conforme o tipo do teste:
+
+1. Teste bilateral: quando H~1~ afirma que o valor é diferente do valor da hipótese nula;
+1. Teste unilateral à direita: quando H~1~ afirma que o valor é maior que o valor da hipótese nula;
+1. Teste unilateral à esquerda: quando H~1~ afirma que o valor é menor que o valor da hipótese nula.
+
+
+:::{.example #t1 name="Teste t para uma amostra"}
+
+Considere o conjunto de dados [dap.csv](data/dap.csv). Faça uma amostra de 10 indivíduos da população e verifique a hipótese de que a média amostral difere da média populacional.
+
+Primeiramente, devemos estabelecer as hipóteses:
+
+* H~0~: esta amostra vem de uma população cuja média populacional é igual a `r mean(dap) %>% round(2)`
+* H~1~: esta amostra vem de uma população cuja média populacional é diferente de `r mean(dap) %>% round(2)`
+
+Na função `t.test`, passamos o valor da média da hipótese H~0~ para o argumento `mu`. Neste exemplo, vamos passar na forma de uma função `mean(dap)` para evitar arredondamentos.
+
+```{r, include=FALSE}
+set.seed("21102015")
+t1 <- sample(dap, 10) %>% t.test(mu = mean(dap))
+set.seed("21102015")
+
+```
+
+```{r}
+sample(dap, 10) %>% t.test(mu = mean(dap))
+```
+
+
+A média desta amostra é `r t1$estimate %>% round(2)` cm. Este valor difere (numericamente) da média populacional de `r mean(dap) %>% round(2)` cm. No entanto, o p-valor do teste de `r t1$p.value %>% round(3)` nos leva a não rejeitar a hipótese H~0~, ou seja,  não há evidências de que a média amostral seja estatisticamente diferente da média populacional, como esperado.
+
+:::
+
+
+
+
+Vejamos como podemos interpretar o teste t com o uso de simulações:
+
+
+
+:::{.example #t1simul name="Teste t para uma amostra - simulações"}
+
+Considere o conjunto de dados [dap.csv](data/dap.csv).
+
+Criamos uma função que faz uma amostragem de *n* elementos e retorna o p-valor do teste t. 
+
+```{r}
+## Função que amostra n elementos e retorna o p-valor do teste t
+## data = conjunto de dados de onde será retirada a amostra
+## n_sample = tamanho da amostra
+t1_amostr <- function(data, n_sample, ...) {
+  ic_sample <- sample(data, n_sample) %>% t.test(...)
+  return(ic_sample$p.value)
+}
+```
+
+
+Em seguida, procedemos com 100 simulações do teste t como descrito no Exemplo \@ref(exm:t1).
+
+```{r, include=FALSE}
+set.seed("21102015")
+```
+
+
+```{r}
+## 100 simulações com a função replicate
+t1_simul <- replicate(100, t1_amostr(dap, 10, mu = 12.94553))
+
+## mostrar apenas os primeiros valores do resultado
+head(t1_simul)
+```
+
+
+
+
+Em quantas amostras o valor da média amostral é estatisticamente diferente do que o valor da média sob a hipótese nula? Utilize 5% de probabilidade.
+
+Por meio de uma análise gráfica:
+
+```{r, echo=FALSE, fig.cap="p-valores simulados para várias amostragens de uma população. A probabilidade de 5% é representada pela linha vertical verde."}
+t1_simul %>%
+  data.frame() %>%
+  ggplot(aes(x = .)) +
+  geom_dotplot(binwidth = .05) +
+  geom_vline(xintercept = 0.05, color = "seagreen4", size = 1.5)+
+  labs(y="")+
+  theme(
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank()
+  )
+```
+
+
+
+Calculando a proporção de p-valores menores que o α pré-estabelecido de 5%:
+
+```{r}
+mean(t1_simul < 0.05)
+```
+
+Os resultados mostram que em `r which(t1_simul < 0.05) %>% length()` de 100 amostras o teste t rejeitou a hipótese nula, ou seja, indicou uma diferença significativa entre a média amostral e a média populacional. 
+
+:::
