@@ -2,7 +2,9 @@
 
 
 
-# Estatística Básica 
+
+# Estatística Básica {#estbas}
+
 
 Neste capítulo, iremos estudar alguns itens que podem ser compreendidos como a base das análises estatísticas, pois são usados transversalmente em muitos outros assuntos tratados posteriormente.
 
