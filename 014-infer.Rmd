@@ -1,8 +1,4 @@
----
-output: html_document
-editor_options: 
-  chunk_output_type: console
----
+
 ```{r, include=FALSE}
 library(magrittr)
 dap <- readr::read_csv("data/dap.csv") %>%
