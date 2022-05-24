@@ -211,16 +211,11 @@ Eles deram cada dieta a 10 pintinhos machos com um dia de nascidos e registraram
 
 ### Vantagem dos experimentos 
 
-Experimentos são o método preferido para o exame do efeito de uma variável sobre outra. 
-
-Pela imposição de um tratamento específico de interesse e controle de outras influências, podemos localizar causa e efeito. 
-
-Planejamentos estatísticos são, em geral, essenciais para experimentos eficazes.
-
-Para entendermos por quê, vamos começar com um exemplo de um mau planejamento.
+Experimentos são o método preferido para o exame do efeito de uma variável sobre outra. Pela imposição de um tratamento específico de interesse e controle de outras influências, podemos localizar causa e efeito. Planejamentos estatísticos são, em geral, essenciais para experimentos eficazes. Para entendermos por quê, vamos começar com um exemplo de um mau planejamento.
 
 
-###EXEMPLO *Um experimento não controlado*
+:::{.example #ncontrol name="Um experimento não controlado"}
+
 
 O congelamento gástrico foi introduzido nos anos 1960 por um proeminente cirurgião como método para aliviar a dor da úlcera. 
 
@@ -232,7 +227,9 @@ Um grupo de sujeitos (os pacientes) foi exposto ao tratamento (congelamento gás
 
 Os procedimentos realizados mostraram que o congelamento gástrico realmente reduzia a dor da úlcera, e o tratamento foi recomendado com base nessa evidência.
 
-O que teria acontecido se tivéssemos deixado os pacientes em paz? A dor deles teria diminuído mesmo sem intervenção? 
+:::
+
+Mas, o que teria acontecido se tivéssemos deixado os pacientes em paz? A dor deles teria diminuído mesmo sem intervenção? 
 
 E se os pacientes fossem inclinados a dizer que estavam se sentindo melhor (talvez porque esperassem melhorar ou para agradar o experimentador)? 
 
@@ -250,33 +247,31 @@ O efeito do congelamento gástrico é confundido com o de duas variáveis oculta
 
 Devido ao confundimento, a melhora do sujeito não pode ser inequivocamente atribuída ao efeito do congelamento gástrico. 
 
-![](congelamento.png){width=450px}
 
 ### Experimentos comparativos
 
 A solução para o confundimento do exemplo anterior é a realização de um experimento comparativo:
 
 * Alguns pacientes fazem o tratamento de congelamento gástrico
-
 * Outros pacientes semelhantes realizam um processo simulado
-
-      + Controle em relação ao efeito placebo
-      
+  * Controle em relação ao efeito placebo
 * Outros realizam nenhum procedimento
-
-    + Controle em relação ao efeito de melhora natural
+  * Controle em relação ao efeito de melhora natural
 
 A maioria dos experimentos bem planejados compara dois ou mais tratamentos. 
 
-Um *grupo experimental* é um grupo de indivíduos que recebe um tratamento cujo efeito desejamos entender.
+Um **grupo experimental** é um grupo de indivíduos que recebe um tratamento cujo efeito desejamos entender.
 
-Um *controle* ou *testemunha* é um tratamento que se destina a servir como parâmetro com o qual o grupo experimental é comparado.
+Um ***controle*** ou **testemunha** é um tratamento que se destina a servir como parâmetro com o qual o grupo experimental é comparado.
 
-Um *placebo* é um tratamento de controle falso (por exemplo, uma pílula de açúcar), mas que não se distingue do tratamento no grupo experimental.
+Um **placebo** é um tratamento de controle falso (por exemplo, uma pílula de açúcar), mas que não se distingue do tratamento no grupo experimental.
 
 O efeito placebo é documentado apenas em experimentos humanos, em contextos tão diversos como estudo da asma ou pressão sanguínea alta. O efeito é particularmente forte quando a variável resposta é a dor. Os mecanismos desse efeito mente-corpo são desconhecidos, mas não sem fundamentação biológica. Sabemos que o sistema nervoso interage com o imunológico e que a depressão, por exemplo, suprime a resposta imune.
 
-###EXEMPLO *Um experimento controlado*
+
+
+:::{.example #control name="Um experimento controlado"}
+
 
 O experimento simples, do exemplo anterior, foi seguido, muitos anos depois, por um experimento controlado aleatorizado
 
@@ -286,5 +281,100 @@ Pacientes que se submetiam ao congelamento gástrico eram comparados com pacient
 * 38% de melhora - placebo
 
 Esse experimento comparativo demonstrou que o resfriamento do revestimento do estômago não era mais eficaz para a redução da dor de úlcera que um procedimento falso. O tratamento foi, então, abandonado.
+
+:::
+
+
+### Planejamento completamente aleatorizado
+
+Em um planejamento experimental completamente aleatorizado, todos os sujeitos são distribuídos aleatoriamente entre os tratamentos. A associação aleatória dos sujeitos forma grupos que devem ser semelhantes em todos os aspectos antes de ser aplicado o tratamento. 
+
+O planejamento comparativo garante que outras influências, diferentes dos tratamentos experimentais, operem igualmente em todos os grupos. Assim, diferenças na resposta média se devem aos tratamentos ou ao papel do acaso na alocação aleatória dos sujeitos aos tratamentos.
+
+Essa última afirmativa merece mais reflexão. Mesmo com um excelente planejamento experimental, nunca podemos dizer que qualquer diferença entre dois grupos seja inteiramente devida ao tratamento aplicado. Variáveis, por definição, variam de indivíduo para indivíduo, e, portanto, um grupo de indivíduos certamente fornecerá um resultado diferente de outro grupo, mesmo nas mesmas condições.
+
+### Princípios do planejamento experimental
+
+Os princípios básicos do planejamento de experimentos são:
+
+1. **Controle** os efeitos de variáveis ocultas na resposta de modo mais simples, pela comparação de dois ou mais tratamentos.
+
+2. **Aleatorize** – use o acaso impessoal para associar os sujeitos aos tratamentos.
+
+3. **Repita** - use sujeitos suficientes em cada grupo para reduzir a variação do acaso nos resultados.
+
+
+
+
+### Planejamentos de dados emparelhados 
+
+Um planejamento de dados emparelhados compara exatamente dois tratamentos, usando uma série de indivíduos proximamente relacionados dois a dois, ou cada indivíduo duas vezes.
+
+Escolha pares de sujeitos que sejam, tanto quanto possível, comparáveis. Esses podem ser indivíduos do mesmo gênero, idade, peso e altura ou geneticamente relacionados, como gêmeos ou animais nascidos da mesma ninhada. A alocação aleatória dos sujeitos aos tratamentos é feita dentro de cada par, e não para todos os sujeitos ao mesmo tempo. Use o acaso para decidir qual dos sujeitos do par recebe o primeiro tratamento. O outro daquele par recebe o outro tratamento. A ordem dos tratamentos pode influenciar a resposta do sujeito, de modo que aleatorizamos a ordem para cada sujeito. 
+
+Às vezes, cada “par” em um planejamento de dados emparelhados consiste em apenas um sujeito, que recebe ambos os tratamentos, um após o outro. Cada sujeito serve como seu próprio controle.
+
+Planejamentos completamente aleatorizados são os planejamentos estatísticos mais simples para experimentos. Eles ilustram claramente os princípios de controle, aleatorização e número adequado de sujeitos. Contudo, eles frequentemente são inferiores a planejamentos estatísticos mais elaborados. Em particular, emparelhar os sujeitos de várias formas pode produzir resultados mais precisos que uma simples aleatorização.
+
+
+Planejamentos de dados emparelhados usam os princípios de comparação de tratamento e aleatorização. No entanto, a aleatorização não é completa – não alocamos aleatoriamente todos os sujeitos de uma vez aos dois tratamentos. Em vez disso, aleatorizamos apenas dentro de cada par. Isso permite que o emparelhamento reduza o efeito da variação entre os sujeitos. Ser capaz de distinguir um planejamento de dados emparelhados de um completamente aleatorizado é crítico, pois impacta a análise estatística e conclusões.
+
+
+
+### Planejamento em blocos
+
+Um bloco é um grupo de indivíduos semelhantes em algum aspecto que se espera poder afetar a resposta aos tratamentos. Em um planejamento em blocos, a alocação aleatória dos indivíduos aos tratamentos é feita separadamente dentro de cada bloco. Um planejamento em blocos combina a ideia da criação de grupos de tratamento equivalentes pelo emparelhamento com o princípio de formação aleatória de grupos de tratamento. 
+
+Blocos são outra forma de controle. Eles controlam os efeitos de algumas variáveis externas ao trazê-las para o experimento na forma de blocos.
+
+:::{.example #bloco name="Diferenças de gênero"}
+
+
+O progresso de um tipo de câncer difere em mulheres e homens. Assim, um experimento clínico para a comparação de três terapias para esse câncer trata gênero como uma variável de bloco. São feitas duas aleatorizações separadas, uma que associa os sujeitos mulheres aos tratamentos e a outra que associa os homens. 
+
+
+Os blocos permitem que se extraiam conclusões separadas sobre cada um deles, por exemplo, sobre homens e mulheres. Também permitem conclusões gerais mais precisas, porque as diferenças sistemáticas entre homens e mulheres podem ser removidas quando estudamos os efeitos gerais das três terapias. 
+
+Um pesquisador experiente formará blocos com base nas mais importantes e inevitáveis fontes de variabilidade entre as unidades experimentais. A aleatorização, então, fará a média dos efeitos da variação restante e permitirá uma comparação não viesada dos tratamentos.
+
+:::
+
+### Cuidados com a experimentação
+
+O sucesso de um experimento depende de nossa capacidade de tratar todos os sujeitos de forma idêntica em todos os aspectos, exceto pelos tratamentos que, de fato, estão sendo comparados. Viés do experimentador ou do sujeito são problemas reais, que podem prejudicar experimentos e estudos observacionais. Viés pessoal pode desviar nossas percepções e coleta de dados em observações de campo
+
+
+
+Uma forma de evitar estes vieses é a utiliação dos experimentos **duplos-cegos**.
+Nestes experimentos, nem os sujeitos e nem as pessoas que interagem com eles sabem qual tratamento cada um está recebendo. Na prática, no entanto, controles ótimos não são sempre alcançáveis. Há situações em que o uso de um placebo é antiético. 
+
+O cegamento nem sempre é prático. Imagine a complexidade de se manter o acompanhamento de pílulas ativas e inativas para vários tratamentos diferentes sob as condições de duplo-cego, envolvendo centenas de sujeitos, durante vários anos. O cegamento nem sempre é uma opção se os pacientes são capazes de diferenciar o tratamento de um falso.
+
+Contudo, a fraqueza potencial mais séria de experimentos é a falta de realismo. Os sujeitos, tratamentos ou contexto de um experimento podem não duplicar realisticamente as condições que, de fato, desejamos estudar. 
+
+
+:::{.example #real name="Carcinogenicidade da sacarina"}
+
+
+A carcinogenicidade de um produto é a sua propensão a induzir o câncer quando usado, ingerido ou simplesmente presente no ambiente. A sacarina tem sido usada como adoçante artificial por quase um século. 
+
+Devido à evidência experimental de carcinogenicidade em ratos, a sacarina foi incluída no Relatório sobre cancerígenos dos Estados Unidos em 1981, como potencial cancerígeno em humanos.
+
+No entanto, exames mais detalhados de cânceres de bexiga urinária observados em ratos indicam que o mecanismo biológico desse câncer é específico para o sistema urinário de ratos e relacionado com o consumo de sacarina em concentrações improváveis de representar consumo humano realista. 
+
+A sacarina foi oficialmente retirada da lista em 2005, com a conclusão: *“os fatores que se pensava contribuir para a indução de tumor pela sacarina sódica em ratos não têm ocorrência esperada em humanos”.*
+
+:::
+
+A falta de realismo pode limitar nossa capacidade de aplicar as conclusões de um experimento a contextos de maior interesse. Muitos pesquisadores desejam generalizar suas conclusões a algum contexto mais amplo que o do experimento real. 
+
+A análise estatística de um experimento não pode nos dizer até que ponto os resultados podem ser generalizados. A capacidade de se estender conclusões para além do contexto experimental depende de uma profunda discussão dos **méritos biológicos** do experimento e da **representatividade** dos sujeitos usados. 
+
+ 
+
+
+### Ética na experimentação
+
+Desde humanos a animais e ecossistemas, a experimentação precisa ser cuidadosamente pensada, não apenas para ser estatisticamente poderosa e elegante, mas também para ser responsável. A ética experimental trata de todas as questões que devemos fazer antes, durante e depois da experimentação. 
 
 

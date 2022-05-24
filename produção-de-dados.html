@@ -241,17 +241,15 @@ Perguntou-se a 40 pacientes-caso e 80 controles saudáveis como tinham armazenad
 <h3>
 <span class="header-section-number">8.3.1</span> Vantagem dos experimentos<a class="anchor" aria-label="anchor" href="#vantagem-dos-experimentos"><i class="fas fa-link"></i></a>
 </h3>
-<p>Experimentos são o método preferido para o exame do efeito de uma variável sobre outra.</p>
-<p>Pela imposição de um tratamento específico de interesse e controle de outras influências, podemos localizar causa e efeito.</p>
-<p>Planejamentos estatísticos são, em geral, essenciais para experimentos eficazes.</p>
-<p>Para entendermos por quê, vamos começar com um exemplo de um mau planejamento.</p>
-<p>###EXEMPLO <em>Um experimento não controlado</em></p>
-<p>O congelamento gástrico foi introduzido nos anos 1960 por um proeminente cirurgião como método para aliviar a dor da úlcera.</p>
+<p>Experimentos são o método preferido para o exame do efeito de uma variável sobre outra. Pela imposição de um tratamento específico de interesse e controle de outras influências, podemos localizar causa e efeito. Planejamentos estatísticos são, em geral, essenciais para experimentos eficazes. Para entendermos por quê, vamos começar com um exemplo de um mau planejamento.</p>
+<div class="example">
+<p><span id="exm:ncontrol" class="example"><strong>Exemplo 8.7  (Um experimento não controlado) </strong></span>O congelamento gástrico foi introduzido nos anos 1960 por um proeminente cirurgião como método para aliviar a dor da úlcera.</p>
 <p>Os pacientes deviam engolir um balão vazio, posteriormente enchido com um líquido refrigerado, para esfriar o revestimento do estômago e reduzir a produção de ácido e reduzir a dor.</p>
 <p>Um grupo de sujeitos (os pacientes) foi exposto ao tratamento (congelamento gástrico), e o resultado (redução da dor) foi observado.</p>
 <p><strong>Sujeitos → Congelamento gástrico → Redução da dor</strong></p>
 <p>Os procedimentos realizados mostraram que o congelamento gástrico realmente reduzia a dor da úlcera, e o tratamento foi recomendado com base nessa evidência.</p>
-<p>O que teria acontecido se tivéssemos deixado os pacientes em paz? A dor deles teria diminuído mesmo sem intervenção?</p>
+</div>
+<p>Mas, o que teria acontecido se tivéssemos deixado os pacientes em paz? A dor deles teria diminuído mesmo sem intervenção?</p>
 <p>E se os pacientes fossem inclinados a dizer que estavam se sentindo melhor (talvez porque esperassem melhorar ou para agradar o experimentador)?</p>
 <p>E se os pacientes realmente se sentissem melhor, mas devido ao cuidado e à atenção que recebiam e que os faziam se sentir bem no geral, não às condições do congelamento do revestimento do estômago?</p>
 <p>Essa é uma possibilidade real, e melhoras psicológicas semelhantes foram documentadas em muitos experimentos humanos.</p>
@@ -262,7 +260,6 @@ Perguntou-se a 40 pacientes-caso e 80 controles saudáveis como tinham armazenad
 <li><p>melhora psicológica devido ao cuidado médico.</p></li>
 </ul>
 <p>Devido ao confundimento, a melhora do sujeito não pode ser inequivocamente atribuída ao efeito do congelamento gástrico.</p>
-<div class="inline-figure"><img src="congelamento.png" width="450"></div>
 </div>
 <div id="experimentos-comparativos" class="section level3" number="8.3.2">
 <h3>
@@ -270,25 +267,25 @@ Perguntou-se a 40 pacientes-caso e 80 controles saudáveis como tinham armazenad
 </h3>
 <p>A solução para o confundimento do exemplo anterior é a realização de um experimento comparativo:</p>
 <ul>
-<li><p>Alguns pacientes fazem o tratamento de congelamento gástrico</p></li>
-<li>
-<p>Outros pacientes semelhantes realizam um processo simulado</p>
-<pre><code>+ Controle em relação ao efeito placebo</code></pre>
+<li>Alguns pacientes fazem o tratamento de congelamento gástrico</li>
+<li>Outros pacientes semelhantes realizam um processo simulado
+<ul>
+<li>Controle em relação ao efeito placebo</li>
+</ul>
 </li>
-<li>
-<p>Outros realizam nenhum procedimento</p>
+<li>Outros realizam nenhum procedimento
 <ul>
 <li>Controle em relação ao efeito de melhora natural</li>
 </ul>
 </li>
 </ul>
 <p>A maioria dos experimentos bem planejados compara dois ou mais tratamentos.</p>
-<p>Um <em>grupo experimental</em> é um grupo de indivíduos que recebe um tratamento cujo efeito desejamos entender.</p>
-<p>Um <em>controle</em> ou <em>testemunha</em> é um tratamento que se destina a servir como parâmetro com o qual o grupo experimental é comparado.</p>
-<p>Um <em>placebo</em> é um tratamento de controle falso (por exemplo, uma pílula de açúcar), mas que não se distingue do tratamento no grupo experimental.</p>
+<p>Um <strong>grupo experimental</strong> é um grupo de indivíduos que recebe um tratamento cujo efeito desejamos entender.</p>
+<p>Um <strong><em>controle</em></strong> ou <strong>testemunha</strong> é um tratamento que se destina a servir como parâmetro com o qual o grupo experimental é comparado.</p>
+<p>Um <strong>placebo</strong> é um tratamento de controle falso (por exemplo, uma pílula de açúcar), mas que não se distingue do tratamento no grupo experimental.</p>
 <p>O efeito placebo é documentado apenas em experimentos humanos, em contextos tão diversos como estudo da asma ou pressão sanguínea alta. O efeito é particularmente forte quando a variável resposta é a dor. Os mecanismos desse efeito mente-corpo são desconhecidos, mas não sem fundamentação biológica. Sabemos que o sistema nervoso interage com o imunológico e que a depressão, por exemplo, suprime a resposta imune.</p>
-<p>###EXEMPLO <em>Um experimento controlado</em></p>
-<p>O experimento simples, do exemplo anterior, foi seguido, muitos anos depois, por um experimento controlado aleatorizado</p>
+<div class="example">
+<p><span id="exm:control" class="example"><strong>Exemplo 8.8  (Um experimento controlado) </strong></span>O experimento simples, do exemplo anterior, foi seguido, muitos anos depois, por um experimento controlado aleatorizado</p>
 <p>Pacientes que se submetiam ao congelamento gástrico eram comparados com pacientes semelhantes que se submetiam a tratamento semelhante, exceto pelo fato de o líquido bombeado não ser refrigerado (placebo).</p>
 <ul>
 <li>34% de melhora – congelamento gástrico<br>
@@ -296,6 +293,72 @@ Perguntou-se a 40 pacientes-caso e 80 controles saudáveis como tinham armazenad
 <li>38% de melhora - placebo</li>
 </ul>
 <p>Esse experimento comparativo demonstrou que o resfriamento do revestimento do estômago não era mais eficaz para a redução da dor de úlcera que um procedimento falso. O tratamento foi, então, abandonado.</p>
+</div>
+</div>
+<div id="planejamento-completamente-aleatorizado" class="section level3" number="8.3.3">
+<h3>
+<span class="header-section-number">8.3.3</span> Planejamento completamente aleatorizado<a class="anchor" aria-label="anchor" href="#planejamento-completamente-aleatorizado"><i class="fas fa-link"></i></a>
+</h3>
+<p>Em um planejamento experimental completamente aleatorizado, todos os sujeitos são distribuídos aleatoriamente entre os tratamentos. A associação aleatória dos sujeitos forma grupos que devem ser semelhantes em todos os aspectos antes de ser aplicado o tratamento.</p>
+<p>O planejamento comparativo garante que outras influências, diferentes dos tratamentos experimentais, operem igualmente em todos os grupos. Assim, diferenças na resposta média se devem aos tratamentos ou ao papel do acaso na alocação aleatória dos sujeitos aos tratamentos.</p>
+<p>Essa última afirmativa merece mais reflexão. Mesmo com um excelente planejamento experimental, nunca podemos dizer que qualquer diferença entre dois grupos seja inteiramente devida ao tratamento aplicado. Variáveis, por definição, variam de indivíduo para indivíduo, e, portanto, um grupo de indivíduos certamente fornecerá um resultado diferente de outro grupo, mesmo nas mesmas condições.</p>
+</div>
+<div id="princípios-do-planejamento-experimental" class="section level3" number="8.3.4">
+<h3>
+<span class="header-section-number">8.3.4</span> Princípios do planejamento experimental<a class="anchor" aria-label="anchor" href="#princ%C3%ADpios-do-planejamento-experimental"><i class="fas fa-link"></i></a>
+</h3>
+<p>Os princípios básicos do planejamento de experimentos são:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Controle</strong> os efeitos de variáveis ocultas na resposta de modo mais simples, pela comparação de dois ou mais tratamentos.</p></li>
+<li><p><strong>Aleatorize</strong> – use o acaso impessoal para associar os sujeitos aos tratamentos.</p></li>
+<li><p><strong>Repita</strong> - use sujeitos suficientes em cada grupo para reduzir a variação do acaso nos resultados.</p></li>
+</ol>
+</div>
+<div id="planejamentos-de-dados-emparelhados" class="section level3" number="8.3.5">
+<h3>
+<span class="header-section-number">8.3.5</span> Planejamentos de dados emparelhados<a class="anchor" aria-label="anchor" href="#planejamentos-de-dados-emparelhados"><i class="fas fa-link"></i></a>
+</h3>
+<p>Um planejamento de dados emparelhados compara exatamente dois tratamentos, usando uma série de indivíduos proximamente relacionados dois a dois, ou cada indivíduo duas vezes.</p>
+<p>Escolha pares de sujeitos que sejam, tanto quanto possível, comparáveis. Esses podem ser indivíduos do mesmo gênero, idade, peso e altura ou geneticamente relacionados, como gêmeos ou animais nascidos da mesma ninhada. A alocação aleatória dos sujeitos aos tratamentos é feita dentro de cada par, e não para todos os sujeitos ao mesmo tempo. Use o acaso para decidir qual dos sujeitos do par recebe o primeiro tratamento. O outro daquele par recebe o outro tratamento. A ordem dos tratamentos pode influenciar a resposta do sujeito, de modo que aleatorizamos a ordem para cada sujeito.</p>
+<p>Às vezes, cada “par” em um planejamento de dados emparelhados consiste em apenas um sujeito, que recebe ambos os tratamentos, um após o outro. Cada sujeito serve como seu próprio controle.</p>
+<p>Planejamentos completamente aleatorizados são os planejamentos estatísticos mais simples para experimentos. Eles ilustram claramente os princípios de controle, aleatorização e número adequado de sujeitos. Contudo, eles frequentemente são inferiores a planejamentos estatísticos mais elaborados. Em particular, emparelhar os sujeitos de várias formas pode produzir resultados mais precisos que uma simples aleatorização.</p>
+<p>Planejamentos de dados emparelhados usam os princípios de comparação de tratamento e aleatorização. No entanto, a aleatorização não é completa – não alocamos aleatoriamente todos os sujeitos de uma vez aos dois tratamentos. Em vez disso, aleatorizamos apenas dentro de cada par. Isso permite que o emparelhamento reduza o efeito da variação entre os sujeitos. Ser capaz de distinguir um planejamento de dados emparelhados de um completamente aleatorizado é crítico, pois impacta a análise estatística e conclusões.</p>
+</div>
+<div id="planejamento-em-blocos" class="section level3" number="8.3.6">
+<h3>
+<span class="header-section-number">8.3.6</span> Planejamento em blocos<a class="anchor" aria-label="anchor" href="#planejamento-em-blocos"><i class="fas fa-link"></i></a>
+</h3>
+<p>Um bloco é um grupo de indivíduos semelhantes em algum aspecto que se espera poder afetar a resposta aos tratamentos. Em um planejamento em blocos, a alocação aleatória dos indivíduos aos tratamentos é feita separadamente dentro de cada bloco. Um planejamento em blocos combina a ideia da criação de grupos de tratamento equivalentes pelo emparelhamento com o princípio de formação aleatória de grupos de tratamento.</p>
+<p>Blocos são outra forma de controle. Eles controlam os efeitos de algumas variáveis externas ao trazê-las para o experimento na forma de blocos.</p>
+<div class="example">
+<p><span id="exm:bloco" class="example"><strong>Exemplo 8.9  (Diferenças de gênero) </strong></span>O progresso de um tipo de câncer difere em mulheres e homens. Assim, um experimento clínico para a comparação de três terapias para esse câncer trata gênero como uma variável de bloco. São feitas duas aleatorizações separadas, uma que associa os sujeitos mulheres aos tratamentos e a outra que associa os homens.</p>
+<p>Os blocos permitem que se extraiam conclusões separadas sobre cada um deles, por exemplo, sobre homens e mulheres. Também permitem conclusões gerais mais precisas, porque as diferenças sistemáticas entre homens e mulheres podem ser removidas quando estudamos os efeitos gerais das três terapias.</p>
+<p>Um pesquisador experiente formará blocos com base nas mais importantes e inevitáveis fontes de variabilidade entre as unidades experimentais. A aleatorização, então, fará a média dos efeitos da variação restante e permitirá uma comparação não viesada dos tratamentos.</p>
+</div>
+</div>
+<div id="cuidados-com-a-experimentação" class="section level3" number="8.3.7">
+<h3>
+<span class="header-section-number">8.3.7</span> Cuidados com a experimentação<a class="anchor" aria-label="anchor" href="#cuidados-com-a-experimenta%C3%A7%C3%A3o"><i class="fas fa-link"></i></a>
+</h3>
+<p>O sucesso de um experimento depende de nossa capacidade de tratar todos os sujeitos de forma idêntica em todos os aspectos, exceto pelos tratamentos que, de fato, estão sendo comparados. Viés do experimentador ou do sujeito são problemas reais, que podem prejudicar experimentos e estudos observacionais. Viés pessoal pode desviar nossas percepções e coleta de dados em observações de campo</p>
+<p>Uma forma de evitar estes vieses é a utiliação dos experimentos <strong>duplos-cegos</strong>.
+Nestes experimentos, nem os sujeitos e nem as pessoas que interagem com eles sabem qual tratamento cada um está recebendo. Na prática, no entanto, controles ótimos não são sempre alcançáveis. Há situações em que o uso de um placebo é antiético.</p>
+<p>O cegamento nem sempre é prático. Imagine a complexidade de se manter o acompanhamento de pílulas ativas e inativas para vários tratamentos diferentes sob as condições de duplo-cego, envolvendo centenas de sujeitos, durante vários anos. O cegamento nem sempre é uma opção se os pacientes são capazes de diferenciar o tratamento de um falso.</p>
+<p>Contudo, a fraqueza potencial mais séria de experimentos é a falta de realismo. Os sujeitos, tratamentos ou contexto de um experimento podem não duplicar realisticamente as condições que, de fato, desejamos estudar.</p>
+<div class="example">
+<p><span id="exm:real" class="example"><strong>Exemplo 8.10  (Carcinogenicidade da sacarina) </strong></span>A carcinogenicidade de um produto é a sua propensão a induzir o câncer quando usado, ingerido ou simplesmente presente no ambiente. A sacarina tem sido usada como adoçante artificial por quase um século.</p>
+<p>Devido à evidência experimental de carcinogenicidade em ratos, a sacarina foi incluída no Relatório sobre cancerígenos dos Estados Unidos em 1981, como potencial cancerígeno em humanos.</p>
+<p>No entanto, exames mais detalhados de cânceres de bexiga urinária observados em ratos indicam que o mecanismo biológico desse câncer é específico para o sistema urinário de ratos e relacionado com o consumo de sacarina em concentrações improváveis de representar consumo humano realista.</p>
+<p>A sacarina foi oficialmente retirada da lista em 2005, com a conclusão: <em>“os fatores que se pensava contribuir para a indução de tumor pela sacarina sódica em ratos não têm ocorrência esperada em humanos”.</em></p>
+</div>
+<p>A falta de realismo pode limitar nossa capacidade de aplicar as conclusões de um experimento a contextos de maior interesse. Muitos pesquisadores desejam generalizar suas conclusões a algum contexto mais amplo que o do experimento real.</p>
+<p>A análise estatística de um experimento não pode nos dizer até que ponto os resultados podem ser generalizados. A capacidade de se estender conclusões para além do contexto experimental depende de uma profunda discussão dos <strong>méritos biológicos</strong> do experimento e da <strong>representatividade</strong> dos sujeitos usados.</p>
+</div>
+<div id="ética-na-experimentação" class="section level3" number="8.3.8">
+<h3>
+<span class="header-section-number">8.3.8</span> Ética na experimentação<a class="anchor" aria-label="anchor" href="#%C3%A9tica-na-experimenta%C3%A7%C3%A3o"><i class="fas fa-link"></i></a>
+</h3>
+<p>Desde humanos a animais e ecossistemas, a experimentação precisa ser cuidadosamente pensada, não apenas para ser estatisticamente poderosa e elegante, mas também para ser responsável. A ética experimental trata de todas as questões que devemos fazer antes, durante e depois da experimentação.</p>
 
 </div>
 </div>
@@ -326,6 +389,12 @@ Perguntou-se a 40 pacientes-caso e 80 controles saudáveis como tinham armazenad
 <a class="nav-link" href="#planejamento-de-experimentos"><span class="header-section-number">8.3</span> Planejamento de Experimentos</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#vantagem-dos-experimentos"><span class="header-section-number">8.3.1</span> Vantagem dos experimentos</a></li>
 <li><a class="nav-link" href="#experimentos-comparativos"><span class="header-section-number">8.3.2</span> Experimentos comparativos</a></li>
+<li><a class="nav-link" href="#planejamento-completamente-aleatorizado"><span class="header-section-number">8.3.3</span> Planejamento completamente aleatorizado</a></li>
+<li><a class="nav-link" href="#princ%C3%ADpios-do-planejamento-experimental"><span class="header-section-number">8.3.4</span> Princípios do planejamento experimental</a></li>
+<li><a class="nav-link" href="#planejamentos-de-dados-emparelhados"><span class="header-section-number">8.3.5</span> Planejamentos de dados emparelhados</a></li>
+<li><a class="nav-link" href="#planejamento-em-blocos"><span class="header-section-number">8.3.6</span> Planejamento em blocos</a></li>
+<li><a class="nav-link" href="#cuidados-com-a-experimenta%C3%A7%C3%A3o"><span class="header-section-number">8.3.7</span> Cuidados com a experimentação</a></li>
+<li><a class="nav-link" href="#%C3%A9tica-na-experimenta%C3%A7%C3%A3o"><span class="header-section-number">8.3.8</span> Ética na experimentação</a></li>
 </ul>
 </li>
 </ul>
