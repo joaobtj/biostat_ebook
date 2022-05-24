@@ -1,7 +1,7 @@
 --- 
 title: "Bioestatística aplicada aos ecossistemas agrícolas e naturais"
 author: "João B. Tolentino Jr."
-date: "2022-05-18"
+date: "2022-05-24"
 description: " Livro texto da disciplina de Bioestatística do Programa de Pós-graduação em Ecossistemas Agrícolas e Naturais."
 #cover-image: image/cover.jpg
 #apple-touch-icon: image/cover.jpg
@@ -22,6 +22,8 @@ link-citations: yes
 # Prefácio {-}
 
 Este é um livro utilizado como texto-base para a disciplina de Bioestatística do Programa de Pós-Graduação em Ecossistemas Agrícolas e Naturais da Universidade Federal de Santa Catarina (UFSC) Campus de Curitibanos. 
+
+**Este material está em elaboração, sujeito a alterações!**
 
 ## Sessão {-}
 
