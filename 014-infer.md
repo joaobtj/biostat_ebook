@@ -3,6 +3,8 @@
 
 
 
+
+
 # Introdução à inferência
 
 A inferência estatística fornece métodos para se tirarem conclusões sobre uma população a partir de dados amostrais.
