@@ -61,7 +61,7 @@ Latas de alumínio são feitas a partir de grandes lingotes sólidos, prensados 
 
 Uma companhia afirma que um novo processo de fabricação diminui a quantidade de alumínio necessária para se fazer uma lata e, portanto, diminui o peso.
 
-Obtiveram-se amostras aleatórias independentes de latas de alumínio feitas pelos processos velho e novo, e o peso (em gramas) de cada uma é dado no arquivo (lata.xlsx)[data/lata.xlsx].
+Obtiveram-se amostras aleatórias independentes de latas de alumínio feitas pelos processos velho e novo, e o peso (em gramas) de cada uma é dado no arquivo [lata.xlsx](data/lata.xlsx).
 
 Há alguma evidência de que as latas de alumínio feitas pelo novo processo tenham um peso médio populacional menor?
 
