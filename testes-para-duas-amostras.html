@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 9 Testes para duas amostras | Bioestatística aplicada aos ecossistemas agrícolas e naturais</title>
+<meta name="author" content="João B. Tolentino Jr.">
+<meta name="description" content="9.1 Teste t para dados emparelhados Para comparar as respostas aos dois tratamentos em um planejamento de dados emparelhados, determine a diferença entre as respostas em cada par. Em seguida,...">
+<meta name="generator" content="bookdown 0.26 with bs4_book()">
+<meta property="og:title" content="Capítulo 9 Testes para duas amostras | Bioestatística aplicada aos ecossistemas agrícolas e naturais">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://biostat.tolentino.pro.br/testes-para-duas-amostras.html">
+<meta property="og:description" content="9.1 Teste t para dados emparelhados Para comparar as respostas aos dois tratamentos em um planejamento de dados emparelhados, determine a diferença entre as respostas em cada par. Em seguida,...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 9 Testes para duas amostras | Bioestatística aplicada aos ecossistemas agrícolas e naturais">
+<meta name="twitter:description" content="9.1 Teste t para dados emparelhados Para comparar as respostas aos dois tratamentos em um planejamento de dados emparelhados, determine a diferença entre as respostas em cada par. Em seguida,...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Montserrat-0.4.1/font.css" rel="stylesheet">
+<link href="libs/_Signika-0.4.1/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.22/datatables.js"></script><link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 1em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Bioestatística aplicada aos ecossistemas agrícolas e naturais</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Buscar" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Sumário</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Prefácio</a></li>
+<li class="book-part">O ecossistema R</li>
+<li><a class="" href="intro-r.html">Introdução - O ecossistema R</a></li>
+<li><a class="" href="procurando-e-pedindo-ajuda-para-o-r.html"><span class="header-section-number">1</span> Procurando (e pedindo) ajuda para o R</a></li>
+<li><a class="" href="comeco.html"><span class="header-section-number">2</span> Começando com o R</a></li>
+<li><a class="" href="rmarkdown-1.html"><span class="header-section-number">3</span> RMarkdown</a></li>
+<li class="book-part">(bio)Estatística</li>
+<li><a class="" href="bio.html">Introdução - (bio)Estatística</a></li>
+<li><a class="" href="alguns-conceitos-b%C3%A1sicos.html"><span class="header-section-number">4</span> Alguns conceitos básicos</a></li>
+<li><a class="" href="graf.html"><span class="header-section-number">5</span> Gráficos estatísticos</a></li>
+<li><a class="" href="estbas.html"><span class="header-section-number">6</span> Estatística Básica</a></li>
+<li><a class="" href="introdu%C3%A7%C3%A3o-%C3%A0-infer%C3%AAncia.html"><span class="header-section-number">7</span> Introdução à inferência</a></li>
+<li><a class="" href="produ%C3%A7%C3%A3o-de-dados.html"><span class="header-section-number">8</span> Produção de dados</a></li>
+<li><a class="active" href="testes-para-duas-amostras.html"><span class="header-section-number">9</span> Testes para duas amostras</a></li>
+<li class="book-part">Apêndices</li>
+<li><a class="" href="conjunto-de-dados-do-r.html"><span class="header-section-number">A</span> Conjunto de dados do R</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/joaobtj/biostat_ebook">Código fonte do livro <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><link href="assets/style.css" rel="stylesheet">
+<div class="hero-image-container"> 
+  <img class="hero-image" src="../image/biostat.png">
+</div>
+<div id="testes-para-duas-amostras" class="section level1" number="9">
+<h1>
+<span class="header-section-number">Capítulo 9</span> Testes para duas amostras<a class="anchor" aria-label="anchor" href="#testes-para-duas-amostras"><i class="fas fa-link"></i></a>
+</h1>
+<div id="teste-t-para-dados-emparelhados" class="section level2" number="9.1">
+<h2>
+<span class="header-section-number">9.1</span> Teste t para dados emparelhados<a class="anchor" aria-label="anchor" href="#teste-t-para-dados-emparelhados"><i class="fas fa-link"></i></a>
+</h2>
+<p>Para comparar as respostas aos dois tratamentos em um planejamento de dados emparelhados, determine a diferença entre as respostas em cada par. Em seguida, aplique o procedimento t de uma amostra a essas diferenças.</p>
+<div class="example">
+<p><span id="exm:par" class="example"><strong>Exemplo 9.1  (Teste t para dados emparelhados) </strong></span>Pesquisadores perguntaram se odores agradáveis teriam o efeito de melhorar o desempenho de estudantes.</p>
+<p>Vinte e um sujeitos trabalharam em um labirinto com lápis e papel, usando uma máscara inodora ou com perfume floral, em ordem aleatória.</p>
+<p>Há evidência de que os sujeitos resolveram o labirinto mais depressa usando a máscara com perfume?</p>
+<p>Os dados podem ser encontrados no arquivo <a href="data/floral.xlsx">floral.xlsx</a></p>
+<div class="sourceCode" id="cb202"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">floral</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/floral.xlsx"</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">floral</span><span class="op">$</span><span class="va">sem</span>, <span class="va">floral</span><span class="op">$</span><span class="va">com</span>, paired<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<pre><code>## 
+##  Paired t-test
+## 
+## data:  floral$sem and floral$com
+## t = 0.34938, df = 20, p-value = 0.7305
+## alternative hypothesis: true mean difference is not equal to 0
+## 95 percent confidence interval:
+##  -4.755061  6.668394
+## sample estimates:
+## mean difference 
+##       0.9566667</code></pre>
+<p>Alternativamente, o teste t pode ser aplicado às diferenças entre as respostas de cada par.</p>
+<div class="sourceCode" id="cb204"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">floral</span><span class="op">$</span><span class="va">sem</span> <span class="op">-</span> <span class="va">floral</span><span class="op">$</span><span class="va">com</span><span class="op">)</span></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  floral$sem - floral$com
+## t = 0.34938, df = 20, p-value = 0.7305
+## alternative hypothesis: true mean is not equal to 0
+## 95 percent confidence interval:
+##  -4.755061  6.668394
+## sample estimates:
+## mean of x 
+## 0.9566667</code></pre>
+<p>Os dados não apoiam a afirmativa (p-valor = 0,73) de que perfumes florais melhorem o desempenho.</p>
+<ul>
+<li>A média do tempo de execução do labirinto com perfume foi de 49.06</li>
+<li>A média do tempo de execução do labirinto sem perfume foi de 50.01</li>
+<li>O IC para a diferença foi de -4,75 a +6,66 segundos.</li>
+<li>A melhora média (amostral) foi de apenas 0,95 segundos.</li>
+</ul>
+</div>
+</div>
+<div id="teste-t-para-duas-amostras" class="section level2" number="9.2">
+<h2>
+<span class="header-section-number">9.2</span> Teste t para duas amostras<a class="anchor" aria-label="anchor" href="#teste-t-para-duas-amostras"><i class="fas fa-link"></i></a>
+</h2>
+<p>O fato de uma diferença observada entre duas médias amostrais ser surpreendente depende da dispersão das observações, bem como das duas médias.</p>
+<p>Médias muito diferentes podem ocorrer apenas devido ao acaso, se as observações individuais variarem bastante.</p>
+<div class="example">
+<p><span id="exm:testet" class="example"><strong>Exemplo 9.2  (Teste t para duas amostras) </strong></span>Latas de alumínio são feitas a partir de grandes lingotes sólidos, prensados sob rolos de alta pressão e cortados como biscoitos a partir de folhas finas.</p>
+<p>Uma companhia afirma que um novo processo de fabricação diminui a quantidade de alumínio necessária para se fazer uma lata e, portanto, diminui o peso.</p>
+<p>Obtiveram-se amostras aleatórias independentes de latas de alumínio feitas pelos processos velho e novo, e o peso (em gramas) de cada uma é dado no arquivo (lata.xlsx)[data/lata.xlsx].</p>
+<p>Há alguma evidência de que as latas de alumínio feitas pelo novo processo tenham um peso médio populacional menor?</p>
+<div class="sourceCode" id="cb206"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lata</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/lata.xlsx"</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">lata</span><span class="op">$</span><span class="va">antigo</span>, <span class="va">lata</span><span class="op">$</span><span class="va">novo</span><span class="op">)</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  lata$antigo and lata$novo
+## t = 2.587, df = 39.742, p-value = 0.01345
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  0.1002432 0.8168996
+## sample estimates:
+## mean of x mean of y 
+##  14.30857  13.85000</code></pre>
+<p>Há evidências (p-valor = 0,013) de que as latas de alumínio fabricadas pelo processo novo sejam mais leves do que as fabricadas pelo processo antigo.</p>
+<p>O Intervalo de Confiança de 95% para a diferença de peso entre as latas fabricadas pelo processo novo e antigo é de 0,10 a 0,82 gramas mais leve pelo processo novo.</p>
+</div>
+
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="produ%C3%A7%C3%A3o-de-dados.html"><span class="header-section-number">8</span> Produção de dados</a></div>
+<div class="next"><a href="conjunto-de-dados-do-r.html"><span class="header-section-number">A</span> Conjunto de dados do R</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Nesta página</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#testes-para-duas-amostras"><span class="header-section-number">9</span> Testes para duas amostras</a></li>
+<li><a class="nav-link" href="#teste-t-para-dados-emparelhados"><span class="header-section-number">9.1</span> Teste t para dados emparelhados</a></li>
+<li><a class="nav-link" href="#teste-t-para-duas-amostras"><span class="header-section-number">9.2</span> Teste t para duas amostras</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/joaobtj/biostat_ebook/blob/main/016-infer2.Rmd">Código fonte desta página<i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/joaobtj/biostat_ebook/edit/main/016-infer2.Rmd">Editar esta página <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Bioestatística aplicada aos ecossistemas agrícolas e naturais</strong>" foi escrito por João B. Tolentino Jr.. Última atualização em 2022-06-14.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
