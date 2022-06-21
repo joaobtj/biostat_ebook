@@ -47,7 +47,7 @@ gt::gt(dap5_wide)
 dap5 <- dap5_wide%>%
   tidyr::pivot_longer(cols = 1:5, names_to = "amostra", values_to = "dap")
 
-readr::write_csv(dap5_wide, "data/dap5.csv")
+readr::write_csv(dap5, "data/dap5.csv")
 
 ```
 
