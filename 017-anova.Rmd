@@ -1,0 +1,121 @@
+
+# Análise de Variância
+
+Os procedimentos t de duas amostras comparam as médias de duas populações ou as respostas médias a dois tratamentos em um experimento.
+
+Naturalmente, os estudos nem sempre comparam apenas dois grupos. Precisamos de um método que compare qualquer quantidade de médias.
+
+
+## Comparação de várias médias
+
+Os métodos estatísticos para se lidar com comparações múltiplas geralmente apresentam dois passos:
+
+1.Um teste geral para verificarmos se há boa evidência de quaisquer diferenças entre os parâmetros que desejamos comparar.
+
+2.Uma análise de acompanhamento detalhada para decidirmos quais parâmetros são diferentes e estimarmos o tamanho das diferenças.
+
+## A ideia da Análise de Variância
+
+Considere a população com 150 árvores pertencente a um reflorestamento de Mogno Africano (Capítulo 6).
+
+Suponha que retiremos 5 amostras aleatórias desta população com 8 indivíduos em cada amostra.
+
+```{r, include=FALSE}
+dap=readr::read_csv("https://biostat.tolentino.pro.br/data/dap.csv")
+library(dplyr)
+
+set.seed("21102015")
+dap5_wide <- dap$dap %>%
+  sample(40) %>%
+  matrix(ncol = 5) %>%
+  as.data.frame() %>%
+  rename(
+    am1 = V1,
+    am2 = V2,
+    am3 = V3,
+    am4 = V4,
+    am5 = V5
+  ) 
+```
+
+```{r, echo=FALSE}
+gt::gt(dap5_wide)
+```
+
+
+```{r, include=FALSE}
+dap5 <- dap5_wide%>%
+  tidyr::pivot_longer(cols = 1:5, names_to = "amostra", values_to = "dap")
+
+readr::write_csv(dap5_wide, "data/dap5.csv")
+
+```
+
+
+
+Estes dados podem ser encontrados no arquivo [dap5.csv](data/dap5.csv)
+
+Uma Análise de Variância pode ser executada com as funções `lm` e `anova`, como a seguir:
+
+```{r}
+
+aov_dap5 <- lm(dap~amostra, data=dap5)
+anova(aov_dap5)
+```
+
+
+```{r include=FALSE}
+ pvalor=anova(aov_dap5)$`Pr(>F)`[1]
+```
+
+Queremos testar a hipótese nula de que não há diferenças entre os diâmetros médios das cinco populações de onde as amostras foram retiradas:
+
+H~0~:μ~1~ = μ~2~ = μ~3~ = μ~~4 = μ~5~
+
+A hipótese alternativa é a de que há alguma diferença, isto é, nem todas as três médias populacionais são iguais:
+
+H~1~: nem todas as médias μ são iguais
+
+A priori, sabemos que as cinco amostras foram aleatoriamente retiradas da mesma população. Logo, o teste F da Análise de Variância é não significativo (como esperado). Seu p-valor foi de `r pvalor %>% round(3)` e, por isso, não rejeitamos a hipótese H~0~, ou seja, não há evidências que os diâmetros médios das amostras sejam diferentes ou que venham de populações diferentes.
+
+Mas o que occoreria se houvesse um efeito aditivo em cada uma das amostras?
+Vamos supor que a amostra 1 tenha um efeito aditivo de +5 unidades no DAP. A amostra 2 de -5, a amostra 3 de +3, a amostra 4 de +2 e, por fim, a amostra 5 não tenha nenhum efeito aditivo. O resultado é este mostrado no arquivo [dap5p.csv](data/dap5p.csv)
+
+```{r, include=FALSE}
+
+efeito <- c(5,-5,3,2,0)
+dap5p_wide <- dap5_wide+rep(efeito,e=8)
+
+```
+
+
+```{r, echo=FALSE}
+gt::gt(dap5p_wide)
+```
+
+
+```{r, include=FALSE}
+
+dap5p <- dap5p_wide %>%
+  tidyr::pivot_longer(cols = 1:5, names_to = "amostra", values_to = "dap")
+
+readr::write_csv(dap5p, "data/dap5p.csv")
+
+```
+
+
+A Anális de Variância, com estes valores atualizados, fica assim:
+
+```{r}
+aov_dap5p <- lm(dap~amostra, data=dap5p)
+anova(aov_dap5p)
+```
+
+```{r, include=FALSE}
+ pvalorp=anova(aov_dap5p)$`Pr(>F)`[1]
+
+```
+
+
+Para as mesmas hipóteses anteriores, o teste F da Análise de Variância é significativo (p-valor ~ `r pvalorp %>% round(3)`). Neste caso, rejeitamos a hipótese H~0~ e podemos concluir que há evidências de que as amostras tenham médias de diâmetro diferentes ou que seja oriundas de populações diferentes.
+
