@@ -88,6 +88,7 @@
 <li><a class="" href="introdu%C3%A7%C3%A3o-%C3%A0-infer%C3%AAncia.html"><span class="header-section-number">7</span> Introdução à inferência</a></li>
 <li><a class="" href="produ%C3%A7%C3%A3o-de-dados.html"><span class="header-section-number">8</span> Produção de dados</a></li>
 <li><a class="" href="testes-para-duas-amostras.html"><span class="header-section-number">9</span> Testes para duas amostras</a></li>
+<li><a class="" href="an%C3%A1lise-de-vari%C3%A2ncia.html"><span class="header-section-number">10</span> Análise de Variância</a></li>
 <li class="book-part">Apêndices</li>
 <li><a class="" href="conjunto-de-dados-do-r.html"><span class="header-section-number">A</span> Conjunto de dados do R</a></li>
 </ul>
@@ -121,7 +122,7 @@ Figura 1.1: Ajuda da função <code>sum</code>
 </div>
 <p>Na documentação, é usual haver uma parte com exemplos de uso da função. Estes exemplos podem ser executados com a função <code>example</code>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/example.html">example</a></span><span class="op">(</span><span class="va">sum</span><span class="op">)</span> </code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/example.html">example</a></span><span class="op">(</span><span class="va">sum</span><span class="op">)</span> </span></code></pre></div>
 <pre><code>## 
 ## sum&gt; ## Pass a vector to sum, and it will add the elements together.
 ## sum&gt; sum(1:5)
@@ -182,17 +183,17 @@ Figura 1.3: É difícil ajudar com uma foto da tela com baixa qualidade
 </h2>
 <p><em>Reprex</em> é a sigla para <em>reproducible example</em>, ou exemplo reproduzível. O código que você deseja compartilhar deve ser renderizado dentro da função <code><a href="https://reprex.tidyverse.org/reference/reprex.html">reprex::reprex</a></code>, como código completo dentro de chaves <code><a href="https://rdrr.io/r/base/Paren.html">{ }</a></code>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">reprex</span><span class="fu">::</span><span class="fu"><a href="https://reprex.tidyverse.org/reference/reprex.html">reprex</a></span><span class="op">(</span><span class="op">{</span>
-  <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="st">"a"</span><span class="op">)</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>
-<span class="op">}</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">reprex</span><span class="fu">::</span><span class="fu"><a href="https://reprex.tidyverse.org/reference/reprex.html">reprex</a></span><span class="op">(</span><span class="op">{</span></span>
+<span>  <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="st">"a"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
 <p>Esta função cria um arquivo renderizado com o exemplo e também envia o resultado direto para a área de transferência para poder ser colado com o <button>Ctrl</button> + <button>V</button>.</p>
 <p>O resultado da função acima pode ser visto abaixo:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="st">"a"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>
-<span class="co">#&gt; Warning in mean.default(y): argumento não é numérico nem lógico: retornando NA</span>
-<span class="co">#&gt; [1] NA</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="st">"a"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in mean.default(y): argumento não é numérico nem lógico: retornando NA</span></span>
+<span><span class="co">#&gt; [1] NA</span></span></code></pre></div>
 
 </div>
 </div>
@@ -225,7 +226,7 @@ Figura 1.3: É difícil ajudar com uma foto da tela com baixa qualidade
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Bioestatística aplicada aos ecossistemas agrícolas e naturais</strong>" foi escrito por João B. Tolentino Jr.. Última atualização em 2022-06-14.</p>
+    <p>"<strong>Bioestatística aplicada aos ecossistemas agrícolas e naturais</strong>" foi escrito por João B. Tolentino Jr.. Última atualização em 2022-06-28.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
