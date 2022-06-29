@@ -1,8 +1,4 @@
----
-output: html_document
-editor_options: 
-  chunk_output_type: console
----
+
 
 # Análise de Variância
 
@@ -277,3 +273,5 @@ Pela análise do conjunto dos resultados acima, não há evidência de não homo
 
 
 :::
+
+
