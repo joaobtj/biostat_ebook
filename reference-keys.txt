@@ -85,6 +85,9 @@ exm:bloco
 exm:real
 exm:par
 exm:testet
+exm:anova1
+exm:press2
+exm:press3
 procurando-e-pedindo-ajuda-para-o-r
 as-funções-help-e
 stack-overflow
@@ -167,6 +170,8 @@ teste-t-para-duas-amostras
 análise-de-variância
 comparação-de-várias-médias
 a-ideia-da-análise-de-variância
+análise-de-variância-para-um-fator
+condições-para-a-anova
 conjunto-de-dados-do-r
 gapminder
 mpg
