@@ -1,6 +1,6 @@
 
 
-# Análise de Variância
+# Análise de Variância {#anova}
 
 Os procedimentos t de duas amostras comparam as médias de duas populações ou as respostas médias a dois tratamentos em um experimento.
 
