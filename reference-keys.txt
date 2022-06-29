@@ -167,7 +167,7 @@ cuidados-com-a-experimentação
 testes-para-duas-amostras
 teste-t-para-dados-emparelhados
 teste-t-para-duas-amostras
-análise-de-variância
+anova
 comparação-de-várias-médias
 a-ideia-da-análise-de-variância
 análise-de-variância-para-um-fator
