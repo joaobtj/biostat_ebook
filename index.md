@@ -1,7 +1,7 @@
 --- 
 title: "Bioestatística aplicada aos ecossistemas agrícolas e naturais"
 author: "João B. Tolentino Jr."
-date: "2022-06-28"
+date: "2022-06-29"
 description: " Livro texto da disciplina de Bioestatística do Programa de Pós-graduação em Ecossistemas Agrícolas e Naturais."
 #cover-image: image/cover.jpg
 #apple-touch-icon: image/cover.jpg
@@ -33,7 +33,7 @@ This version of the book was built with R version 4.2.0 (2022-04-22) and the fol
 
 |package     |version |source         |
 |:-----------|:-------|:--------------|
-|bookdown    |0.26    |CRAN (R 4.2.0) |
+|bookdown    |0.27    |CRAN (R 4.2.0) |
 |bslib       |0.3.1   |CRAN (R 4.2.0) |
 |cachem      |1.0.6   |CRAN (R 4.2.0) |
 |cli         |3.3.0   |CRAN (R 4.2.0) |
@@ -50,14 +50,14 @@ This version of the book was built with R version 4.2.0 (2022-04-22) and the fol
 |magrittr    |2.0.3   |CRAN (R 4.2.0) |
 |memoise     |2.0.1   |CRAN (R 4.2.0) |
 |R6          |2.5.1   |CRAN (R 4.2.0) |
-|renv        |0.15.4  |CRAN (R 4.2.0) |
-|rlang       |1.0.2   |CRAN (R 4.2.0) |
+|renv        |0.15.5  |CRAN (R 4.2.0) |
+|rlang       |1.0.3   |CRAN (R 4.2.0) |
 |rmarkdown   |2.14    |CRAN (R 4.2.0) |
 |sass        |0.4.1   |CRAN (R 4.2.0) |
 |sessioninfo |1.2.2   |CRAN (R 4.2.0) |
 |stringi     |1.7.6   |CRAN (R 4.2.0) |
 |stringr     |1.4.0   |CRAN (R 4.2.0) |
-|xfun        |0.30    |CRAN (R 4.2.0) |
+|xfun        |0.31    |CRAN (R 4.2.0) |
 |xml2        |1.3.3   |CRAN (R 4.2.0) |
 |yaml        |2.3.5   |CRAN (R 4.2.0) |
 

@@ -1,3 +1,8 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 
 # Análise de Variância
 
@@ -1042,4 +1047,250 @@ Para as mesmas hipóteses anteriores, o teste F da Análise de Variância é sig
 
 ## Análise de Variância para um fator
 
+:::{.example #anova1 name="Análise de Variância para um fator"}
 
+Pesquisadores estudaram a relação entre variedades da flor tropical *Heliconia*, na ilha de Dominica, e as diferentes espécies de beija-flores que fertilizam essas flores.
+
+Acredita-se que os comprimentos das flores e as formas dos bicos dos beija-flores evoluíram juntos e se adaptaram uns aos outros.
+
+Se isso for verdade, as variedades de flores fertilizadas por diferentes espécies de beija-flores devem ter diferentes distribuições de comprimentos.
+
+O arquivo [bflor.xlsx](data/bflor.xlsx) fornece as medidas de comprimentos (em milímetros, mm) para amostras de três variedades de *Heliconia*, cada uma fertilizada por uma espécie diferente de beija-flor.
+
+Em particular, os comprimentos médios de suas flores são diferentes?
+
+As três variedades têm distribuições com comprimentos diferentes?
+
+
+Queremos testar a hipótese nula de que não há diferenças entre os comprimentos médios das três populações de flores:
+
+H~0~: μ~1~ = μ~2~ = μ~3~
+
+A hipótese alternativa é a de que há alguma diferença, isto é, nem todas as três médias populacionais são iguais:
+
+H~1~: nem todas as μ~1~, μ~2~ e μ~3~ são iguais
+
+
+Iniciemos com uma análise exploratória: 
+
+
+```r
+bflor <- readxl::read_excel("data/bflor.xlsx") %>%
+  mutate(especie = factor(especie))
+
+
+bflor %>% 
+  group_by(especie) %>%
+  summarise(n=n(),
+            media=mean(comprimento),
+            desvpad = sd(comprimento),
+            var=var(comprimento))
+```
+
+```
+## # A tibble: 3 × 5
+##   especie     n media desvpad   var
+##   <fct>   <int> <dbl>   <dbl> <dbl>
+## 1 Hb         16  47.6   1.21  1.47 
+## 2 Hca        15  36.2   0.975 0.951
+## 3 Hcv        23  39.7   1.80  3.24
+```
+
+```r
+boxplot(comprimento~especie, data=bflor)
+```
+
+<img src="017-anova_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+
+Efetuamos a Análise de Variância propriamente dita:
+
+
+```r
+aov_bflor <- lm(comprimento~especie, data=bflor)
+
+anova(aov_bflor)
+```
+
+```
+## Analysis of Variance Table
+## 
+## Response: comprimento
+##           Df  Sum Sq Mean Sq F value    Pr(>F)    
+## especie    2 1082.87  541.44  259.12 < 2.2e-16 ***
+## Residuals 51  106.57    2.09                      
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+```
+**CONCLUSÃO**: Há forte evidência de que as três variedades de flores não tenham, todas, o mesmo comprimento médio.
+
+O teste F não diz quais das três médias são significantemente diferentes. Aparentemente, pela nossa análise de dados preliminar, as flores da bihai são visivelmente maiores que as da vermelha ou da amarela.
+
+As flores vermelhas e amarelas são muito próximas, mas as vermelhas tendem a ser mais compridas.
+
+:::
+
+## Condições para a ANOVA
+
+1. Temos k AASs independentes, uma de cada uma das k populações.
+
+Como de costume, o planejamento da produção dos dados é a condição mais importante para inferência. Uma amostragem viesada ou confundimento pode tornar qualquer inferência sem sentido.
+
+2. Cada uma das k populações tem uma distribuição Normal com média desconhecida
+
+Procedimentos para comparação de médias não são muito sensíveis à falta de Normalidade. A Anova torna-se mais segura à medida que os tamanhos das amostras aumentam. Quando não houver valores atípicos e as distribuições forem aproximadamente simétricas, podemos usar a Anova com segurança.
+
+3. Todas as populações têm o mesmo desvio-padrão $\sigma$, de valor desconhecido.
+
+A terceira condição é problemática. Não é fácil verificar a condição de igualdade dos desvios-padrão populacionais. 
+Testes estatísticos de igualdade dos desvios-padrão são tão sensíveis à ausência de Normalidade que, na prática, têm pouco valor.
+
+Mas, qual é a gravidade de os desvios-padrão serem desiguais?
+
+A Anova não é muito sensível a violações da condição, particularmente quando todas as amostras têm tamanhos iguais ou semelhantes e nenhuma delas é muito pequena.
+Ao planejar um estudo, tente tomar amostras do mesmo tamanho aproximado de todos os grupos que pretende comparar e não utilize amostras muito pequenas.
+
+Certifique-se, antes de fazer a Anova, de que os desvios-padrão amostrais sejam, pelo menos, semelhantes entre si.
+Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor.
+
+
+:::{.example #press2 name="Verificação do pressuposto da Normalidade"}
+
+.
+
+
+```r
+## curtose
+aov_bflor %>% residuals() %>% moments::kurtosis()
+```
+
+```
+## [1] 2.349862
+```
+
+```r
+## assimetria
+aov_bflor %>% residuals() %>% moments::skewness()
+```
+
+```
+## [1] 0.5223018
+```
+
+```r
+## Teste de Shapiro-Wilk
+aov_bflor %>% residuals() %>% shapiro.test()
+```
+
+```
+## 
+## 	Shapiro-Wilk normality test
+## 
+## data:  .
+## W = 0.94889, p-value = 0.02227
+```
+
+```r
+## Gráfico dos quantis normais
+aov_bflor %>% residuals() %>% qqnorm()
+aov_bflor %>% residuals() %>% qqline()
+```
+
+<img src="017-anova_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+
+```r
+## Histograma
+aov_bflor %>% residuals() %>% hist()
+```
+
+<img src="017-anova_files/figure-html/unnamed-chunk-13-2.png" width="672" />
+
+```r
+## Ramo e folhas
+aov_bflor %>% residuals() %>% stem()
+```
+
+```
+## 
+##   The decimal point is at the |
+## 
+##   -2 | 3
+##   -1 | 98776665553200
+##   -0 | 9988877655522211
+##    0 | 1355666788999
+##    1 | 8
+##    2 | 00223557
+##    3 | 4
+```
+
+.
+
+:::
+
+
+Pela análise do conjunto dos resultados acima, não há evidência de desvio severo da Normalidade.
+
+:::{.example #press3 name="Verificação do pressuposto da homogeneidade das variâncias"}
+
+.
+
+
+```r
+## razão maior/menor desvio-padrão
+bflor %>% group_by(especie) %>% summarise(desvpad=sd(comprimento)) %>%
+mutate(razao=max(desvpad)/desvpad)
+```
+
+```
+## # A tibble: 3 × 3
+##   especie desvpad razao
+##   <fct>     <dbl> <dbl>
+## 1 Hb        1.21   1.48
+## 2 Hca       0.975  1.84
+## 3 Hcv       1.80   1
+```
+
+```r
+## boxplot condicional dos resíduos
+boxplot(residuals(aov_bflor)~especie, data = bflor)
+```
+
+<img src="017-anova_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+
+```r
+## resíduos vs ajustados
+plot(aov_bflor,1)
+```
+
+<img src="017-anova_files/figure-html/unnamed-chunk-14-2.png" width="672" />
+
+```r
+## teste de Bartlett
+bartlett.test(residuals(aov_bflor)~especie, data=bflor)
+```
+
+```
+## 
+## 	Bartlett test of homogeneity of variances
+## 
+## data:  residuals(aov_bflor) by especie
+## Bartlett's K-squared = 6.4839, df = 2, p-value = 0.03909
+```
+
+```r
+## teste de Levene
+car::leveneTest(residuals(aov_bflor)~especie, data=bflor)
+```
+
+```
+## Levene's Test for Homogeneity of Variance (center = median)
+##       Df F value  Pr(>F)  
+## group  2  4.3722 0.01768 *
+##       51                  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+```
+
+Pela análise do conjunto dos resultados acima, não há evidência de não homogeneidade das variâncias.
+
+
+:::
