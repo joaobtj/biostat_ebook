@@ -507,7 +507,7 @@ Uma Análise de Variância pode ser executada com as funções `lm` e `anova`, c
 
 
 ```r
-aov_dap5 <- lm(dap~amostra, data=dap5)
+aov_dap5 <- lm(dap ~ amostra, data = dap5)
 anova(aov_dap5)
 ```
 
@@ -1020,7 +1020,7 @@ A Análise de Variância, com estes valores atualizados, fica assim:
 
 
 ```r
-aov_dap5p <- lm(dap~amostra, data=dap5p)
+aov_dap5p <- lm(dap ~ amostra, data = dap5p)
 anova(aov_dap5p)
 ```
 
@@ -1051,7 +1051,11 @@ Acredita-se que os comprimentos das flores e as formas dos bicos dos beija-flore
 
 Se isso for verdade, as variedades de flores fertilizadas por diferentes espécies de beija-flores devem ter diferentes distribuições de comprimentos.
 
-O arquivo [bflor.xlsx](data/bflor.xlsx) fornece as medidas de comprimentos (em milímetros, mm) para amostras de três variedades de *Heliconia*, cada uma fertilizada por uma espécie diferente de beija-flor.
+O arquivo [bflor.xlsx](data/bflor.xlsx) fornece as medidas de comprimentos (em milímetros, mm) para amostras de três variedades de *Heliconia*, cada uma fertilizada por uma espécie diferente de beija-flor. As espécies são:
+
+1. *Heliconia bihai*
+1. *Heliconia caribaea* vermelha
+1. *Heliconia caribaea* amarela
 
 Em particular, os comprimentos médios de suas flores são diferentes?
 
@@ -1075,12 +1079,14 @@ bflor <- readxl::read_excel("data/bflor.xlsx") %>%
   mutate(especie = factor(especie))
 
 
-bflor %>% 
+bflor %>%
   group_by(especie) %>%
-  summarise(n=n(),
-            media=mean(comprimento),
-            desvpad = sd(comprimento),
-            var=var(comprimento))
+  summarise(
+    n = n(),
+    media = mean(comprimento),
+    desvpad = sd(comprimento),
+    var = var(comprimento)
+  )
 ```
 
 ```
@@ -1093,7 +1099,7 @@ bflor %>%
 ```
 
 ```r
-boxplot(comprimento~especie, data=bflor)
+boxplot(comprimento ~ especie, data = bflor)
 ```
 
 <img src="017-anova_files/figure-html/unnamed-chunk-11-1.png" width="672" />
@@ -1102,7 +1108,7 @@ Efetuamos a Análise de Variância propriamente dita:
 
 
 ```r
-aov_bflor <- lm(comprimento~especie, data=bflor)
+aov_bflor <- lm(comprimento ~ especie, data = bflor)
 
 anova(aov_bflor)
 ```
@@ -1156,7 +1162,9 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 
 ```r
 ## curtose
-aov_bflor %>% residuals() %>% moments::kurtosis()
+aov_bflor %>%
+  residuals() %>%
+  moments::kurtosis()
 ```
 
 ```
@@ -1165,7 +1173,9 @@ aov_bflor %>% residuals() %>% moments::kurtosis()
 
 ```r
 ## assimetria
-aov_bflor %>% residuals() %>% moments::skewness()
+aov_bflor %>%
+  residuals() %>%
+  moments::skewness()
 ```
 
 ```
@@ -1174,7 +1184,9 @@ aov_bflor %>% residuals() %>% moments::skewness()
 
 ```r
 ## Teste de Shapiro-Wilk
-aov_bflor %>% residuals() %>% shapiro.test()
+aov_bflor %>%
+  residuals() %>%
+  shapiro.test()
 ```
 
 ```
@@ -1187,22 +1199,30 @@ aov_bflor %>% residuals() %>% shapiro.test()
 
 ```r
 ## Gráfico dos quantis normais
-aov_bflor %>% residuals() %>% qqnorm()
-aov_bflor %>% residuals() %>% qqline()
+aov_bflor %>%
+  residuals() %>%
+  qqnorm()
+aov_bflor %>%
+  residuals() %>%
+  qqline()
 ```
 
 <img src="017-anova_files/figure-html/unnamed-chunk-13-1.png" width="672" />
 
 ```r
 ## Histograma
-aov_bflor %>% residuals() %>% hist()
+aov_bflor %>%
+  residuals() %>%
+  hist()
 ```
 
 <img src="017-anova_files/figure-html/unnamed-chunk-13-2.png" width="672" />
 
 ```r
 ## Ramo e folhas
-aov_bflor %>% residuals() %>% stem()
+aov_bflor %>%
+  residuals() %>%
+  stem()
 ```
 
 ```
@@ -1232,8 +1252,10 @@ Pela análise do conjunto dos resultados acima, não há evidência de desvio se
 
 ```r
 ## razão maior/menor desvio-padrão
-bflor %>% group_by(especie) %>% summarise(desvpad=sd(comprimento)) %>%
-mutate(razao=max(desvpad)/desvpad)
+bflor %>%
+  group_by(especie) %>%
+  summarise(desvpad = sd(comprimento)) %>%
+  mutate(razao = max(desvpad) / desvpad)
 ```
 
 ```
@@ -1247,21 +1269,21 @@ mutate(razao=max(desvpad)/desvpad)
 
 ```r
 ## boxplot condicional dos resíduos
-boxplot(residuals(aov_bflor)~especie, data = bflor)
+boxplot(residuals(aov_bflor) ~ especie, data = bflor)
 ```
 
 <img src="017-anova_files/figure-html/unnamed-chunk-14-1.png" width="672" />
 
 ```r
 ## resíduos vs ajustados
-plot(aov_bflor,1)
+plot(aov_bflor, 1)
 ```
 
 <img src="017-anova_files/figure-html/unnamed-chunk-14-2.png" width="672" />
 
 ```r
 ## teste de Bartlett
-bartlett.test(residuals(aov_bflor)~especie, data=bflor)
+bartlett.test(residuals(aov_bflor) ~ especie, data = bflor)
 ```
 
 ```
@@ -1274,7 +1296,7 @@ bartlett.test(residuals(aov_bflor)~especie, data=bflor)
 
 ```r
 ## teste de Levene
-car::leveneTest(residuals(aov_bflor)~especie, data=bflor)
+car::leveneTest(residuals(aov_bflor) ~ especie, data = bflor)
 ```
 
 ```
@@ -1290,5 +1312,1099 @@ Pela análise do conjunto dos resultados acima, não há evidência de não homo
 
 
 :::
+
+
+## Testes de acompanhamento
+
+Para sabermos quais tratamentos diferem entre si, utilizamos um teste de acompanhamento (teste *post hoc*).
+
+Entre os mais utilizados, serão tratados neste capítulo os seguintes testes:
+
+* Teste de Dunnett
+* Teste de Tukey
+* Contrastes ortogonais
+
+### Teste de Dunnett
+
+Testa os contrastes envolvendo o(s) tratamento(s) testemunha (ou controle ou placebo).
+
+
+
+:::{.example #dunnett name="Teste de Dunnett"}
+
+
+A homeopatia procura utilizar pequenas doses de substâncias altamente diluídas e geralmente perigosas. Cientistas advertem que há pouca evidência que apoie a homeopatia como tratamento eficaz para qualquer condição específica, exceto para uns poucos estudos.
+
+Em um desses estudos, os pesquisadores fizeram e suturaram uma incisão muscular profunda em ratos anestesiados e, então, associaram-nos aleatoriamente a um de cinco tratamentos:
+
+1. Arnica - dose alta
+1. Arnica - dose baixa
+1. Estafisagria - dose alta
+1. Estafisagria - dose baixa
+1. Placebo
+
+As feridas eram examinadas diariamente para se determinar o tempo (em dias) até sua completa cicatrização. Os valores estão no arquivo [homeopatia.xlsx](data/homeopatia.xlsx)
+
+Há evidência significante de que o tempo de cicatrização dependa do tratamento recebido?
+
+
+
+Após efetuada a Análise de Variância e verificados os pressupostos^[Análise não mostrada aqui.], segue-se com o teste de Dunnett
+
+
+```r
+dn_remedio <- emmeans::emmeans(aov_hom, ~remedio, contr="dunnett", 
+                                ref=which(names(table(hom$remedio))=="Placebo"))
+
+
+## contrastes
+dn_remedio$contrasts
+```
+
+```
+##  contrast                       estimate    SE df t.ratio p.value
+##  (Arnica-alta) - Placebo           -5.67 0.442 70 -12.831  <.0001
+##  (Arnica-baixa) - Placebo          -5.87 0.442 70 -13.284  <.0001
+##  (Estafisagria-alta) - Placebo     -5.73 0.442 70 -12.982  <.0001
+##  (Estafisagria-baixa) - Placebo    -5.53 0.442 70 -12.529  <.0001
+## 
+## P value adjustment: dunnettx method for 4 tests
+```
+
+```r
+## intervalo de confiança
+dn_remedio$contrasts %>% confint()
+```
+
+```
+##  contrast                       estimate    SE df lower.CL upper.CL
+##  (Arnica-alta) - Placebo           -5.67 0.442 70    -6.78    -4.56
+##  (Arnica-baixa) - Placebo          -5.87 0.442 70    -6.98    -4.76
+##  (Estafisagria-alta) - Placebo     -5.73 0.442 70    -6.84    -4.62
+##  (Estafisagria-baixa) - Placebo    -5.53 0.442 70    -6.64    -4.42
+## 
+## Confidence level used: 0.95 
+## Conf-level adjustment: dunnettx method for 4 estimates
+```
+
+```r
+## plot
+dn_remedio$emmeans %>% plot()
+```
+
+<img src="017-anova_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+
+
+
+
+```
+##  remedio            emmean    SE df lower.CL upper.CL
+##  Arnica-alta          15.7 0.312 70     15.0     16.3
+##  Arnica-baixa         15.5 0.312 70     14.8     16.1
+##  Estafisagria-alta    15.6 0.312 70     15.0     16.2
+##  Estafisagria-baixa   15.8 0.312 70     15.2     16.4
+##  Placebo              21.3 0.312 70     20.7     22.0
+## 
+## Confidence level used: 0.95
+```
+
+```{=html}
+<div id="rxtmvrczhz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#rxtmvrczhz .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#rxtmvrczhz .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#rxtmvrczhz .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#rxtmvrczhz .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#rxtmvrczhz .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rxtmvrczhz .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#rxtmvrczhz .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#rxtmvrczhz .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#rxtmvrczhz .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#rxtmvrczhz .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#rxtmvrczhz .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#rxtmvrczhz .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#rxtmvrczhz .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#rxtmvrczhz .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#rxtmvrczhz .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#rxtmvrczhz .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#rxtmvrczhz .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rxtmvrczhz .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#rxtmvrczhz .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#rxtmvrczhz .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rxtmvrczhz .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#rxtmvrczhz .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#rxtmvrczhz .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rxtmvrczhz .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rxtmvrczhz .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#rxtmvrczhz .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#rxtmvrczhz .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rxtmvrczhz .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#rxtmvrczhz .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rxtmvrczhz .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#rxtmvrczhz .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rxtmvrczhz .gt_left {
+  text-align: left;
+}
+
+#rxtmvrczhz .gt_center {
+  text-align: center;
+}
+
+#rxtmvrczhz .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#rxtmvrczhz .gt_font_normal {
+  font-weight: normal;
+}
+
+#rxtmvrczhz .gt_font_bold {
+  font-weight: bold;
+}
+
+#rxtmvrczhz .gt_font_italic {
+  font-style: italic;
+}
+
+#rxtmvrczhz .gt_super {
+  font-size: 65%;
+}
+
+#rxtmvrczhz .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#rxtmvrczhz .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#rxtmvrczhz .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#rxtmvrczhz .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#rxtmvrczhz .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#rxtmvrczhz .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Tabela X. Tempo de cicatrização médio (dias) para uma profunda ferida cirúrgica tratada com remédios homeopáticos.</th>
+    </tr>
+    
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Remédio</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Tempo de Cicatrização (dias)</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">Arnica-alta</td>
+<td class="gt_row gt_center">15.67</td>
+<td class="gt_row gt_left">*</td></tr>
+    <tr><td class="gt_row gt_left">Arnica-baixa</td>
+<td class="gt_row gt_center">15.47</td>
+<td class="gt_row gt_left">*</td></tr>
+    <tr><td class="gt_row gt_left">Estafisagria-alta</td>
+<td class="gt_row gt_center">15.60</td>
+<td class="gt_row gt_left">*</td></tr>
+    <tr><td class="gt_row gt_left">Estafisagria-baixa</td>
+<td class="gt_row gt_center">15.80</td>
+<td class="gt_row gt_left">*</td></tr>
+    <tr><td class="gt_row gt_left">Placebo</td>
+<td class="gt_row gt_center">21.33</td>
+<td class="gt_row gt_left"></td></tr>
+  </tbody>
+  
+  <tfoot class="gt_footnotes">
+    <tr>
+      <td class="gt_footnote" colspan="3"> Médias seguidas por * diferem do tratamento placebo pelo teste de Dunnett (p&lt;0,05).</td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+```
+
+Pelo teste de Dunnett, verifica-se que todos os remédios homeopáticos levaram a um tempo de cicatrização menor do que o tratamento placebo.
+
+:::
+
+### Teste de Tukey
+
+Criado por John Tukey (1915–2000), realiza todos os contrastes (comparações) possíveis entre as médias populacionais mantendo o nível de significância.
+
+Em lugar do teste *t*, utiliza o valor crítico *m*, que depende do número de populações, do número de observações e do nível de significância.
+
+As hipóteses testadas são:
+
+H~0~: μ~i~ = μ~j~
+
+H~1~: μ~i~ ≠ μ~j~
+
+para todas as médias populacionais
+
+Ainda, há muitos outros teste de comparações múltiplas similares ao teste de Tukey. Se você é capaz de interpretar os resultado deste teste, será capaz de entender os resultados de muitos outros.
+
+
+:::{.example #tukey name="Teste de Tukey"}
+
+Voltando ao exemplo anterior das Flores de *Heliconia* ^[Lembre-se de calcular a Análise de Variância antes de efetuar os testes de acompanhamento.].
+
+Utilizaremos o pacote *emmeans* para o cálculo do teste de Tukey.
+
+
+```r
+tk_especie <- emmeans::emmeans(aov_bflor, ~especie, contr = "tukey")
+
+## contrastes
+tk_especie$contrasts
+```
+
+```
+##  contrast  estimate    SE df t.ratio p.value
+##  Hb - Hca     11.42 0.520 51  21.977  <.0001
+##  Hb - Hcv      7.89 0.471 51  16.759  <.0001
+##  Hca - Hcv    -3.53 0.480 51  -7.361  <.0001
+## 
+## P value adjustment: tukey method for comparing a family of 3 estimates
+```
+
+```r
+## Intervalo de confiança
+tk_especie$contrasts %>% confint()
+```
+
+```
+##  contrast  estimate    SE df lower.CL upper.CL
+##  Hb - Hca     11.42 0.520 51    10.16    12.67
+##  Hb - Hcv      7.89 0.471 51     6.75     9.02
+##  Hca - Hcv    -3.53 0.480 51    -4.69    -2.37
+## 
+## Confidence level used: 0.95 
+## Conf-level adjustment: tukey method for comparing a family of 3 estimates
+```
+
+```r
+## letras (CLD)
+tk_especie$emmeans %>% multcomp::cld(Letters = letters)
+```
+
+```
+##  especie emmean    SE df lower.CL upper.CL .group
+##  Hca       36.2 0.373 51     35.4     36.9  a    
+##  Hcv       39.7 0.301 51     39.1     40.3   b   
+##  Hb        47.6 0.361 51     46.9     48.3    c  
+## 
+## Confidence level used: 0.95 
+## P value adjustment: tukey method for comparing a family of 3 estimates 
+## significance level used: alpha = 0.05 
+## NOTE: Compact letter displays can be misleading
+##       because they show NON-findings rather than findings.
+##       Consider using 'pairs()', 'pwpp()', or 'pwpm()' instead.
+```
+
+```r
+## plot
+tk_especie$emmeans %>% plot()
+```
+
+<img src="017-anova_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+
+A Tabela abaixo mostra um exemplo de como os resultados do teste podem ser apresentados.
+
+
+
+```{=html}
+<div id="mmfxgbiela" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#mmfxgbiela .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#mmfxgbiela .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mmfxgbiela .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#mmfxgbiela .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#mmfxgbiela .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mmfxgbiela .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mmfxgbiela .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#mmfxgbiela .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#mmfxgbiela .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#mmfxgbiela .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#mmfxgbiela .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#mmfxgbiela .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mmfxgbiela .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mmfxgbiela .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#mmfxgbiela .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#mmfxgbiela .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#mmfxgbiela .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mmfxgbiela .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#mmfxgbiela .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#mmfxgbiela .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mmfxgbiela .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#mmfxgbiela .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#mmfxgbiela .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mmfxgbiela .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mmfxgbiela .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#mmfxgbiela .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#mmfxgbiela .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mmfxgbiela .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mmfxgbiela .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mmfxgbiela .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mmfxgbiela .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mmfxgbiela .gt_left {
+  text-align: left;
+}
+
+#mmfxgbiela .gt_center {
+  text-align: center;
+}
+
+#mmfxgbiela .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#mmfxgbiela .gt_font_normal {
+  font-weight: normal;
+}
+
+#mmfxgbiela .gt_font_bold {
+  font-weight: bold;
+}
+
+#mmfxgbiela .gt_font_italic {
+  font-style: italic;
+}
+
+#mmfxgbiela .gt_super {
+  font-size: 65%;
+}
+
+#mmfxgbiela .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#mmfxgbiela .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#mmfxgbiela .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#mmfxgbiela .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#mmfxgbiela .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#mmfxgbiela .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Tabela X. Comprimento médio (mm) de flores de três espécies do gênero <em>Heliconia</em>.</th>
+    </tr>
+    
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Espécie</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Comprimento (mm)</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">Hb</td>
+<td class="gt_row gt_center">47.60</td>
+<td class="gt_row gt_left"> a  </td></tr>
+    <tr><td class="gt_row gt_left">Hca</td>
+<td class="gt_row gt_center">36.18</td>
+<td class="gt_row gt_left">  b </td></tr>
+    <tr><td class="gt_row gt_left">Hcv</td>
+<td class="gt_row gt_center">39.71</td>
+<td class="gt_row gt_left">   c</td></tr>
+  </tbody>
+  
+  <tfoot class="gt_footnotes">
+    <tr>
+      <td class="gt_footnote" colspan="3"> Médias seguidas por letras iguais não diferem entre si pelo teste de Tukey (p&lt;0,05).</td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+```
+
+
+
+Podemos concluir que as flores da variedade *H. bihai* tem maior comprimento que as demais. As flores de *H. caribaea* vermelha são maiores que *H. caribaea* amarela. Esta última tem o menor comprimento entre todas.
+
+
+:::
+
 
 

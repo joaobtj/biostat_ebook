@@ -605,7 +605,7 @@
 <p>Estes dados podem ser encontrados no arquivo <a href="data/dap5.csv">dap5.csv</a></p>
 <p>Uma Análise de Variância pode ser executada com as funções <code>lm</code> e <code>anova</code>, como a seguir:</p>
 <div class="sourceCode" id="cb208"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">aov_dap5</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">dap</span><span class="op">~</span><span class="va">amostra</span>, data<span class="op">=</span><span class="va">dap5</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">aov_dap5</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">dap</span> <span class="op">~</span> <span class="va">amostra</span>, data <span class="op">=</span> <span class="va">dap5</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="va">aov_dap5</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
@@ -1102,7 +1102,7 @@ Vamos supor que a amostra 1 tenha um efeito aditivo de +5 unidades no DAP. A amo
 </div>
 <p>A Análise de Variância, com estes valores atualizados, fica assim:</p>
 <div class="sourceCode" id="cb210"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">aov_dap5p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">dap</span><span class="op">~</span><span class="va">amostra</span>, data<span class="op">=</span><span class="va">dap5p</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">aov_dap5p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">dap</span> <span class="op">~</span> <span class="va">amostra</span>, data <span class="op">=</span> <span class="va">dap5p</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="va">aov_dap5p</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
@@ -1122,7 +1122,14 @@ Vamos supor que a amostra 1 tenha um efeito aditivo de +5 unidades no DAP. A amo
 <p><span id="exm:anova1" class="example"><strong>Exemplo 10.1  (Análise de Variância para um fator) </strong></span>Pesquisadores estudaram a relação entre variedades da flor tropical <em>Heliconia</em>, na ilha de Dominica, e as diferentes espécies de beija-flores que fertilizam essas flores.</p>
 <p>Acredita-se que os comprimentos das flores e as formas dos bicos dos beija-flores evoluíram juntos e se adaptaram uns aos outros.</p>
 <p>Se isso for verdade, as variedades de flores fertilizadas por diferentes espécies de beija-flores devem ter diferentes distribuições de comprimentos.</p>
-<p>O arquivo <a href="data/bflor.xlsx">bflor.xlsx</a> fornece as medidas de comprimentos (em milímetros, mm) para amostras de três variedades de <em>Heliconia</em>, cada uma fertilizada por uma espécie diferente de beija-flor.</p>
+<p>O arquivo <a href="data/bflor.xlsx">bflor.xlsx</a> fornece as medidas de comprimentos (em milímetros, mm) para amostras de três variedades de <em>Heliconia</em>, cada uma fertilizada por uma espécie diferente de beija-flor. As espécies são:</p>
+<ol style="list-style-type: decimal">
+<li><em>Heliconia bihai</em></li>
+<li>
+<em>Heliconia caribaea</em> vermelha</li>
+<li>
+<em>Heliconia caribaea</em> amarela</li>
+</ol>
 <p>Em particular, os comprimentos médios de suas flores são diferentes?</p>
 <p>As três variedades têm distribuições com comprimentos diferentes?</p>
 <p>Queremos testar a hipótese nula de que não há diferenças entre os comprimentos médios das três populações de flores:</p>
@@ -1135,12 +1142,14 @@ Vamos supor que a amostra 1 tenha um efeito aditivo de +5 unidades no DAP. A amo
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>especie <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">especie</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span></span>
-<span><span class="va">bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span><span class="va">bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">especie</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>n<span class="op">=</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>            media<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">comprimento</span><span class="op">)</span>,</span>
-<span>            desvpad <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">comprimento</span><span class="op">)</span>,</span>
-<span>            var<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">comprimento</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span></span>
+<span>    n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    media <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">comprimento</span><span class="op">)</span>,</span>
+<span>    desvpad <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">comprimento</span><span class="op">)</span>,</span>
+<span>    var <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">comprimento</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
 <pre><code>## # A tibble: 3 × 5
 ##   especie     n media desvpad   var
 ##   &lt;fct&gt;   &lt;int&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
@@ -1148,11 +1157,11 @@ Vamos supor que a amostra 1 tenha um efeito aditivo de +5 unidades no DAP. A amo
 ## 2 Hca        15  36.2   0.975 0.951
 ## 3 Hcv        23  39.7   1.80  3.24</code></pre>
 <div class="sourceCode" id="cb214"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">comprimento</span><span class="op">~</span><span class="va">especie</span>, data<span class="op">=</span><span class="va">bflor</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">comprimento</span> <span class="op">~</span> <span class="va">especie</span>, data <span class="op">=</span> <span class="va">bflor</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-11-1.png" width="672"></div>
 <p>Efetuamos a Análise de Variância propriamente dita:</p>
 <div class="sourceCode" id="cb215"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">aov_bflor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">comprimento</span><span class="op">~</span><span class="va">especie</span>, data<span class="op">=</span><span class="va">bflor</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">aov_bflor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">comprimento</span> <span class="op">~</span> <span class="va">especie</span>, data <span class="op">=</span> <span class="va">bflor</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="va">aov_bflor</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Analysis of Variance Table
@@ -1194,15 +1203,21 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 <p><span id="exm:press2" class="example"><strong>Exemplo 10.2  (Verificação do pressuposto da Normalidade) </strong></span>.</p>
 <div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## curtose</span></span>
-<span><span class="va">aov_bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">moments</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/kurtosis.html">kurtosis</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">aov_bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">moments</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/kurtosis.html">kurtosis</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 2.349862</code></pre>
 <div class="sourceCode" id="cb219"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## assimetria</span></span>
-<span><span class="va">aov_bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">moments</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/skewness.html">skewness</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">aov_bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">moments</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/skewness.html">skewness</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0.5223018</code></pre>
 <div class="sourceCode" id="cb221"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Teste de Shapiro-Wilk</span></span>
-<span><span class="va">aov_bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/shapiro.test.html">shapiro.test</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">aov_bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/shapiro.test.html">shapiro.test</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -1210,16 +1225,24 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 ## W = 0.94889, p-value = 0.02227</code></pre>
 <div class="sourceCode" id="cb223"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Gráfico dos quantis normais</span></span>
-<span><span class="va">aov_bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqnorm</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="va">aov_bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqline</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">aov_bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqnorm</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">aov_bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqline</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
 <div class="sourceCode" id="cb224"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Histograma</span></span>
-<span><span class="va">aov_bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">aov_bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-13-2.png" width="672"></div>
 <div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Ramo e folhas</span></span>
-<span><span class="va">aov_bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/graphics/stem.html">stem</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">aov_bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/stem.html">stem</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##   The decimal point is at the |
 ## 
@@ -1237,8 +1260,10 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 <p><span id="exm:press3" class="example"><strong>Exemplo 10.3  (Verificação do pressuposto da homogeneidade das variâncias) </strong></span>.</p>
 <div class="sourceCode" id="cb227"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## razão maior/menor desvio-padrão</span></span>
-<span><span class="va">bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">especie</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>desvpad<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">comprimento</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>razao<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">desvpad</span><span class="op">)</span><span class="op">/</span><span class="va">desvpad</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">especie</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>desvpad <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">comprimento</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>razao <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">desvpad</span><span class="op">)</span> <span class="op">/</span> <span class="va">desvpad</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## # A tibble: 3 × 3
 ##   especie desvpad razao
 ##   &lt;fct&gt;     &lt;dbl&gt; &lt;dbl&gt;
@@ -1247,15 +1272,15 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 ## 3 Hcv       1.80   1</code></pre>
 <div class="sourceCode" id="cb229"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## boxplot condicional dos resíduos</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="va">aov_bflor</span><span class="op">)</span><span class="op">~</span><span class="va">especie</span>, data <span class="op">=</span> <span class="va">bflor</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="va">aov_bflor</span><span class="op">)</span> <span class="op">~</span> <span class="va">especie</span>, data <span class="op">=</span> <span class="va">bflor</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-14-1.png" width="672"></div>
 <div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## resíduos vs ajustados</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">aov_bflor</span>,<span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">aov_bflor</span>, <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-14-2.png" width="672"></div>
 <div class="sourceCode" id="cb231"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## teste de Bartlett</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/bartlett.test.html">bartlett.test</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="va">aov_bflor</span><span class="op">)</span><span class="op">~</span><span class="va">especie</span>, data<span class="op">=</span><span class="va">bflor</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/bartlett.test.html">bartlett.test</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="va">aov_bflor</span><span class="op">)</span> <span class="op">~</span> <span class="va">especie</span>, data <span class="op">=</span> <span class="va">bflor</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
 ## 
@@ -1263,7 +1288,7 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 ## Bartlett's K-squared = 6.4839, df = 2, p-value = 0.03909</code></pre>
 <div class="sourceCode" id="cb233"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## teste de Levene</span></span>
-<span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/leveneTest.html">leveneTest</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="va">aov_bflor</span><span class="op">)</span><span class="op">~</span><span class="va">especie</span>, data<span class="op">=</span><span class="va">bflor</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/leveneTest.html">leveneTest</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="va">aov_bflor</span><span class="op">)</span> <span class="op">~</span> <span class="va">especie</span>, data <span class="op">=</span> <span class="va">bflor</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Levene's Test for Homogeneity of Variance (center = median)
 ##       Df F value  Pr(&gt;F)  
 ## group  2  4.3722 0.01768 *
@@ -1272,9 +1297,1033 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>Pela análise do conjunto dos resultados acima, não há evidência de não homogeneidade das variâncias.</p>
 </div>
+</div>
+<div id="testes-de-acompanhamento" class="section level2" number="10.5">
+<h2>
+<span class="header-section-number">10.5</span> Testes de acompanhamento<a class="anchor" aria-label="anchor" href="#testes-de-acompanhamento"><i class="fas fa-link"></i></a>
+</h2>
+<p>Para sabermos quais tratamentos diferem entre si, utilizamos um teste de acompanhamento (teste <em>post hoc</em>).</p>
+<p>Entre os mais utilizados, serão tratados neste capítulo os seguintes testes:</p>
+<ul>
+<li>Teste de Dunnett</li>
+<li>Teste de Tukey</li>
+<li>Contrastes ortogonais</li>
+</ul>
+<div id="teste-de-dunnett" class="section level3" number="10.5.1">
+<h3>
+<span class="header-section-number">10.5.1</span> Teste de Dunnett<a class="anchor" aria-label="anchor" href="#teste-de-dunnett"><i class="fas fa-link"></i></a>
+</h3>
+<p>Testa os contrastes envolvendo o(s) tratamento(s) testemunha (ou controle ou placebo).</p>
+<div class="example">
+<p><span id="exm:dunnett" class="example"><strong>Exemplo 10.4  (Teste de Dunnett) </strong></span>A homeopatia procura utilizar pequenas doses de substâncias altamente diluídas e geralmente perigosas. Cientistas advertem que há pouca evidência que apoie a homeopatia como tratamento eficaz para qualquer condição específica, exceto para uns poucos estudos.</p>
+<p>Em um desses estudos, os pesquisadores fizeram e suturaram uma incisão muscular profunda em ratos anestesiados e, então, associaram-nos aleatoriamente a um de cinco tratamentos:</p>
+<ol style="list-style-type: decimal">
+<li>Arnica - dose alta</li>
+<li>Arnica - dose baixa</li>
+<li>Estafisagria - dose alta</li>
+<li>Estafisagria - dose baixa</li>
+<li>Placebo</li>
+</ol>
+<p>As feridas eram examinadas diariamente para se determinar o tempo (em dias) até sua completa cicatrização. Os valores estão no arquivo <a href="data/homeopatia.xlsx">homeopatia.xlsx</a></p>
+<p>Há evidência significante de que o tempo de cicatrização dependa do tratamento recebido?</p>
+<p>Após efetuada a Análise de Variância e verificados os pressupostos<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Análise não mostrada aqui.&lt;/p&gt;"><sup>27</sup></a>, segue-se com o teste de Dunnett</p>
+<div class="sourceCode" id="cb235"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dn_remedio</span> <span class="op">&lt;-</span> <span class="fu">emmeans</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/emmeans/man/emmeans.html">emmeans</a></span><span class="op">(</span><span class="va">aov_hom</span>, <span class="op">~</span><span class="va">remedio</span>, contr<span class="op">=</span><span class="st">"dunnett"</span>, </span>
+<span>                                ref<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">hom</span><span class="op">$</span><span class="va">remedio</span><span class="op">)</span><span class="op">)</span><span class="op">==</span><span class="st">"Placebo"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="co">## contrastes</span></span>
+<span><span class="va">dn_remedio</span><span class="op">$</span><span class="va">contrasts</span></span></code></pre></div>
+<pre><code>##  contrast                       estimate    SE df t.ratio p.value
+##  (Arnica-alta) - Placebo           -5.67 0.442 70 -12.831  &lt;.0001
+##  (Arnica-baixa) - Placebo          -5.87 0.442 70 -13.284  &lt;.0001
+##  (Estafisagria-alta) - Placebo     -5.73 0.442 70 -12.982  &lt;.0001
+##  (Estafisagria-baixa) - Placebo    -5.53 0.442 70 -12.529  &lt;.0001
+## 
+## P value adjustment: dunnettx method for 4 tests</code></pre>
+<div class="sourceCode" id="cb237"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## intervalo de confiança</span></span>
+<span><span class="va">dn_remedio</span><span class="op">$</span><span class="va">contrasts</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code>##  contrast                       estimate    SE df lower.CL upper.CL
+##  (Arnica-alta) - Placebo           -5.67 0.442 70    -6.78    -4.56
+##  (Arnica-baixa) - Placebo          -5.87 0.442 70    -6.98    -4.76
+##  (Estafisagria-alta) - Placebo     -5.73 0.442 70    -6.84    -4.62
+##  (Estafisagria-baixa) - Placebo    -5.53 0.442 70    -6.64    -4.42
+## 
+## Confidence level used: 0.95 
+## Conf-level adjustment: dunnettx method for 4 estimates</code></pre>
+<div class="sourceCode" id="cb239"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## plot</span></span>
+<span><span class="va">dn_remedio</span><span class="op">$</span><span class="va">emmeans</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-16-1.png" width="672"></div>
+<pre><code>##  remedio            emmean    SE df lower.CL upper.CL
+##  Arnica-alta          15.7 0.312 70     15.0     16.3
+##  Arnica-baixa         15.5 0.312 70     14.8     16.1
+##  Estafisagria-alta    15.6 0.312 70     15.0     16.2
+##  Estafisagria-baixa   15.8 0.312 70     15.2     16.4
+##  Placebo              21.3 0.312 70     20.7     22.0
+## 
+## Confidence level used: 0.95</code></pre>
+<div id="rxtmvrczhz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#rxtmvrczhz .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#rxtmvrczhz .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#rxtmvrczhz .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#rxtmvrczhz .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#rxtmvrczhz .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rxtmvrczhz .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#rxtmvrczhz .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#rxtmvrczhz .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#rxtmvrczhz .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#rxtmvrczhz .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#rxtmvrczhz .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#rxtmvrczhz .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#rxtmvrczhz .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#rxtmvrczhz .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#rxtmvrczhz .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#rxtmvrczhz .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#rxtmvrczhz .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rxtmvrczhz .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#rxtmvrczhz .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#rxtmvrczhz .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rxtmvrczhz .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#rxtmvrczhz .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#rxtmvrczhz .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rxtmvrczhz .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rxtmvrczhz .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#rxtmvrczhz .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#rxtmvrczhz .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rxtmvrczhz .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#rxtmvrczhz .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rxtmvrczhz .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#rxtmvrczhz .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rxtmvrczhz .gt_left {
+  text-align: left;
+}
+
+#rxtmvrczhz .gt_center {
+  text-align: center;
+}
+
+#rxtmvrczhz .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#rxtmvrczhz .gt_font_normal {
+  font-weight: normal;
+}
+
+#rxtmvrczhz .gt_font_bold {
+  font-weight: bold;
+}
+
+#rxtmvrczhz .gt_font_italic {
+  font-style: italic;
+}
+
+#rxtmvrczhz .gt_super {
+  font-size: 65%;
+}
+
+#rxtmvrczhz .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#rxtmvrczhz .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#rxtmvrczhz .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#rxtmvrczhz .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#rxtmvrczhz .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#rxtmvrczhz .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<div class="inline-table"><table class="gt_table">
+<thead class="gt_header"><tr>
+<th colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Tabela X. Tempo de cicatrização médio (dias) para uma profunda ferida cirúrgica tratada com remédios homeopáticos.</th>
+    </tr></thead>
+<thead class="gt_col_headings"><tr>
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Remédio</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Tempo de Cicatrização (dias)</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"></th>
+    </tr></thead>
+<tbody class="gt_table_body">
+<tr>
+<td class="gt_row gt_left">Arnica-alta</td>
+<td class="gt_row gt_center">15.67</td>
+<td class="gt_row gt_left">*</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Arnica-baixa</td>
+<td class="gt_row gt_center">15.47</td>
+<td class="gt_row gt_left">*</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Estafisagria-alta</td>
+<td class="gt_row gt_center">15.60</td>
+<td class="gt_row gt_left">*</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Estafisagria-baixa</td>
+<td class="gt_row gt_center">15.80</td>
+<td class="gt_row gt_left">*</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Placebo</td>
+<td class="gt_row gt_center">21.33</td>
+<td class="gt_row gt_left"></td>
+</tr>
+</tbody>
+<tfoot class="gt_footnotes"><tr>
+<td class="gt_footnote" colspan="3"> Médias seguidas por * diferem do tratamento placebo pelo teste de Dunnett (p&lt;0,05).</td>
+    </tr></tfoot>
+</table></div>
+</div>
+<p>Pelo teste de Dunnett, verifica-se que todos os remédios homeopáticos levaram a um tempo de cicatrização menor do que o tratamento placebo.</p>
+</div>
+</div>
+<div id="teste-de-tukey" class="section level3" number="10.5.2">
+<h3>
+<span class="header-section-number">10.5.2</span> Teste de Tukey<a class="anchor" aria-label="anchor" href="#teste-de-tukey"><i class="fas fa-link"></i></a>
+</h3>
+<p>Criado por John Tukey (1915–2000), realiza todos os contrastes (comparações) possíveis entre as médias populacionais mantendo o nível de significância.</p>
+<p>Em lugar do teste <em>t</em>, utiliza o valor crítico <em>m</em>, que depende do número de populações, do número de observações e do nível de significância.</p>
+<p>As hipóteses testadas são:</p>
+<p>H<sub>0</sub>: μ<sub>i</sub> = μ<sub>j</sub></p>
+<p>H<sub>1</sub>: μ<sub>i</sub> ≠ μ<sub>j</sub></p>
+<p>para todas as médias populacionais</p>
+<p>Ainda, há muitos outros teste de comparações múltiplas similares ao teste de Tukey. Se você é capaz de interpretar os resultado deste teste, será capaz de entender os resultados de muitos outros.</p>
+<div class="example">
+<p><span id="exm:tukey" class="example"><strong>Exemplo 10.5  (Teste de Tukey) </strong></span>Voltando ao exemplo anterior das Flores de <em>Heliconia</em> <a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Lembre-se de calcular a Análise de Variância antes de efetuar os testes de acompanhamento.&lt;/p&gt;"><sup>28</sup></a>.</p>
+<p>Utilizaremos o pacote <em>emmeans</em> para o cálculo do teste de Tukey.</p>
+<div class="sourceCode" id="cb241"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tk_especie</span> <span class="op">&lt;-</span> <span class="fu">emmeans</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/emmeans/man/emmeans.html">emmeans</a></span><span class="op">(</span><span class="va">aov_bflor</span>, <span class="op">~</span><span class="va">especie</span>, contr <span class="op">=</span> <span class="st">"tukey"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## contrastes</span></span>
+<span><span class="va">tk_especie</span><span class="op">$</span><span class="va">contrasts</span></span></code></pre></div>
+<pre><code>##  contrast  estimate    SE df t.ratio p.value
+##  Hb - Hca     11.42 0.520 51  21.977  &lt;.0001
+##  Hb - Hcv      7.89 0.471 51  16.759  &lt;.0001
+##  Hca - Hcv    -3.53 0.480 51  -7.361  &lt;.0001
+## 
+## P value adjustment: tukey method for comparing a family of 3 estimates</code></pre>
+<div class="sourceCode" id="cb243"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## Intervalo de confiança</span></span>
+<span><span class="va">tk_especie</span><span class="op">$</span><span class="va">contrasts</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code>##  contrast  estimate    SE df lower.CL upper.CL
+##  Hb - Hca     11.42 0.520 51    10.16    12.67
+##  Hb - Hcv      7.89 0.471 51     6.75     9.02
+##  Hca - Hcv    -3.53 0.480 51    -4.69    -2.37
+## 
+## Confidence level used: 0.95 
+## Conf-level adjustment: tukey method for comparing a family of 3 estimates</code></pre>
+<div class="sourceCode" id="cb245"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## letras (CLD)</span></span>
+<span><span class="va">tk_especie</span><span class="op">$</span><span class="va">emmeans</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">multcomp</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/multcomp/man/cld.html">cld</a></span><span class="op">(</span>Letters <span class="op">=</span> <span class="va">letters</span><span class="op">)</span></span></code></pre></div>
+<pre><code>##  especie emmean    SE df lower.CL upper.CL .group
+##  Hca       36.2 0.373 51     35.4     36.9  a    
+##  Hcv       39.7 0.301 51     39.1     40.3   b   
+##  Hb        47.6 0.361 51     46.9     48.3    c  
+## 
+## Confidence level used: 0.95 
+## P value adjustment: tukey method for comparing a family of 3 estimates 
+## significance level used: alpha = 0.05 
+## NOTE: Compact letter displays can be misleading
+##       because they show NON-findings rather than findings.
+##       Consider using 'pairs()', 'pwpp()', or 'pwpm()' instead.</code></pre>
+<div class="sourceCode" id="cb247"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## plot</span></span>
+<span><span class="va">tk_especie</span><span class="op">$</span><span class="va">emmeans</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-18-1.png" width="672"></div>
+<p>A Tabela abaixo mostra um exemplo de como os resultados do teste podem ser apresentados.</p>
+<div id="mmfxgbiela" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#mmfxgbiela .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#mmfxgbiela .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mmfxgbiela .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#mmfxgbiela .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#mmfxgbiela .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mmfxgbiela .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mmfxgbiela .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#mmfxgbiela .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#mmfxgbiela .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#mmfxgbiela .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#mmfxgbiela .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#mmfxgbiela .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mmfxgbiela .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mmfxgbiela .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#mmfxgbiela .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#mmfxgbiela .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#mmfxgbiela .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mmfxgbiela .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#mmfxgbiela .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#mmfxgbiela .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mmfxgbiela .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#mmfxgbiela .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#mmfxgbiela .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mmfxgbiela .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mmfxgbiela .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#mmfxgbiela .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#mmfxgbiela .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mmfxgbiela .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mmfxgbiela .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mmfxgbiela .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mmfxgbiela .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mmfxgbiela .gt_left {
+  text-align: left;
+}
+
+#mmfxgbiela .gt_center {
+  text-align: center;
+}
+
+#mmfxgbiela .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#mmfxgbiela .gt_font_normal {
+  font-weight: normal;
+}
+
+#mmfxgbiela .gt_font_bold {
+  font-weight: bold;
+}
+
+#mmfxgbiela .gt_font_italic {
+  font-style: italic;
+}
+
+#mmfxgbiela .gt_super {
+  font-size: 65%;
+}
+
+#mmfxgbiela .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#mmfxgbiela .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#mmfxgbiela .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#mmfxgbiela .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#mmfxgbiela .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#mmfxgbiela .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<div class="inline-table"><table class="gt_table">
+<thead class="gt_header"><tr>
+<th colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Tabela X. Comprimento médio (mm) de flores de três espécies do gênero <em>Heliconia</em>.</th>
+    </tr></thead>
+<thead class="gt_col_headings"><tr>
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Espécie</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Comprimento (mm)</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"></th>
+    </tr></thead>
+<tbody class="gt_table_body">
+<tr>
+<td class="gt_row gt_left">Hb</td>
+<td class="gt_row gt_center">47.60</td>
+<td class="gt_row gt_left"> a  </td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Hca</td>
+<td class="gt_row gt_center">36.18</td>
+<td class="gt_row gt_left">  b </td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Hcv</td>
+<td class="gt_row gt_center">39.71</td>
+<td class="gt_row gt_left">   c</td>
+</tr>
+</tbody>
+<tfoot class="gt_footnotes"><tr>
+<td class="gt_footnote" colspan="3"> Médias seguidas por letras iguais não diferem entre si pelo teste de Tukey (p&lt;0,05).</td>
+    </tr></tfoot>
+</table></div>
+</div>
+<p>Podemos concluir que as flores da variedade <em>H. bihai</em> tem maior comprimento que as demais. As flores de <em>H. caribaea</em> vermelha são maiores que <em>H. caribaea</em> amarela. Esta última tem o menor comprimento entre todas.</p>
+</div>
 
 </div>
 </div>
+</div>
+
 
 
 
@@ -1289,6 +2338,12 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 <li><a class="nav-link" href="#a-ideia-da-an%C3%A1lise-de-vari%C3%A2ncia"><span class="header-section-number">10.2</span> A ideia da Análise de Variância</a></li>
 <li><a class="nav-link" href="#an%C3%A1lise-de-vari%C3%A2ncia-para-um-fator"><span class="header-section-number">10.3</span> Análise de Variância para um fator</a></li>
 <li><a class="nav-link" href="#condi%C3%A7%C3%B5es-para-a-anova"><span class="header-section-number">10.4</span> Condições para a ANOVA</a></li>
+<li>
+<a class="nav-link" href="#testes-de-acompanhamento"><span class="header-section-number">10.5</span> Testes de acompanhamento</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#teste-de-dunnett"><span class="header-section-number">10.5.1</span> Teste de Dunnett</a></li>
+<li><a class="nav-link" href="#teste-de-tukey"><span class="header-section-number">10.5.2</span> Teste de Tukey</a></li>
+</ul>
+</li>
 </ul>
 
       <div class="book-extra">
@@ -1306,7 +2361,7 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Bioestatística aplicada aos ecossistemas agrícolas e naturais</strong>" foi escrito por João B. Tolentino Jr.. Última atualização em 2022-06-29.</p>
+    <p>"<strong>Bioestatística aplicada aos ecossistemas agrícolas e naturais</strong>" foi escrito por João B. Tolentino Jr.. Última atualização em 2022-07-05.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

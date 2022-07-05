@@ -88,6 +88,8 @@ exm:testet
 exm:anova1
 exm:press2
 exm:press3
+exm:dunnett
+exm:tukey
 procurando-e-pedindo-ajuda-para-o-r
 as-funções-help-e
 stack-overflow
@@ -172,6 +174,9 @@ comparação-de-várias-médias
 a-ideia-da-análise-de-variância
 análise-de-variância-para-um-fator
 condições-para-a-anova
+testes-de-acompanhamento
+teste-de-dunnett
+teste-de-tukey
 conjunto-de-dados-do-r
 gapminder
 mpg
