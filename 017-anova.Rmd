@@ -1,3 +1,7 @@
+```{r, include=FALSE}
+library(multcomp)
+library(emmeans)
+```
 
 
 # Análise de Variância
@@ -349,8 +353,6 @@ dn_remedio$emmeans %>% plot()
 
 
 ```{r, echo=FALSE}
-dn_remedio$emmeans
-
 library(gt)
 dn_remedio$emmeans %>%
   as.data.frame() %>%
@@ -467,3 +469,125 @@ Podemos concluir que as flores da variedade *H. bihai* tem maior comprimento que
 
 
 
+### Contrastes ortogonais
+
+O teste de Tukey (e outros testes de comparações múltiplas) fornecem conclusões sobre todos os contrastes possíveis. Alguns (ou muitos) destes contrastes podem não ser de nosso interesse. Outros contrastes de nosso interesse podem ser deixados de lado.
+
+Se você tiver questões específicas em mente antes de produzir os dados, é muito mais eficiente planejar a análise para responder a estas questões.
+
+Não use os contrastes para testar todas as comparações possíveis!
+
+Contrastes só serão válidos se você tiver alguma razão científica para testar uma hipótese em particular antes mesmo de você coletar os dados.
+
+
+:::{.example #contort name="Contrastes ortogonais"}
+
+Para detectarmos a presença de insetos nocivos nos campos de plantações, podemos colocar cartões cobertos com um material pegajoso e examinar os insetos presos nos cartões.
+
+Quais cores mais atraem os insetos?
+
+Pesquisadores colocaram seis cartões de quatro cores (Amarelo, Azul, Branco e Verde) em locais aleatórios de um campo de aveia e contaram o número de besouros de folhas de cereal apanhados. Os resultados estão no arquivo [besouro.xlsx](data/besouro.xlsx).
+
+Podemos executar o teste de Tukey, mas, antes de coletar os dados, já tínhamos questões específicas em mente:
+
+* Suspeitamos que cores quentes (amarelo e verde) são mais atrativas que cores frias (azul e branco)
+* Branco e azul devem ter respostas semelhantes
+* Verde e amarelo devem ter respostas semelhantes
+
+Assim, testamos três hipóteses:
+
+Hipótese 1:
+
+H~0~: μ~Az~ = μ~Br~
+
+H~1~: μ~Az~ ≠ μ~Br~
+
+Hipótese 2:
+
+H~0~: μ~Am~ = μ~Ve~
+
+H~1~: μ~Am~ ≠ μ~Ve~
+
+Hipótese 3:
+
+H~0~:(μ~Am~+μ~Ve~)=(μ~Az~+μ~Br~)
+
+H~~1:(μ~Am~+μ~Ve~)>(μ~Az~+μ~Br~)
+
+Duas hipóteses envolvem comparações aos pares.
+A terceira é mais complexa e unilateral.
+
+Reescrevemos as três hipóteses em termos de três contrastes:
+
+C~1~ = (0)(μ~Am~) + (+1)(μ~Az~) + (−1)(μ~Br~) + (0)(μ~Ve~)
+ 
+C~2~ = (−1)(μ~Am~) + (0)(μ~Az~) + (0)(μ~Br~) + (+1)(μ~Ve~)
+
+C~3~ = (+1)(μ~Am~) + (−1)(μ~Az~) + (−1)(μ~Br~) + (+1)(μ~Ve~)
+
+Verifique que a soma dos coeficientes em cada linha deve ser igual a 0 (zero) (senão não é um contraste).
+
+Para verificar a ortogonalidade entre os contrastes, a soma do produtos dos coeficientes também deve ser igual a 0 (zero).
+
+
+As hipóteses para estes contrastes são:
+
+Hipótese 1:
+
+H~0~: C~1~ = 0
+
+H~1~: C~1~ ≠ 0
+
+Hipótese 2:
+
+H~0~: C~2~ = 0
+
+H~1~: C~2~ ≠ 0
+
+Hipótese 3:
+
+H~0~: C~3~ = 0
+
+H~1~: C~3~ > 0
+
+```{r, include=FALSE}
+bes <- readxl::read_excel("data/besouro.xlsx") %>%
+  mutate(cor = factor(cor))
+aov_bes <- lm(numero~cor, data=bes) #lm ou glm
+anova(aov_bes)
+```
+
+
+```{r}
+#Contrastes
+K.bes <- rbind("C1"=c(  0, +1, -1, 0),
+            
+               "C2"=c( -1,  0,  0, +1),
+           
+               "C3"=c( +1, -1, -1, +1))
+
+#verificar se contrastes são ortogonais (soma=0)
+sum(K.bes[1,]*K.bes[2,])
+sum(K.bes[1,]*K.bes[3,])
+sum(K.bes[2,]*K.bes[3,])
+
+
+library(multcomp)
+ctr_besouro <- glht(aov_bes, linfct=mcp(cor=K.bes))
+summary(ctr_besouro)
+
+## Intervalo de confiança
+ctr_besouro %>% confint()
+
+```
+
+Estamos 95% confiantes de que o número médio de besouros atraídos pelas cores Verde e Amarelo é superior ao número de besouros atraídos pelas cores Branco e Azul.
+
+* Há grande evidência que o contraste C3 é maior que zero.
+
+Os outros contrastes mostram que:
+
+* Azul e Branco não diferem entre si
+* Verde e Amarelo diferem entre si
+
+::: 
