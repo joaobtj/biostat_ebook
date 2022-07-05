@@ -355,17 +355,26 @@ library(gt)
 dn_remedio$emmeans %>%
   as.data.frame() %>%
   select(remedio, emmean)  %>%
+
+  bind_cols(g=c("*","*","*","*","")) %>%
   gt() %>%
   fmt_number(
     columns = emmean,
     decimals = 2
-  ) %>%
+  )  %>%
   cols_label(
     remedio = "Remédio",
-    emmean = "Tempo de Cicatrização (dias)"
+    emmean = "Tempo de Cicatrização (dias)",
+    g=""
   ) %>%
+  cols_align(columns = remedio,
+             align = "left") %>%
+  cols_align(columns = emmean,
+             align = "center") %>%
+  cols_align(columns = g,
+             align = "left") %>%
   tab_footnote(
-    footnote = "Médias seguidas por * diferem do tratamento Placebo pelo teste de Dunnett (p<0,05).",
+    footnote = "Médias seguidas por * diferem do tratamento placebo pelo teste de Dunnett (p<0,05).",
   ) %>%
   tab_header(title = md("Tabela X. Tempo de cicatrização médio (dias) para uma profunda ferida cirúrgica tratada com remédios homeopáticos."),)
 
@@ -435,6 +444,12 @@ tk_especie$emmeans %>%
     emmean = "Comprimento (mm)",
     g = ""
   ) %>%
+  cols_align(columns = especie,
+             align = "left") %>%
+  cols_align(columns = emmean,
+             align = "center") %>%
+  cols_align(columns = g,
+             align = "left") %>%
   tab_footnote(
     footnote = "Médias seguidas por letras iguais não diferem entre si pelo teste de Tukey (p<0,05).",
   ) %>%

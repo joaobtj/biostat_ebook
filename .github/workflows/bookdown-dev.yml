@@ -35,7 +35,7 @@ jobs:
 
       - name: Install packages
 
-        run: Rscript -e 'install.packages(c("downlit","xml2"))' 
+        run: Rscript -e 'install.packages(c("downlit","xml2", "multcompView"))' 
 
       - name: Build site
         run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
