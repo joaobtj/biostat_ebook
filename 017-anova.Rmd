@@ -22,7 +22,7 @@ Considere a população com 150 árvores pertencente a um reflorestamento de Mog
 Suponha que retiremos 5 amostras aleatórias desta população com 8 indivíduos em cada amostra.
 
 ```{r, include=FALSE}
-dap=readr::read_csv("https://biostat.tolentino.pro.br/data/dap.csv")
+dap <- readr::read_csv("https://biostat.tolentino.pro.br/data/dap.csv")
 library(dplyr)
 
 set.seed("21102015")
@@ -36,7 +36,7 @@ dap5_wide <- dap$dap %>%
     am3 = V3,
     am4 = V4,
     am5 = V5
-  ) 
+  )
 ```
 
 ```{r, echo=FALSE}
@@ -45,11 +45,10 @@ gt::gt(dap5_wide)
 
 
 ```{r, include=FALSE}
-dap5 <- dap5_wide%>%
+dap5 <- dap5_wide %>%
   tidyr::pivot_longer(cols = 1:5, names_to = "amostra", values_to = "dap")
 
 readr::write_csv(dap5, "data/dap5.csv")
-
 ```
 
 
@@ -60,13 +59,13 @@ Uma Análise de Variância pode ser executada com as funções `lm` e `anova`, c
 
 ```{r}
 
-aov_dap5 <- lm(dap~amostra, data=dap5)
+aov_dap5 <- lm(dap ~ amostra, data = dap5)
 anova(aov_dap5)
 ```
 
 
 ```{r include=FALSE}
- pvalor=anova(aov_dap5)$`Pr(>F)`[1]
+pvalor <- anova(aov_dap5)$`Pr(>F)`[1]
 ```
 
 Queremos testar a hipótese nula de que não há diferenças entre os diâmetros médios das cinco populações de onde as amostras foram retiradas:
@@ -84,9 +83,8 @@ Vamos supor que a amostra 1 tenha um efeito aditivo de +5 unidades no DAP. A amo
 
 ```{r, include=FALSE}
 
-efeito <- c(5,-5,3,2,0)
-dap5p_wide <- dap5_wide+rep(efeito,e=8)
-
+efeito <- c(5, -5, 3, 2, 0)
+dap5p_wide <- dap5_wide + rep(efeito, e = 8)
 ```
 
 
@@ -101,20 +99,18 @@ dap5p <- dap5p_wide %>%
   tidyr::pivot_longer(cols = 1:5, names_to = "amostra", values_to = "dap")
 
 readr::write_csv(dap5p, "data/dap5p.csv")
-
 ```
 
 
 A Análise de Variância, com estes valores atualizados, fica assim:
 
 ```{r}
-aov_dap5p <- lm(dap~amostra, data=dap5p)
+aov_dap5p <- lm(dap ~ amostra, data = dap5p)
 anova(aov_dap5p)
 ```
 
 ```{r, include=FALSE}
- pvalorp=anova(aov_dap5p)$`Pr(>F)`[1]
-
+pvalorp <- anova(aov_dap5p)$`Pr(>F)`[1]
 ```
 
 
@@ -154,27 +150,25 @@ bflor <- readxl::read_excel("data/bflor.xlsx") %>%
   mutate(especie = factor(especie))
 
 
-bflor %>% 
+bflor %>%
   group_by(especie) %>%
-  summarise(n=n(),
-            media=mean(comprimento),
-            desvpad = sd(comprimento),
-            var=var(comprimento))
+  summarise(
+    n = n(),
+    media = mean(comprimento),
+    desvpad = sd(comprimento),
+    var = var(comprimento)
+  )
 
 
-boxplot(comprimento~especie, data=bflor)
-
-
-
+boxplot(comprimento ~ especie, data = bflor)
 ```
 
 Efetuamos a Análise de Variância propriamente dita:
 
 ```{r}
-aov_bflor <- lm(comprimento~especie, data=bflor)
+aov_bflor <- lm(comprimento ~ especie, data = bflor)
 
 anova(aov_bflor)
-
 ```
 **CONCLUSÃO**: Há forte evidência de que as três variedades de flores não tenham, todas, o mesmo comprimento médio.
 
@@ -214,28 +208,40 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 
 ```{r}
 ## curtose
-aov_bflor %>% residuals() %>% moments::kurtosis()
+aov_bflor %>%
+  residuals() %>%
+  moments::kurtosis()
 
 ## assimetria
-aov_bflor %>% residuals() %>% moments::skewness()
+aov_bflor %>%
+  residuals() %>%
+  moments::skewness()
 
 ## Teste de Shapiro-Wilk
-aov_bflor %>% residuals() %>% shapiro.test()
+aov_bflor %>%
+  residuals() %>%
+  shapiro.test()
 
 
 ## Gráfico dos quantis normais
-aov_bflor %>% residuals() %>% qqnorm()
-aov_bflor %>% residuals() %>% qqline()
+aov_bflor %>%
+  residuals() %>%
+  qqnorm()
+aov_bflor %>%
+  residuals() %>%
+  qqline()
 
 
 ## Histograma
-aov_bflor %>% residuals() %>% hist()
+aov_bflor %>%
+  residuals() %>%
+  hist()
 
 
 ## Ramo e folhas
-aov_bflor %>% residuals() %>% stem()
-
-
+aov_bflor %>%
+  residuals() %>%
+  stem()
 ```
 
 .
@@ -253,20 +259,22 @@ Pela análise do conjunto dos resultados acima, não há evidência de desvio se
 
 
 ## razão maior/menor desvio-padrão
-bflor %>% group_by(especie) %>% summarise(desvpad=sd(comprimento)) %>%
-mutate(razao=max(desvpad)/desvpad)
+bflor %>%
+  group_by(especie) %>%
+  summarise(desvpad = sd(comprimento)) %>%
+  mutate(razao = max(desvpad) / desvpad)
 
 ## boxplot condicional dos resíduos
-boxplot(residuals(aov_bflor)~especie, data = bflor)
+boxplot(residuals(aov_bflor) ~ especie, data = bflor)
 
 ## resíduos vs ajustados
-plot(aov_bflor,1)
+plot(aov_bflor, 1)
 
 ## teste de Bartlett
-bartlett.test(residuals(aov_bflor)~especie, data=bflor)
+bartlett.test(residuals(aov_bflor) ~ especie, data = bflor)
 
 ## teste de Levene
-car::leveneTest(residuals(aov_bflor)~especie, data=bflor)
+car::leveneTest(residuals(aov_bflor) ~ especie, data = bflor)
 ```
 
 Pela análise do conjunto dos resultados acima, não há evidência de não homogeneidade das variâncias.
@@ -275,3 +283,102 @@ Pela análise do conjunto dos resultados acima, não há evidência de não homo
 :::
 
 
+## Testes de acompanhamento
+
+Para sabermos quais tratamentos diferem entre si, utilizamos um teste de acompanhamento (teste *post hoc*).
+
+Entre os mais utilizados, serão tratados neste capítulo os seguintes testes:
+
+* Teste de Tukey
+* Teste de Dunnett
+* Contrastes ortogonais
+
+
+### Teste de Tukey
+
+Criado por John Tukey (1915–2000), realiza todos os contrastes (comparações) possíveis entre as médias populacionais mantendo o nível de significância.
+
+Em lugar do teste *t*, utiliza o valor crítico *m*, que depende do número de populações, do número de observações e do nível de significância.
+
+As hipóteses testadas são:
+
+H~0~: μ~i~ = μ~j~
+
+H~1~: μ~i~ ≠ μ~j~
+
+para todas as médias populacionais
+
+Ainda, há muitos outros teste de comparações múltiplas similares ao teste de Tukey. Se você é capaz de interpretar os resultado deste teste, será capaz de entender os resultados de muitos outros.
+
+
+:::{.example #tukey name="Teste de Tukey"}
+
+Voltando ao exemplo anterior das Flores de *Heliconia* ^[Lembre-se de calcular a Análise de Variância antes de efetuar os testes de acompanhamento.].
+
+Utilizaremos o pacote *emmeans* para o cálculo do Teste de Tukey.
+
+```{r}
+
+tk_especie <- emmeans::emmeans(aov_bflor, ~especie, contr = "tukey")
+
+## contrastes
+tk_especie$contrasts
+
+## Intervalo de confiança
+tk_especie$contrasts %>% confint()
+
+## letras (CLD)
+tk_especie$emmeans %>% multcomp::cld(Letters = letters)
+
+## plot
+tk_especie$emmeans %>% plot()
+```
+
+A Tabela abaixo mostra um exemplo de como os resultados do teste podem ser apresentados.
+
+```{r, echo=FALSE}
+lt <- tk_especie$emmeans %>% multcomp::cld(Letters = letters)
+library(gt)
+tk_especie$emmeans %>%
+  as.data.frame() %>%
+  select(especie, emmean) %>%
+  bind_cols(g = lt$.group) %>%
+  gt() %>%
+  fmt_number(
+    columns = emmean,
+    decimals = 2
+  ) %>%
+  cols_label(
+    especie = "Espécie",
+    emmean = "Comprimento (mm)",
+    g = ""
+  ) %>%
+  tab_footnote(footnote = "Médias seguidas por letras iguais não diferem entre si pelo teste de Tukey (p<0,05).",)
+```
+
+
+Podemos concluir que as flores da variedade *H. bihai* tem maior comprimento que as demais. As flores de *H. caribaea* vermelha são maiores que *H. caribaea* amarela. Esta última tem o menor comprimento entre todas.
+
+
+:::
+
+
+### Teste de Dunnett
+
+Testa os contrastes envolvendo o(s) tratamento(s) testemunha (ou controle ou placebo).
+
+
+
+:::{.example #dunnett name="Teste de Dunnett"}
+
+
+A homeopatia procura utilizar pequenas doses de substâncias altamente diluídas e geralmente perigosas. Cientistas advertem que há pouca evidência que apoie a homeopatia como tratamento eficaz para qualquer condição específica, exceto para uns poucos estudos.
+
+Em um desses estudos, os pesquisadores fizeram e suturaram uma incisão muscular profunda em ratos anestesiados e, então, associaram-nos aleatoriamente a um de cinco tratamentos. As feridas eram examinadas diariamente para se determinar o tempo (em dias) até sua completa cicatrização.
+
+O arquivo [homeopatia.xlsx](data/homeopatia.xlsx)
+
+Há evidência significante de que o tempo de cicatrização dependa do tratamento recebido?
+
+
+:::
