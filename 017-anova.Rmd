@@ -127,7 +127,11 @@ Acredita-se que os comprimentos das flores e as formas dos bicos dos beija-flore
 
 Se isso for verdade, as variedades de flores fertilizadas por diferentes espécies de beija-flores devem ter diferentes distribuições de comprimentos.
 
-O arquivo [bflor.xlsx](data/bflor.xlsx) fornece as medidas de comprimentos (em milímetros, mm) para amostras de três variedades de *Heliconia*, cada uma fertilizada por uma espécie diferente de beija-flor.
+O arquivo [bflor.xlsx](data/bflor.xlsx) fornece as medidas de comprimentos (em milímetros, mm) para amostras de três variedades de *Heliconia*, cada uma fertilizada por uma espécie diferente de beija-flor. As espécies são:
+
+1. *Heliconia bihai*
+1. *Heliconia caribaea* vermelha
+1. *Heliconia caribaea* amarela
 
 Em particular, os comprimentos médios de suas flores são diferentes?
 
@@ -289,10 +293,87 @@ Para sabermos quais tratamentos diferem entre si, utilizamos um teste de acompan
 
 Entre os mais utilizados, serão tratados neste capítulo os seguintes testes:
 
-* Teste de Tukey
 * Teste de Dunnett
+* Teste de Tukey
 * Contrastes ortogonais
 
+### Teste de Dunnett
+
+Testa os contrastes envolvendo o(s) tratamento(s) testemunha (ou controle ou placebo).
+
+
+
+:::{.example #dunnett name="Teste de Dunnett"}
+
+
+A homeopatia procura utilizar pequenas doses de substâncias altamente diluídas e geralmente perigosas. Cientistas advertem que há pouca evidência que apoie a homeopatia como tratamento eficaz para qualquer condição específica, exceto para uns poucos estudos.
+
+Em um desses estudos, os pesquisadores fizeram e suturaram uma incisão muscular profunda em ratos anestesiados e, então, associaram-nos aleatoriamente a um de cinco tratamentos:
+
+1. Arnica - dose alta
+1. Arnica - dose baixa
+1. Estafisagria - dose alta
+1. Estafisagria - dose baixa
+1. Placebo
+
+As feridas eram examinadas diariamente para se determinar o tempo (em dias) até sua completa cicatrização. Os valores estão no arquivo [homeopatia.xlsx](data/homeopatia.xlsx)
+
+Há evidência significante de que o tempo de cicatrização dependa do tratamento recebido?
+
+```{r, include=FALSE}
+hom <- readxl::read_excel("data/homeopatia.xlsx") %>%
+  mutate(remedio = factor(remedio))
+aov_hom <- lm(tempo~remedio, data=hom) #lm ou glm
+anova(aov_hom)
+```
+
+Após efetuada a Análise de Variância e verificados os pressupostos^[Análise não mostrada aqui.], segue-se com o teste de Dunnett
+
+```{r}
+
+
+dn_remedio <- emmeans::emmeans(aov_hom, ~remedio, contr="dunnett", 
+                                ref=which(names(table(hom$remedio))=="Placebo"))
+
+
+## contrastes
+dn_remedio$contrasts
+
+## intervalo de confiança
+dn_remedio$contrasts %>% confint()
+
+## plot
+dn_remedio$emmeans %>% plot()
+```
+
+
+
+```{r, echo=FALSE}
+dn_remedio$emmeans
+
+library(gt)
+dn_remedio$emmeans %>%
+  as.data.frame() %>%
+  select(remedio, emmean)  %>%
+  gt() %>%
+  fmt_number(
+    columns = emmean,
+    decimals = 2
+  ) %>%
+  cols_label(
+    remedio = "Remédio",
+    emmean = "Tempo de Cicatrização (dias)"
+  ) %>%
+  tab_footnote(
+    footnote = "Médias seguidas por * diferem do tratamento Placebo pelo teste de Dunnett (p<0,05).",
+  ) %>%
+  tab_header(title = md("Tabela X. Tempo de cicatrização médio (dias) para uma profunda ferida cirúrgica tratada com remédios homeopáticos."),)
+
+```
+
+Pelo teste de Dunnett, verifica-se que todos os remédios homeopáticos levaram a um tempo de cicatrização menor do que o tratamento placebo.
+
+:::
 
 ### Teste de Tukey
 
@@ -315,7 +396,7 @@ Ainda, há muitos outros teste de comparações múltiplas similares ao teste de
 
 Voltando ao exemplo anterior das Flores de *Heliconia* ^[Lembre-se de calcular a Análise de Variância antes de efetuar os testes de acompanhamento.].
 
-Utilizaremos o pacote *emmeans* para o cálculo do Teste de Tukey.
+Utilizaremos o pacote *emmeans* para o cálculo do teste de Tukey.
 
 ```{r}
 
@@ -336,6 +417,7 @@ tk_especie$emmeans %>% plot()
 
 A Tabela abaixo mostra um exemplo de como os resultados do teste podem ser apresentados.
 
+
 ```{r, echo=FALSE}
 lt <- tk_especie$emmeans %>% multcomp::cld(Letters = letters)
 library(gt)
@@ -353,8 +435,14 @@ tk_especie$emmeans %>%
     emmean = "Comprimento (mm)",
     g = ""
   ) %>%
-  tab_footnote(footnote = "Médias seguidas por letras iguais não diferem entre si pelo teste de Tukey (p<0,05).",)
+  tab_footnote(
+    footnote = "Médias seguidas por letras iguais não diferem entre si pelo teste de Tukey (p<0,05).",
+  ) %>%
+  tab_header(
+    title = md("Tabela X. Comprimento médio (mm) de flores de três espécies do gênero *Heliconia*.")
+    )
 ```
+
 
 
 Podemos concluir que as flores da variedade *H. bihai* tem maior comprimento que as demais. As flores de *H. caribaea* vermelha são maiores que *H. caribaea* amarela. Esta última tem o menor comprimento entre todas.
@@ -363,22 +451,4 @@ Podemos concluir que as flores da variedade *H. bihai* tem maior comprimento que
 :::
 
 
-### Teste de Dunnett
 
-Testa os contrastes envolvendo o(s) tratamento(s) testemunha (ou controle ou placebo).
-
-
-
-:::{.example #dunnett name="Teste de Dunnett"}
-
-
-A homeopatia procura utilizar pequenas doses de substâncias altamente diluídas e geralmente perigosas. Cientistas advertem que há pouca evidência que apoie a homeopatia como tratamento eficaz para qualquer condição específica, exceto para uns poucos estudos.
-
-Em um desses estudos, os pesquisadores fizeram e suturaram uma incisão muscular profunda em ratos anestesiados e, então, associaram-nos aleatoriamente a um de cinco tratamentos. As feridas eram examinadas diariamente para se determinar o tempo (em dias) até sua completa cicatrização.
-
-O arquivo [homeopatia.xlsx](data/homeopatia.xlsx)
-
-Há evidência significante de que o tempo de cicatrização dependa do tratamento recebido?
-
-
-:::
