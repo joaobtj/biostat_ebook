@@ -1158,7 +1158,7 @@ Vamos supor que a amostra 1 tenha um efeito aditivo de +5 unidades no DAP. A amo
 ## 3 Hcv        23  39.7   1.80  3.24</code></pre>
 <div class="sourceCode" id="cb214"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">comprimento</span> <span class="op">~</span> <span class="va">especie</span>, data <span class="op">=</span> <span class="va">bflor</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-11-1.png" width="672"></div>
+<div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-12-1.png" width="672"></div>
 <p>Efetuamos a Análise de Variância propriamente dita:</p>
 <div class="sourceCode" id="cb215"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aov_bflor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">comprimento</span> <span class="op">~</span> <span class="va">especie</span>, data <span class="op">=</span> <span class="va">bflor</span><span class="op">)</span></span>
@@ -1231,13 +1231,13 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 <span><span class="va">aov_bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqline</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
+<div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-14-1.png" width="672"></div>
 <div class="sourceCode" id="cb224"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Histograma</span></span>
 <span><span class="va">aov_bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-13-2.png" width="672"></div>
+<div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-14-2.png" width="672"></div>
 <div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Ramo e folhas</span></span>
 <span><span class="va">aov_bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -1273,11 +1273,11 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 <div class="sourceCode" id="cb229"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## boxplot condicional dos resíduos</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="va">aov_bflor</span><span class="op">)</span> <span class="op">~</span> <span class="va">especie</span>, data <span class="op">=</span> <span class="va">bflor</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-14-1.png" width="672"></div>
+<div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-15-1.png" width="672"></div>
 <div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## resíduos vs ajustados</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">aov_bflor</span>, <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-14-2.png" width="672"></div>
+<div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-15-2.png" width="672"></div>
 <div class="sourceCode" id="cb231"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## teste de Bartlett</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/bartlett.test.html">bartlett.test</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="va">aov_bflor</span><span class="op">)</span> <span class="op">~</span> <span class="va">especie</span>, data <span class="op">=</span> <span class="va">bflor</span><span class="op">)</span></span></code></pre></div>
@@ -1355,15 +1355,7 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 <div class="sourceCode" id="cb239"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## plot</span></span>
 <span><span class="va">dn_remedio</span><span class="op">$</span><span class="va">emmeans</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-16-1.png" width="672"></div>
-<pre><code>##  remedio            emmean    SE df lower.CL upper.CL
-##  Arnica-alta          15.7 0.312 70     15.0     16.3
-##  Arnica-baixa         15.5 0.312 70     14.8     16.1
-##  Estafisagria-alta    15.6 0.312 70     15.0     16.2
-##  Estafisagria-baixa   15.8 0.312 70     15.2     16.4
-##  Placebo              21.3 0.312 70     20.7     22.0
-## 
-## Confidence level used: 0.95</code></pre>
+<div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-17-1.png" width="672"></div>
 <div id="rxtmvrczhz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
@@ -1834,7 +1826,7 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 <div class="example">
 <p><span id="exm:tukey" class="example"><strong>Exemplo 10.5  (Teste de Tukey) </strong></span>Voltando ao exemplo anterior das Flores de <em>Heliconia</em> <a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Lembre-se de calcular a Análise de Variância antes de efetuar os testes de acompanhamento.&lt;/p&gt;"><sup>28</sup></a>.</p>
 <p>Utilizaremos o pacote <em>emmeans</em> para o cálculo do teste de Tukey.</p>
-<div class="sourceCode" id="cb241"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb240"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tk_especie</span> <span class="op">&lt;-</span> <span class="fu">emmeans</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/emmeans/man/emmeans.html">emmeans</a></span><span class="op">(</span><span class="va">aov_bflor</span>, <span class="op">~</span><span class="va">especie</span>, contr <span class="op">=</span> <span class="st">"tukey"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">## contrastes</span></span>
@@ -1845,7 +1837,7 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 ##  Hca - Hcv    -3.53 0.480 51  -7.361  &lt;.0001
 ## 
 ## P value adjustment: tukey method for comparing a family of 3 estimates</code></pre>
-<div class="sourceCode" id="cb243"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb242"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Intervalo de confiança</span></span>
 <span><span class="va">tk_especie</span><span class="op">$</span><span class="va">contrasts</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##  contrast  estimate    SE df lower.CL upper.CL
@@ -1855,7 +1847,7 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 ## 
 ## Confidence level used: 0.95 
 ## Conf-level adjustment: tukey method for comparing a family of 3 estimates</code></pre>
-<div class="sourceCode" id="cb245"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb244"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## letras (CLD)</span></span>
 <span><span class="va">tk_especie</span><span class="op">$</span><span class="va">emmeans</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">multcomp</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/multcomp/man/cld.html">cld</a></span><span class="op">(</span>Letters <span class="op">=</span> <span class="va">letters</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##  especie emmean    SE df lower.CL upper.CL .group
@@ -1869,10 +1861,10 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 ## NOTE: Compact letter displays can be misleading
 ##       because they show NON-findings rather than findings.
 ##       Consider using 'pairs()', 'pwpp()', or 'pwpm()' instead.</code></pre>
-<div class="sourceCode" id="cb247"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb246"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## plot</span></span>
 <span><span class="va">tk_especie</span><span class="op">$</span><span class="va">emmeans</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-18-1.png" width="672"></div>
+<div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-19-1.png" width="672"></div>
 <p>A Tabela abaixo mostra um exemplo de como os resultados do teste podem ser apresentados.</p>
 <div id="mmfxgbiela" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
@@ -2319,6 +2311,120 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 </div>
 <p>Podemos concluir que as flores da variedade <em>H. bihai</em> tem maior comprimento que as demais. As flores de <em>H. caribaea</em> vermelha são maiores que <em>H. caribaea</em> amarela. Esta última tem o menor comprimento entre todas.</p>
 </div>
+</div>
+<div id="contrastes-ortogonais" class="section level3" number="10.5.3">
+<h3>
+<span class="header-section-number">10.5.3</span> Contrastes ortogonais<a class="anchor" aria-label="anchor" href="#contrastes-ortogonais"><i class="fas fa-link"></i></a>
+</h3>
+<p>O teste de Tukey (e outros testes de comparações múltiplas) fornecem conclusões sobre todos os contrastes possíveis. Alguns (ou muitos) destes contrastes podem não ser de nosso interesse. Outros contrastes de nosso interesse podem ser deixados de lado.</p>
+<p>Se você tiver questões específicas em mente antes de produzir os dados, é muito mais eficiente planejar a análise para responder a estas questões.</p>
+<p>Não use os contrastes para testar todas as comparações possíveis!</p>
+<p>Contrastes só serão válidos se você tiver alguma razão científica para testar uma hipótese em particular antes mesmo de você coletar os dados.</p>
+<div class="example">
+<p><span id="exm:contort" class="example"><strong>Exemplo 10.6  (Contrastes ortogonais) </strong></span>Para detectarmos a presença de insetos nocivos nos campos de plantações, podemos colocar cartões cobertos com um material pegajoso e examinar os insetos presos nos cartões.</p>
+<p>Quais cores mais atraem os insetos?</p>
+<p>Pesquisadores colocaram seis cartões de quatro cores (Amarelo, Azul, Branco e Verde) em locais aleatórios de um campo de aveia e contaram o número de besouros de folhas de cereal apanhados. Os resultados estão no arquivo <a href="data/besouro.xlsx">besouro.xlsx</a>.</p>
+<p>Podemos executar o teste de Tukey, mas, antes de coletar os dados, já tínhamos questões específicas em mente:</p>
+<ul>
+<li>Suspeitamos que cores quentes (amarelo e verde) são mais atrativas que cores frias (azul e branco)</li>
+<li>Branco e azul devem ter respostas semelhantes</li>
+<li>Verde e amarelo devem ter respostas semelhantes</li>
+</ul>
+<p>Assim, testamos três hipóteses:</p>
+<p>Hipótese 1:</p>
+<p>H<sub>0</sub>: μ<sub>Az</sub> = μ<sub>Br</sub></p>
+<p>H<sub>1</sub>: μ<sub>Az</sub> ≠ μ<sub>Br</sub></p>
+<p>Hipótese 2:</p>
+<p>H<sub>0</sub>: μ<sub>Am</sub> = μ<sub>Ve</sub></p>
+<p>H<sub>1</sub>: μ<sub>Am</sub> ≠ μ<sub>Ve</sub></p>
+<p>Hipótese 3:</p>
+<p>H<sub>0</sub>:(μ<sub>Am</sub>+μ<sub>Ve</sub>)=(μ<sub>Az</sub>+μ<sub>Br</sub>)</p>
+<p>H~<sub>1:(μ</sub>Am<sub>+μ</sub>Ve<sub>)&gt;(μ</sub>Az<sub>+μ</sub>Br~)</p>
+<p>Duas hipóteses envolvem comparações aos pares.
+A terceira é mais complexa e unilateral.</p>
+<p>Reescrevemos as três hipóteses em termos de três contrastes:</p>
+<p>C<sub>1</sub> = (0)(μ<sub>Am</sub>) + (+1)(μ<sub>Az</sub>) + (−1)(μ<sub>Br</sub>) + (0)(μ<sub>Ve</sub>)</p>
+<p>C<sub>2</sub> = (−1)(μ<sub>Am</sub>) + (0)(μ<sub>Az</sub>) + (0)(μ<sub>Br</sub>) + (+1)(μ<sub>Ve</sub>)</p>
+<p>C<sub>3</sub> = (+1)(μ<sub>Am</sub>) + (−1)(μ<sub>Az</sub>) + (−1)(μ<sub>Br</sub>) + (+1)(μ<sub>Ve</sub>)</p>
+<p>Verifique que a soma dos coeficientes em cada linha deve ser igual a 0 (zero) (senão não é um contraste).</p>
+<p>Para verificar a ortogonalidade entre os contrastes, a soma do produtos dos coeficientes também deve ser igual a 0 (zero).</p>
+<p>As hipóteses para estes contrastes são:</p>
+<p>Hipótese 1:</p>
+<p>H<sub>0</sub>: C<sub>1</sub> = 0</p>
+<p>H<sub>1</sub>: C<sub>1</sub> ≠ 0</p>
+<p>Hipótese 2:</p>
+<p>H<sub>0</sub>: C<sub>2</sub> = 0</p>
+<p>H<sub>1</sub>: C<sub>2</sub> ≠ 0</p>
+<p>Hipótese 3:</p>
+<p>H<sub>0</sub>: C<sub>3</sub> = 0</p>
+<p>H<sub>1</sub>: C<sub>3</sub> &gt; 0</p>
+<div class="sourceCode" id="cb247"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#Contrastes</span></span>
+<span><span class="va">K.bes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="st">"C1"</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>  <span class="fl">0</span>, <span class="op">+</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span>,</span>
+<span>            </span>
+<span>               <span class="st">"C2"</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span> <span class="op">-</span><span class="fl">1</span>,  <span class="fl">0</span>,  <span class="fl">0</span>, <span class="op">+</span><span class="fl">1</span><span class="op">)</span>,</span>
+<span>           </span>
+<span>               <span class="st">"C3"</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span> <span class="op">+</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span>, <span class="op">+</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#verificar se contrastes são ortogonais (soma=0)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">K.bes</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span><span class="op">*</span><span class="va">K.bes</span><span class="op">[</span><span class="fl">2</span>,<span class="op">]</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode" id="cb249"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">K.bes</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span><span class="op">*</span><span class="va">K.bes</span><span class="op">[</span><span class="fl">3</span>,<span class="op">]</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode" id="cb251"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">K.bes</span><span class="op">[</span><span class="fl">2</span>,<span class="op">]</span><span class="op">*</span><span class="va">K.bes</span><span class="op">[</span><span class="fl">3</span>,<span class="op">]</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode" id="cb253"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://multcomp.R-forge.R-project.org">multcomp</a></span><span class="op">)</span></span>
+<span><span class="va">ctr_besouro</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/multcomp/man/glht.html">glht</a></span><span class="op">(</span><span class="va">aov_bes</span>, linfct<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/multcomp/man/glht.html">mcp</a></span><span class="op">(</span>cor<span class="op">=</span><span class="va">K.bes</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">ctr_besouro</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## 
+##   Simultaneous Tests for General Linear Hypotheses
+## 
+## Multiple Comparisons of Means: User-defined Contrasts
+## 
+## 
+## Fit: lm(formula = numero ~ cor, data = bes)
+## 
+## Linear Hypotheses:
+##         Estimate Std. Error t value Pr(&gt;|t|)    
+## C1 == 0   -1.333      3.274  -0.407 0.967629    
+## C2 == 0  -16.000      3.274  -4.886 0.000255 ***
+## C3 == 0   47.333      4.631  10.221  &lt; 1e-04 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## (Adjusted p values reported -- single-step method)</code></pre>
+<div class="sourceCode" id="cb255"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## Intervalo de confiança</span></span>
+<span><span class="va">ctr_besouro</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## 
+##   Simultaneous Confidence Intervals
+## 
+## Multiple Comparisons of Means: User-defined Contrasts
+## 
+## 
+## Fit: lm(formula = numero ~ cor, data = bes)
+## 
+## Quantile = 2.5958
+## 95% family-wise confidence level
+##  
+## 
+## Linear Hypotheses:
+##         Estimate lwr      upr     
+## C1 == 0  -1.3333  -9.8332   7.1666
+## C2 == 0 -16.0000 -24.4999  -7.5001
+## C3 == 0  47.3333  35.3127  59.3540</code></pre>
+<p>Estamos 95% confiantes de que o número médio de besouros atraídos pelas cores Verde e Amarelo é superior ao número de besouros atraídos pelas cores Branco e Azul.</p>
+<ul>
+<li>Há grande evidência que o contraste C3 é maior que zero.</li>
+</ul>
+<p>Os outros contrastes mostram que:</p>
+<ul>
+<li>Azul e Branco não diferem entre si</li>
+<li>Verde e Amarelo diferem entre si</li>
+</ul>
+</div>
 
 </div>
 </div>
@@ -2342,6 +2448,7 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 <a class="nav-link" href="#testes-de-acompanhamento"><span class="header-section-number">10.5</span> Testes de acompanhamento</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#teste-de-dunnett"><span class="header-section-number">10.5.1</span> Teste de Dunnett</a></li>
 <li><a class="nav-link" href="#teste-de-tukey"><span class="header-section-number">10.5.2</span> Teste de Tukey</a></li>
+<li><a class="nav-link" href="#contrastes-ortogonais"><span class="header-section-number">10.5.3</span> Contrastes ortogonais</a></li>
 </ul>
 </li>
 </ul>

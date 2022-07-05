@@ -1,5 +1,6 @@
 
 
+
 # Análise de Variância
 
 Os procedimentos t de duas amostras comparam as médias de duas populações ou as respostas médias a dois tratamentos em um experimento.
@@ -1102,7 +1103,7 @@ bflor %>%
 boxplot(comprimento ~ especie, data = bflor)
 ```
 
-<img src="017-anova_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+<img src="017-anova_files/figure-html/unnamed-chunk-12-1.png" width="672" />
 
 Efetuamos a Análise de Variância propriamente dita:
 
@@ -1207,7 +1208,7 @@ aov_bflor %>%
   qqline()
 ```
 
-<img src="017-anova_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+<img src="017-anova_files/figure-html/unnamed-chunk-14-1.png" width="672" />
 
 ```r
 ## Histograma
@@ -1216,7 +1217,7 @@ aov_bflor %>%
   hist()
 ```
 
-<img src="017-anova_files/figure-html/unnamed-chunk-13-2.png" width="672" />
+<img src="017-anova_files/figure-html/unnamed-chunk-14-2.png" width="672" />
 
 ```r
 ## Ramo e folhas
@@ -1272,14 +1273,14 @@ bflor %>%
 boxplot(residuals(aov_bflor) ~ especie, data = bflor)
 ```
 
-<img src="017-anova_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+<img src="017-anova_files/figure-html/unnamed-chunk-15-1.png" width="672" />
 
 ```r
 ## resíduos vs ajustados
 plot(aov_bflor, 1)
 ```
 
-<img src="017-anova_files/figure-html/unnamed-chunk-14-2.png" width="672" />
+<img src="017-anova_files/figure-html/unnamed-chunk-15-2.png" width="672" />
 
 ```r
 ## teste de Bartlett
@@ -1392,21 +1393,10 @@ dn_remedio$contrasts %>% confint()
 dn_remedio$emmeans %>% plot()
 ```
 
-<img src="017-anova_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+<img src="017-anova_files/figure-html/unnamed-chunk-17-1.png" width="672" />
 
 
 
-
-```
-##  remedio            emmean    SE df lower.CL upper.CL
-##  Arnica-alta          15.7 0.312 70     15.0     16.3
-##  Arnica-baixa         15.5 0.312 70     14.8     16.1
-##  Estafisagria-alta    15.6 0.312 70     15.0     16.2
-##  Estafisagria-baixa   15.8 0.312 70     15.2     16.4
-##  Placebo              21.3 0.312 70     20.7     22.0
-## 
-## Confidence level used: 0.95
-```
 
 ```{=html}
 <div id="rxtmvrczhz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -1945,7 +1935,7 @@ tk_especie$emmeans %>% multcomp::cld(Letters = letters)
 tk_especie$emmeans %>% plot()
 ```
 
-<img src="017-anova_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+<img src="017-anova_files/figure-html/unnamed-chunk-19-1.png" width="672" />
 
 A Tabela abaixo mostra um exemplo de como os resultados do teste podem ser apresentados.
 
@@ -2408,3 +2398,180 @@ Podemos concluir que as flores da variedade *H. bihai* tem maior comprimento que
 
 
 
+### Contrastes ortogonais
+
+O teste de Tukey (e outros testes de comparações múltiplas) fornecem conclusões sobre todos os contrastes possíveis. Alguns (ou muitos) destes contrastes podem não ser de nosso interesse. Outros contrastes de nosso interesse podem ser deixados de lado.
+
+Se você tiver questões específicas em mente antes de produzir os dados, é muito mais eficiente planejar a análise para responder a estas questões.
+
+Não use os contrastes para testar todas as comparações possíveis!
+
+Contrastes só serão válidos se você tiver alguma razão científica para testar uma hipótese em particular antes mesmo de você coletar os dados.
+
+
+:::{.example #contort name="Contrastes ortogonais"}
+
+Para detectarmos a presença de insetos nocivos nos campos de plantações, podemos colocar cartões cobertos com um material pegajoso e examinar os insetos presos nos cartões.
+
+Quais cores mais atraem os insetos?
+
+Pesquisadores colocaram seis cartões de quatro cores (Amarelo, Azul, Branco e Verde) em locais aleatórios de um campo de aveia e contaram o número de besouros de folhas de cereal apanhados. Os resultados estão no arquivo [besouro.xlsx](data/besouro.xlsx).
+
+Podemos executar o teste de Tukey, mas, antes de coletar os dados, já tínhamos questões específicas em mente:
+
+* Suspeitamos que cores quentes (amarelo e verde) são mais atrativas que cores frias (azul e branco)
+* Branco e azul devem ter respostas semelhantes
+* Verde e amarelo devem ter respostas semelhantes
+
+Assim, testamos três hipóteses:
+
+Hipótese 1:
+
+H~0~: μ~Az~ = μ~Br~
+
+H~1~: μ~Az~ ≠ μ~Br~
+
+Hipótese 2:
+
+H~0~: μ~Am~ = μ~Ve~
+
+H~1~: μ~Am~ ≠ μ~Ve~
+
+Hipótese 3:
+
+H~0~:(μ~Am~+μ~Ve~)=(μ~Az~+μ~Br~)
+
+H~~1:(μ~Am~+μ~Ve~)>(μ~Az~+μ~Br~)
+
+Duas hipóteses envolvem comparações aos pares.
+A terceira é mais complexa e unilateral.
+
+Reescrevemos as três hipóteses em termos de três contrastes:
+
+C~1~ = (0)(μ~Am~) + (+1)(μ~Az~) + (−1)(μ~Br~) + (0)(μ~Ve~)
+ 
+C~2~ = (−1)(μ~Am~) + (0)(μ~Az~) + (0)(μ~Br~) + (+1)(μ~Ve~)
+
+C~3~ = (+1)(μ~Am~) + (−1)(μ~Az~) + (−1)(μ~Br~) + (+1)(μ~Ve~)
+
+Verifique que a soma dos coeficientes em cada linha deve ser igual a 0 (zero) (senão não é um contraste).
+
+Para verificar a ortogonalidade entre os contrastes, a soma do produtos dos coeficientes também deve ser igual a 0 (zero).
+
+
+As hipóteses para estes contrastes são:
+
+Hipótese 1:
+
+H~0~: C~1~ = 0
+
+H~1~: C~1~ ≠ 0
+
+Hipótese 2:
+
+H~0~: C~2~ = 0
+
+H~1~: C~2~ ≠ 0
+
+Hipótese 3:
+
+H~0~: C~3~ = 0
+
+H~1~: C~3~ > 0
+
+
+
+
+
+```r
+#Contrastes
+K.bes <- rbind("C1"=c(  0, +1, -1, 0),
+            
+               "C2"=c( -1,  0,  0, +1),
+           
+               "C3"=c( +1, -1, -1, +1))
+
+#verificar se contrastes são ortogonais (soma=0)
+sum(K.bes[1,]*K.bes[2,])
+```
+
+```
+## [1] 0
+```
+
+```r
+sum(K.bes[1,]*K.bes[3,])
+```
+
+```
+## [1] 0
+```
+
+```r
+sum(K.bes[2,]*K.bes[3,])
+```
+
+```
+## [1] 0
+```
+
+```r
+library(multcomp)
+ctr_besouro <- glht(aov_bes, linfct=mcp(cor=K.bes))
+summary(ctr_besouro)
+```
+
+```
+## 
+## 	 Simultaneous Tests for General Linear Hypotheses
+## 
+## Multiple Comparisons of Means: User-defined Contrasts
+## 
+## 
+## Fit: lm(formula = numero ~ cor, data = bes)
+## 
+## Linear Hypotheses:
+##         Estimate Std. Error t value Pr(>|t|)    
+## C1 == 0   -1.333      3.274  -0.407 0.967629    
+## C2 == 0  -16.000      3.274  -4.886 0.000255 ***
+## C3 == 0   47.333      4.631  10.221  < 1e-04 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## (Adjusted p values reported -- single-step method)
+```
+
+```r
+## Intervalo de confiança
+ctr_besouro %>% confint()
+```
+
+```
+## 
+## 	 Simultaneous Confidence Intervals
+## 
+## Multiple Comparisons of Means: User-defined Contrasts
+## 
+## 
+## Fit: lm(formula = numero ~ cor, data = bes)
+## 
+## Quantile = 2.5958
+## 95% family-wise confidence level
+##  
+## 
+## Linear Hypotheses:
+##         Estimate lwr      upr     
+## C1 == 0  -1.3333  -9.8332   7.1666
+## C2 == 0 -16.0000 -24.4999  -7.5001
+## C3 == 0  47.3333  35.3127  59.3540
+```
+
+Estamos 95% confiantes de que o número médio de besouros atraídos pelas cores Verde e Amarelo é superior ao número de besouros atraídos pelas cores Branco e Azul.
+
+* Há grande evidência que o contraste C3 é maior que zero.
+
+Os outros contrastes mostram que:
+
+* Azul e Branco não diferem entre si
+* Verde e Amarelo diferem entre si
+
+::: 
