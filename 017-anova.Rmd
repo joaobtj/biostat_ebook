@@ -1,6 +1,15 @@
 
+```{r, include=FALSE}
+library(multcomp)
+library(emmeans)
+```
+
+
+
+
 
 # Análise de Variância {#anova}
+
 
 Os procedimentos t de duas amostras comparam as médias de duas populações ou as respostas médias a dois tratamentos em um experimento.
 
@@ -22,7 +31,9 @@ Considere a população com 150 árvores pertencente a um reflorestamento de Mog
 Suponha que retiremos 5 amostras aleatórias desta população com 8 indivíduos em cada amostra.
 
 ```{r, include=FALSE}
-dap=readr::read_csv("https://biostat.tolentino.pro.br/data/dap.csv")
+
+dap <- readr::read_csv("https://biostat.tolentino.pro.br/data/dap.csv")
+
 library(dplyr)
 
 set.seed("21102015")
@@ -36,7 +47,8 @@ dap5_wide <- dap$dap %>%
     am3 = V3,
     am4 = V4,
     am5 = V5
-  ) 
+  )
+
 ```
 
 ```{r, echo=FALSE}
@@ -45,7 +57,8 @@ gt::gt(dap5_wide)
 
 
 ```{r, include=FALSE}
-dap5 <- dap5_wide%>%
+
+dap5 <- dap5_wide %>%
   tidyr::pivot_longer(cols = 1:5, names_to = "amostra", values_to = "dap")
 
 readr::write_csv(dap5, "data/dap5.csv")
@@ -60,13 +73,16 @@ Uma Análise de Variância pode ser executada com as funções `lm` e `anova`, c
 
 ```{r}
 
-aov_dap5 <- lm(dap~amostra, data=dap5)
+
+aov_dap5 <- lm(dap ~ amostra, data = dap5)
+
 anova(aov_dap5)
 ```
 
 
 ```{r include=FALSE}
- pvalor=anova(aov_dap5)$`Pr(>F)`[1]
+pvalor <- anova(aov_dap5)$`Pr(>F)`[1]
+
 ```
 
 Queremos testar a hipótese nula de que não há diferenças entre os diâmetros médios das cinco populações de onde as amostras foram retiradas:
@@ -84,8 +100,8 @@ Vamos supor que a amostra 1 tenha um efeito aditivo de +5 unidades no DAP. A amo
 
 ```{r, include=FALSE}
 
-efeito <- c(5,-5,3,2,0)
-dap5p_wide <- dap5_wide+rep(efeito,e=8)
+efeito <- c(5, -5, 3, 2, 0)
+dap5p_wide <- dap5_wide + rep(efeito, e = 8)
 
 ```
 
@@ -108,13 +124,12 @@ readr::write_csv(dap5p, "data/dap5p.csv")
 A Análise de Variância, com estes valores atualizados, fica assim:
 
 ```{r}
-aov_dap5p <- lm(dap~amostra, data=dap5p)
+aov_dap5p <- lm(dap ~ amostra, data = dap5p)
 anova(aov_dap5p)
 ```
 
 ```{r, include=FALSE}
- pvalorp=anova(aov_dap5p)$`Pr(>F)`[1]
-
+pvalorp <- anova(aov_dap5p)$`Pr(>F)`[1]
 ```
 
 
@@ -131,7 +146,12 @@ Acredita-se que os comprimentos das flores e as formas dos bicos dos beija-flore
 
 Se isso for verdade, as variedades de flores fertilizadas por diferentes espécies de beija-flores devem ter diferentes distribuições de comprimentos.
 
-O arquivo [bflor.xlsx](data/bflor.xlsx) fornece as medidas de comprimentos (em milímetros, mm) para amostras de três variedades de *Heliconia*, cada uma fertilizada por uma espécie diferente de beija-flor.
+O arquivo [bflor.xlsx](data/bflor.xlsx) fornece as medidas de comprimentos (em milímetros, mm) para amostras de três variedades de *Heliconia*, cada uma fertilizada por uma espécie diferente de beija-flor. As espécies são:
+
+1. *Heliconia bihai*
+1. *Heliconia caribaea* vermelha
+1. *Heliconia caribaea* amarela
+
 
 Em particular, os comprimentos médios de suas flores são diferentes?
 
@@ -154,25 +174,24 @@ bflor <- readxl::read_excel("data/bflor.xlsx") %>%
   mutate(especie = factor(especie))
 
 
-bflor %>% 
+bflor %>%
   group_by(especie) %>%
-  summarise(n=n(),
-            media=mean(comprimento),
-            desvpad = sd(comprimento),
-            var=var(comprimento))
+  summarise(
+    n = n(),
+    media = mean(comprimento),
+    desvpad = sd(comprimento),
+    var = var(comprimento)
+  )
 
 
-boxplot(comprimento~especie, data=bflor)
-
-
+boxplot(comprimento ~ especie, data = bflor)
 
 ```
 
 Efetuamos a Análise de Variância propriamente dita:
 
 ```{r}
-aov_bflor <- lm(comprimento~especie, data=bflor)
-
+aov_bflor <- lm(comprimento ~ especie, data = bflor)
 anova(aov_bflor)
 
 ```
@@ -214,6 +233,7 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 
 ```{r}
 ## curtose
+
 aov_bflor %>% residuals() %>% moments::kurtosis()
 
 ## assimetria
@@ -253,6 +273,7 @@ Pela análise do conjunto dos resultados acima, não há evidência de desvio se
 
 
 ## razão maior/menor desvio-padrão
+
 bflor %>% group_by(especie) %>% summarise(desvpad=sd(comprimento)) %>%
 mutate(razao=max(desvpad)/desvpad)
 
@@ -274,4 +295,325 @@ Pela análise do conjunto dos resultados acima, não há evidência de não homo
 
 :::
 
+
+## Testes de acompanhamento
+
+Para sabermos quais tratamentos diferem entre si, utilizamos um teste de acompanhamento (teste *post hoc*).
+
+Entre os mais utilizados, serão tratados neste capítulo os seguintes testes:
+
+* Teste de Dunnett
+* Teste de Tukey
+* Contrastes ortogonais
+
+### Teste de Dunnett
+
+Testa os contrastes envolvendo o(s) tratamento(s) testemunha (ou controle ou placebo).
+
+
+
+:::{.example #dunnett name="Teste de Dunnett"}
+
+
+A homeopatia procura utilizar pequenas doses de substâncias altamente diluídas e geralmente perigosas. Cientistas advertem que há pouca evidência que apoie a homeopatia como tratamento eficaz para qualquer condição específica, exceto para uns poucos estudos.
+
+Em um desses estudos, os pesquisadores fizeram e suturaram uma incisão muscular profunda em ratos anestesiados e, então, associaram-nos aleatoriamente a um de cinco tratamentos:
+
+1. Arnica - dose alta
+1. Arnica - dose baixa
+1. Estafisagria - dose alta
+1. Estafisagria - dose baixa
+1. Placebo
+
+As feridas eram examinadas diariamente para se determinar o tempo (em dias) até sua completa cicatrização. Os valores estão no arquivo [homeopatia.xlsx](data/homeopatia.xlsx)
+
+Há evidência significante de que o tempo de cicatrização dependa do tratamento recebido?
+
+```{r, include=FALSE}
+hom <- readxl::read_excel("data/homeopatia.xlsx") %>%
+  mutate(remedio = factor(remedio))
+aov_hom <- lm(tempo~remedio, data=hom) #lm ou glm
+anova(aov_hom)
+```
+
+Após efetuada a Análise de Variância e verificados os pressupostos^[Análise não mostrada aqui.], segue-se com o teste de Dunnett
+
+```{r}
+
+
+dn_remedio <- emmeans::emmeans(aov_hom, ~remedio, contr="dunnett", 
+                                ref=which(names(table(hom$remedio))=="Placebo"))
+
+
+## contrastes
+dn_remedio$contrasts
+
+## intervalo de confiança
+dn_remedio$contrasts %>% confint()
+
+## plot
+dn_remedio$emmeans %>% plot()
+```
+
+
+
+```{r, echo=FALSE}
+library(gt)
+dn_remedio$emmeans %>%
+  as.data.frame() %>%
+  select(remedio, emmean)  %>%
+
+  bind_cols(g=c("*","*","*","*","")) %>%
+  gt() %>%
+  fmt_number(
+    columns = emmean,
+    decimals = 2
+  )  %>%
+  cols_label(
+    remedio = "Remédio",
+    emmean = "Tempo de Cicatrização (dias)",
+    g=""
+  ) %>%
+  cols_align(columns = remedio,
+             align = "left") %>%
+  cols_align(columns = emmean,
+             align = "center") %>%
+  cols_align(columns = g,
+             align = "left") %>%
+  tab_footnote(
+    footnote = "Médias seguidas por * diferem do tratamento placebo pelo teste de Dunnett (p<0,05).",
+  ) %>%
+  tab_header(title = md("Tabela X. Tempo de cicatrização médio (dias) para uma profunda ferida cirúrgica tratada com remédios homeopáticos."),)
+
+```
+
+Pelo teste de Dunnett, verifica-se que todos os remédios homeopáticos levaram a um tempo de cicatrização menor do que o tratamento placebo.
+
+:::
+
+### Teste de Tukey
+
+Criado por John Tukey (1915–2000), realiza todos os contrastes (comparações) possíveis entre as médias populacionais mantendo o nível de significância.
+
+Em lugar do teste *t*, utiliza o valor crítico *m*, que depende do número de populações, do número de observações e do nível de significância.
+
+As hipóteses testadas são:
+
+H~0~: μ~i~ = μ~j~
+
+H~1~: μ~i~ ≠ μ~j~
+
+para todas as médias populacionais
+
+Ainda, há muitos outros teste de comparações múltiplas similares ao teste de Tukey. Se você é capaz de interpretar os resultado deste teste, será capaz de entender os resultados de muitos outros.
+
+
+:::{.example #tukey name="Teste de Tukey"}
+
+Voltando ao exemplo anterior das Flores de *Heliconia* ^[Lembre-se de calcular a Análise de Variância antes de efetuar os testes de acompanhamento.].
+
+Utilizaremos o pacote *emmeans* para o cálculo do teste de Tukey.
+
+```{r}
+
+tk_especie <- emmeans::emmeans(aov_bflor, ~especie, contr = "tukey")
+
+## contrastes
+tk_especie$contrasts
+
+## Intervalo de confiança
+tk_especie$contrasts %>% confint()
+
+## letras (CLD)
+tk_especie$emmeans %>% multcomp::cld(Letters = letters)
+
+## plot
+tk_especie$emmeans %>% plot()
+```
+
+A Tabela abaixo mostra um exemplo de como os resultados do teste podem ser apresentados.
+
+
+```{r, echo=FALSE}
+lt <- tk_especie$emmeans %>% multcomp::cld(Letters = letters)
+library(gt)
+tk_especie$emmeans %>%
+  as.data.frame() %>%
+  select(especie, emmean) %>%
+  bind_cols(g = lt$.group) %>%
+  gt() %>%
+  fmt_number(
+    columns = emmean,
+    decimals = 2
+  ) %>%
+  cols_label(
+    especie = "Espécie",
+    emmean = "Comprimento (mm)",
+    g = ""
+  ) %>%
+  cols_align(columns = especie,
+             align = "left") %>%
+  cols_align(columns = emmean,
+             align = "center") %>%
+  cols_align(columns = g,
+             align = "left") %>%
+  tab_footnote(
+    footnote = "Médias seguidas por letras iguais não diferem entre si pelo teste de Tukey (p<0,05).",
+  ) %>%
+  tab_header(
+    title = md("Tabela X. Comprimento médio (mm) de flores de três espécies do gênero *Heliconia*.")
+    )
+```
+
+
+
+Podemos concluir que as flores da variedade *H. bihai* tem maior comprimento que as demais. As flores de *H. caribaea* vermelha são maiores que *H. caribaea* amarela. Esta última tem o menor comprimento entre todas.
+
+
+:::
+
+### Teste de Scott Knott
+
+É um teste de agrupamento que evita a ambiguidade causada em algumas situações pelo teste de Tukey, principalmente nos estudos com uma grande quantidade de tratamentos.
+
+Utiliza-se o pacote `ScottKnott`^[Mais em https://lec.pro.br//software/pac-r/scottknott] para a realização do teste.
+
+:::{.example #k name="Teste de Scott Knott"}
+
+Exemplo de utilização do teste de Scott Knott no exemplo das flores de *Heliconia* 
+.
+
+```{r}
+sk_bflor <- ScottKnott::SK(aov_bflor) 
+sk_bflor$out
+```
+
+
+
+
+
+:::
+
+### Contrastes ortogonais
+
+O teste de Tukey (e outros testes de comparações múltiplas) fornecem conclusões sobre todos os contrastes possíveis. Alguns (ou muitos) destes contrastes podem não ser de nosso interesse. Outros contrastes de nosso interesse podem ser deixados de lado.
+
+Se você tiver questões específicas em mente antes de produzir os dados, é muito mais eficiente planejar a análise para responder a estas questões.
+
+Não use os contrastes para testar todas as comparações possíveis!
+
+Contrastes só serão válidos se você tiver alguma razão científica para testar uma hipótese em particular antes mesmo de você coletar os dados.
+
+
+:::{.example #contort name="Contrastes ortogonais"}
+
+Para detectarmos a presença de insetos nocivos nos campos de plantações, podemos colocar cartões cobertos com um material pegajoso e examinar os insetos presos nos cartões.
+
+Quais cores mais atraem os insetos?
+
+Pesquisadores colocaram seis cartões de quatro cores (Amarelo, Azul, Branco e Verde) em locais aleatórios de um campo de aveia e contaram o número de besouros de folhas de cereal apanhados. Os resultados estão no arquivo [besouro.xlsx](data/besouro.xlsx).
+
+Podemos executar o teste de Tukey, mas, antes de coletar os dados, já tínhamos questões específicas em mente:
+
+* Suspeitamos que cores quentes (amarelo e verde) são mais atrativas que cores frias (azul e branco)
+* Branco e azul devem ter respostas semelhantes
+* Verde e amarelo devem ter respostas semelhantes
+
+Assim, testamos três hipóteses:
+
+Hipótese 1:
+
+H~0~: μ~Az~ = μ~Br~
+
+H~1~: μ~Az~ ≠ μ~Br~
+
+Hipótese 2:
+
+H~0~: μ~Am~ = μ~Ve~
+
+H~1~: μ~Am~ ≠ μ~Ve~
+
+Hipótese 3:
+
+H~0~:(μ~Am~+μ~Ve~)=(μ~Az~+μ~Br~)
+
+H~~1:(μ~Am~+μ~Ve~)>(μ~Az~+μ~Br~)
+
+Duas hipóteses envolvem comparações aos pares.
+A terceira é mais complexa e unilateral.
+
+Reescrevemos as três hipóteses em termos de três contrastes:
+
+C~1~ = (0)(μ~Am~) + (+1)(μ~Az~) + (−1)(μ~Br~) + (0)(μ~Ve~)
+ 
+C~2~ = (−1)(μ~Am~) + (0)(μ~Az~) + (0)(μ~Br~) + (+1)(μ~Ve~)
+
+C~3~ = (+1)(μ~Am~) + (−1)(μ~Az~) + (−1)(μ~Br~) + (+1)(μ~Ve~)
+
+Verifique que a soma dos coeficientes em cada linha deve ser igual a 0 (zero) (senão não é um contraste).
+
+Para verificar a ortogonalidade entre os contrastes, a soma do produtos dos coeficientes também deve ser igual a 0 (zero).
+
+
+As hipóteses para estes contrastes são:
+
+Hipótese 1:
+
+H~0~: C~1~ = 0
+
+H~1~: C~1~ ≠ 0
+
+Hipótese 2:
+
+H~0~: C~2~ = 0
+
+H~1~: C~2~ ≠ 0
+
+Hipótese 3:
+
+H~0~: C~3~ = 0
+
+H~1~: C~3~ > 0
+
+```{r, include=FALSE}
+bes <- readxl::read_excel("data/besouro.xlsx") %>%
+  mutate(cor = factor(cor))
+aov_bes <- lm(numero~cor, data=bes) #lm ou glm
+anova(aov_bes)
+```
+
+
+```{r}
+#Contrastes
+K.bes <- rbind("C1"=c(  0, +1, -1, 0),
+            
+               "C2"=c( -1,  0,  0, +1),
+           
+               "C3"=c( +1, -1, -1, +1))
+
+#verificar se contrastes são ortogonais (soma=0)
+sum(K.bes[1,]*K.bes[2,])
+sum(K.bes[1,]*K.bes[3,])
+sum(K.bes[2,]*K.bes[3,])
+
+
+library(multcomp)
+ctr_besouro <- glht(aov_bes, linfct=mcp(cor=K.bes))
+summary(ctr_besouro)
+
+## Intervalo de confiança
+ctr_besouro %>% confint()
+
+```
+
+Estamos 95% confiantes de que o número médio de besouros atraídos pelas cores Verde e Amarelo é superior ao número de besouros atraídos pelas cores Branco e Azul.
+
+* Há grande evidência que o contraste C3 é maior que zero.
+
+Os outros contrastes mostram que:
+
+* Azul e Branco não diferem entre si
+* Verde e Amarelo diferem entre si
+
+::: 
 
