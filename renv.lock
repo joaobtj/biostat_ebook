@@ -33,6 +33,14 @@
         "promises"
       ]
     },
+    "Deriv": {
+      "Package": "Deriv",
+      "Version": "4.1.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "bc727aba82bcda74db0bbe188ec6757c",
+      "Requirements": []
+    },
     "MASS": {
       "Package": "MASS",
       "Version": "7.3-56",
@@ -94,6 +102,17 @@
       "Requirements": [
         "Matrix",
         "Rcpp"
+      ]
+    },
+    "ScottKnott": {
+      "Package": "ScottKnott",
+      "Version": "1.3-0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "c4b346b5dda4934f67372475a39b6d4c",
+      "Requirements": [
+        "doBy",
+        "xtable"
       ]
     },
     "SparseM": {
@@ -460,6 +479,25 @@
       "Repository": "CRAN",
       "Hash": "cf6b206a045a684728c3267ef7596190",
       "Requirements": []
+    },
+    "doBy": {
+      "Package": "doBy",
+      "Version": "4.6.13",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "820905eb22a71b5d3e1caecae471e90b",
+      "Requirements": [
+        "Deriv",
+        "MASS",
+        "Matrix",
+        "broom",
+        "dplyr",
+        "ggplot2",
+        "magrittr",
+        "microbenchmark",
+        "pbkrtest",
+        "tibble"
+      ]
     },
     "dplyr": {
       "Package": "dplyr",
@@ -971,6 +1009,14 @@
         "Matrix",
         "nlme"
       ]
+    },
+    "microbenchmark": {
+      "Package": "microbenchmark",
+      "Version": "1.4.9",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "7001412b0204877d34dd8f46b04fde62",
+      "Requirements": []
     },
     "mime": {
       "Package": "mime",

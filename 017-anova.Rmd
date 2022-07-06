@@ -467,7 +467,27 @@ Podemos concluir que as flores da variedade *H. bihai* tem maior comprimento que
 
 :::
 
+### Teste de Scott Knott
 
+É um teste de agrupamento que evita a ambiguidade causada em algumas situações pelo teste de Tukey, principalmente nos estudos com uma grande quantidade de tratamentos.
+
+Utiliza-se o pacote `ScottKnott`^[Mais em https://lec.pro.br//software/pac-r/scottknott] para a realização do teste.
+
+:::{.example #k name="Teste de Scott Knott"}
+
+Exemplo de utilização do teste de Scott Knott no exemplo das flores de *Heliconia* 
+.
+
+```{r}
+sk_bflor <- ScottKnott::SK(aov_bflor) 
+sk_bflor$out
+```
+
+
+
+
+
+:::
 
 ### Contrastes ortogonais
 
