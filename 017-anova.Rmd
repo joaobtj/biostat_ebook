@@ -1,10 +1,15 @@
+
 ```{r, include=FALSE}
 library(multcomp)
 library(emmeans)
 ```
 
 
-# Análise de Variância
+
+
+
+# Análise de Variância {#anova}
+
 
 Os procedimentos t de duas amostras comparam as médias de duas populações ou as respostas médias a dois tratamentos em um experimento.
 
@@ -26,7 +31,9 @@ Considere a população com 150 árvores pertencente a um reflorestamento de Mog
 Suponha que retiremos 5 amostras aleatórias desta população com 8 indivíduos em cada amostra.
 
 ```{r, include=FALSE}
+
 dap <- readr::read_csv("https://biostat.tolentino.pro.br/data/dap.csv")
+
 library(dplyr)
 
 set.seed("21102015")
@@ -41,6 +48,7 @@ dap5_wide <- dap$dap %>%
     am4 = V4,
     am5 = V5
   )
+
 ```
 
 ```{r, echo=FALSE}
@@ -49,10 +57,12 @@ gt::gt(dap5_wide)
 
 
 ```{r, include=FALSE}
+
 dap5 <- dap5_wide %>%
   tidyr::pivot_longer(cols = 1:5, names_to = "amostra", values_to = "dap")
 
 readr::write_csv(dap5, "data/dap5.csv")
+
 ```
 
 
@@ -63,13 +73,16 @@ Uma Análise de Variância pode ser executada com as funções `lm` e `anova`, c
 
 ```{r}
 
+
 aov_dap5 <- lm(dap ~ amostra, data = dap5)
+
 anova(aov_dap5)
 ```
 
 
 ```{r include=FALSE}
 pvalor <- anova(aov_dap5)$`Pr(>F)`[1]
+
 ```
 
 Queremos testar a hipótese nula de que não há diferenças entre os diâmetros médios das cinco populações de onde as amostras foram retiradas:
@@ -89,6 +102,7 @@ Vamos supor que a amostra 1 tenha um efeito aditivo de +5 unidades no DAP. A amo
 
 efeito <- c(5, -5, 3, 2, 0)
 dap5p_wide <- dap5_wide + rep(efeito, e = 8)
+
 ```
 
 
@@ -103,6 +117,7 @@ dap5p <- dap5p_wide %>%
   tidyr::pivot_longer(cols = 1:5, names_to = "amostra", values_to = "dap")
 
 readr::write_csv(dap5p, "data/dap5p.csv")
+
 ```
 
 
@@ -137,6 +152,7 @@ O arquivo [bflor.xlsx](data/bflor.xlsx) fornece as medidas de comprimentos (em m
 1. *Heliconia caribaea* vermelha
 1. *Heliconia caribaea* amarela
 
+
 Em particular, os comprimentos médios de suas flores são diferentes?
 
 As três variedades têm distribuições com comprimentos diferentes?
@@ -169,14 +185,15 @@ bflor %>%
 
 
 boxplot(comprimento ~ especie, data = bflor)
+
 ```
 
 Efetuamos a Análise de Variância propriamente dita:
 
 ```{r}
 aov_bflor <- lm(comprimento ~ especie, data = bflor)
-
 anova(aov_bflor)
+
 ```
 **CONCLUSÃO**: Há forte evidência de que as três variedades de flores não tenham, todas, o mesmo comprimento médio.
 
@@ -216,40 +233,29 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 
 ```{r}
 ## curtose
-aov_bflor %>%
-  residuals() %>%
-  moments::kurtosis()
+
+aov_bflor %>% residuals() %>% moments::kurtosis()
 
 ## assimetria
-aov_bflor %>%
-  residuals() %>%
-  moments::skewness()
+aov_bflor %>% residuals() %>% moments::skewness()
 
 ## Teste de Shapiro-Wilk
-aov_bflor %>%
-  residuals() %>%
-  shapiro.test()
+aov_bflor %>% residuals() %>% shapiro.test()
 
 
 ## Gráfico dos quantis normais
-aov_bflor %>%
-  residuals() %>%
-  qqnorm()
-aov_bflor %>%
-  residuals() %>%
-  qqline()
+aov_bflor %>% residuals() %>% qqnorm()
+aov_bflor %>% residuals() %>% qqline()
 
 
 ## Histograma
-aov_bflor %>%
-  residuals() %>%
-  hist()
+aov_bflor %>% residuals() %>% hist()
 
 
 ## Ramo e folhas
-aov_bflor %>%
-  residuals() %>%
-  stem()
+aov_bflor %>% residuals() %>% stem()
+
+
 ```
 
 .
@@ -267,22 +273,21 @@ Pela análise do conjunto dos resultados acima, não há evidência de desvio se
 
 
 ## razão maior/menor desvio-padrão
-bflor %>%
-  group_by(especie) %>%
-  summarise(desvpad = sd(comprimento)) %>%
-  mutate(razao = max(desvpad) / desvpad)
+
+bflor %>% group_by(especie) %>% summarise(desvpad=sd(comprimento)) %>%
+mutate(razao=max(desvpad)/desvpad)
 
 ## boxplot condicional dos resíduos
-boxplot(residuals(aov_bflor) ~ especie, data = bflor)
+boxplot(residuals(aov_bflor)~especie, data = bflor)
 
 ## resíduos vs ajustados
-plot(aov_bflor, 1)
+plot(aov_bflor,1)
 
 ## teste de Bartlett
-bartlett.test(residuals(aov_bflor) ~ especie, data = bflor)
+bartlett.test(residuals(aov_bflor)~especie, data=bflor)
 
 ## teste de Levene
-car::leveneTest(residuals(aov_bflor) ~ especie, data = bflor)
+car::leveneTest(residuals(aov_bflor)~especie, data=bflor)
 ```
 
 Pela análise do conjunto dos resultados acima, não há evidência de não homogeneidade das variâncias.
@@ -611,3 +616,4 @@ Os outros contrastes mostram que:
 * Verde e Amarelo diferem entre si
 
 ::: 
+
