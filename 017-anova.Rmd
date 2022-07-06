@@ -18,7 +18,7 @@ Naturalmente, os estudos nem sempre comparam apenas dois grupos. Precisamos de u
 
 ## Comparação de várias médias
 
-Os métodos estatísticos para se lidar com comparações múltiplas geralmente apresentam dois passos:
+Os métodos estatísticos para lidar com comparações múltiplas geralmente apresentam dois passos:
 
 1.Um teste geral para verificarmos se há boa evidência de quaisquer diferenças entre os parâmetros que desejamos comparar.
 
@@ -380,6 +380,11 @@ dn_remedio$emmeans %>%
              align = "center") %>%
   cols_align(columns = g,
              align = "left") %>%
+  cols_width(
+    remedio~px(200),
+    emmean~px(150),
+    g~px(15)
+    )%>%
   tab_footnote(
     footnote = "Médias seguidas por * diferem do tratamento placebo pelo teste de Dunnett (p<0,05).",
   ) %>%
@@ -457,6 +462,11 @@ tk_especie$emmeans %>%
              align = "center") %>%
   cols_align(columns = g,
              align = "left") %>%
+  cols_width(
+    especie~px(200),
+    emmean~px(150),
+    g~px(15)
+    )%>%
   tab_footnote(
     footnote = "Médias seguidas por letras iguais não diferem entre si pelo teste de Tukey (p<0,05).",
   ) %>%
