@@ -15,7 +15,7 @@ Naturalmente, os estudos nem sempre comparam apenas dois grupos. Precisamos de u
 
 ## Comparação de várias médias
 
-Os métodos estatísticos para se lidar com comparações múltiplas geralmente apresentam dois passos:
+Os métodos estatísticos para lidar com comparações múltiplas geralmente apresentam dois passos:
 
 1.Um teste geral para verificarmos se há boa evidência de quaisquer diferenças entre os parâmetros que desejamos comparar.
 
@@ -1803,7 +1803,12 @@ dn_remedio$emmeans %>% plot()
   vertical-align: -0.05em;
 }
 </style>
-<table class="gt_table">
+<table class="gt_table" style="table-layout: fixed;; width: 0px">
+  <colgroup>
+    <col style="width:200px;"/>
+    <col style="width:150px;"/>
+    <col style="width:15px;"/>
+  </colgroup>
   <thead class="gt_header">
     <tr>
       <th colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Tabela X. Tempo de cicatrização médio (dias) para uma profunda ferida cirúrgica tratada com remédios homeopáticos.</th>
@@ -2346,7 +2351,12 @@ A Tabela abaixo mostra um exemplo de como os resultados do teste podem ser apres
   vertical-align: -0.05em;
 }
 </style>
-<table class="gt_table">
+<table class="gt_table" style="table-layout: fixed;; width: 0px">
+  <colgroup>
+    <col style="width:200px;"/>
+    <col style="width:150px;"/>
+    <col style="width:15px;"/>
+  </colgroup>
   <thead class="gt_header">
     <tr>
       <th colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Tabela X. Comprimento médio (mm) de flores de três espécies do gênero <em>Heliconia</em>.</th>
