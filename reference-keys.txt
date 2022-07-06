@@ -90,6 +90,7 @@ exm:press2
 exm:press3
 exm:dunnett
 exm:tukey
+exm:k
 exm:contort
 procurando-e-pedindo-ajuda-para-o-r
 as-funções-help-e
@@ -178,6 +179,7 @@ condições-para-a-anova
 testes-de-acompanhamento
 teste-de-dunnett
 teste-de-tukey
+teste-de-scott-knott
 contrastes-ortogonais
 conjunto-de-dados-do-r
 gapminder
