@@ -92,6 +92,9 @@ exm:dunnett
 exm:tukey
 exm:k
 exm:contort
+exm:anova2a
+exm:anova2b
+exm:anova2c
 procurando-e-pedindo-ajuda-para-o-r
 as-funções-help-e
 stack-overflow

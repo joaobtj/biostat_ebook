@@ -1354,8 +1354,10 @@ Após efetuada a Análise de Variância e verificados os pressupostos^[Análise 
 
 
 ```r
-dn_remedio <- emmeans::emmeans(aov_hom, ~remedio, contr="dunnett", 
-                                ref=which(names(table(hom$remedio))=="Placebo"))
+dn_remedio <- emmeans::emmeans(aov_hom, ~remedio,
+  contr = "dunnett",
+  ref = which(names(table(hom$remedio)) == "Placebo")
+)
 
 
 ## contrastes
@@ -2409,7 +2411,7 @@ Exemplo de utilização do teste de Scott Knott no exemplo das flores de *Helico
 
 
 ```r
-sk_bflor <- ScottKnott::SK(aov_bflor) 
+sk_bflor <- ScottKnott::SK(aov_bflor)
 sk_bflor$out
 ```
 
@@ -2426,8 +2428,6 @@ sk_bflor$out
 ## $Replicates
 ## [1] 16 23 15
 ```
-
-
 
 
 
@@ -2519,23 +2519,15 @@ H~1~: C~3~ > 0
 
 
 ```r
-#Contrastes
-K.bes <- rbind("C1"=c(  0, +1, -1, 0),
-            
-               "C2"=c( -1,  0,  0, +1),
-           
-               "C3"=c( +1, -1, -1, +1))
+# Contrastes
+K.bes <- rbind(
+  "C1" = c(0, +1, -1, 0),
+  "C2" = c(-1, 0, 0, +1),
+  "C3" = c(+1, -1, -1, +1)
+)
 
-#verificar se contrastes são ortogonais (soma=0)
-sum(K.bes[1,]*K.bes[2,])
-```
-
-```
-## [1] 0
-```
-
-```r
-sum(K.bes[1,]*K.bes[3,])
+# verificar se contrastes são ortogonais (soma=0)
+sum(K.bes[1, ] * K.bes[2, ])
 ```
 
 ```
@@ -2543,7 +2535,15 @@ sum(K.bes[1,]*K.bes[3,])
 ```
 
 ```r
-sum(K.bes[2,]*K.bes[3,])
+sum(K.bes[1, ] * K.bes[3, ])
+```
+
+```
+## [1] 0
+```
+
+```r
+sum(K.bes[2, ] * K.bes[3, ])
 ```
 
 ```
@@ -2552,7 +2552,7 @@ sum(K.bes[2,]*K.bes[3,])
 
 ```r
 library(multcomp)
-ctr_besouro <- glht(aov_bes, linfct=mcp(cor=K.bes))
+ctr_besouro <- glht(aov_bes, linfct = mcp(cor = K.bes))
 summary(ctr_besouro)
 ```
 
@@ -2611,6 +2611,3 @@ Os outros contrastes mostram que:
 
 ::: 
 
-
-
-## Análise de Variância para 2 fatores
