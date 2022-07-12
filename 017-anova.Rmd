@@ -327,7 +327,7 @@ Há evidência significante de que o tempo de cicatrização dependa do tratamen
 ```{r, include=FALSE}
 hom <- readxl::read_excel("data/homeopatia.xlsx") %>%
   mutate(remedio = factor(remedio))
-aov_hom <- lm(tempo~remedio, data=hom) #lm ou glm
+aov_hom <- lm(tempo ~ remedio, data = hom) # lm ou glm
 anova(aov_hom)
 ```
 
@@ -336,8 +336,10 @@ Após efetuada a Análise de Variância e verificados os pressupostos^[Análise 
 ```{r}
 
 
-dn_remedio <- emmeans::emmeans(aov_hom, ~remedio, contr="dunnett", 
-                                ref=which(names(table(hom$remedio))=="Placebo"))
+dn_remedio <- emmeans::emmeans(aov_hom, ~remedio,
+  contr = "dunnett",
+  ref = which(names(table(hom$remedio)) == "Placebo")
+)
 
 
 ## contrastes
@@ -356,30 +358,34 @@ dn_remedio$emmeans %>% plot()
 library(gt)
 dn_remedio$emmeans %>%
   as.data.frame() %>%
-  select(remedio, emmean)  %>%
-
-  bind_cols(g=c("*","*","*","*","")) %>%
+  select(remedio, emmean) %>%
+  bind_cols(g = c("*", "*", "*", "*", "")) %>%
   gt() %>%
   fmt_number(
     columns = emmean,
     decimals = 2
-  )  %>%
+  ) %>%
   cols_label(
     remedio = "Remédio",
     emmean = "Tempo de Cicatrização (dias)",
-    g=""
+    g = ""
   ) %>%
-  cols_align(columns = remedio,
-             align = "left") %>%
-  cols_align(columns = emmean,
-             align = "center") %>%
-  cols_align(columns = g,
-             align = "left") %>%
+  cols_align(
+    columns = remedio,
+    align = "left"
+  ) %>%
+  cols_align(
+    columns = emmean,
+    align = "center"
+  ) %>%
+  cols_align(
+    columns = g,
+    align = "left"
+  ) %>%
   tab_footnote(
     footnote = "Médias seguidas por * diferem do tratamento placebo pelo teste de Dunnett (p<0,05).",
   ) %>%
-  tab_header(title = md("Tabela X. Tempo de cicatrização médio (dias) para uma profunda ferida cirúrgica tratada com remédios homeopáticos."),)
-
+  tab_header(title = md("Tabela X. Tempo de cicatrização médio (dias) para uma profunda ferida cirúrgica tratada com remédios homeopáticos."), )
 ```
 
 Pelo teste de Dunnett, verifica-se que todos os remédios homeopáticos levaram a um tempo de cicatrização menor do que o tratamento placebo.
@@ -446,18 +452,24 @@ tk_especie$emmeans %>%
     emmean = "Comprimento (mm)",
     g = ""
   ) %>%
-  cols_align(columns = especie,
-             align = "left") %>%
-  cols_align(columns = emmean,
-             align = "center") %>%
-  cols_align(columns = g,
-             align = "left") %>%
+  cols_align(
+    columns = especie,
+    align = "left"
+  ) %>%
+  cols_align(
+    columns = emmean,
+    align = "center"
+  ) %>%
+  cols_align(
+    columns = g,
+    align = "left"
+  ) %>%
   tab_footnote(
     footnote = "Médias seguidas por letras iguais não diferem entre si pelo teste de Tukey (p<0,05).",
   ) %>%
   tab_header(
     title = md("Tabela X. Comprimento médio (mm) de flores de três espécies do gênero *Heliconia*.")
-    )
+  )
 ```
 
 
@@ -479,7 +491,7 @@ Exemplo de utilização do teste de Scott Knott no exemplo das flores de *Helico
 .
 
 ```{r}
-sk_bflor <- ScottKnott::SK(aov_bflor) 
+sk_bflor <- ScottKnott::SK(aov_bflor)
 sk_bflor$out
 ```
 
@@ -573,32 +585,31 @@ H~1~: C~3~ > 0
 ```{r, include=FALSE}
 bes <- readxl::read_excel("data/besouro.xlsx") %>%
   mutate(cor = factor(cor))
-aov_bes <- lm(numero~cor, data=bes) #lm ou glm
+aov_bes <- lm(numero ~ cor, data = bes) # lm ou glm
 anova(aov_bes)
 ```
 
 
 ```{r}
-#Contrastes
-K.bes <- rbind("C1"=c(  0, +1, -1, 0),
-            
-               "C2"=c( -1,  0,  0, +1),
-           
-               "C3"=c( +1, -1, -1, +1))
+# Contrastes
+K.bes <- rbind(
+  "C1" = c(0, +1, -1, 0),
+  "C2" = c(-1, 0, 0, +1),
+  "C3" = c(+1, -1, -1, +1)
+)
 
-#verificar se contrastes são ortogonais (soma=0)
-sum(K.bes[1,]*K.bes[2,])
-sum(K.bes[1,]*K.bes[3,])
-sum(K.bes[2,]*K.bes[3,])
+# verificar se contrastes são ortogonais (soma=0)
+sum(K.bes[1, ] * K.bes[2, ])
+sum(K.bes[1, ] * K.bes[3, ])
+sum(K.bes[2, ] * K.bes[3, ])
 
 
 library(multcomp)
-ctr_besouro <- glht(aov_bes, linfct=mcp(cor=K.bes))
+ctr_besouro <- glht(aov_bes, linfct = mcp(cor = K.bes))
 summary(ctr_besouro)
 
 ## Intervalo de confiança
 ctr_besouro %>% confint()
-
 ```
 
 Estamos 95% confiantes de que o número médio de besouros atraídos pelas cores Verde e Amarelo é superior ao número de besouros atraídos pelas cores Branco e Azul.
@@ -615,3 +626,397 @@ Os outros contrastes mostram que:
 
 
 ## Análise de Variância para 2 fatores
+
+Também conhecida como *2-way Anova*, é utilizada quando um estudo ou experimento é desenhado para responder a mais questões que uma Anova para 1 fator é capaz de responder.
+
+É muito comum comparar tratamentos que são combinações de dois fatores independentes.
+
+A inferência para uma Anova de dois fatores é feita da seguinte forma:
+
+1. Faça gráficos das médias dos grupos
+* Procure por interação
+* Procure por efeitos principais
+2. Faça o teste F para três questões:
+* Há interação?
+* Há efeito principal para o primeiro fator?
+* Há efeito principal para o segundo fator?
+
+A seguir veremos três exemplos que ilustram várias situações da Anova de 2 fatores.
+
+:::{.example #anova2a name="Análise de Variância para dois fatores - interação não significativa"}
+
+
+A reprodução tem um custo fisiológico alto. Uma dieta rica em proteínas pode aumentar a capacidade reprodutiva de moscas das frutas.
+
+Um experimento avaliou a porcentagem de gordura corporal em 40 fêmeas de mosca das frutas alimentadas com 4 dietas enriquecidas com proteínas (ou não) nas doses de 0, 1, 3 e 7 g.
+
+O experimento usou moscas selvagens e mutantes com ciclo reprodutivo mais longo.
+
+A resposta foi a porcentagem de gordura corporal após duas semanas da dieta, contidas no arquivo [mosca.xlsx](data/mosca.xlsx).
+
+São três grupos de hipóteses a serem testadas:
+
+* H~0~: não há interação entre os genótipos e quantidade de proteína na porcentagem de gordura corporal de moscas.  
+* H~1~: há interação entre os genótipos e quantidade de proteína na porcentagem de gordura corporal de moscas. 
+
+* H~0~: a quantidade de proteína não influencia na porcentagem de gordura corporal de moscas.  
+* H~1~:a quantidade de proteína influencia na porcentagem de gordura corporal de moscas.  
+
+* H~0~: o genótipo não influencia na porcentagem de gordura corporal de moscas.  
+* H~1~: o genótipo influencia na porcentagem de gordura corporal de moscas.  
+
+
+Análise exploratória: 
+
+```{r}
+mosca <- readxl::read_excel("data/mosca.xlsx") %>%
+  mutate(
+    genotipo = factor(genotipo),
+    proteina = factor(proteina)
+  )
+
+
+mosca %>%
+  group_by(genotipo, proteina) %>%
+  summarise(
+    n = n(),
+    media = mean(gordura),
+    desvpad = sd(gordura),
+    var = var(gordura)
+  )
+
+## Boxplot - Efeito principal fator A
+boxplot(gordura ~ genotipo, data = mosca)
+
+## Boxplot - Efeito principal fator B
+boxplot(gordura ~ proteina, data = mosca)
+
+## Boxplot - Interação
+boxplot(gordura ~ genotipo * proteina, data = mosca)
+
+
+## Gráfico da interação
+with(mosca, interaction.plot(genotipo, proteina, gordura))
+with(mosca, interaction.plot(proteina, genotipo, gordura))
+```
+
+Efetuamos a Análise de Variância para os efeitos principais e para a interação:
+
+```{r}
+aov_mosca <- lm(gordura ~ genotipo * proteina, data = mosca)
+
+anova(aov_mosca)
+```
+
+A interação (p-valor=0,395) e o efeito principal para genótipo (p-valor=0,86) são pequenos (não significativos). O efeito principal para proteína (p-valor < 0,001) é grande (significativo).
+
+Verificação do presuposto da Normalidade.
+
+```{r}
+
+## curtose
+aov_mosca %>%
+  residuals() %>%
+  moments::kurtosis()
+
+## assimetria
+aov_mosca %>%
+  residuals() %>%
+  moments::skewness()
+
+## Teste de Shapiro-Wilk
+aov_mosca %>%
+  residuals() %>%
+  shapiro.test()
+
+
+## Gráfico dos quantis normais
+aov_mosca %>%
+  residuals() %>%
+  qqnorm()
+aov_mosca %>%
+  residuals() %>%
+  qqline()
+
+
+## Histograma
+aov_mosca %>%
+  residuals() %>%
+  hist()
+
+
+## Ramo e folhas
+aov_mosca %>%
+  residuals() %>%
+  stem()
+```
+
+Verificação do presuposto da homogeneidade das variâncias
+
+
+```{r}
+
+## razão maior/menor desvio-padrão
+mosca %>%
+  group_by(genotipo, proteina) %>%
+  summarise(desvpad = sd(gordura)) %>%
+  mutate(razao = max(desvpad) / desvpad)
+
+## boxplot condicional dos resíduos
+boxplot(residuals(aov_mosca) ~ genotipo * proteina, data = mosca)
+
+## resíduos vs ajustados
+plot(aov_mosca, 1)
+
+## teste de Bartlett
+bartlett.test(residuals(aov_mosca) ~ paste0(genotipo, proteina), data = mosca)
+
+## teste de Levene
+car::leveneTest(residuals(aov_mosca) ~ paste0(genotipo, proteina), data = mosca)
+```
+
+Pela análise do conjunto dos resultados acima, não há evidência de violação dos pressupostos.
+
+
+Teste de comparação de médias para o efeito principal do fator proteína:
+
+```{r}
+tk_proteina <- emmeans::emmeans(aov_mosca, ~proteina, contr = "tukey")
+
+## contrastes
+tk_proteina$contrasts
+
+## Intervalo de confiança
+tk_proteina$contrasts %>% confint()
+
+## letras (CLD)
+tk_proteina$emmeans %>% multcomp::cld(Letters = letters)
+
+## plot
+tk_proteina$emmeans %>% plot()
+
+```
+
+Teste de comparação de médias para o efeito principal do fator genótipo:
+
+```{r}
+tk_genotipo <- emmeans::emmeans(aov_mosca, ~genotipo, contr = "tukey")
+
+## contrastes
+tk_genotipo$contrasts
+
+## Intervalo de confiança
+tk_genotipo$contrasts %>% confint()
+
+## letras (CLD)
+tk_genotipo$emmeans %>% multcomp::cld(Letters = letters)
+
+## plot
+tk_genotipo$emmeans %>% plot()
+
+```
+
+Conclusão: Maiores quantidade de proteína na dieta levam a menores taxas de gordura corporal. O genótipo da mosca das frutas tem um efeito pequeno na gordura corporal para qualquer quantidade de proteína.
+
+
+:::
+
+O próximo exemplo ilustra uma situação em que a interação é significativa, mas os efeitos principais são grandes e mais importantes.
+
+
+
+:::{.example #anova2b name="Análise de Variância para dois fatores - interação significativa mas com efeitos principais grandes e mais importantes"}
+
+Fungos micorrízicos estão presentes nas raízes de muitas plantas. Eles tem uma relação simbiótica com a planta.
+
+Um experimento comparou o efeito da adição de nitrogênio em dois genótipos de tomate, um selvagem suscetível a micorrizas e um mutante não suscetível.
+
+O nitrogênio foi adicionado nas doses de 0, 28 e 10 kg/ha.
+
+Seis plantas foram aleatoriamente designadas a cada grupo.
+
+A variável resposta é a porcentagem de fósforo nas plantas depois de 19 semanas [(tomate.xlsx)](data/tomate.xlsx).
+
+São três grupos de hipóteses a serem testadas:
+
+* H~0~ : não há interação entre os genótipos e doses de nitrogênio na porcentagem de fósforo em plantas de tomate.
+* H~1~: há interação entre os genótipos e doses de nitrogênio na porcentagem de fósforo em plantas de tomate.
+
+* H~0~: o genótipo não influencia na porcentagem de fósforo em plantas de tomate.
+* H~1~: o genótipo influencia na porcentagem de fósforo em plantas de tomate.
+
+* H~0~: as doses de nitrogênio não influenciam na porcentagem de fósforo em plantas de tomate.
+* H~1~: as doses de nitrogênio influenciam na porcentagem de fósforo em plantas de tomate.
+
+Análise exploratória: 
+
+```{r}
+tomate <- readxl::read_excel("data/tomate.xlsx") %>%
+  mutate(
+    genotipo = factor(genotipo),
+    nitrogenio = factor(nitrogenio)
+  )
+
+
+tomate %>%
+  group_by(genotipo, nitrogenio) %>%
+  summarise(
+    n = n(),
+    media = mean(fosforo),
+    desvpad = sd(fosforo),
+    var = var(fosforo)
+  )
+
+## Boxplot - Efeito principal fator A
+boxplot(fosforo ~ genotipo, data = tomate)
+
+## Boxplot - Efeito principal fator B
+boxplot(fosforo ~ nitrogenio, data = tomate)
+
+## Boxplot - Interação
+boxplot(fosforo ~ genotipo * nitrogenio, data = tomate)
+
+
+## Gráfico da interação
+with(tomate, interaction.plot(genotipo, nitrogenio, fosforo))
+with(tomate, interaction.plot(nitrogenio, genotipo, fosforo))
+```
+
+Efetuamos a Análise de Variância para os efeitos principais e para a interação:
+
+```{r}
+aov_tomate <- lm(fosforo ~ genotipo * nitrogenio, data = tomate)
+
+anova(aov_tomate)
+```
+
+A interação é significativa (p-valor = 0,0077), mas ela é pequena comparada com os efeitos principais.
+
+O efeito principal para genótipos (p-valor < 0,001) nos mostra que tomates selvagens com micorrizas tem maiores níveis de fósforo para todas as doses de nitrogênio, devido ao benefício da simbiose.
+
+O efeito principal para nitrogênio (p-valor < 0,001) mostra que os níveis de fósforo diminuem com o aumento da dose de nitrogênio.
+
+Verificação dos presupostos da Normalidade e Homogeneidade das Variâncias (análise não mostrada): não há evidência de violação dos pressupostos.
+
+
+
+Teste de comparação de médias para o efeito principal do fator nitrogênio:
+
+```{r}
+tk_nitrogenio <- emmeans::emmeans(aov_tomate, ~nitrogenio, contr = "tukey")
+
+## contrastes
+tk_nitrogenio$contrasts
+
+## Intervalo de confiança
+tk_nitrogenio$contrasts %>% confint()
+
+## letras (CLD)
+tk_nitrogenio$emmeans %>% multcomp::cld(Letters = letters)
+
+## plot
+tk_nitrogenio$emmeans %>% plot()
+
+```
+
+Teste de comparação de médias para o efeito principal do fator genótipo:
+
+```{r}
+tk_genotipo <- emmeans::emmeans(aov_tomate, ~genotipo, contr = "tukey")
+
+## contrastes
+tk_genotipo$contrasts
+
+## Intervalo de confiança
+tk_genotipo$contrasts %>% confint()
+
+## letras (CLD)
+tk_genotipo$emmeans %>% multcomp::cld(Letters = letters)
+
+## plot
+tk_genotipo$emmeans %>% plot()
+
+```
+
+Conclusão:
+
+Tomates selvagens com micorrizas tem níveis maiores de fósforo que mutantes sem micorrizas.
+
+O nitrogênio reduz o nível de fosforo nas plantas.
+
+A redução é maior nas plantas selvagens, mas esta interação não é muito grande em termos práticos.
+
+::: 
+
+
+Por último, temos um exemplo em que há uma forte interação que faz os efeitos principais sem sentido. Uma Anova de dois fatores com um efeito de interação forte é frequentemente mais difícil de interpretar.
+
+
+
+:::{.example #anova2c name="Análise de Variância para dois fatores - interação significativa"}
+
+Milho com maior conteúdo de aminoácidos pode ser vantajoso na alimentação animal. Nove tratamentos foram arranjados em um fatorial 3x3:
+
+* Milho normal e duas variedades alteradas: opaque-2 e floury-2
+* Doses de proteína na dieta: 20, 16 e 12%
+
+As dietas milho+proteína foram usadas na alimentação de 90 pintinhos machos de 1 dia. A variável resposta é o peso (em gramas) após 21 dias [milho.xlsx](data/milho.xlsx).
+
+Qual combinação de milho e proteína leva ao maior aumento de peso?
+
+
+Há três grupos de hipóteses serem testadas:
+
+* H~0~ : não há interação entre as variedade de milho e a quantidade de proteína.
+* H~1~: há interação entre as variedade de milho e a quantidade de proteína.
+
+* H~0~: a quantidade de proteína não influencia no peso dos pintinhos.
+* H~1~: a quantidade de proteína influencia no peso dos pintinhos.
+
+* H~0~: a variedade de milho não influencia no peso dos pintinhos.
+* H~1~: a variedade de milho influencia no peso dos pintinhos.
+
+
+Análise exploratória: 
+
+```{r}
+milho <- readxl::read_excel("data/milho.xlsx") %>%
+  mutate(
+    variedade = factor(variedade),
+    proteina = factor(proteina)
+  )
+
+
+milho %>%
+  group_by(variedade, proteina) %>%
+  summarise(
+    n = n(),
+    media = mean(peso),
+    desvpad = sd(peso),
+    var = var(peso)
+  )
+
+## Boxplot - Efeito principal fator A
+boxplot(peso ~ variedade, data = milho)
+
+## Boxplot - Efeito principal fator B
+boxplot(peso ~ proteina, data = milho)
+
+## Boxplot - Interação
+boxplot(peso ~ variedade * proteina, data = milho)
+
+
+## Gráfico da interação
+with(milho, interaction.plot(variedade, proteina, peso))
+with(milho, interaction.plot(proteina, variedade, peso))
+```
+
+Efetuamos a Análise de Variância para os efeitos principais e para a interação:
+
+```{r}
+aov_milho <- lm(peso ~ variedade * proteina, data = milho)
+anova(aov_milho)
+```
+
+
+:::
