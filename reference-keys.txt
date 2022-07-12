@@ -181,6 +181,7 @@ teste-de-dunnett
 teste-de-tukey
 teste-de-scott-knott
 contrastes-ortogonais
+análise-de-variância-para-2-fatores
 conjunto-de-dados-do-r
 gapminder
 mpg

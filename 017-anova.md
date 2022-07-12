@@ -2610,3 +2610,7 @@ Os outros contrastes mostram que:
 * Verde e Amarelo diferem entre si
 
 ::: 
+
+
+
+## Análise de Variância para 2 fatores
