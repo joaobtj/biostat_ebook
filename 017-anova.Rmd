@@ -1,10 +1,15 @@
+
 ```{r, include=FALSE}
 library(multcomp)
 library(emmeans)
 ```
 
 
-# Análise de Variância
+
+
+
+# Análise de Variância {#anova}
+
 
 Os procedimentos t de duas amostras comparam as médias de duas populações ou as respostas médias a dois tratamentos em um experimento.
 
@@ -13,7 +18,8 @@ Naturalmente, os estudos nem sempre comparam apenas dois grupos. Precisamos de u
 
 ## Comparação de várias médias
 
-Os métodos estatísticos para se lidar com comparações múltiplas geralmente apresentam dois passos:
+
+Os métodos estatísticos para lidar com comparações múltiplas geralmente apresentam dois passos:
 
 1.Um teste geral para verificarmos se há boa evidência de quaisquer diferenças entre os parâmetros que desejamos comparar.
 
@@ -27,6 +33,7 @@ Suponha que retiremos 5 amostras aleatórias desta população com 8 indivíduos
 
 ```{r, include=FALSE}
 dap <- readr::read_csv("https://biostat.tolentino.pro.br/data/dap.csv")
+
 library(dplyr)
 
 set.seed("21102015")
@@ -41,6 +48,7 @@ dap5_wide <- dap$dap %>%
     am4 = V4,
     am5 = V5
   )
+
 ```
 
 ```{r, echo=FALSE}
@@ -49,10 +57,12 @@ gt::gt(dap5_wide)
 
 
 ```{r, include=FALSE}
+
 dap5 <- dap5_wide %>%
   tidyr::pivot_longer(cols = 1:5, names_to = "amostra", values_to = "dap")
 
 readr::write_csv(dap5, "data/dap5.csv")
+
 ```
 
 
@@ -64,12 +74,14 @@ Uma Análise de Variância pode ser executada com as funções `lm` e `anova`, c
 ```{r}
 
 aov_dap5 <- lm(dap ~ amostra, data = dap5)
+
 anova(aov_dap5)
 ```
 
 
 ```{r include=FALSE}
 pvalor <- anova(aov_dap5)$`Pr(>F)`[1]
+
 ```
 
 Queremos testar a hipótese nula de que não há diferenças entre os diâmetros médios das cinco populações de onde as amostras foram retiradas:
@@ -89,6 +101,7 @@ Vamos supor que a amostra 1 tenha um efeito aditivo de +5 unidades no DAP. A amo
 
 efeito <- c(5, -5, 3, 2, 0)
 dap5p_wide <- dap5_wide + rep(efeito, e = 8)
+
 ```
 
 
@@ -103,6 +116,7 @@ dap5p <- dap5p_wide %>%
   tidyr::pivot_longer(cols = 1:5, names_to = "amostra", values_to = "dap")
 
 readr::write_csv(dap5p, "data/dap5p.csv")
+
 ```
 
 
@@ -137,6 +151,7 @@ O arquivo [bflor.xlsx](data/bflor.xlsx) fornece as medidas de comprimentos (em m
 1. *Heliconia caribaea* vermelha
 1. *Heliconia caribaea* amarela
 
+
 Em particular, os comprimentos médios de suas flores são diferentes?
 
 As três variedades têm distribuições com comprimentos diferentes?
@@ -169,14 +184,15 @@ bflor %>%
 
 
 boxplot(comprimento ~ especie, data = bflor)
+
 ```
 
 Efetuamos a Análise de Variância propriamente dita:
 
 ```{r}
 aov_bflor <- lm(comprimento ~ especie, data = bflor)
-
 anova(aov_bflor)
+
 ```
 **CONCLUSÃO**: Há forte evidência de que as três variedades de flores não tenham, todas, o mesmo comprimento médio.
 
@@ -216,40 +232,27 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 
 ```{r}
 ## curtose
-aov_bflor %>%
-  residuals() %>%
-  moments::kurtosis()
+aov_bflor %>% residuals() %>% moments::kurtosis()
 
 ## assimetria
-aov_bflor %>%
-  residuals() %>%
-  moments::skewness()
+aov_bflor %>% residuals() %>% moments::skewness()
 
 ## Teste de Shapiro-Wilk
-aov_bflor %>%
-  residuals() %>%
-  shapiro.test()
+aov_bflor %>% residuals() %>% shapiro.test()
 
 
 ## Gráfico dos quantis normais
-aov_bflor %>%
-  residuals() %>%
-  qqnorm()
-aov_bflor %>%
-  residuals() %>%
-  qqline()
+aov_bflor %>% residuals() %>% qqnorm()
+aov_bflor %>% residuals() %>% qqline()
 
 
 ## Histograma
-aov_bflor %>%
-  residuals() %>%
-  hist()
+aov_bflor %>% residuals() %>% hist()
 
 
 ## Ramo e folhas
-aov_bflor %>%
-  residuals() %>%
-  stem()
+aov_bflor %>% residuals() %>% stem()
+
 ```
 
 .
@@ -267,22 +270,20 @@ Pela análise do conjunto dos resultados acima, não há evidência de desvio se
 
 
 ## razão maior/menor desvio-padrão
-bflor %>%
-  group_by(especie) %>%
-  summarise(desvpad = sd(comprimento)) %>%
-  mutate(razao = max(desvpad) / desvpad)
+bflor %>% group_by(especie) %>% summarise(desvpad=sd(comprimento)) %>%
+mutate(razao=max(desvpad)/desvpad)
 
 ## boxplot condicional dos resíduos
-boxplot(residuals(aov_bflor) ~ especie, data = bflor)
+boxplot(residuals(aov_bflor)~especie, data = bflor)
 
 ## resíduos vs ajustados
-plot(aov_bflor, 1)
+plot(aov_bflor,1)
 
 ## teste de Bartlett
-bartlett.test(residuals(aov_bflor) ~ especie, data = bflor)
+bartlett.test(residuals(aov_bflor)~especie, data=bflor)
 
 ## teste de Levene
-car::leveneTest(residuals(aov_bflor) ~ especie, data = bflor)
+car::leveneTest(residuals(aov_bflor)~especie, data=bflor)
 ```
 
 Pela análise do conjunto dos resultados acima, não há evidência de não homogeneidade das variâncias.
@@ -328,6 +329,7 @@ Há evidência significante de que o tempo de cicatrização dependa do tratamen
 hom <- readxl::read_excel("data/homeopatia.xlsx") %>%
   mutate(remedio = factor(remedio))
 aov_hom <- lm(tempo ~ remedio, data = hom) # lm ou glm
+
 anova(aov_hom)
 ```
 
@@ -336,10 +338,9 @@ Após efetuada a Análise de Variância e verificados os pressupostos^[Análise 
 ```{r}
 
 
-dn_remedio <- emmeans::emmeans(aov_hom, ~remedio,
-  contr = "dunnett",
-  ref = which(names(table(hom$remedio)) == "Placebo")
-)
+
+dn_remedio <- emmeans::emmeans(aov_hom, ~remedio, contr="dunnett", 
+                                ref=which(names(table(hom$remedio))=="Placebo"))
 
 
 ## contrastes
@@ -358,34 +359,37 @@ dn_remedio$emmeans %>% plot()
 library(gt)
 dn_remedio$emmeans %>%
   as.data.frame() %>%
-  select(remedio, emmean) %>%
-  bind_cols(g = c("*", "*", "*", "*", "")) %>%
+
+  select(remedio, emmean)  %>%
+
+  bind_cols(g=c("*","*","*","*","")) %>%
   gt() %>%
   fmt_number(
     columns = emmean,
     decimals = 2
-  ) %>%
+
+  )  %>%
   cols_label(
     remedio = "Remédio",
     emmean = "Tempo de Cicatrização (dias)",
-    g = ""
+    g=""
   ) %>%
-  cols_align(
-    columns = remedio,
-    align = "left"
-  ) %>%
-  cols_align(
-    columns = emmean,
-    align = "center"
-  ) %>%
-  cols_align(
-    columns = g,
-    align = "left"
-  ) %>%
+  cols_align(columns = remedio,
+             align = "left") %>%
+  cols_align(columns = emmean,
+             align = "center") %>%
+  cols_align(columns = g,
+             align = "left") %>%
+  cols_width(
+    remedio~px(200),
+    emmean~px(150),
+    g~px(15)
+    )%>%
   tab_footnote(
     footnote = "Médias seguidas por * diferem do tratamento placebo pelo teste de Dunnett (p<0,05).",
   ) %>%
-  tab_header(title = md("Tabela X. Tempo de cicatrização médio (dias) para uma profunda ferida cirúrgica tratada com remédios homeopáticos."), )
+  tab_header(title = md("Tabela X. Tempo de cicatrização médio (dias) para uma profunda ferida cirúrgica tratada com remédios homeopáticos."),)
+
 ```
 
 Pelo teste de Dunnett, verifica-se que todos os remédios homeopáticos levaram a um tempo de cicatrização menor do que o tratamento placebo.
@@ -452,24 +456,25 @@ tk_especie$emmeans %>%
     emmean = "Comprimento (mm)",
     g = ""
   ) %>%
-  cols_align(
-    columns = especie,
-    align = "left"
-  ) %>%
-  cols_align(
-    columns = emmean,
-    align = "center"
-  ) %>%
-  cols_align(
-    columns = g,
-    align = "left"
-  ) %>%
+
+  cols_align(columns = especie,
+             align = "left") %>%
+  cols_align(columns = emmean,
+             align = "center") %>%
+  cols_align(columns = g,
+             align = "left") %>%
+  cols_width(
+    especie~px(200),
+    emmean~px(150),
+    g~px(15)
+    )%>%
+
   tab_footnote(
     footnote = "Médias seguidas por letras iguais não diferem entre si pelo teste de Tukey (p<0,05).",
   ) %>%
   tab_header(
     title = md("Tabela X. Comprimento médio (mm) de flores de três espécies do gênero *Heliconia*.")
-  )
+)
 ```
 
 
@@ -491,10 +496,9 @@ Exemplo de utilização do teste de Scott Knott no exemplo das flores de *Helico
 .
 
 ```{r}
-sk_bflor <- ScottKnott::SK(aov_bflor)
+sk_bflor <- ScottKnott::SK(aov_bflor) 
 sk_bflor$out
 ```
-
 
 
 :::
@@ -589,21 +593,22 @@ anova(aov_bes)
 
 
 ```{r}
-# Contrastes
-K.bes <- rbind(
-  "C1" = c(0, +1, -1, 0),
-  "C2" = c(-1, 0, 0, +1),
-  "C3" = c(+1, -1, -1, +1)
-)
 
-# verificar se contrastes são ortogonais (soma=0)
-sum(K.bes[1, ] * K.bes[2, ])
-sum(K.bes[1, ] * K.bes[3, ])
-sum(K.bes[2, ] * K.bes[3, ])
+#Contrastes
+K.bes <- rbind("C1"=c(  0, +1, -1, 0),
+            
+               "C2"=c( -1,  0,  0, +1),
+           
+               "C3"=c( +1, -1, -1, +1))
+
+#verificar se contrastes são ortogonais (soma=0)
+sum(K.bes[1,]*K.bes[2,])
+sum(K.bes[1,]*K.bes[3,])
+sum(K.bes[2,]*K.bes[3,])
 
 
 library(multcomp)
-ctr_besouro <- glht(aov_bes, linfct = mcp(cor = K.bes))
+ctr_besouro <- glht(aov_bes, linfct=mcp(cor=K.bes))
 summary(ctr_besouro)
 
 ## Intervalo de confiança
