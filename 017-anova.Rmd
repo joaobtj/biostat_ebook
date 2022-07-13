@@ -18,6 +18,7 @@ Naturalmente, os estudos nem sempre comparam apenas dois grupos. Precisamos de u
 
 ## Comparação de várias médias
 
+
 Os métodos estatísticos para lidar com comparações múltiplas geralmente apresentam dois passos:
 
 1.Um teste geral para verificarmos se há boa evidência de quaisquer diferenças entre os parâmetros que desejamos comparar.
@@ -31,7 +32,6 @@ Considere a população com 150 árvores pertencente a um reflorestamento de Mog
 Suponha que retiremos 5 amostras aleatórias desta população com 8 indivíduos em cada amostra.
 
 ```{r, include=FALSE}
-
 dap <- readr::read_csv("https://biostat.tolentino.pro.br/data/dap.csv")
 
 library(dplyr)
@@ -72,7 +72,6 @@ Estes dados podem ser encontrados no arquivo [dap5.csv](data/dap5.csv)
 Uma Análise de Variância pode ser executada com as funções `lm` e `anova`, como a seguir:
 
 ```{r}
-
 
 aov_dap5 <- lm(dap ~ amostra, data = dap5)
 
@@ -233,7 +232,6 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 
 ```{r}
 ## curtose
-
 aov_bflor %>% residuals() %>% moments::kurtosis()
 
 ## assimetria
@@ -255,7 +253,6 @@ aov_bflor %>% residuals() %>% hist()
 ## Ramo e folhas
 aov_bflor %>% residuals() %>% stem()
 
-
 ```
 
 .
@@ -273,7 +270,6 @@ Pela análise do conjunto dos resultados acima, não há evidência de desvio se
 
 
 ## razão maior/menor desvio-padrão
-
 bflor %>% group_by(especie) %>% summarise(desvpad=sd(comprimento)) %>%
 mutate(razao=max(desvpad)/desvpad)
 
@@ -332,13 +328,15 @@ Há evidência significante de que o tempo de cicatrização dependa do tratamen
 ```{r, include=FALSE}
 hom <- readxl::read_excel("data/homeopatia.xlsx") %>%
   mutate(remedio = factor(remedio))
-aov_hom <- lm(tempo~remedio, data=hom) #lm ou glm
+aov_hom <- lm(tempo ~ remedio, data = hom) # lm ou glm
+
 anova(aov_hom)
 ```
 
 Após efetuada a Análise de Variância e verificados os pressupostos^[Análise não mostrada aqui.], segue-se com o teste de Dunnett
 
 ```{r}
+
 
 
 dn_remedio <- emmeans::emmeans(aov_hom, ~remedio, contr="dunnett", 
@@ -361,6 +359,7 @@ dn_remedio$emmeans %>% plot()
 library(gt)
 dn_remedio$emmeans %>%
   as.data.frame() %>%
+
   select(remedio, emmean)  %>%
 
   bind_cols(g=c("*","*","*","*","")) %>%
@@ -368,6 +367,7 @@ dn_remedio$emmeans %>%
   fmt_number(
     columns = emmean,
     decimals = 2
+
   )  %>%
   cols_label(
     remedio = "Remédio",
@@ -456,6 +456,7 @@ tk_especie$emmeans %>%
     emmean = "Comprimento (mm)",
     g = ""
   ) %>%
+
   cols_align(columns = especie,
              align = "left") %>%
   cols_align(columns = emmean,
@@ -467,12 +468,13 @@ tk_especie$emmeans %>%
     emmean~px(150),
     g~px(15)
     )%>%
+
   tab_footnote(
     footnote = "Médias seguidas por letras iguais não diferem entre si pelo teste de Tukey (p<0,05).",
   ) %>%
   tab_header(
     title = md("Tabela X. Comprimento médio (mm) de flores de três espécies do gênero *Heliconia*.")
-    )
+)
 ```
 
 
@@ -497,9 +499,6 @@ Exemplo de utilização do teste de Scott Knott no exemplo das flores de *Helico
 sk_bflor <- ScottKnott::SK(aov_bflor) 
 sk_bflor$out
 ```
-
-
-
 
 
 :::
@@ -588,12 +587,13 @@ H~1~: C~3~ > 0
 ```{r, include=FALSE}
 bes <- readxl::read_excel("data/besouro.xlsx") %>%
   mutate(cor = factor(cor))
-aov_bes <- lm(numero~cor, data=bes) #lm ou glm
+aov_bes <- lm(numero ~ cor, data = bes) # lm ou glm
 anova(aov_bes)
 ```
 
 
 ```{r}
+
 #Contrastes
 K.bes <- rbind("C1"=c(  0, +1, -1, 0),
             
@@ -613,7 +613,6 @@ summary(ctr_besouro)
 
 ## Intervalo de confiança
 ctr_besouro %>% confint()
-
 ```
 
 Estamos 95% confiantes de que o número médio de besouros atraídos pelas cores Verde e Amarelo é superior ao número de besouros atraídos pelas cores Branco e Azul.

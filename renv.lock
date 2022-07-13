@@ -1159,6 +1159,18 @@
         "numDeriv"
       ]
     },
+    "phia": {
+      "Package": "phia",
+      "Version": "0.2-1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "9fb07e0489398475a03027479f7eb678",
+      "Requirements": [
+        "Matrix",
+        "car"
+      ]
+    },
+
     "pillar": {
       "Package": "pillar",
       "Version": "1.7.0",
