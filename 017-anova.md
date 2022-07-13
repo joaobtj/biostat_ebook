@@ -1,7 +1,12 @@
 
 
 
-# Análise de Variância
+
+
+
+
+# Análise de Variância {#anova}
+
 
 Os procedimentos t de duas amostras comparam as médias de duas populações ou as respostas médias a dois tratamentos em um experimento.
 
@@ -10,7 +15,8 @@ Naturalmente, os estudos nem sempre comparam apenas dois grupos. Precisamos de u
 
 ## Comparação de várias médias
 
-Os métodos estatísticos para se lidar com comparações múltiplas geralmente apresentam dois passos:
+
+Os métodos estatísticos para lidar com comparações múltiplas geralmente apresentam dois passos:
 
 1.Um teste geral para verificarmos se há boa evidência de quaisquer diferenças entre os parâmetros que desejamos comparar.
 
@@ -509,6 +515,7 @@ Uma Análise de Variância pode ser executada com as funções `lm` e `anova`, c
 
 ```r
 aov_dap5 <- lm(dap ~ amostra, data = dap5)
+
 anova(aov_dap5)
 ```
 
@@ -1058,6 +1065,7 @@ O arquivo [bflor.xlsx](data/bflor.xlsx) fornece as medidas de comprimentos (em m
 1. *Heliconia caribaea* vermelha
 1. *Heliconia caribaea* amarela
 
+
 Em particular, os comprimentos médios de suas flores são diferentes?
 
 As três variedades têm distribuições com comprimentos diferentes?
@@ -1110,7 +1118,6 @@ Efetuamos a Análise de Variância propriamente dita:
 
 ```r
 aov_bflor <- lm(comprimento ~ especie, data = bflor)
-
 anova(aov_bflor)
 ```
 
@@ -1163,9 +1170,7 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 
 ```r
 ## curtose
-aov_bflor %>%
-  residuals() %>%
-  moments::kurtosis()
+aov_bflor %>% residuals() %>% moments::kurtosis()
 ```
 
 ```
@@ -1174,9 +1179,7 @@ aov_bflor %>%
 
 ```r
 ## assimetria
-aov_bflor %>%
-  residuals() %>%
-  moments::skewness()
+aov_bflor %>% residuals() %>% moments::skewness()
 ```
 
 ```
@@ -1185,9 +1188,7 @@ aov_bflor %>%
 
 ```r
 ## Teste de Shapiro-Wilk
-aov_bflor %>%
-  residuals() %>%
-  shapiro.test()
+aov_bflor %>% residuals() %>% shapiro.test()
 ```
 
 ```
@@ -1200,30 +1201,22 @@ aov_bflor %>%
 
 ```r
 ## Gráfico dos quantis normais
-aov_bflor %>%
-  residuals() %>%
-  qqnorm()
-aov_bflor %>%
-  residuals() %>%
-  qqline()
+aov_bflor %>% residuals() %>% qqnorm()
+aov_bflor %>% residuals() %>% qqline()
 ```
 
 <img src="017-anova_files/figure-html/unnamed-chunk-14-1.png" width="672" />
 
 ```r
 ## Histograma
-aov_bflor %>%
-  residuals() %>%
-  hist()
+aov_bflor %>% residuals() %>% hist()
 ```
 
 <img src="017-anova_files/figure-html/unnamed-chunk-14-2.png" width="672" />
 
 ```r
 ## Ramo e folhas
-aov_bflor %>%
-  residuals() %>%
-  stem()
+aov_bflor %>% residuals() %>% stem()
 ```
 
 ```
@@ -1253,10 +1246,8 @@ Pela análise do conjunto dos resultados acima, não há evidência de desvio se
 
 ```r
 ## razão maior/menor desvio-padrão
-bflor %>%
-  group_by(especie) %>%
-  summarise(desvpad = sd(comprimento)) %>%
-  mutate(razao = max(desvpad) / desvpad)
+bflor %>% group_by(especie) %>% summarise(desvpad=sd(comprimento)) %>%
+mutate(razao=max(desvpad)/desvpad)
 ```
 
 ```
@@ -1270,21 +1261,21 @@ bflor %>%
 
 ```r
 ## boxplot condicional dos resíduos
-boxplot(residuals(aov_bflor) ~ especie, data = bflor)
+boxplot(residuals(aov_bflor)~especie, data = bflor)
 ```
 
 <img src="017-anova_files/figure-html/unnamed-chunk-15-1.png" width="672" />
 
 ```r
 ## resíduos vs ajustados
-plot(aov_bflor, 1)
+plot(aov_bflor,1)
 ```
 
 <img src="017-anova_files/figure-html/unnamed-chunk-15-2.png" width="672" />
 
 ```r
 ## teste de Bartlett
-bartlett.test(residuals(aov_bflor) ~ especie, data = bflor)
+bartlett.test(residuals(aov_bflor)~especie, data=bflor)
 ```
 
 ```
@@ -1297,7 +1288,7 @@ bartlett.test(residuals(aov_bflor) ~ especie, data = bflor)
 
 ```r
 ## teste de Levene
-car::leveneTest(residuals(aov_bflor) ~ especie, data = bflor)
+car::leveneTest(residuals(aov_bflor)~especie, data=bflor)
 ```
 
 ```
@@ -1354,10 +1345,8 @@ Após efetuada a Análise de Variância e verificados os pressupostos^[Análise 
 
 
 ```r
-dn_remedio <- emmeans::emmeans(aov_hom, ~remedio,
-  contr = "dunnett",
-  ref = which(names(table(hom$remedio)) == "Placebo")
-)
+dn_remedio <- emmeans::emmeans(aov_hom, ~remedio, contr="dunnett", 
+                                ref=which(names(table(hom$remedio))=="Placebo"))
 
 
 ## contrastes
@@ -1813,7 +1802,12 @@ dn_remedio$emmeans %>% plot()
   vertical-align: -0.05em;
 }
 </style>
-<table class="gt_table">
+<table class="gt_table" style="table-layout: fixed;; width: 0px">
+  <colgroup>
+    <col style="width:200px;"/>
+    <col style="width:150px;"/>
+    <col style="width:15px;"/>
+  </colgroup>
   <thead class="gt_header">
     <tr>
       <th colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Tabela X. Tempo de cicatrização médio (dias) para uma profunda ferida cirúrgica tratada com remédios homeopáticos.</th>
@@ -2356,7 +2350,12 @@ A Tabela abaixo mostra um exemplo de como os resultados do teste podem ser apres
   vertical-align: -0.05em;
 }
 </style>
-<table class="gt_table">
+<table class="gt_table" style="table-layout: fixed;; width: 0px">
+  <colgroup>
+    <col style="width:200px;"/>
+    <col style="width:150px;"/>
+    <col style="width:15px;"/>
+  </colgroup>
   <thead class="gt_header">
     <tr>
       <th colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Tabela X. Comprimento médio (mm) de flores de três espécies do gênero <em>Heliconia</em>.</th>
@@ -2411,7 +2410,7 @@ Exemplo de utilização do teste de Scott Knott no exemplo das flores de *Helico
 
 
 ```r
-sk_bflor <- ScottKnott::SK(aov_bflor)
+sk_bflor <- ScottKnott::SK(aov_bflor) 
 sk_bflor$out
 ```
 
@@ -2428,7 +2427,6 @@ sk_bflor$out
 ## $Replicates
 ## [1] 16 23 15
 ```
-
 
 
 :::
@@ -2519,23 +2517,15 @@ H~1~: C~3~ > 0
 
 
 ```r
-# Contrastes
-K.bes <- rbind(
-  "C1" = c(0, +1, -1, 0),
-  "C2" = c(-1, 0, 0, +1),
-  "C3" = c(+1, -1, -1, +1)
-)
+#Contrastes
+K.bes <- rbind("C1"=c(  0, +1, -1, 0),
+            
+               "C2"=c( -1,  0,  0, +1),
+           
+               "C3"=c( +1, -1, -1, +1))
 
-# verificar se contrastes são ortogonais (soma=0)
-sum(K.bes[1, ] * K.bes[2, ])
-```
-
-```
-## [1] 0
-```
-
-```r
-sum(K.bes[1, ] * K.bes[3, ])
+#verificar se contrastes são ortogonais (soma=0)
+sum(K.bes[1,]*K.bes[2,])
 ```
 
 ```
@@ -2543,7 +2533,15 @@ sum(K.bes[1, ] * K.bes[3, ])
 ```
 
 ```r
-sum(K.bes[2, ] * K.bes[3, ])
+sum(K.bes[1,]*K.bes[3,])
+```
+
+```
+## [1] 0
+```
+
+```r
+sum(K.bes[2,]*K.bes[3,])
 ```
 
 ```
@@ -2552,7 +2550,7 @@ sum(K.bes[2, ] * K.bes[3, ])
 
 ```r
 library(multcomp)
-ctr_besouro <- glht(aov_bes, linfct = mcp(cor = K.bes))
+ctr_besouro <- glht(aov_bes, linfct=mcp(cor=K.bes))
 summary(ctr_besouro)
 ```
 
