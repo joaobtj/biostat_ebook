@@ -89,6 +89,7 @@
 <li><a class="" href="produ%C3%A7%C3%A3o-de-dados.html"><span class="header-section-number">8</span> Produção de dados</a></li>
 <li><a class="" href="testes-para-duas-amostras.html"><span class="header-section-number">9</span> Testes para duas amostras</a></li>
 <li><a class="active" href="anova.html"><span class="header-section-number">10</span> Análise de Variância</a></li>
+<li><a class="" href="an%C3%A1lise-de-vari%C3%A2ncia-para-2-fatores.html"><span class="header-section-number">11</span> Análise de Variância para 2 fatores</a></li>
 <li class="book-part">Apêndices</li>
 <li><a class="" href="conjunto-de-dados-do-r.html"><span class="header-section-number">A</span> Conjunto de dados do R</a></li>
 </ul>
@@ -1203,7 +1204,6 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 <p><span id="exm:press2" class="example"><strong>Exemplo 10.2  (Verificação do pressuposto da Normalidade) </strong></span>.</p>
 <div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## curtose</span></span>
-<span></span>
 <span><span class="va">aov_bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">moments</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/kurtosis.html">kurtosis</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 2.349862</code></pre>
 <div class="sourceCode" id="cb219"><pre class="downlit sourceCode r">
@@ -1247,7 +1247,6 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 <p><span id="exm:press3" class="example"><strong>Exemplo 10.3  (Verificação do pressuposto da homogeneidade das variâncias) </strong></span>.</p>
 <div class="sourceCode" id="cb227"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## razão maior/menor desvio-padrão</span></span>
-<span></span>
 <span><span class="va">bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">especie</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>desvpad<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">comprimento</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>razao<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">desvpad</span><span class="op">)</span><span class="op">/</span><span class="va">desvpad</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## # A tibble: 3 × 3
@@ -2451,12 +2450,9 @@ A terceira é mais complexa e unilateral.</p>
 </div>
 </div>
 
-
-
-
   <div class="chapter-nav">
 <div class="prev"><a href="testes-para-duas-amostras.html"><span class="header-section-number">9</span> Testes para duas amostras</a></div>
-<div class="next"><a href="conjunto-de-dados-do-r.html"><span class="header-section-number">A</span> Conjunto de dados do R</a></div>
+<div class="next"><a href="an%C3%A1lise-de-vari%C3%A2ncia-para-2-fatores.html"><span class="header-section-number">11</span> Análise de Variância para 2 fatores</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Nesta página</h2>
       <ul class="nav navbar-nav">
@@ -2490,7 +2486,7 @@ A terceira é mais complexa e unilateral.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Bioestatística aplicada aos ecossistemas agrícolas e naturais</strong>" foi escrito por João B. Tolentino Jr.. Última atualização em 2022-07-06.</p>
+    <p>"<strong>Bioestatística aplicada aos ecossistemas agrícolas e naturais</strong>" foi escrito por João B. Tolentino Jr.. Última atualização em 2022-07-13.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

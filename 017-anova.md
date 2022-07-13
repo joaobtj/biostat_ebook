@@ -15,6 +15,7 @@ Naturalmente, os estudos nem sempre comparam apenas dois grupos. Precisamos de u
 
 ## Comparação de várias médias
 
+
 Os métodos estatísticos para lidar com comparações múltiplas geralmente apresentam dois passos:
 
 1.Um teste geral para verificarmos se há boa evidência de quaisquer diferenças entre os parâmetros que desejamos comparar.
@@ -1169,7 +1170,6 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 
 ```r
 ## curtose
-
 aov_bflor %>% residuals() %>% moments::kurtosis()
 ```
 
@@ -1246,7 +1246,6 @@ Pela análise do conjunto dos resultados acima, não há evidência de desvio se
 
 ```r
 ## razão maior/menor desvio-padrão
-
 bflor %>% group_by(especie) %>% summarise(desvpad=sd(comprimento)) %>%
 mutate(razao=max(desvpad)/desvpad)
 ```
@@ -2428,9 +2427,6 @@ sk_bflor$out
 ## $Replicates
 ## [1] 16 23 15
 ```
-
-
-
 
 
 :::
