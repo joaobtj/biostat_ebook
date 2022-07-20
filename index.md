@@ -1,7 +1,7 @@
 --- 
 title: "Bioestatística aplicada aos ecossistemas agrícolas e naturais"
 author: "João B. Tolentino Jr."
-date: "2022-07-13"
+date: "2022-07-20"
 description: " Livro texto da disciplina de Bioestatística do Programa de Pós-graduação em Ecossistemas Agrícolas e Naturais."
 #cover-image: image/cover.jpg
 #apple-touch-icon: image/cover.jpg
@@ -51,11 +51,11 @@ This version of the book was built with R version 4.2.0 (2022-04-22) and the fol
 |memoise     |2.0.1   |CRAN (R 4.2.0) |
 |R6          |2.5.1   |CRAN (R 4.2.0) |
 |renv        |0.15.5  |CRAN (R 4.2.0) |
-|rlang       |1.0.3   |CRAN (R 4.2.0) |
+|rlang       |1.0.4   |CRAN (R 4.2.0) |
 |rmarkdown   |2.14    |CRAN (R 4.2.0) |
 |sass        |0.4.1   |CRAN (R 4.2.0) |
 |sessioninfo |1.2.2   |CRAN (R 4.2.0) |
-|stringi     |1.7.6   |CRAN (R 4.2.0) |
+|stringi     |1.7.8   |CRAN (R 4.2.0) |
 |stringr     |1.4.0   |CRAN (R 4.2.0) |
 |withr       |2.5.0   |CRAN (R 4.2.0) |
 |xfun        |0.31    |CRAN (R 4.2.0) |

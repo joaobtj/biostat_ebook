@@ -510,7 +510,7 @@ ggplot(ToothGrowth, aes(x = (dose), y = len, fill = supp)) +
 <p class="caption">(\#fig:unnamed-chunk-18)(ref:toothbar)</p>
 </div>
 
-## Gráficos de dispersão
+## Gráficos de dispersão {#dispersao}
 
 São utilizados para mostrar a relação entre duas variáveis numéricas contínuas. Para isso, são utilizados pontos que representam cada observação. A geometria para este tipo de gráfico é `geom_point`. Veja este exemplo com os dados do conjunto [*iris*](#iris).
 
