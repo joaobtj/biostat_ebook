@@ -184,7 +184,7 @@ teste-t-para-duas-amostras
 anova
 comparação-de-várias-médias
 a-ideia-da-análise-de-variância
-análise-de-variância-para-um-fator
+anova1
 condições-para-a-anova
 testes-de-acompanhamento
 teste-de-dunnett
