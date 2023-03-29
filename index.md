@@ -33,34 +33,31 @@ This version of the book was built with R version 4.2.3 (2023-03-15) and the fol
 
 |package     |version |source         |
 |:-----------|:-------|:--------------|
-|bookdown    |0.27    |RSPM (R 4.2.0) |
-|bslib       |0.3.1   |RSPM (R 4.2.0) |
+|bookdown    |0.33    |RSPM (R 4.2.0) |
+|bslib       |0.4.2   |RSPM (R 4.2.0) |
 |cachem      |1.0.7   |RSPM (R 4.2.0) |
-|cli         |3.3.0   |RSPM (R 4.2.0) |
-|curl        |4.3.2   |RSPM (R 4.2.0) |
-|digest      |0.6.29  |RSPM (R 4.2.0) |
+|cli         |3.6.1   |RSPM (R 4.2.0) |
+|curl        |5.0.0   |RSPM (R 4.2.0) |
+|digest      |0.6.31  |RSPM (R 4.2.0) |
 |downlit     |0.4.2   |RSPM (R 4.2.0) |
-|evaluate    |0.15    |RSPM (R 4.2.0) |
-|fastmap     |1.1.0   |RSPM (R 4.2.0) |
-|fs          |1.5.2   |RSPM (R 4.2.0) |
-|htmltools   |0.5.2   |RSPM (R 4.2.0) |
+|evaluate    |0.20    |RSPM (R 4.2.0) |
+|fastmap     |1.1.1   |RSPM (R 4.2.0) |
+|fs          |1.6.1   |RSPM (R 4.2.0) |
+|htmltools   |0.5.5   |RSPM (R 4.2.0) |
 |jquerylib   |0.1.4   |RSPM (R 4.2.0) |
-|jsonlite    |1.8.0   |RSPM (R 4.2.0) |
-|knitr       |1.39    |RSPM (R 4.2.0) |
-|magrittr    |2.0.3   |RSPM (R 4.2.0) |
+|jsonlite    |1.8.4   |RSPM (R 4.2.0) |
+|knitr       |1.42    |RSPM (R 4.2.0) |
 |memoise     |2.0.1   |RSPM (R 4.2.0) |
 |R6          |2.5.1   |RSPM (R 4.2.0) |
-|renv        |0.15.5  |RSPM (R 4.2.0) |
-|rlang       |1.0.4   |RSPM (R 4.2.0) |
-|rmarkdown   |2.14    |RSPM (R 4.2.0) |
-|sass        |0.4.1   |RSPM (R 4.2.0) |
+|renv        |0.17.2  |RSPM (R 4.2.0) |
+|rlang       |1.1.0   |RSPM (R 4.2.0) |
+|rmarkdown   |2.21    |RSPM (R 4.2.0) |
+|sass        |0.4.5   |RSPM (R 4.2.0) |
 |sessioninfo |1.2.2   |RSPM (R 4.2.0) |
-|stringi     |1.7.8   |RSPM (R 4.2.0) |
-|stringr     |1.4.0   |RSPM (R 4.2.0) |
 |withr       |2.5.0   |RSPM (R 4.2.0) |
-|xfun        |0.31    |RSPM (R 4.2.0) |
+|xfun        |0.38    |RSPM (R 4.2.0) |
 |xml2        |1.3.3   |RSPM (R 4.2.0) |
-|yaml        |2.3.5   |RSPM (R 4.2.0) |
+|yaml        |2.3.7   |RSPM (R 4.2.0) |
 
  
 

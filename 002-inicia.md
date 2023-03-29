@@ -530,7 +530,7 @@ bflor
 ##  8 Hb          8        46.6
 ##  9 Hb          9        48.1
 ## 10 Hb         10        48.3
-## # … with 44 more rows
+## # ℹ 44 more rows
 ```
 
  

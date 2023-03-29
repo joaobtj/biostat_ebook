@@ -7,7 +7,7 @@
 <title>Capítulo 12 Correlação e Regressão | Bioestatística aplicada aos ecossistemas agrícolas e naturais</title>
 <meta name="author" content="João B. Tolentino Jr.">
 <meta name="description" content="Muitos estudos estatísticos analisam a relação entre duas variáveis. As relações estatísticas são tendências gerais, não regras rígidas, e permitem exceções individuais. Por exemplo, embora os...">
-<meta name="generator" content="bookdown 0.27 with bs4_book()">
+<meta name="generator" content="bookdown 0.33 with bs4_book()">
 <meta property="og:title" content="Capítulo 12 Correlação e Regressão | Bioestatística aplicada aos ecossistemas agrícolas e naturais">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://biostat.tolentino.pro.br/correlação-e-regressão.html">
@@ -17,15 +17,15 @@
 <meta name="twitter:description" content="Muitos estudos estatísticos analisam a relação entre duas variáveis. As relações estatísticas são tendências gerais, não regras rígidas, e permitem exceções individuais. Por exemplo, embora os...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Montserrat-0.4.1/font.css" rel="stylesheet">
-<link href="libs/_Signika-0.4.1/font.css" rel="stylesheet">
-<script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Montserrat-0.4.5/font.css" rel="stylesheet">
+<link href="libs/Signika-0.4.5/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
 <script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="libs/datatables-binding-0.23/datatables.js"></script><link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet">
-<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+<script src="libs/datatables-binding-0.27/datatables.js"></script><link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
@@ -136,7 +136,7 @@
 <div class="example">
 <p><span id="exm:dispers" class="example"><strong>Exemplo 12.1  (Diagrama de dispersão) </strong></span>Os peixes-boi são mamíferos aquáticos grandes e herbívoros, encontrados principalmente nos rios e estuários da Flórida. Essa espécie ameaçada sofre com a coabitação com populações humanas, e muitos peixes-boi morrem a cada ano em consequência de colisões com barcos a motor.</p>
 <p>O arquivo <a href="data/pboi.xlsx">pboi.xlsx</a> traz o número de barcos a motor resgistrados, entre 1977 e 2008, e sua influência nas mortes de peixes-boi em consequência de colisões.</p>
-<div class="sourceCode" id="cb360"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb361"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pboi</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/pboi.xlsx"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
@@ -169,7 +169,7 @@
 <p>Os dois diagramas de dispersão representam exatamente os mesmos dados, porém o gráfico à direita foi desenhado em tamanho menor em um grande espaço. O gráfico à direita parece mostrar uma relação linear mais forte.</p>
 <div class="example">
 <p><span id="exm:cor" class="example"><strong>Exemplo 12.2  (Correlação) </strong></span>Qual a correlação entre número de barcos e morte de peixe-boi?</p>
-<div class="sourceCode" id="cb361"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb362"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">pboi</span>, <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">morte</span>, <span class="va">barco</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0.9501555</code></pre>
 <p>A correlação é de 0,95 ou 95%.</p>
@@ -193,7 +193,7 @@ A intensidade da relação linear cresce à medida que r se afasta de zero em di
 <p>Nessa equação, b é a inclinação, ou seja, a alteração de <em>y</em> quando <em>x</em> aumenta uma unidade. O número <em>a</em> é o intercepto, ou seja, o valor de <em>y</em> quando <em>x</em> = 0.</p>
 <div class="example">
 <p><span id="exm:reg" class="example"><strong>Exemplo 12.3  (Regressão) </strong></span>Qual é a reta de regressão linear simples que descreve a relação entre o número de barcos e a quantidade de barcos a motor rsgistrados?</p>
-<div class="sourceCode" id="cb363"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb364"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">reg_pboi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">morte</span> <span class="op">~</span> <span class="va">barco</span>, data <span class="op">=</span> <span class="va">pboi</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">reg_pboi</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## (Intercept)       barco 
@@ -203,7 +203,7 @@ morte = -41.2047 + 0.1261 \cdot barcos
 \]</span></p>
 <p>Cuidado com a extrapolação! O que aconteceria se tivéssemos 0 (zero) barcos registrados?</p>
 <p>Uma forma muito comum de representar a regressão é por meio de uma reta ajustada no diagrama de dispersão, junto com a equação ajustada e o coeficiente de detemrinação ajustado (R<sup>2</sup><sub>adj</sub><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Pode ser entendido como um coeficiente de qualidade do ajuste.&lt;/p&gt;"><sup>31</sup></a>)</p>
-<div class="sourceCode" id="cb365"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb366"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pboi</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">barco</span>, y <span class="op">=</span> <span class="va">morte</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"darkblue"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -213,6 +213,11 @@ morte = -41.2047 + 0.1261 \cdot barcos
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="va">x</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggpmisc</span><span class="fu">::</span><span class="fu"><a href="https://docs.r4photobiology.info/ggpmisc/reference/stat_poly_eq.html">stat_poly_eq</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"atop("</span>, <span class="va">..eq.label..</span>, <span class="st">","</span>, <span class="va">..adj.rr.label..</span>, <span class="st">")"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Warning: The dot-dot notation (`..eq.label..`) was deprecated in ggplot2 3.4.0.
+## ℹ Please use `after_stat(eq.label)` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.</code></pre>
 <div class="inline-figure">
 <img src="019-reg_files/figure-html/unnamed-chunk-6-1.png" width="672">
 .</div>
@@ -238,7 +243,7 @@ morte = -41.2047 + 0.1261 \cdot barcos
 <p>Uma reta de regressão com inclinação zero é horizontal.</p>
 <div class="example">
 <p><span id="exm:reginfer" class="example"><strong>Exemplo 12.4  (Inferência para Regressão) </strong></span>.</p>
-<div class="sourceCode" id="cb366"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb368"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">reg_pboi</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ## Call:
@@ -268,7 +273,7 @@ morte = -41.2047 + 0.1261 \cdot barcos
 <p>Outro contexto para inferência na regressão é quando desejamos não simplesmente uma predição, mas uma com margem de erro que descreva quão precisa, provavelmente, a predição é.</p>
 <div class="example">
 <p><span id="exm:pred" class="example"><strong>Exemplo 12.5  (Inferência sobre predição) </strong></span>Dezesseis estudantes voluntários consumiram um número de latas de cerveja aleatoriamente designado. Trinta minutos depois, um oficial de polícia mediu o teor alcoólico no sangue (TAS) deles, em gramas de álcool por decilitro de sangue <a href="data/cerveja.xlsx">cerveja.xlsx</a>. O limite legal para direção é TAS 0,08. Desejamos predizer o TAS de uma pessoa usando apenas a informação de que bebeu cinco cervejas.</p>
-<div class="sourceCode" id="cb368"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb370"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cerv</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/cerveja.xlsx"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">reg_cerv</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">TAS</span><span class="op">~</span><span class="va">numero</span>, data<span class="op">=</span><span class="va">cerv</span><span class="op">)</span></span>
@@ -291,7 +296,7 @@ morte = -41.2047 + 0.1261 \cdot barcos
 ## Residual standard error: 0.02044 on 14 degrees of freedom
 ## Multiple R-squared:  0.7998, Adjusted R-squared:  0.7855 
 ## F-statistic: 55.94 on 1 and 14 DF,  p-value: 2.969e-06</code></pre>
-<div class="sourceCode" id="cb370"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb372"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">cerv</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">numero</span>, y <span class="op">=</span> <span class="va">TAS</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"gold2"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -302,13 +307,13 @@ morte = -41.2047 + 0.1261 \cdot barcos
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="va">x</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggpmisc</span><span class="fu">::</span><span class="fu"><a href="https://docs.r4photobiology.info/ggpmisc/reference/stat_poly_eq.html">stat_poly_eq</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"atop("</span>, <span class="va">..eq.label..</span>, <span class="st">","</span>, <span class="va">..adj.rr.label..</span>, <span class="st">")"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="019-reg_files/figure-html/unnamed-chunk-8-1.png" width="672"></div>
-<div class="sourceCode" id="cb371"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb373"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#intervalo de confiança dos parâmetros</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="va">reg_cerv</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##                   2.5 %     97.5 %
 ## (Intercept) -0.03980535 0.01440414
 ## numero       0.01281262 0.02311490</code></pre>
-<div class="sourceCode" id="cb373"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb375"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#predição para 5 cervejas</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">reg_cerv</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>numero<span class="op">=</span><span class="fl">5</span><span class="op">)</span>, interval<span class="op">=</span><span class="st">"predict"</span><span class="op">)</span> </span></code></pre></div>
 <pre><code>##          fit        lwr       upr

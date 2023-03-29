@@ -113,6 +113,15 @@ Quantos dos IC simulados não contém a verdadeira média^[Este valor já é con
 
 Por meio de uma análise gráfica:
 
+
+```
+## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## ℹ Please use `linewidth` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.
+```
+
 <div class="figure">
 <img src="014-infer_files/figure-html/unnamed-chunk-7-1.png" alt="Intervalos de confiança simulados para várias amostragens de uma população. A média populacional é representada pela linha vertical violeta." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-7)Intervalos de confiança simulados para várias amostragens de uma população. A média populacional é representada pela linha vertical violeta.</p>
