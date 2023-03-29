@@ -135,7 +135,7 @@ pvalorp <- anova(aov_dap5p)$`Pr(>F)`[1]
 Para as mesmas hipóteses anteriores, o teste F da Análise de Variância é significativo (p-valor ~ `r pvalorp %>% round(3)`). Neste caso, rejeitamos a hipótese H~0~ e podemos concluir que há evidências de que as amostras tenham médias de diâmetro diferentes ou que seja oriundas de populações diferentes.
 
 
-## Análise de Variância para um fator
+## Análise de Variância para um fator {#anova1}
 
 :::{.example #anova1 name="Análise de Variância para um fator"}
 
