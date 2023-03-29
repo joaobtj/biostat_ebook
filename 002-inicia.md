@@ -314,7 +314,7 @@ dado6(n = 3)
 
 ## *Data-frame*
 
-O *data frame* é uma estrutura bidimensional em que cada componente forma uma coluna e o conteúdo de cada componente forma as linhas. Em um *data frame*, é importante que todas as colunas tenham o mesmo commprimento, de modo que a estrutura de dados resulte em um formato retangular. Também podemos imaginá-lo como um agrupamento de vetores de mesmo tamanho.
+O *data frame* é uma estrutura bidimensional em que cada componente forma uma coluna e o conteúdo de cada componente forma as linhas. Em um *data frame*, é importante que todas as colunas tenham o mesmo comprimento, de modo que a estrutura de dados resulte em um formato retangular. Também podemos imaginá-lo como um agrupamento de vetores de mesmo tamanho.
 
 Para criá-lo, usamos a função `data.frame`
 
@@ -420,11 +420,11 @@ Os mesmos dados, mas em um arquivo ([cbs2_jul19.csv](data/cbs2_jul19.csv) - Figu
 
 A importação com a função `read_csv` é feita como no exemplo abaixo:
 
-
-
 ```r
-temperaturas <- readr::read_csv("data/cbs_jul19.csv")
+temperaturas <- readr::read_csv("cbs_jul19.csv")
+temperaturas
 ```
+
 
 ```
 ## Rows: 14 Columns: 3
@@ -435,10 +435,6 @@ temperaturas <- readr::read_csv("data/cbs_jul19.csv")
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-```
-
-```r
-temperaturas
 ```
 
 ```
@@ -465,11 +461,11 @@ temperaturas
 
 E com a função `csv2`:
 
-
-
 ```r
-temperaturas <- readr::read_csv2("data/cbs2_jul19.csv")
+temperaturas <- readr::read_csv2("cbs2_jul19.csv")
+temperaturas
 ```
+
 
 ```
 ## ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.
@@ -484,10 +480,6 @@ temperaturas <- readr::read_csv2("data/cbs2_jul19.csv")
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-```
-
-```r
-temperaturas
 ```
 
 ```
@@ -516,15 +508,13 @@ temperaturas
 
 Para importar arquivos do Excel, existem a função `read_excel` do pacote `readxl`.
 
-
-
-
-
+O arquivo [bflor.xlsx](data/bflor.xlsx) contám dados de um experimento que será estudado no capítulo (\@ref(anova1)). 
 
 ```r
-bflor <- readxl::read_excel("data/bflor.xlsx")
+bflor <- readxl::read_excel("/bflor.xlsx")
 bflor
 ```
+
 
 ```
 ## # A tibble: 54 × 3
@@ -665,10 +655,11 @@ Os dados foram digitados de modo que os valores da variável tempo estão espalh
 
 Ao importar este arquivo com a função `readxl::read_excel` temos como resultado:
 
-
 ```r
-messy_data <- readxl::read_excel("data/liquido.xlsx")
+messy_data <- readxl::read_excel("liquido.xlsx")
+messy_data
 ```
+
 
 ```
 ## New names:
@@ -676,10 +667,6 @@ messy_data <- readxl::read_excel("data/liquido.xlsx")
 ## • `` -> `...3`
 ## • `` -> `...4`
 ## • `` -> `...5`
-```
-
-```r
-messy_data
 ```
 
 ```
@@ -694,11 +681,11 @@ messy_data
 
 Observamos que a primeira linha (células mescladas) da planilha bagunçou ainda mais o resultado. Vamos importar novamente exlcuindo a primeira linha com o argumento `skip = 1`.
 
-
 ```r
-messy_data <- readxl::read_xlsx("data/liquido.xlsx", skip = 1)
+messy_data <- readxl::read_xlsx("liquido.xlsx", skip = 1)
 messy_data
 ```
+
 
 ```
 ## # A tibble: 3 × 5

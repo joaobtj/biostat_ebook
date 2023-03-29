@@ -1049,7 +1049,7 @@ anova(aov_dap5p)
 Para as mesmas hipóteses anteriores, o teste F da Análise de Variância é significativo (p-valor ~ 0). Neste caso, rejeitamos a hipótese H~0~ e podemos concluir que há evidências de que as amostras tenham médias de diâmetro diferentes ou que seja oriundas de populações diferentes.
 
 
-## Análise de Variância para um fator
+## Análise de Variância para um fator {#anova1}
 
 :::{.example #anova1 name="Análise de Variância para um fator"}
 
@@ -1224,8 +1224,8 @@ aov_bflor %>% residuals() %>% stem()
 ##   The decimal point is at the |
 ## 
 ##   -2 | 3
-##   -1 | 98776666553200
-##   -0 | 9988877655522111
+##   -1 | 98776665553200
+##   -0 | 9988877655522211
 ##    0 | 1355666788999
 ##    1 | 8
 ##    2 | 00223557

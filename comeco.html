@@ -260,7 +260,7 @@ Figura 2.1: Interface do RStudio
 <h2>
 <span class="header-section-number">2.5</span> <em>Data-frame</em><a class="anchor" aria-label="anchor" href="#data-frame"><i class="fas fa-link"></i></a>
 </h2>
-<p>O <em>data frame</em> é uma estrutura bidimensional em que cada componente forma uma coluna e o conteúdo de cada componente forma as linhas. Em um <em>data frame</em>, é importante que todas as colunas tenham o mesmo commprimento, de modo que a estrutura de dados resulte em um formato retangular. Também podemos imaginá-lo como um agrupamento de vetores de mesmo tamanho.</p>
+<p>O <em>data frame</em> é uma estrutura bidimensional em que cada componente forma uma coluna e o conteúdo de cada componente forma as linhas. Em um <em>data frame</em>, é importante que todas as colunas tenham o mesmo comprimento, de modo que a estrutura de dados resulte em um formato retangular. Também podemos imaginá-lo como um agrupamento de vetores de mesmo tamanho.</p>
 <p>Para criá-lo, usamos a função <code>data.frame</code></p>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
@@ -333,7 +333,8 @@ Figura 2.3: Arquivo *.csv cujo delimitador entre valores é o ponto e vírgula e
 </div>
 <p>A importação com a função <code>read_csv</code> é feita como no exemplo abaixo:</p>
 <div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">temperaturas</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/cbs_jul19.csv"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">temperaturas</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"cbs_jul19.csv"</span><span class="op">)</span></span>
+<span><span class="va">temperaturas</span></span></code></pre></div>
 <pre><code>## Rows: 14 Columns: 3
 ## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: ","
@@ -342,8 +343,6 @@ Figura 2.3: Arquivo *.csv cujo delimitador entre valores é o ponto e vírgula e
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">temperaturas</span></span></code></pre></div>
 <pre><code>## # A tibble: 14 × 3
 ##    data       temp_min temp_max
 ##    &lt;date&gt;        &lt;dbl&gt;    &lt;dbl&gt;
@@ -362,8 +361,9 @@ Figura 2.3: Arquivo *.csv cujo delimitador entre valores é o ponto e vírgula e
 ## 13 2019-07-13     12.9     23.1
 ## 14 2019-07-14     13       17.4</code></pre>
 <p>E com a função <code>csv2</code>:</p>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">temperaturas</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv2</a></span><span class="op">(</span><span class="st">"data/cbs2_jul19.csv"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">temperaturas</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv2</a></span><span class="op">(</span><span class="st">"cbs2_jul19.csv"</span><span class="op">)</span></span>
+<span><span class="va">temperaturas</span></span></code></pre></div>
 <pre><code>## ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.</code></pre>
 <pre><code>## Rows: 14 Columns: 3
 ## ── Column specification ────────────────────────────────────────────────────────
@@ -373,8 +373,6 @@ Figura 2.3: Arquivo *.csv cujo delimitador entre valores é o ponto e vírgula e
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">temperaturas</span></span></code></pre></div>
 <pre><code>## # A tibble: 14 × 3
 ##    data       temp_min temp_max
 ##    &lt;date&gt;        &lt;dbl&gt;    &lt;dbl&gt;
@@ -398,8 +396,9 @@ Figura 2.3: Arquivo *.csv cujo delimitador entre valores é o ponto e vírgula e
 <span class="header-section-number">2.6.2</span> Importando arquivos do Excel<a class="anchor" aria-label="anchor" href="#importando-arquivos-do-excel"><i class="fas fa-link"></i></a>
 </h3>
 <p>Para importar arquivos do Excel, existem a função <code>read_excel</code> do pacote <code>readxl</code>.</p>
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">bflor</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/bflor.xlsx"</span><span class="op">)</span></span>
+<p>O arquivo <a href="data/bflor.xlsx">bflor.xlsx</a> contám dados de um experimento que será estudado no capítulo (<a href="anova.html#anova1">10.3</a>).</p>
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">bflor</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"/bflor.xlsx"</span><span class="op">)</span></span>
 <span><span class="va">bflor</span></span></code></pre></div>
 <pre><code>## # A tibble: 54 × 3
 ##    especie     n comprimento
@@ -422,38 +421,38 @@ Figura 2.3: Arquivo *.csv cujo delimitador entre valores é o ponto e vírgula e
 <span class="header-section-number">2.7</span> O operador <em>pipe</em>: <code>%&gt;%</code><a class="anchor" aria-label="anchor" href="#o-operador-pipe"><i class="fas fa-link"></i></a>
 </h2>
 <p>O operador <em>pipe</em> <code>%&gt;%</code> é uma ferramenta muito útil para expressar uma sequência de ações sobre um objeto. Foi introduzido pela primeira vez no pacote <code>magrittr</code> com o objetivo de facilitar a programação e melhorar e legibilidade do código. Sempre carregue o pacote <code>magrittr</code> antes de usar o <em>pipe</em>.</p>
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org">magrittr</a></span><span class="op">)</span></span></code></pre></div>
 <p>No exemplo abaixo, as duas linhas de código são equivalentes: aplica-se a função <code>f</code> ao objeto <code>x</code>.</p>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">f</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span><span class="va">x</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">f</span><span class="op">(</span><span class="op">)</span> <span class="co"># O pipe passa o objeto x para dentro da função f</span></span></code></pre></div>
 <p>Veja abaixo o <em>pipe</em> em ação:</p>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">8</span>, <span class="fl">13</span>, <span class="fl">21</span><span class="op">)</span> <span class="co"># criar um vetor x</span></span>
 <span><span class="va">x</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://magrittr.tidyverse.org/reference/aliases.html">add</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> <span class="co"># somar 2 a cada elemento do vetor x</span></span></code></pre></div>
 <pre><code>## [1]  3  4  5  7 10 15 23</code></pre>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="st">"+"</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> <span class="co"># equivalente à operação anterior</span></span></code></pre></div>
 <pre><code>## [1]  3  4  5  7 10 15 23</code></pre>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="st">"*"</span><span class="op">(</span><span class="fl">3</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="st">"+"</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="st">"^"</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> <span class="co"># várias operações aplicadas sequencialmente ao vetor x</span></span></code></pre></div>
 <pre><code>## [1]   16   49  100  256  625 1600 4096</code></pre>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># soma os elementos do vetor</span></span></code></pre></div>
 <pre><code>## [1] 53</code></pre>
 <p>No caso de uma função com vários argumentos, o <em>pipe</em> passa o objeto para a primeira posição da função, o argumento mais à esquerda:</p>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">x</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="co"># idem ao anterior com o pipe passando o objeto x para a função sample</span></span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
 <p>No caso de ser necessário que o objeto seja passado para outro argumento à direita, que não seja o primeiro, utilizamos um <code>.</code> como marcador:</p>
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">iris</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">Petal.Length</span> <span class="op">~</span> <span class="va">Species</span>, data <span class="op">=</span> <span class="va">.</span><span class="op">)</span> <span class="co"># o objeto iris é passado para o argumento data com um .</span></span></code></pre></div>
 <pre><code>## 
@@ -485,15 +484,14 @@ Figura 2.4: Exemplo de dados não organizados no formato <em>tidy</em> em uma pl
 </div>
 <p>Os dados foram digitados de modo que os valores da variável tempo estão espalhados por 4 colunas. A variável repetição (implícita) está em uma linha (cabeçalho das colunas) e o nome das colunas (Tempo) está em uma célula mesclada.</p>
 <p>Ao importar este arquivo com a função <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">readxl::read_excel</a></code> temos como resultado:</p>
-<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">messy_data</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/liquido.xlsx"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">messy_data</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"liquido.xlsx"</span><span class="op">)</span></span>
+<span><span class="va">messy_data</span></span></code></pre></div>
 <pre><code>## New names:
 ## • `` -&gt; `...1`
 ## • `` -&gt; `...3`
 ## • `` -&gt; `...4`
 ## • `` -&gt; `...5`</code></pre>
-<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">messy_data</span></span></code></pre></div>
 <pre><code>## # A tibble: 4 × 5
 ##   ...1    Tempo  ...3  ...4  ...5
 ##   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -502,8 +500,8 @@ Figura 2.4: Exemplo de dados não organizados no formato <em>tidy</em> em uma pl
 ## 3 Óleo       29    26    24    23
 ## 4 Álcool      6     7     9     4</code></pre>
 <p>Observamos que a primeira linha (células mescladas) da planilha bagunçou ainda mais o resultado. Vamos importar novamente exlcuindo a primeira linha com o argumento <code>skip = 1</code>.</p>
-<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">messy_data</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_xlsx</a></span><span class="op">(</span><span class="st">"data/liquido.xlsx"</span>, skip <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">messy_data</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_xlsx</a></span><span class="op">(</span><span class="st">"liquido.xlsx"</span>, skip <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">messy_data</span></span></code></pre></div>
 <pre><code>## # A tibble: 3 × 5
 ##   Líquido   `1`   `2`   `3`   `4`
@@ -512,7 +510,7 @@ Figura 2.4: Exemplo de dados não organizados no formato <em>tidy</em> em uma pl
 ## 2 Óleo       29    26    24    23
 ## 3 Álcool      6     7     9     4</code></pre>
 <p>Para transformar o <em>data-frame</em> no formato <em>tidy</em>, utilizamos a função <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">tidyr::pivot_longer</a></code>:</p>
-<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tidy_data</span> <span class="op">&lt;-</span> <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span><span class="va">messy_data</span>, cols <span class="op">=</span> <span class="fl">2</span><span class="op">:</span><span class="fl">5</span>, names_to <span class="op">=</span> <span class="st">"rep"</span>, values_to <span class="op">=</span> <span class="st">"tempo"</span><span class="op">)</span></span>
 <span><span class="va">tidy_data</span></span></code></pre></div>
 <pre><code>## # A tibble: 12 × 3
