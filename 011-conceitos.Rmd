@@ -71,7 +71,7 @@ Em algumas situações, variáveis categóricas podem ser transformadas em vari�
 
 ### Variáveis derivadas
 
- A maior parte das variáveissão obtidas por meio de medidas e observações diretas. No entanto, há uma importante classe de variáveis denominadas derivadas, que são baseadas em duas ou mais medições obtidas independentemente. Alguns exemplos são: razão, porcentagem, índice e taxa.
+ A maior parte das variáveis são obtidas por meio de medidas e observações diretas. No entanto, há uma importante classe de variáveis denominadas derivadas, que são baseadas em duas ou mais medições obtidas independentemente. Alguns exemplos são: razão, porcentagem, índice e taxa.
 
 
 ## Estatística descritiva vs Estatística inferencial
@@ -122,7 +122,7 @@ knitr::include_graphics("image/vinho.jpg")
 :::{.example #exp name="Um estudo experimental"}
 
 
-Um agrônomo afirma que um novo fertilizante orgânico, em comparação com a marca líder, aumenta a produção e o tamanho dos tomates. Para o teste dessa afirmativa, pês de tomate são associados aleatoriamente a um de dois grupos: m grupo é cultivado com o fertilizante líder e o outro grupo, com o novo produto. No tempo da colheita, registram-se o tamanho e o peso de cada tomate, juntamente com o total de tomates por pé. Os dados coletados desse experimento são usados para comparar os dois fertilizantes.
+Um agrônomo afirma que um novo fertilizante orgânico, em comparação com a marca líder, aumenta a produção e o tamanho dos tomates. Para o teste dessa afirmativa, plantas de tomate são associadas aleatoriamente a um de dois grupos: um grupo é cultivado com o fertilizante líder e o outro grupo, com o novo produto. Na época da colheita, registra-se o tamanho e a massa de cada tomate, juntamente com o total de tomates por planta. Os dados coletados desse experimento são usados para comparar os dois fertilizantes.
  
 ```{r tomate, echo=FALSE}
 knitr::include_graphics("image/tomate.jpg")
