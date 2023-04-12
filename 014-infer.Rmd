@@ -43,7 +43,9 @@ set.seed("21102015")
 ```
 
 ```{r}
-sample(dap, 10) %>% t.test()
+dap_s <- sample(dap, 10) 
+
+t.test(dap_s)
 ```
 
 O *output* da função `t.test` contém muitas informções, mas por hora, vamos nos focar apenas no intervalo de confiança, indicado pelo texto *95 percent confidence interval*
@@ -139,7 +141,7 @@ set.seed("21102015")
 ```
 
 ```{r}
-sample(dap, 10) %>% t.test(conf.level=0.99)
+t.test(dap_s, conf.level=0.99)
 ```
 
 O Intervalo de confiança para a média com 99% de probabilidade está entre `r ic99$conf.int[1] %>% round(2)` e `r ic99$conf.int[2] %>% round(2)`. Estamos 99% confiantes de que o valor da média populacional esteja entre `r ic99$conf.int[1] %>% round(2)` e `r ic99$conf.int[2] %>% round(2)`. Observe que o intervalo do IC é maior quando aumentamos o nível de significância.
@@ -164,6 +166,7 @@ O valor de α mais comumente utilizado é de 0,05 ou 5%. No entanto, dependendo 
 Antes de realizar qualquer teste de hipóteses, como o teste t, as hipóteses devem ser claramente descritas.
 
 Hipóteses:
+
 * H~0~: hipótese nula, ou seja, a afirmativa a ser testada.
 
 * H~1~ ou H~a~: a hipótese alternativa, ou seja, uma afirmativa que contradiz a hipótese nula. 
@@ -194,7 +197,7 @@ set.seed("21102015")
 ```
 
 ```{r}
-sample(dap, 10) %>% t.test(mu = mean(dap))
+t.test(dap_s, mu = mean(dap))
 ```
 
 
