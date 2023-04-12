@@ -716,7 +716,7 @@ sd(dap)
 
 ## Descrição de uma distribuição
 
-Qualquer conjunto de dados pode (e deve) ser descrito por meio dos resumos numéricos juntamente com a análise gráfica (Seção \@ref(graf_dist).
+Qualquer conjunto de dados pode (e deve) ser descrito por meio dos resumos numéricos juntamente com a análise gráfica (Seção \@ref(graf_dist)).
 
 Essa descrição visa também verificar a assimetria dos dados e a presença de valores discrepantes.
 

@@ -147,7 +147,7 @@ linha-de-tendência
 sobreposição-de-elementos
 gráficos-de-linhas
 gráficos-de-linhas-para-séries-temporais
-gráficos-para-distribuição-graf_dist
+graf_dist
 histograma
 gráfico-de-densidade-da-distribuição
 box-plot
