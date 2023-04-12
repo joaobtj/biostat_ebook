@@ -18,7 +18,7 @@ Considere uma população com 150 árvores pertencente a um reflorestamento de M
 
 
 ```{=html}
-<div id="bcekuceuya" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="bcekuceuya" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
@@ -58,6 +58,11 @@ Considere uma população com 150 árvores pertencente a um reflorestamento de M
   border-right-style: none;
   border-right-width: 1px;
   border-right-color: #D3D3D3;
+}
+
+#bcekuceuya .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
 #bcekuceuya .gt_title {
@@ -180,6 +185,7 @@ Considere uma população com 150 árvores pertencente a um reflorestamento de M
   border-right-width: 1px;
   border-right-color: #D3D3D3;
   vertical-align: middle;
+  text-align: left;
 }
 
 #bcekuceuya .gt_empty_group_heading {
@@ -391,15 +397,6 @@ Considere uma população com 150 árvores pertencente a um reflorestamento de M
   font-size: 65%;
 }
 
-#bcekuceuya .gt_two_val_uncert {
-  display: inline-block;
-  line-height: 1em;
-  text-align: right;
-  font-size: 60%;
-  vertical-align: -0.25em;
-  margin-left: 0.1em;
-}
-
 #bcekuceuya .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
@@ -412,178 +409,180 @@ Considere uma população com 150 árvores pertencente a um reflorestamento de M
   vertical-align: 0;
 }
 
-#bcekuceuya .gt_slash_mark {
-  font-size: 0.7em;
-  line-height: 0.7em;
-  vertical-align: 0.15em;
+#bcekuceuya .gt_indent_1 {
+  text-indent: 5px;
 }
 
-#bcekuceuya .gt_fraction_numerator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: 0.45em;
+#bcekuceuya .gt_indent_2 {
+  text-indent: 10px;
 }
 
-#bcekuceuya .gt_fraction_denominator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: -0.05em;
+#bcekuceuya .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#bcekuceuya .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#bcekuceuya .gt_indent_5 {
+  text-indent: 25px;
 }
 </style>
 <table class="gt_table">
   
   
   <tbody class="gt_table_body">
-    <tr><td class="gt_row gt_right">14.80</td>
-<td class="gt_row gt_right">12.26</td>
-<td class="gt_row gt_right">13.77</td>
-<td class="gt_row gt_right">14.28</td>
-<td class="gt_row gt_right">15.01</td>
-<td class="gt_row gt_right">12.83</td>
-<td class="gt_row gt_right">14.98</td>
-<td class="gt_row gt_right">14.77</td>
-<td class="gt_row gt_right">12.88</td>
-<td class="gt_row gt_right">13.77</td></tr>
-    <tr><td class="gt_row gt_right">11.59</td>
-<td class="gt_row gt_right">14.44</td>
-<td class="gt_row gt_right">12.52</td>
-<td class="gt_row gt_right">14.12</td>
-<td class="gt_row gt_right">10.44</td>
-<td class="gt_row gt_right">16.19</td>
-<td class="gt_row gt_right">13.59</td>
-<td class="gt_row gt_right">10.92</td>
-<td class="gt_row gt_right">11.42</td>
-<td class="gt_row gt_right">15.64</td></tr>
-    <tr><td class="gt_row gt_right">13.54</td>
-<td class="gt_row gt_right">10.87</td>
-<td class="gt_row gt_right">12.80</td>
-<td class="gt_row gt_right">16.48</td>
-<td class="gt_row gt_right">14.78</td>
-<td class="gt_row gt_right">15.31</td>
-<td class="gt_row gt_right">16.83</td>
-<td class="gt_row gt_right">14.69</td>
-<td class="gt_row gt_right">12.63</td>
-<td class="gt_row gt_right">13.09</td></tr>
-    <tr><td class="gt_row gt_right">12.79</td>
-<td class="gt_row gt_right">11.78</td>
-<td class="gt_row gt_right">10.94</td>
-<td class="gt_row gt_right">13.77</td>
-<td class="gt_row gt_right">13.48</td>
-<td class="gt_row gt_right">10.60</td>
-<td class="gt_row gt_right">13.00</td>
-<td class="gt_row gt_right">13.78</td>
-<td class="gt_row gt_right">12.38</td>
-<td class="gt_row gt_right">7.92</td></tr>
-    <tr><td class="gt_row gt_right">15.59</td>
-<td class="gt_row gt_right">11.02</td>
-<td class="gt_row gt_right">11.85</td>
-<td class="gt_row gt_right">13.50</td>
-<td class="gt_row gt_right">14.97</td>
-<td class="gt_row gt_right">13.49</td>
-<td class="gt_row gt_right">13.80</td>
-<td class="gt_row gt_right">15.21</td>
-<td class="gt_row gt_right">14.14</td>
-<td class="gt_row gt_right">12.22</td></tr>
-    <tr><td class="gt_row gt_right">11.46</td>
-<td class="gt_row gt_right">14.42</td>
-<td class="gt_row gt_right">13.32</td>
-<td class="gt_row gt_right">11.39</td>
-<td class="gt_row gt_right">14.55</td>
-<td class="gt_row gt_right">10.04</td>
-<td class="gt_row gt_right">15.13</td>
-<td class="gt_row gt_right">11.09</td>
-<td class="gt_row gt_right">12.05</td>
-<td class="gt_row gt_right">10.98</td></tr>
-    <tr><td class="gt_row gt_right">11.96</td>
-<td class="gt_row gt_right">10.78</td>
-<td class="gt_row gt_right">11.49</td>
-<td class="gt_row gt_right">11.80</td>
-<td class="gt_row gt_right">10.87</td>
-<td class="gt_row gt_right">12.91</td>
-<td class="gt_row gt_right">12.48</td>
-<td class="gt_row gt_right">10.34</td>
-<td class="gt_row gt_right">12.79</td>
-<td class="gt_row gt_right">11.73</td></tr>
-    <tr><td class="gt_row gt_right">10.84</td>
-<td class="gt_row gt_right">11.69</td>
-<td class="gt_row gt_right">13.78</td>
-<td class="gt_row gt_right">11.21</td>
-<td class="gt_row gt_right">15.16</td>
-<td class="gt_row gt_right">11.79</td>
-<td class="gt_row gt_right">11.96</td>
-<td class="gt_row gt_right">14.34</td>
-<td class="gt_row gt_right">13.63</td>
-<td class="gt_row gt_right">12.86</td></tr>
-    <tr><td class="gt_row gt_right">12.09</td>
-<td class="gt_row gt_right">10.36</td>
-<td class="gt_row gt_right">12.59</td>
-<td class="gt_row gt_right">16.02</td>
-<td class="gt_row gt_right">12.00</td>
-<td class="gt_row gt_right">14.24</td>
-<td class="gt_row gt_right">13.70</td>
-<td class="gt_row gt_right">12.09</td>
-<td class="gt_row gt_right">11.84</td>
-<td class="gt_row gt_right">9.86</td></tr>
-    <tr><td class="gt_row gt_right">12.75</td>
-<td class="gt_row gt_right">11.05</td>
-<td class="gt_row gt_right">15.00</td>
-<td class="gt_row gt_right">10.64</td>
-<td class="gt_row gt_right">12.89</td>
-<td class="gt_row gt_right">11.48</td>
-<td class="gt_row gt_right">13.89</td>
-<td class="gt_row gt_right">11.84</td>
-<td class="gt_row gt_right">11.95</td>
-<td class="gt_row gt_right">11.99</td></tr>
-    <tr><td class="gt_row gt_right">12.29</td>
-<td class="gt_row gt_right">15.57</td>
-<td class="gt_row gt_right">12.50</td>
-<td class="gt_row gt_right">15.84</td>
-<td class="gt_row gt_right">8.78</td>
-<td class="gt_row gt_right">11.29</td>
-<td class="gt_row gt_right">10.16</td>
-<td class="gt_row gt_right">11.65</td>
-<td class="gt_row gt_right">15.60</td>
-<td class="gt_row gt_right">14.07</td></tr>
-    <tr><td class="gt_row gt_right">11.61</td>
-<td class="gt_row gt_right">13.88</td>
-<td class="gt_row gt_right">13.47</td>
-<td class="gt_row gt_right">16.68</td>
-<td class="gt_row gt_right">12.91</td>
-<td class="gt_row gt_right">14.52</td>
-<td class="gt_row gt_right">15.55</td>
-<td class="gt_row gt_right">10.00</td>
-<td class="gt_row gt_right">13.76</td>
-<td class="gt_row gt_right">12.22</td></tr>
-    <tr><td class="gt_row gt_right">14.15</td>
-<td class="gt_row gt_right">14.57</td>
-<td class="gt_row gt_right">16.71</td>
-<td class="gt_row gt_right">13.46</td>
-<td class="gt_row gt_right">12.10</td>
-<td class="gt_row gt_right">11.36</td>
-<td class="gt_row gt_right">12.60</td>
-<td class="gt_row gt_right">13.33</td>
-<td class="gt_row gt_right">16.45</td>
-<td class="gt_row gt_right">9.80</td></tr>
-    <tr><td class="gt_row gt_right">14.87</td>
-<td class="gt_row gt_right">15.46</td>
-<td class="gt_row gt_right">15.38</td>
-<td class="gt_row gt_right">10.96</td>
-<td class="gt_row gt_right">13.91</td>
-<td class="gt_row gt_right">12.64</td>
-<td class="gt_row gt_right">14.39</td>
-<td class="gt_row gt_right">11.69</td>
-<td class="gt_row gt_right">11.05</td>
-<td class="gt_row gt_right">11.55</td></tr>
-    <tr><td class="gt_row gt_right">10.74</td>
-<td class="gt_row gt_right">14.46</td>
-<td class="gt_row gt_right">11.16</td>
-<td class="gt_row gt_right">12.49</td>
-<td class="gt_row gt_right">12.85</td>
-<td class="gt_row gt_right">14.55</td>
-<td class="gt_row gt_right">11.98</td>
-<td class="gt_row gt_right">14.24</td>
-<td class="gt_row gt_right">14.87</td>
-<td class="gt_row gt_right">11.13</td></tr>
+    <tr><td headers="...1" class="gt_row gt_right">14.80</td>
+<td headers="...2" class="gt_row gt_right">12.26</td>
+<td headers="...3" class="gt_row gt_right">13.77</td>
+<td headers="...4" class="gt_row gt_right">14.28</td>
+<td headers="...5" class="gt_row gt_right">15.01</td>
+<td headers="...6" class="gt_row gt_right">12.83</td>
+<td headers="...7" class="gt_row gt_right">14.98</td>
+<td headers="...8" class="gt_row gt_right">14.77</td>
+<td headers="...9" class="gt_row gt_right">12.88</td>
+<td headers="...10" class="gt_row gt_right">13.77</td></tr>
+    <tr><td headers="...1" class="gt_row gt_right">11.59</td>
+<td headers="...2" class="gt_row gt_right">14.44</td>
+<td headers="...3" class="gt_row gt_right">12.52</td>
+<td headers="...4" class="gt_row gt_right">14.12</td>
+<td headers="...5" class="gt_row gt_right">10.44</td>
+<td headers="...6" class="gt_row gt_right">16.19</td>
+<td headers="...7" class="gt_row gt_right">13.59</td>
+<td headers="...8" class="gt_row gt_right">10.92</td>
+<td headers="...9" class="gt_row gt_right">11.42</td>
+<td headers="...10" class="gt_row gt_right">15.64</td></tr>
+    <tr><td headers="...1" class="gt_row gt_right">13.54</td>
+<td headers="...2" class="gt_row gt_right">10.87</td>
+<td headers="...3" class="gt_row gt_right">12.80</td>
+<td headers="...4" class="gt_row gt_right">16.48</td>
+<td headers="...5" class="gt_row gt_right">14.78</td>
+<td headers="...6" class="gt_row gt_right">15.31</td>
+<td headers="...7" class="gt_row gt_right">16.83</td>
+<td headers="...8" class="gt_row gt_right">14.69</td>
+<td headers="...9" class="gt_row gt_right">12.63</td>
+<td headers="...10" class="gt_row gt_right">13.09</td></tr>
+    <tr><td headers="...1" class="gt_row gt_right">12.79</td>
+<td headers="...2" class="gt_row gt_right">11.78</td>
+<td headers="...3" class="gt_row gt_right">10.94</td>
+<td headers="...4" class="gt_row gt_right">13.77</td>
+<td headers="...5" class="gt_row gt_right">13.48</td>
+<td headers="...6" class="gt_row gt_right">10.60</td>
+<td headers="...7" class="gt_row gt_right">13.00</td>
+<td headers="...8" class="gt_row gt_right">13.78</td>
+<td headers="...9" class="gt_row gt_right">12.38</td>
+<td headers="...10" class="gt_row gt_right">7.92</td></tr>
+    <tr><td headers="...1" class="gt_row gt_right">15.59</td>
+<td headers="...2" class="gt_row gt_right">11.02</td>
+<td headers="...3" class="gt_row gt_right">11.85</td>
+<td headers="...4" class="gt_row gt_right">13.50</td>
+<td headers="...5" class="gt_row gt_right">14.97</td>
+<td headers="...6" class="gt_row gt_right">13.49</td>
+<td headers="...7" class="gt_row gt_right">13.80</td>
+<td headers="...8" class="gt_row gt_right">15.21</td>
+<td headers="...9" class="gt_row gt_right">14.14</td>
+<td headers="...10" class="gt_row gt_right">12.22</td></tr>
+    <tr><td headers="...1" class="gt_row gt_right">11.46</td>
+<td headers="...2" class="gt_row gt_right">14.42</td>
+<td headers="...3" class="gt_row gt_right">13.32</td>
+<td headers="...4" class="gt_row gt_right">11.39</td>
+<td headers="...5" class="gt_row gt_right">14.55</td>
+<td headers="...6" class="gt_row gt_right">10.04</td>
+<td headers="...7" class="gt_row gt_right">15.13</td>
+<td headers="...8" class="gt_row gt_right">11.09</td>
+<td headers="...9" class="gt_row gt_right">12.05</td>
+<td headers="...10" class="gt_row gt_right">10.98</td></tr>
+    <tr><td headers="...1" class="gt_row gt_right">11.96</td>
+<td headers="...2" class="gt_row gt_right">10.78</td>
+<td headers="...3" class="gt_row gt_right">11.49</td>
+<td headers="...4" class="gt_row gt_right">11.80</td>
+<td headers="...5" class="gt_row gt_right">10.87</td>
+<td headers="...6" class="gt_row gt_right">12.91</td>
+<td headers="...7" class="gt_row gt_right">12.48</td>
+<td headers="...8" class="gt_row gt_right">10.34</td>
+<td headers="...9" class="gt_row gt_right">12.79</td>
+<td headers="...10" class="gt_row gt_right">11.73</td></tr>
+    <tr><td headers="...1" class="gt_row gt_right">10.84</td>
+<td headers="...2" class="gt_row gt_right">11.69</td>
+<td headers="...3" class="gt_row gt_right">13.78</td>
+<td headers="...4" class="gt_row gt_right">11.21</td>
+<td headers="...5" class="gt_row gt_right">15.16</td>
+<td headers="...6" class="gt_row gt_right">11.79</td>
+<td headers="...7" class="gt_row gt_right">11.96</td>
+<td headers="...8" class="gt_row gt_right">14.34</td>
+<td headers="...9" class="gt_row gt_right">13.63</td>
+<td headers="...10" class="gt_row gt_right">12.86</td></tr>
+    <tr><td headers="...1" class="gt_row gt_right">12.09</td>
+<td headers="...2" class="gt_row gt_right">10.36</td>
+<td headers="...3" class="gt_row gt_right">12.59</td>
+<td headers="...4" class="gt_row gt_right">16.02</td>
+<td headers="...5" class="gt_row gt_right">12.00</td>
+<td headers="...6" class="gt_row gt_right">14.24</td>
+<td headers="...7" class="gt_row gt_right">13.70</td>
+<td headers="...8" class="gt_row gt_right">12.09</td>
+<td headers="...9" class="gt_row gt_right">11.84</td>
+<td headers="...10" class="gt_row gt_right">9.86</td></tr>
+    <tr><td headers="...1" class="gt_row gt_right">12.75</td>
+<td headers="...2" class="gt_row gt_right">11.05</td>
+<td headers="...3" class="gt_row gt_right">15.00</td>
+<td headers="...4" class="gt_row gt_right">10.64</td>
+<td headers="...5" class="gt_row gt_right">12.89</td>
+<td headers="...6" class="gt_row gt_right">11.48</td>
+<td headers="...7" class="gt_row gt_right">13.89</td>
+<td headers="...8" class="gt_row gt_right">11.84</td>
+<td headers="...9" class="gt_row gt_right">11.95</td>
+<td headers="...10" class="gt_row gt_right">11.99</td></tr>
+    <tr><td headers="...1" class="gt_row gt_right">12.29</td>
+<td headers="...2" class="gt_row gt_right">15.57</td>
+<td headers="...3" class="gt_row gt_right">12.50</td>
+<td headers="...4" class="gt_row gt_right">15.84</td>
+<td headers="...5" class="gt_row gt_right">8.78</td>
+<td headers="...6" class="gt_row gt_right">11.29</td>
+<td headers="...7" class="gt_row gt_right">10.16</td>
+<td headers="...8" class="gt_row gt_right">11.65</td>
+<td headers="...9" class="gt_row gt_right">15.60</td>
+<td headers="...10" class="gt_row gt_right">14.07</td></tr>
+    <tr><td headers="...1" class="gt_row gt_right">11.61</td>
+<td headers="...2" class="gt_row gt_right">13.88</td>
+<td headers="...3" class="gt_row gt_right">13.47</td>
+<td headers="...4" class="gt_row gt_right">16.68</td>
+<td headers="...5" class="gt_row gt_right">12.91</td>
+<td headers="...6" class="gt_row gt_right">14.52</td>
+<td headers="...7" class="gt_row gt_right">15.55</td>
+<td headers="...8" class="gt_row gt_right">10.00</td>
+<td headers="...9" class="gt_row gt_right">13.76</td>
+<td headers="...10" class="gt_row gt_right">12.22</td></tr>
+    <tr><td headers="...1" class="gt_row gt_right">14.15</td>
+<td headers="...2" class="gt_row gt_right">14.57</td>
+<td headers="...3" class="gt_row gt_right">16.71</td>
+<td headers="...4" class="gt_row gt_right">13.46</td>
+<td headers="...5" class="gt_row gt_right">12.10</td>
+<td headers="...6" class="gt_row gt_right">11.36</td>
+<td headers="...7" class="gt_row gt_right">12.60</td>
+<td headers="...8" class="gt_row gt_right">13.33</td>
+<td headers="...9" class="gt_row gt_right">16.45</td>
+<td headers="...10" class="gt_row gt_right">9.80</td></tr>
+    <tr><td headers="...1" class="gt_row gt_right">14.87</td>
+<td headers="...2" class="gt_row gt_right">15.46</td>
+<td headers="...3" class="gt_row gt_right">15.38</td>
+<td headers="...4" class="gt_row gt_right">10.96</td>
+<td headers="...5" class="gt_row gt_right">13.91</td>
+<td headers="...6" class="gt_row gt_right">12.64</td>
+<td headers="...7" class="gt_row gt_right">14.39</td>
+<td headers="...8" class="gt_row gt_right">11.69</td>
+<td headers="...9" class="gt_row gt_right">11.05</td>
+<td headers="...10" class="gt_row gt_right">11.55</td></tr>
+    <tr><td headers="...1" class="gt_row gt_right">10.74</td>
+<td headers="...2" class="gt_row gt_right">14.46</td>
+<td headers="...3" class="gt_row gt_right">11.16</td>
+<td headers="...4" class="gt_row gt_right">12.49</td>
+<td headers="...5" class="gt_row gt_right">12.85</td>
+<td headers="...6" class="gt_row gt_right">14.55</td>
+<td headers="...7" class="gt_row gt_right">11.98</td>
+<td headers="...8" class="gt_row gt_right">14.24</td>
+<td headers="...9" class="gt_row gt_right">14.87</td>
+<td headers="...10" class="gt_row gt_right">11.13</td></tr>
   </tbody>
   
   
@@ -717,7 +716,7 @@ sd(dap)
 
 ## Descrição de uma distribuição
 
-Qualquer conjunto de dados pode (e deve) ser descrito por meio dos resumos numéricos juntamente com a análise gráfica (Seção \@ref(graf_dist).
+Qualquer conjunto de dados pode (e deve) ser descrito por meio dos resumos numéricos juntamente com a análise gráfica (Seção \@ref(graf_dist)).
 
 Essa descrição visa também verificar a assimetria dos dados e a presença de valores discrepantes.
 

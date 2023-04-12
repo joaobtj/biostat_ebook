@@ -368,9 +368,9 @@ tk_proteina$emmeans %>% multcomp::cld(Letters = letters)
 ## Confidence level used: 0.95 
 ## P value adjustment: tukey method for comparing a family of 4 estimates 
 ## significance level used: alpha = 0.05 
-## NOTE: Compact letter displays can be misleading
-##       because they show NON-findings rather than findings.
-##       Consider using 'pairs()', 'pwpp()', or 'pwpm()' instead.
+## NOTE: If two or more means share the same grouping symbol,
+##       then we cannot show them to be different.
+##       But we also did not show them to be the same.
 ```
 
 ```r
@@ -429,9 +429,9 @@ tk_genotipo$emmeans %>% multcomp::cld(Letters = letters)
 ## Results are averaged over the levels of: proteina 
 ## Confidence level used: 0.95 
 ## significance level used: alpha = 0.05 
-## NOTE: Compact letter displays can be misleading
-##       because they show NON-findings rather than findings.
-##       Consider using 'pairs()', 'pwpp()', or 'pwpm()' instead.
+## NOTE: If two or more means share the same grouping symbol,
+##       then we cannot show them to be different.
+##       But we also did not show them to be the same.
 ```
 
 ```r
@@ -635,9 +635,9 @@ tk_nitrogenio$emmeans %>% multcomp::cld(Letters = letters)
 ## Confidence level used: 0.95 
 ## P value adjustment: tukey method for comparing a family of 3 estimates 
 ## significance level used: alpha = 0.05 
-## NOTE: Compact letter displays can be misleading
-##       because they show NON-findings rather than findings.
-##       Consider using 'pairs()', 'pwpp()', or 'pwpm()' instead.
+## NOTE: If two or more means share the same grouping symbol,
+##       then we cannot show them to be different.
+##       But we also did not show them to be the same.
 ```
 
 ```r
@@ -696,9 +696,9 @@ tk_genotipo$emmeans %>% multcomp::cld(Letters = letters)
 ## Results are averaged over the levels of: nitrogenio 
 ## Confidence level used: 0.95 
 ## significance level used: alpha = 0.05 
-## NOTE: Compact letter displays can be misleading
-##       because they show NON-findings rather than findings.
-##       Consider using 'pairs()', 'pwpp()', or 'pwpm()' instead.
+## NOTE: If two or more means share the same grouping symbol,
+##       then we cannot show them to be different.
+##       But we also did not show them to be the same.
 ```
 
 ```r
@@ -951,9 +951,9 @@ tk_variedade$emmeans %>% multcomp::cld(Letters = letters)
 ## Confidence level used: 0.95 
 ## P value adjustment: tukey method for comparing a family of 3 estimates 
 ## significance level used: alpha = 0.05 
-## NOTE: Compact letter displays can be misleading
-##       because they show NON-findings rather than findings.
-##       Consider using 'pairs()', 'pwpp()', or 'pwpm()' instead.
+## NOTE: If two or more means share the same grouping symbol,
+##       then we cannot show them to be different.
+##       But we also did not show them to be the same.
 ```
 
 ```r
@@ -1069,9 +1069,9 @@ tk_proteina$emmeans %>% multcomp::cld(Letters = letters)
 ## Confidence level used: 0.95 
 ## P value adjustment: tukey method for comparing a family of 3 estimates 
 ## significance level used: alpha = 0.05 
-## NOTE: Compact letter displays can be misleading
-##       because they show NON-findings rather than findings.
-##       Consider using 'pairs()', 'pwpp()', or 'pwpm()' instead.
+## NOTE: If two or more means share the same grouping symbol,
+##       then we cannot show them to be different.
+##       But we also did not show them to be the same.
 ```
 
 ```r

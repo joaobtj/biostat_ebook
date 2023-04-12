@@ -32,7 +32,7 @@ Suponha que retiremos 5 amostras aleatórias desta população com 8 indivíduos
 
 
 ```{=html}
-<div id="tjdigtdsnt" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="tjdigtdsnt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
@@ -72,6 +72,11 @@ Suponha que retiremos 5 amostras aleatórias desta população com 8 indivíduos
   border-right-style: none;
   border-right-width: 1px;
   border-right-color: #D3D3D3;
+}
+
+#tjdigtdsnt .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
 #tjdigtdsnt .gt_title {
@@ -194,6 +199,7 @@ Suponha que retiremos 5 amostras aleatórias desta população com 8 indivíduos
   border-right-width: 1px;
   border-right-color: #D3D3D3;
   vertical-align: middle;
+  text-align: left;
 }
 
 #tjdigtdsnt .gt_empty_group_heading {
@@ -405,15 +411,6 @@ Suponha que retiremos 5 amostras aleatórias desta população com 8 indivíduos
   font-size: 65%;
 }
 
-#tjdigtdsnt .gt_two_val_uncert {
-  display: inline-block;
-  line-height: 1em;
-  text-align: right;
-  font-size: 60%;
-  vertical-align: -0.25em;
-  margin-left: 0.1em;
-}
-
 #tjdigtdsnt .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
@@ -426,76 +423,78 @@ Suponha que retiremos 5 amostras aleatórias desta população com 8 indivíduos
   vertical-align: 0;
 }
 
-#tjdigtdsnt .gt_slash_mark {
-  font-size: 0.7em;
-  line-height: 0.7em;
-  vertical-align: 0.15em;
+#tjdigtdsnt .gt_indent_1 {
+  text-indent: 5px;
 }
 
-#tjdigtdsnt .gt_fraction_numerator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: 0.45em;
+#tjdigtdsnt .gt_indent_2 {
+  text-indent: 10px;
 }
 
-#tjdigtdsnt .gt_fraction_denominator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: -0.05em;
+#tjdigtdsnt .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#tjdigtdsnt .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#tjdigtdsnt .gt_indent_5 {
+  text-indent: 25px;
 }
 </style>
 <table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">am1</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">am2</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">am3</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">am4</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">am5</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="am1">am1</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="am2">am2</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="am3">am3</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="am4">am4</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="am5">am5</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
-    <tr><td class="gt_row gt_right">14.69</td>
-<td class="gt_row gt_right">15.31</td>
-<td class="gt_row gt_right">12.91</td>
-<td class="gt_row gt_right">12.88</td>
-<td class="gt_row gt_right">10.98</td></tr>
-    <tr><td class="gt_row gt_right">11.96</td>
-<td class="gt_row gt_right">11.78</td>
-<td class="gt_row gt_right">9.86</td>
-<td class="gt_row gt_right">14.57</td>
-<td class="gt_row gt_right">11.46</td></tr>
-    <tr><td class="gt_row gt_right">11.13</td>
-<td class="gt_row gt_right">14.55</td>
-<td class="gt_row gt_right">12.64</td>
-<td class="gt_row gt_right">14.80</td>
-<td class="gt_row gt_right">12.49</td></tr>
-    <tr><td class="gt_row gt_right">11.05</td>
-<td class="gt_row gt_right">14.97</td>
-<td class="gt_row gt_right">12.79</td>
-<td class="gt_row gt_right">14.14</td>
-<td class="gt_row gt_right">15.60</td></tr>
-    <tr><td class="gt_row gt_right">14.24</td>
-<td class="gt_row gt_right">13.77</td>
-<td class="gt_row gt_right">13.80</td>
-<td class="gt_row gt_right">11.80</td>
-<td class="gt_row gt_right">10.84</td></tr>
-    <tr><td class="gt_row gt_right">16.19</td>
-<td class="gt_row gt_right">15.64</td>
-<td class="gt_row gt_right">15.57</td>
-<td class="gt_row gt_right">12.52</td>
-<td class="gt_row gt_right">10.96</td></tr>
-    <tr><td class="gt_row gt_right">12.75</td>
-<td class="gt_row gt_right">7.92</td>
-<td class="gt_row gt_right">13.88</td>
-<td class="gt_row gt_right">12.50</td>
-<td class="gt_row gt_right">13.48</td></tr>
-    <tr><td class="gt_row gt_right">14.15</td>
-<td class="gt_row gt_right">13.09</td>
-<td class="gt_row gt_right">16.71</td>
-<td class="gt_row gt_right">12.09</td>
-<td class="gt_row gt_right">12.60</td></tr>
+    <tr><td headers="am1" class="gt_row gt_right">14.69</td>
+<td headers="am2" class="gt_row gt_right">15.31</td>
+<td headers="am3" class="gt_row gt_right">12.91</td>
+<td headers="am4" class="gt_row gt_right">12.88</td>
+<td headers="am5" class="gt_row gt_right">10.98</td></tr>
+    <tr><td headers="am1" class="gt_row gt_right">11.96</td>
+<td headers="am2" class="gt_row gt_right">11.78</td>
+<td headers="am3" class="gt_row gt_right">9.86</td>
+<td headers="am4" class="gt_row gt_right">14.57</td>
+<td headers="am5" class="gt_row gt_right">11.46</td></tr>
+    <tr><td headers="am1" class="gt_row gt_right">11.13</td>
+<td headers="am2" class="gt_row gt_right">14.55</td>
+<td headers="am3" class="gt_row gt_right">12.64</td>
+<td headers="am4" class="gt_row gt_right">14.80</td>
+<td headers="am5" class="gt_row gt_right">12.49</td></tr>
+    <tr><td headers="am1" class="gt_row gt_right">11.05</td>
+<td headers="am2" class="gt_row gt_right">14.97</td>
+<td headers="am3" class="gt_row gt_right">12.79</td>
+<td headers="am4" class="gt_row gt_right">14.14</td>
+<td headers="am5" class="gt_row gt_right">15.60</td></tr>
+    <tr><td headers="am1" class="gt_row gt_right">14.24</td>
+<td headers="am2" class="gt_row gt_right">13.77</td>
+<td headers="am3" class="gt_row gt_right">13.80</td>
+<td headers="am4" class="gt_row gt_right">11.80</td>
+<td headers="am5" class="gt_row gt_right">10.84</td></tr>
+    <tr><td headers="am1" class="gt_row gt_right">16.19</td>
+<td headers="am2" class="gt_row gt_right">15.64</td>
+<td headers="am3" class="gt_row gt_right">15.57</td>
+<td headers="am4" class="gt_row gt_right">12.52</td>
+<td headers="am5" class="gt_row gt_right">10.96</td></tr>
+    <tr><td headers="am1" class="gt_row gt_right">12.75</td>
+<td headers="am2" class="gt_row gt_right">7.92</td>
+<td headers="am3" class="gt_row gt_right">13.88</td>
+<td headers="am4" class="gt_row gt_right">12.50</td>
+<td headers="am5" class="gt_row gt_right">13.48</td></tr>
+    <tr><td headers="am1" class="gt_row gt_right">14.15</td>
+<td headers="am2" class="gt_row gt_right">13.09</td>
+<td headers="am3" class="gt_row gt_right">16.71</td>
+<td headers="am4" class="gt_row gt_right">12.09</td>
+<td headers="am5" class="gt_row gt_right">12.60</td></tr>
   </tbody>
   
   
@@ -549,7 +548,7 @@ Vamos supor que a amostra 1 tenha um efeito aditivo de +5 unidades no DAP. A amo
 
 
 ```{=html}
-<div id="xzcvtvieoo" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="xzcvtvieoo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
@@ -589,6 +588,11 @@ Vamos supor que a amostra 1 tenha um efeito aditivo de +5 unidades no DAP. A amo
   border-right-style: none;
   border-right-width: 1px;
   border-right-color: #D3D3D3;
+}
+
+#xzcvtvieoo .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
 #xzcvtvieoo .gt_title {
@@ -711,6 +715,7 @@ Vamos supor que a amostra 1 tenha um efeito aditivo de +5 unidades no DAP. A amo
   border-right-width: 1px;
   border-right-color: #D3D3D3;
   vertical-align: middle;
+  text-align: left;
 }
 
 #xzcvtvieoo .gt_empty_group_heading {
@@ -922,15 +927,6 @@ Vamos supor que a amostra 1 tenha um efeito aditivo de +5 unidades no DAP. A amo
   font-size: 65%;
 }
 
-#xzcvtvieoo .gt_two_val_uncert {
-  display: inline-block;
-  line-height: 1em;
-  text-align: right;
-  font-size: 60%;
-  vertical-align: -0.25em;
-  margin-left: 0.1em;
-}
-
 #xzcvtvieoo .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
@@ -943,76 +939,78 @@ Vamos supor que a amostra 1 tenha um efeito aditivo de +5 unidades no DAP. A amo
   vertical-align: 0;
 }
 
-#xzcvtvieoo .gt_slash_mark {
-  font-size: 0.7em;
-  line-height: 0.7em;
-  vertical-align: 0.15em;
+#xzcvtvieoo .gt_indent_1 {
+  text-indent: 5px;
 }
 
-#xzcvtvieoo .gt_fraction_numerator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: 0.45em;
+#xzcvtvieoo .gt_indent_2 {
+  text-indent: 10px;
 }
 
-#xzcvtvieoo .gt_fraction_denominator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: -0.05em;
+#xzcvtvieoo .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#xzcvtvieoo .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#xzcvtvieoo .gt_indent_5 {
+  text-indent: 25px;
 }
 </style>
 <table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">am1</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">am2</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">am3</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">am4</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">am5</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="am1">am1</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="am2">am2</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="am3">am3</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="am4">am4</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="am5">am5</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
-    <tr><td class="gt_row gt_right">19.69</td>
-<td class="gt_row gt_right">10.31</td>
-<td class="gt_row gt_right">15.91</td>
-<td class="gt_row gt_right">14.88</td>
-<td class="gt_row gt_right">10.98</td></tr>
-    <tr><td class="gt_row gt_right">16.96</td>
-<td class="gt_row gt_right">6.78</td>
-<td class="gt_row gt_right">12.86</td>
-<td class="gt_row gt_right">16.57</td>
-<td class="gt_row gt_right">11.46</td></tr>
-    <tr><td class="gt_row gt_right">16.13</td>
-<td class="gt_row gt_right">9.55</td>
-<td class="gt_row gt_right">15.64</td>
-<td class="gt_row gt_right">16.80</td>
-<td class="gt_row gt_right">12.49</td></tr>
-    <tr><td class="gt_row gt_right">16.05</td>
-<td class="gt_row gt_right">9.97</td>
-<td class="gt_row gt_right">15.79</td>
-<td class="gt_row gt_right">16.14</td>
-<td class="gt_row gt_right">15.60</td></tr>
-    <tr><td class="gt_row gt_right">19.24</td>
-<td class="gt_row gt_right">8.77</td>
-<td class="gt_row gt_right">16.80</td>
-<td class="gt_row gt_right">13.80</td>
-<td class="gt_row gt_right">10.84</td></tr>
-    <tr><td class="gt_row gt_right">21.19</td>
-<td class="gt_row gt_right">10.64</td>
-<td class="gt_row gt_right">18.57</td>
-<td class="gt_row gt_right">14.52</td>
-<td class="gt_row gt_right">10.96</td></tr>
-    <tr><td class="gt_row gt_right">17.75</td>
-<td class="gt_row gt_right">2.92</td>
-<td class="gt_row gt_right">16.88</td>
-<td class="gt_row gt_right">14.50</td>
-<td class="gt_row gt_right">13.48</td></tr>
-    <tr><td class="gt_row gt_right">19.15</td>
-<td class="gt_row gt_right">8.09</td>
-<td class="gt_row gt_right">19.71</td>
-<td class="gt_row gt_right">14.09</td>
-<td class="gt_row gt_right">12.60</td></tr>
+    <tr><td headers="am1" class="gt_row gt_right">19.69</td>
+<td headers="am2" class="gt_row gt_right">10.31</td>
+<td headers="am3" class="gt_row gt_right">15.91</td>
+<td headers="am4" class="gt_row gt_right">14.88</td>
+<td headers="am5" class="gt_row gt_right">10.98</td></tr>
+    <tr><td headers="am1" class="gt_row gt_right">16.96</td>
+<td headers="am2" class="gt_row gt_right">6.78</td>
+<td headers="am3" class="gt_row gt_right">12.86</td>
+<td headers="am4" class="gt_row gt_right">16.57</td>
+<td headers="am5" class="gt_row gt_right">11.46</td></tr>
+    <tr><td headers="am1" class="gt_row gt_right">16.13</td>
+<td headers="am2" class="gt_row gt_right">9.55</td>
+<td headers="am3" class="gt_row gt_right">15.64</td>
+<td headers="am4" class="gt_row gt_right">16.80</td>
+<td headers="am5" class="gt_row gt_right">12.49</td></tr>
+    <tr><td headers="am1" class="gt_row gt_right">16.05</td>
+<td headers="am2" class="gt_row gt_right">9.97</td>
+<td headers="am3" class="gt_row gt_right">15.79</td>
+<td headers="am4" class="gt_row gt_right">16.14</td>
+<td headers="am5" class="gt_row gt_right">15.60</td></tr>
+    <tr><td headers="am1" class="gt_row gt_right">19.24</td>
+<td headers="am2" class="gt_row gt_right">8.77</td>
+<td headers="am3" class="gt_row gt_right">16.80</td>
+<td headers="am4" class="gt_row gt_right">13.80</td>
+<td headers="am5" class="gt_row gt_right">10.84</td></tr>
+    <tr><td headers="am1" class="gt_row gt_right">21.19</td>
+<td headers="am2" class="gt_row gt_right">10.64</td>
+<td headers="am3" class="gt_row gt_right">18.57</td>
+<td headers="am4" class="gt_row gt_right">14.52</td>
+<td headers="am5" class="gt_row gt_right">10.96</td></tr>
+    <tr><td headers="am1" class="gt_row gt_right">17.75</td>
+<td headers="am2" class="gt_row gt_right">2.92</td>
+<td headers="am3" class="gt_row gt_right">16.88</td>
+<td headers="am4" class="gt_row gt_right">14.50</td>
+<td headers="am5" class="gt_row gt_right">13.48</td></tr>
+    <tr><td headers="am1" class="gt_row gt_right">19.15</td>
+<td headers="am2" class="gt_row gt_right">8.09</td>
+<td headers="am3" class="gt_row gt_right">19.71</td>
+<td headers="am4" class="gt_row gt_right">14.09</td>
+<td headers="am5" class="gt_row gt_right">12.60</td></tr>
   </tbody>
   
   
@@ -1390,7 +1388,7 @@ dn_remedio$emmeans %>% plot()
 
 
 ```{=html}
-<div id="rxtmvrczhz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="rxtmvrczhz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
@@ -1430,6 +1428,11 @@ dn_remedio$emmeans %>% plot()
   border-right-style: none;
   border-right-width: 1px;
   border-right-color: #D3D3D3;
+}
+
+#rxtmvrczhz .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
 #rxtmvrczhz .gt_title {
@@ -1552,6 +1555,7 @@ dn_remedio$emmeans %>% plot()
   border-right-width: 1px;
   border-right-color: #D3D3D3;
   vertical-align: middle;
+  text-align: left;
 }
 
 #rxtmvrczhz .gt_empty_group_heading {
@@ -1763,15 +1767,6 @@ dn_remedio$emmeans %>% plot()
   font-size: 65%;
 }
 
-#rxtmvrczhz .gt_two_val_uncert {
-  display: inline-block;
-  line-height: 1em;
-  text-align: right;
-  font-size: 60%;
-  vertical-align: -0.25em;
-  margin-left: 0.1em;
-}
-
 #rxtmvrczhz .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
@@ -1784,22 +1779,24 @@ dn_remedio$emmeans %>% plot()
   vertical-align: 0;
 }
 
-#rxtmvrczhz .gt_slash_mark {
-  font-size: 0.7em;
-  line-height: 0.7em;
-  vertical-align: 0.15em;
+#rxtmvrczhz .gt_indent_1 {
+  text-indent: 5px;
 }
 
-#rxtmvrczhz .gt_fraction_numerator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: 0.45em;
+#rxtmvrczhz .gt_indent_2 {
+  text-indent: 10px;
 }
 
-#rxtmvrczhz .gt_fraction_denominator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: -0.05em;
+#rxtmvrczhz .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#rxtmvrczhz .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#rxtmvrczhz .gt_indent_5 {
+  text-indent: 25px;
 }
 </style>
 <table class="gt_table" style="table-layout: fixed;; width: 0px">
@@ -1810,33 +1807,33 @@ dn_remedio$emmeans %>% plot()
   </colgroup>
   <thead class="gt_header">
     <tr>
-      <th colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Tabela X. Tempo de cicatrização médio (dias) para uma profunda ferida cirúrgica tratada com remédios homeopáticos.</th>
+      <td colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Tabela X. Tempo de cicatrização médio (dias) para uma profunda ferida cirúrgica tratada com remédios homeopáticos.</td>
     </tr>
     
   </thead>
   <thead class="gt_col_headings">
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Remédio</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Tempo de Cicatrização (dias)</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Remédio">Remédio</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Tempo de Cicatrização (dias)">Tempo de Cicatrização (dias)</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=""></th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
-    <tr><td class="gt_row gt_left">Arnica-alta</td>
-<td class="gt_row gt_center">15.67</td>
-<td class="gt_row gt_left">*</td></tr>
-    <tr><td class="gt_row gt_left">Arnica-baixa</td>
-<td class="gt_row gt_center">15.47</td>
-<td class="gt_row gt_left">*</td></tr>
-    <tr><td class="gt_row gt_left">Estafisagria-alta</td>
-<td class="gt_row gt_center">15.60</td>
-<td class="gt_row gt_left">*</td></tr>
-    <tr><td class="gt_row gt_left">Estafisagria-baixa</td>
-<td class="gt_row gt_center">15.80</td>
-<td class="gt_row gt_left">*</td></tr>
-    <tr><td class="gt_row gt_left">Placebo</td>
-<td class="gt_row gt_center">21.33</td>
-<td class="gt_row gt_left"></td></tr>
+    <tr><td headers="remedio" class="gt_row gt_left">Arnica-alta</td>
+<td headers="emmean" class="gt_row gt_center">15.67</td>
+<td headers="g" class="gt_row gt_left">*</td></tr>
+    <tr><td headers="remedio" class="gt_row gt_left">Arnica-baixa</td>
+<td headers="emmean" class="gt_row gt_center">15.47</td>
+<td headers="g" class="gt_row gt_left">*</td></tr>
+    <tr><td headers="remedio" class="gt_row gt_left">Estafisagria-alta</td>
+<td headers="emmean" class="gt_row gt_center">15.60</td>
+<td headers="g" class="gt_row gt_left">*</td></tr>
+    <tr><td headers="remedio" class="gt_row gt_left">Estafisagria-baixa</td>
+<td headers="emmean" class="gt_row gt_center">15.80</td>
+<td headers="g" class="gt_row gt_left">*</td></tr>
+    <tr><td headers="remedio" class="gt_row gt_left">Placebo</td>
+<td headers="emmean" class="gt_row gt_center">21.33</td>
+<td headers="g" class="gt_row gt_left"></td></tr>
   </tbody>
   
   <tfoot class="gt_footnotes">
@@ -1921,9 +1918,9 @@ tk_especie$emmeans %>% multcomp::cld(Letters = letters)
 ## Confidence level used: 0.95 
 ## P value adjustment: tukey method for comparing a family of 3 estimates 
 ## significance level used: alpha = 0.05 
-## NOTE: Compact letter displays can be misleading
-##       because they show NON-findings rather than findings.
-##       Consider using 'pairs()', 'pwpp()', or 'pwpm()' instead.
+## NOTE: If two or more means share the same grouping symbol,
+##       then we cannot show them to be different.
+##       But we also did not show them to be the same.
 ```
 
 ```r
@@ -1938,7 +1935,7 @@ A Tabela abaixo mostra um exemplo de como os resultados do teste podem ser apres
 
 
 ```{=html}
-<div id="mmfxgbiela" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="mmfxgbiela" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
@@ -1978,6 +1975,11 @@ A Tabela abaixo mostra um exemplo de como os resultados do teste podem ser apres
   border-right-style: none;
   border-right-width: 1px;
   border-right-color: #D3D3D3;
+}
+
+#mmfxgbiela .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
 #mmfxgbiela .gt_title {
@@ -2100,6 +2102,7 @@ A Tabela abaixo mostra um exemplo de como os resultados do teste podem ser apres
   border-right-width: 1px;
   border-right-color: #D3D3D3;
   vertical-align: middle;
+  text-align: left;
 }
 
 #mmfxgbiela .gt_empty_group_heading {
@@ -2311,15 +2314,6 @@ A Tabela abaixo mostra um exemplo de como os resultados do teste podem ser apres
   font-size: 65%;
 }
 
-#mmfxgbiela .gt_two_val_uncert {
-  display: inline-block;
-  line-height: 1em;
-  text-align: right;
-  font-size: 60%;
-  vertical-align: -0.25em;
-  margin-left: 0.1em;
-}
-
 #mmfxgbiela .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
@@ -2332,22 +2326,24 @@ A Tabela abaixo mostra um exemplo de como os resultados do teste podem ser apres
   vertical-align: 0;
 }
 
-#mmfxgbiela .gt_slash_mark {
-  font-size: 0.7em;
-  line-height: 0.7em;
-  vertical-align: 0.15em;
+#mmfxgbiela .gt_indent_1 {
+  text-indent: 5px;
 }
 
-#mmfxgbiela .gt_fraction_numerator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: 0.45em;
+#mmfxgbiela .gt_indent_2 {
+  text-indent: 10px;
 }
 
-#mmfxgbiela .gt_fraction_denominator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: -0.05em;
+#mmfxgbiela .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#mmfxgbiela .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#mmfxgbiela .gt_indent_5 {
+  text-indent: 25px;
 }
 </style>
 <table class="gt_table" style="table-layout: fixed;; width: 0px">
@@ -2358,27 +2354,27 @@ A Tabela abaixo mostra um exemplo de como os resultados do teste podem ser apres
   </colgroup>
   <thead class="gt_header">
     <tr>
-      <th colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Tabela X. Comprimento médio (mm) de flores de três espécies do gênero <em>Heliconia</em>.</th>
+      <td colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Tabela X. Comprimento médio (mm) de flores de três espécies do gênero <em>Heliconia</em>.</td>
     </tr>
     
   </thead>
   <thead class="gt_col_headings">
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Espécie</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Comprimento (mm)</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Espécie">Espécie</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Comprimento (mm)">Comprimento (mm)</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=""></th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
-    <tr><td class="gt_row gt_left">Hb</td>
-<td class="gt_row gt_center">47.60</td>
-<td class="gt_row gt_left"> a  </td></tr>
-    <tr><td class="gt_row gt_left">Hca</td>
-<td class="gt_row gt_center">36.18</td>
-<td class="gt_row gt_left">  b </td></tr>
-    <tr><td class="gt_row gt_left">Hcv</td>
-<td class="gt_row gt_center">39.71</td>
-<td class="gt_row gt_left">   c</td></tr>
+    <tr><td headers="especie" class="gt_row gt_left">Hb</td>
+<td headers="emmean" class="gt_row gt_center">47.60</td>
+<td headers="g" class="gt_row gt_left"> a  </td></tr>
+    <tr><td headers="especie" class="gt_row gt_left">Hca</td>
+<td headers="emmean" class="gt_row gt_center">36.18</td>
+<td headers="g" class="gt_row gt_left">  b </td></tr>
+    <tr><td headers="especie" class="gt_row gt_left">Hcv</td>
+<td headers="emmean" class="gt_row gt_center">39.71</td>
+<td headers="g" class="gt_row gt_left">   c</td></tr>
   </tbody>
   
   <tfoot class="gt_footnotes">

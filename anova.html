@@ -7,7 +7,7 @@
 <title>Capítulo 10 Análise de Variância | Bioestatística aplicada aos ecossistemas agrícolas e naturais</title>
 <meta name="author" content="João B. Tolentino Jr.">
 <meta name="description" content="Os procedimentos t de duas amostras comparam as médias de duas populações ou as respostas médias a dois tratamentos em um experimento. Naturalmente, os estudos nem sempre comparam apenas dois...">
-<meta name="generator" content="bookdown 0.27 with bs4_book()">
+<meta name="generator" content="bookdown 0.33 with bs4_book()">
 <meta property="og:title" content="Capítulo 10 Análise de Variância | Bioestatística aplicada aos ecossistemas agrícolas e naturais">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://biostat.tolentino.pro.br/anova.html">
@@ -17,15 +17,15 @@
 <meta name="twitter:description" content="Os procedimentos t de duas amostras comparam as médias de duas populações ou as respostas médias a dois tratamentos em um experimento. Naturalmente, os estudos nem sempre comparam apenas dois...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Montserrat-0.4.1/font.css" rel="stylesheet">
-<link href="libs/_Signika-0.4.1/font.css" rel="stylesheet">
-<script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Montserrat-0.4.5/font.css" rel="stylesheet">
+<link href="libs/Signika-0.4.5/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
 <script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="libs/datatables-binding-0.23/datatables.js"></script><link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet">
-<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+<script src="libs/datatables-binding-0.27/datatables.js"></script><link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
@@ -125,7 +125,7 @@
 </h2>
 <p>Considere a população com 150 árvores pertencente a um reflorestamento de Mogno Africano (Capítulo 6).</p>
 <p>Suponha que retiremos 5 amostras aleatórias desta população com 8 indivíduos em cada amostra.</p>
-<div id="tjdigtdsnt" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="tjdigtdsnt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
@@ -165,6 +165,11 @@
   border-right-style: none;
   border-right-width: 1px;
   border-right-color: #D3D3D3;
+}
+
+#tjdigtdsnt .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
 #tjdigtdsnt .gt_title {
@@ -287,6 +292,7 @@
   border-right-width: 1px;
   border-right-color: #D3D3D3;
   vertical-align: middle;
+  text-align: left;
 }
 
 #tjdigtdsnt .gt_empty_group_heading {
@@ -498,15 +504,6 @@
   font-size: 65%;
 }
 
-#tjdigtdsnt .gt_two_val_uncert {
-  display: inline-block;
-  line-height: 1em;
-  text-align: right;
-  font-size: 60%;
-  vertical-align: -0.25em;
-  margin-left: 0.1em;
-}
-
 #tjdigtdsnt .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
@@ -519,95 +516,97 @@
   vertical-align: 0;
 }
 
-#tjdigtdsnt .gt_slash_mark {
-  font-size: 0.7em;
-  line-height: 0.7em;
-  vertical-align: 0.15em;
+#tjdigtdsnt .gt_indent_1 {
+  text-indent: 5px;
 }
 
-#tjdigtdsnt .gt_fraction_numerator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: 0.45em;
+#tjdigtdsnt .gt_indent_2 {
+  text-indent: 10px;
 }
 
-#tjdigtdsnt .gt_fraction_denominator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: -0.05em;
+#tjdigtdsnt .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#tjdigtdsnt .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#tjdigtdsnt .gt_indent_5 {
+  text-indent: 25px;
 }
 </style>
 <div class="inline-table"><table class="gt_table">
 <thead class="gt_col_headings"><tr>
-<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">am1</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">am2</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">am3</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">am4</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">am5</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="am1">am1</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="am2">am2</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="am3">am3</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="am4">am4</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="am5">am5</th>
     </tr></thead>
 <tbody class="gt_table_body">
 <tr>
-<td class="gt_row gt_right">14.69</td>
-<td class="gt_row gt_right">15.31</td>
-<td class="gt_row gt_right">12.91</td>
-<td class="gt_row gt_right">12.88</td>
-<td class="gt_row gt_right">10.98</td>
+<td headers="am1" class="gt_row gt_right">14.69</td>
+<td headers="am2" class="gt_row gt_right">15.31</td>
+<td headers="am3" class="gt_row gt_right">12.91</td>
+<td headers="am4" class="gt_row gt_right">12.88</td>
+<td headers="am5" class="gt_row gt_right">10.98</td>
 </tr>
 <tr>
-<td class="gt_row gt_right">11.96</td>
-<td class="gt_row gt_right">11.78</td>
-<td class="gt_row gt_right">9.86</td>
-<td class="gt_row gt_right">14.57</td>
-<td class="gt_row gt_right">11.46</td>
+<td headers="am1" class="gt_row gt_right">11.96</td>
+<td headers="am2" class="gt_row gt_right">11.78</td>
+<td headers="am3" class="gt_row gt_right">9.86</td>
+<td headers="am4" class="gt_row gt_right">14.57</td>
+<td headers="am5" class="gt_row gt_right">11.46</td>
 </tr>
 <tr>
-<td class="gt_row gt_right">11.13</td>
-<td class="gt_row gt_right">14.55</td>
-<td class="gt_row gt_right">12.64</td>
-<td class="gt_row gt_right">14.80</td>
-<td class="gt_row gt_right">12.49</td>
+<td headers="am1" class="gt_row gt_right">11.13</td>
+<td headers="am2" class="gt_row gt_right">14.55</td>
+<td headers="am3" class="gt_row gt_right">12.64</td>
+<td headers="am4" class="gt_row gt_right">14.80</td>
+<td headers="am5" class="gt_row gt_right">12.49</td>
 </tr>
 <tr>
-<td class="gt_row gt_right">11.05</td>
-<td class="gt_row gt_right">14.97</td>
-<td class="gt_row gt_right">12.79</td>
-<td class="gt_row gt_right">14.14</td>
-<td class="gt_row gt_right">15.60</td>
+<td headers="am1" class="gt_row gt_right">11.05</td>
+<td headers="am2" class="gt_row gt_right">14.97</td>
+<td headers="am3" class="gt_row gt_right">12.79</td>
+<td headers="am4" class="gt_row gt_right">14.14</td>
+<td headers="am5" class="gt_row gt_right">15.60</td>
 </tr>
 <tr>
-<td class="gt_row gt_right">14.24</td>
-<td class="gt_row gt_right">13.77</td>
-<td class="gt_row gt_right">13.80</td>
-<td class="gt_row gt_right">11.80</td>
-<td class="gt_row gt_right">10.84</td>
+<td headers="am1" class="gt_row gt_right">14.24</td>
+<td headers="am2" class="gt_row gt_right">13.77</td>
+<td headers="am3" class="gt_row gt_right">13.80</td>
+<td headers="am4" class="gt_row gt_right">11.80</td>
+<td headers="am5" class="gt_row gt_right">10.84</td>
 </tr>
 <tr>
-<td class="gt_row gt_right">16.19</td>
-<td class="gt_row gt_right">15.64</td>
-<td class="gt_row gt_right">15.57</td>
-<td class="gt_row gt_right">12.52</td>
-<td class="gt_row gt_right">10.96</td>
+<td headers="am1" class="gt_row gt_right">16.19</td>
+<td headers="am2" class="gt_row gt_right">15.64</td>
+<td headers="am3" class="gt_row gt_right">15.57</td>
+<td headers="am4" class="gt_row gt_right">12.52</td>
+<td headers="am5" class="gt_row gt_right">10.96</td>
 </tr>
 <tr>
-<td class="gt_row gt_right">12.75</td>
-<td class="gt_row gt_right">7.92</td>
-<td class="gt_row gt_right">13.88</td>
-<td class="gt_row gt_right">12.50</td>
-<td class="gt_row gt_right">13.48</td>
+<td headers="am1" class="gt_row gt_right">12.75</td>
+<td headers="am2" class="gt_row gt_right">7.92</td>
+<td headers="am3" class="gt_row gt_right">13.88</td>
+<td headers="am4" class="gt_row gt_right">12.50</td>
+<td headers="am5" class="gt_row gt_right">13.48</td>
 </tr>
 <tr>
-<td class="gt_row gt_right">14.15</td>
-<td class="gt_row gt_right">13.09</td>
-<td class="gt_row gt_right">16.71</td>
-<td class="gt_row gt_right">12.09</td>
-<td class="gt_row gt_right">12.60</td>
+<td headers="am1" class="gt_row gt_right">14.15</td>
+<td headers="am2" class="gt_row gt_right">13.09</td>
+<td headers="am3" class="gt_row gt_right">16.71</td>
+<td headers="am4" class="gt_row gt_right">12.09</td>
+<td headers="am5" class="gt_row gt_right">12.60</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <p>Estes dados podem ser encontrados no arquivo <a href="data/dap5.csv">dap5.csv</a></p>
 <p>Uma Análise de Variância pode ser executada com as funções <code>lm</code> e <code>anova</code>, como a seguir:</p>
-<div class="sourceCode" id="cb205"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb206"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aov_dap5</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">dap</span> <span class="op">~</span> <span class="va">amostra</span>, data <span class="op">=</span> <span class="va">dap5</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="va">aov_dap5</span><span class="op">)</span></span></code></pre></div>
@@ -624,7 +623,7 @@
 <p>A priori, sabemos que as cinco amostras foram aleatoriamente retiradas da mesma população. Logo, o teste F da Análise de Variância é não significativo (como esperado). Seu p-valor foi de 0.73 e, por isso, não rejeitamos a hipótese H<sub>0</sub>, ou seja, não há evidências que os diâmetros médios das amostras sejam diferentes ou que venham de populações diferentes.</p>
 <p>Mas o que occoreria se houvesse um efeito aditivo em cada uma das amostras?
 Vamos supor que a amostra 1 tenha um efeito aditivo de +5 unidades no DAP. A amostra 2 de -5, a amostra 3 de +3, a amostra 4 de +2 e, por fim, a amostra 5 não tenha nenhum efeito aditivo. O resultado é este mostrado no arquivo <a href="data/dap5p.csv">dap5p.csv</a></p>
-<div id="xzcvtvieoo" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="xzcvtvieoo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
@@ -664,6 +663,11 @@ Vamos supor que a amostra 1 tenha um efeito aditivo de +5 unidades no DAP. A amo
   border-right-style: none;
   border-right-width: 1px;
   border-right-color: #D3D3D3;
+}
+
+#xzcvtvieoo .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
 #xzcvtvieoo .gt_title {
@@ -786,6 +790,7 @@ Vamos supor que a amostra 1 tenha um efeito aditivo de +5 unidades no DAP. A amo
   border-right-width: 1px;
   border-right-color: #D3D3D3;
   vertical-align: middle;
+  text-align: left;
 }
 
 #xzcvtvieoo .gt_empty_group_heading {
@@ -997,15 +1002,6 @@ Vamos supor que a amostra 1 tenha um efeito aditivo de +5 unidades no DAP. A amo
   font-size: 65%;
 }
 
-#xzcvtvieoo .gt_two_val_uncert {
-  display: inline-block;
-  line-height: 1em;
-  text-align: right;
-  font-size: 60%;
-  vertical-align: -0.25em;
-  margin-left: 0.1em;
-}
-
 #xzcvtvieoo .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
@@ -1018,94 +1014,96 @@ Vamos supor que a amostra 1 tenha um efeito aditivo de +5 unidades no DAP. A amo
   vertical-align: 0;
 }
 
-#xzcvtvieoo .gt_slash_mark {
-  font-size: 0.7em;
-  line-height: 0.7em;
-  vertical-align: 0.15em;
+#xzcvtvieoo .gt_indent_1 {
+  text-indent: 5px;
 }
 
-#xzcvtvieoo .gt_fraction_numerator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: 0.45em;
+#xzcvtvieoo .gt_indent_2 {
+  text-indent: 10px;
 }
 
-#xzcvtvieoo .gt_fraction_denominator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: -0.05em;
+#xzcvtvieoo .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#xzcvtvieoo .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#xzcvtvieoo .gt_indent_5 {
+  text-indent: 25px;
 }
 </style>
 <div class="inline-table"><table class="gt_table">
 <thead class="gt_col_headings"><tr>
-<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">am1</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">am2</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">am3</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">am4</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">am5</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="am1">am1</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="am2">am2</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="am3">am3</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="am4">am4</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="am5">am5</th>
     </tr></thead>
 <tbody class="gt_table_body">
 <tr>
-<td class="gt_row gt_right">19.69</td>
-<td class="gt_row gt_right">10.31</td>
-<td class="gt_row gt_right">15.91</td>
-<td class="gt_row gt_right">14.88</td>
-<td class="gt_row gt_right">10.98</td>
+<td headers="am1" class="gt_row gt_right">19.69</td>
+<td headers="am2" class="gt_row gt_right">10.31</td>
+<td headers="am3" class="gt_row gt_right">15.91</td>
+<td headers="am4" class="gt_row gt_right">14.88</td>
+<td headers="am5" class="gt_row gt_right">10.98</td>
 </tr>
 <tr>
-<td class="gt_row gt_right">16.96</td>
-<td class="gt_row gt_right">6.78</td>
-<td class="gt_row gt_right">12.86</td>
-<td class="gt_row gt_right">16.57</td>
-<td class="gt_row gt_right">11.46</td>
+<td headers="am1" class="gt_row gt_right">16.96</td>
+<td headers="am2" class="gt_row gt_right">6.78</td>
+<td headers="am3" class="gt_row gt_right">12.86</td>
+<td headers="am4" class="gt_row gt_right">16.57</td>
+<td headers="am5" class="gt_row gt_right">11.46</td>
 </tr>
 <tr>
-<td class="gt_row gt_right">16.13</td>
-<td class="gt_row gt_right">9.55</td>
-<td class="gt_row gt_right">15.64</td>
-<td class="gt_row gt_right">16.80</td>
-<td class="gt_row gt_right">12.49</td>
+<td headers="am1" class="gt_row gt_right">16.13</td>
+<td headers="am2" class="gt_row gt_right">9.55</td>
+<td headers="am3" class="gt_row gt_right">15.64</td>
+<td headers="am4" class="gt_row gt_right">16.80</td>
+<td headers="am5" class="gt_row gt_right">12.49</td>
 </tr>
 <tr>
-<td class="gt_row gt_right">16.05</td>
-<td class="gt_row gt_right">9.97</td>
-<td class="gt_row gt_right">15.79</td>
-<td class="gt_row gt_right">16.14</td>
-<td class="gt_row gt_right">15.60</td>
+<td headers="am1" class="gt_row gt_right">16.05</td>
+<td headers="am2" class="gt_row gt_right">9.97</td>
+<td headers="am3" class="gt_row gt_right">15.79</td>
+<td headers="am4" class="gt_row gt_right">16.14</td>
+<td headers="am5" class="gt_row gt_right">15.60</td>
 </tr>
 <tr>
-<td class="gt_row gt_right">19.24</td>
-<td class="gt_row gt_right">8.77</td>
-<td class="gt_row gt_right">16.80</td>
-<td class="gt_row gt_right">13.80</td>
-<td class="gt_row gt_right">10.84</td>
+<td headers="am1" class="gt_row gt_right">19.24</td>
+<td headers="am2" class="gt_row gt_right">8.77</td>
+<td headers="am3" class="gt_row gt_right">16.80</td>
+<td headers="am4" class="gt_row gt_right">13.80</td>
+<td headers="am5" class="gt_row gt_right">10.84</td>
 </tr>
 <tr>
-<td class="gt_row gt_right">21.19</td>
-<td class="gt_row gt_right">10.64</td>
-<td class="gt_row gt_right">18.57</td>
-<td class="gt_row gt_right">14.52</td>
-<td class="gt_row gt_right">10.96</td>
+<td headers="am1" class="gt_row gt_right">21.19</td>
+<td headers="am2" class="gt_row gt_right">10.64</td>
+<td headers="am3" class="gt_row gt_right">18.57</td>
+<td headers="am4" class="gt_row gt_right">14.52</td>
+<td headers="am5" class="gt_row gt_right">10.96</td>
 </tr>
 <tr>
-<td class="gt_row gt_right">17.75</td>
-<td class="gt_row gt_right">2.92</td>
-<td class="gt_row gt_right">16.88</td>
-<td class="gt_row gt_right">14.50</td>
-<td class="gt_row gt_right">13.48</td>
+<td headers="am1" class="gt_row gt_right">17.75</td>
+<td headers="am2" class="gt_row gt_right">2.92</td>
+<td headers="am3" class="gt_row gt_right">16.88</td>
+<td headers="am4" class="gt_row gt_right">14.50</td>
+<td headers="am5" class="gt_row gt_right">13.48</td>
 </tr>
 <tr>
-<td class="gt_row gt_right">19.15</td>
-<td class="gt_row gt_right">8.09</td>
-<td class="gt_row gt_right">19.71</td>
-<td class="gt_row gt_right">14.09</td>
-<td class="gt_row gt_right">12.60</td>
+<td headers="am1" class="gt_row gt_right">19.15</td>
+<td headers="am2" class="gt_row gt_right">8.09</td>
+<td headers="am3" class="gt_row gt_right">19.71</td>
+<td headers="am4" class="gt_row gt_right">14.09</td>
+<td headers="am5" class="gt_row gt_right">12.60</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <p>A Análise de Variância, com estes valores atualizados, fica assim:</p>
-<div class="sourceCode" id="cb207"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb208"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aov_dap5p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">dap</span> <span class="op">~</span> <span class="va">amostra</span>, data <span class="op">=</span> <span class="va">dap5p</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="va">aov_dap5p</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Analysis of Variance Table
@@ -1141,7 +1139,7 @@ Vamos supor que a amostra 1 tenha um efeito aditivo de +5 unidades no DAP. A amo
 <p>A hipótese alternativa é a de que há alguma diferença, isto é, nem todas as três médias populacionais são iguais:</p>
 <p>H<sub>1</sub>: nem todas as μ<sub>1</sub>, μ<sub>2</sub> e μ<sub>3</sub> são iguais</p>
 <p>Iniciemos com uma análise exploratória:</p>
-<div class="sourceCode" id="cb209"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb210"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bflor</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/bflor.xlsx"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>especie <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">especie</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -1160,11 +1158,11 @@ Vamos supor que a amostra 1 tenha um efeito aditivo de +5 unidades no DAP. A amo
 ## 1 Hb         16  47.6   1.21  1.47 
 ## 2 Hca        15  36.2   0.975 0.951
 ## 3 Hcv        23  39.7   1.80  3.24</code></pre>
-<div class="sourceCode" id="cb211"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb212"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">comprimento</span> <span class="op">~</span> <span class="va">especie</span>, data <span class="op">=</span> <span class="va">bflor</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-12-1.png" width="672"></div>
 <p>Efetuamos a Análise de Variância propriamente dita:</p>
-<div class="sourceCode" id="cb212"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb213"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aov_bflor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">comprimento</span> <span class="op">~</span> <span class="va">especie</span>, data <span class="op">=</span> <span class="va">bflor</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="va">aov_bflor</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Analysis of Variance Table
@@ -1204,15 +1202,15 @@ Ao planejar um estudo, tente tomar amostras do mesmo tamanho aproximado de todos
 Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor.</p>
 <div class="example">
 <p><span id="exm:press2" class="example"><strong>Exemplo 10.2  (Verificação do pressuposto da Normalidade) </strong></span>.</p>
-<div class="sourceCode" id="cb214"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb215"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## curtose</span></span>
 <span><span class="va">aov_bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">moments</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/kurtosis.html">kurtosis</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 2.349862</code></pre>
-<div class="sourceCode" id="cb216"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## assimetria</span></span>
 <span><span class="va">aov_bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">moments</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/skewness.html">skewness</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0.5223018</code></pre>
-<div class="sourceCode" id="cb218"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb219"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Teste de Shapiro-Wilk</span></span>
 <span><span class="va">aov_bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/shapiro.test.html">shapiro.test</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
@@ -1220,16 +1218,16 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 ## 
 ## data:  .
 ## W = 0.94889, p-value = 0.02227</code></pre>
-<div class="sourceCode" id="cb220"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb221"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Gráfico dos quantis normais</span></span>
 <span><span class="va">aov_bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqnorm</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">aov_bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqline</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-14-1.png" width="672"></div>
-<div class="sourceCode" id="cb221"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb222"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Histograma</span></span>
 <span><span class="va">aov_bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-14-2.png" width="672"></div>
-<div class="sourceCode" id="cb222"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb223"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Ramo e folhas</span></span>
 <span><span class="va">aov_bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/graphics/stem.html">stem</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
@@ -1247,7 +1245,7 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 <p>Pela análise do conjunto dos resultados acima, não há evidência de desvio severo da Normalidade.</p>
 <div class="example">
 <p><span id="exm:press3" class="example"><strong>Exemplo 10.3  (Verificação do pressuposto da homogeneidade das variâncias) </strong></span>.</p>
-<div class="sourceCode" id="cb224"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## razão maior/menor desvio-padrão</span></span>
 <span><span class="va">bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">especie</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>desvpad<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">comprimento</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>razao<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">desvpad</span><span class="op">)</span><span class="op">/</span><span class="va">desvpad</span><span class="op">)</span></span></code></pre></div>
@@ -1257,15 +1255,15 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 ## 1 Hb        1.21   1.48
 ## 2 Hca       0.975  1.84
 ## 3 Hcv       1.80   1</code></pre>
-<div class="sourceCode" id="cb226"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb227"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## boxplot condicional dos resíduos</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="va">aov_bflor</span><span class="op">)</span><span class="op">~</span><span class="va">especie</span>, data <span class="op">=</span> <span class="va">bflor</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-15-1.png" width="672"></div>
-<div class="sourceCode" id="cb227"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb228"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## resíduos vs ajustados</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">aov_bflor</span>,<span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-15-2.png" width="672"></div>
-<div class="sourceCode" id="cb228"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb229"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## teste de Bartlett</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/bartlett.test.html">bartlett.test</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="va">aov_bflor</span><span class="op">)</span><span class="op">~</span><span class="va">especie</span>, data<span class="op">=</span><span class="va">bflor</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
@@ -1273,7 +1271,7 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 ## 
 ## data:  residuals(aov_bflor) by especie
 ## Bartlett's K-squared = 6.4839, df = 2, p-value = 0.03909</code></pre>
-<div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb231"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## teste de Levene</span></span>
 <span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/leveneTest.html">leveneTest</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="va">aov_bflor</span><span class="op">)</span><span class="op">~</span><span class="va">especie</span>, data<span class="op">=</span><span class="va">bflor</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Levene's Test for Homogeneity of Variance (center = median)
@@ -1314,7 +1312,7 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 <p>As feridas eram examinadas diariamente para se determinar o tempo (em dias) até sua completa cicatrização. Os valores estão no arquivo <a href="data/homeopatia.xlsx">homeopatia.xlsx</a></p>
 <p>Há evidência significante de que o tempo de cicatrização dependa do tratamento recebido?</p>
 <p>Após efetuada a Análise de Variância e verificados os pressupostos<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Análise não mostrada aqui.&lt;/p&gt;"><sup>27</sup></a>, segue-se com o teste de Dunnett</p>
-<div class="sourceCode" id="cb232"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb233"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dn_remedio</span> <span class="op">&lt;-</span> <span class="fu">emmeans</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/emmeans/man/emmeans.html">emmeans</a></span><span class="op">(</span><span class="va">aov_hom</span>, <span class="op">~</span><span class="va">remedio</span>, contr<span class="op">=</span><span class="st">"dunnett"</span>, </span>
 <span>                                ref<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">hom</span><span class="op">$</span><span class="va">remedio</span><span class="op">)</span><span class="op">)</span><span class="op">==</span><span class="st">"Placebo"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -1328,7 +1326,7 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 ##  (Estafisagria-baixa) - Placebo    -5.53 0.442 70 -12.529  &lt;.0001
 ## 
 ## P value adjustment: dunnettx method for 4 tests</code></pre>
-<div class="sourceCode" id="cb234"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb235"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## intervalo de confiança</span></span>
 <span><span class="va">dn_remedio</span><span class="op">$</span><span class="va">contrasts</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##  contrast                       estimate    SE df lower.CL upper.CL
@@ -1339,11 +1337,11 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 ## 
 ## Confidence level used: 0.95 
 ## Conf-level adjustment: dunnettx method for 4 estimates</code></pre>
-<div class="sourceCode" id="cb236"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb237"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## plot</span></span>
 <span><span class="va">dn_remedio</span><span class="op">$</span><span class="va">emmeans</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-17-1.png" width="672"></div>
-<div id="rxtmvrczhz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="rxtmvrczhz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
@@ -1383,6 +1381,11 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
   border-right-style: none;
   border-right-width: 1px;
   border-right-color: #D3D3D3;
+}
+
+#rxtmvrczhz .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
 #rxtmvrczhz .gt_title {
@@ -1505,6 +1508,7 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
   border-right-width: 1px;
   border-right-color: #D3D3D3;
   vertical-align: middle;
+  text-align: left;
 }
 
 #rxtmvrczhz .gt_empty_group_heading {
@@ -1716,15 +1720,6 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
   font-size: 65%;
 }
 
-#rxtmvrczhz .gt_two_val_uncert {
-  display: inline-block;
-  line-height: 1em;
-  text-align: right;
-  font-size: 60%;
-  vertical-align: -0.25em;
-  margin-left: 0.1em;
-}
-
 #rxtmvrczhz .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
@@ -1737,22 +1732,24 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
   vertical-align: 0;
 }
 
-#rxtmvrczhz .gt_slash_mark {
-  font-size: 0.7em;
-  line-height: 0.7em;
-  vertical-align: 0.15em;
+#rxtmvrczhz .gt_indent_1 {
+  text-indent: 5px;
 }
 
-#rxtmvrczhz .gt_fraction_numerator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: 0.45em;
+#rxtmvrczhz .gt_indent_2 {
+  text-indent: 10px;
 }
 
-#rxtmvrczhz .gt_fraction_denominator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: -0.05em;
+#rxtmvrczhz .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#rxtmvrczhz .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#rxtmvrczhz .gt_indent_5 {
+  text-indent: 25px;
 }
 </style>
 <div class="inline-table"><table class="gt_table" style="table-layout: fixed;; width: 0px">
@@ -1762,38 +1759,38 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 <col style="width:15px;">
 </colgroup>
 <thead class="gt_header"><tr>
-<th colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Tabela X. Tempo de cicatrização médio (dias) para uma profunda ferida cirúrgica tratada com remédios homeopáticos.</th>
+<td colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Tabela X. Tempo de cicatrização médio (dias) para uma profunda ferida cirúrgica tratada com remédios homeopáticos.</td>
     </tr></thead>
 <thead class="gt_col_headings"><tr>
-<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Remédio</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Tempo de Cicatrização (dias)</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"></th>
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Remédio">Remédio</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Tempo de Cicatrização (dias)">Tempo de Cicatrização (dias)</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=""></th>
     </tr></thead>
 <tbody class="gt_table_body">
 <tr>
-<td class="gt_row gt_left">Arnica-alta</td>
-<td class="gt_row gt_center">15.67</td>
-<td class="gt_row gt_left">*</td>
+<td headers="remedio" class="gt_row gt_left">Arnica-alta</td>
+<td headers="emmean" class="gt_row gt_center">15.67</td>
+<td headers="g" class="gt_row gt_left">*</td>
 </tr>
 <tr>
-<td class="gt_row gt_left">Arnica-baixa</td>
-<td class="gt_row gt_center">15.47</td>
-<td class="gt_row gt_left">*</td>
+<td headers="remedio" class="gt_row gt_left">Arnica-baixa</td>
+<td headers="emmean" class="gt_row gt_center">15.47</td>
+<td headers="g" class="gt_row gt_left">*</td>
 </tr>
 <tr>
-<td class="gt_row gt_left">Estafisagria-alta</td>
-<td class="gt_row gt_center">15.60</td>
-<td class="gt_row gt_left">*</td>
+<td headers="remedio" class="gt_row gt_left">Estafisagria-alta</td>
+<td headers="emmean" class="gt_row gt_center">15.60</td>
+<td headers="g" class="gt_row gt_left">*</td>
 </tr>
 <tr>
-<td class="gt_row gt_left">Estafisagria-baixa</td>
-<td class="gt_row gt_center">15.80</td>
-<td class="gt_row gt_left">*</td>
+<td headers="remedio" class="gt_row gt_left">Estafisagria-baixa</td>
+<td headers="emmean" class="gt_row gt_center">15.80</td>
+<td headers="g" class="gt_row gt_left">*</td>
 </tr>
 <tr>
-<td class="gt_row gt_left">Placebo</td>
-<td class="gt_row gt_center">21.33</td>
-<td class="gt_row gt_left"></td>
+<td headers="remedio" class="gt_row gt_left">Placebo</td>
+<td headers="emmean" class="gt_row gt_center">21.33</td>
+<td headers="g" class="gt_row gt_left"></td>
 </tr>
 </tbody>
 <tfoot class="gt_footnotes"><tr>
@@ -1818,7 +1815,7 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 <div class="example">
 <p><span id="exm:tukey" class="example"><strong>Exemplo 10.5  (Teste de Tukey) </strong></span>Voltando ao exemplo anterior das Flores de <em>Heliconia</em> <a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Lembre-se de calcular a Análise de Variância antes de efetuar os testes de acompanhamento.&lt;/p&gt;"><sup>28</sup></a>.</p>
 <p>Utilizaremos o pacote <em>emmeans</em> para o cálculo do teste de Tukey.</p>
-<div class="sourceCode" id="cb237"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb238"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tk_especie</span> <span class="op">&lt;-</span> <span class="fu">emmeans</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/emmeans/man/emmeans.html">emmeans</a></span><span class="op">(</span><span class="va">aov_bflor</span>, <span class="op">~</span><span class="va">especie</span>, contr <span class="op">=</span> <span class="st">"tukey"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">## contrastes</span></span>
@@ -1829,7 +1826,7 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 ##  Hca - Hcv    -3.53 0.480 51  -7.361  &lt;.0001
 ## 
 ## P value adjustment: tukey method for comparing a family of 3 estimates</code></pre>
-<div class="sourceCode" id="cb239"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb240"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Intervalo de confiança</span></span>
 <span><span class="va">tk_especie</span><span class="op">$</span><span class="va">contrasts</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##  contrast  estimate    SE df lower.CL upper.CL
@@ -1839,7 +1836,7 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 ## 
 ## Confidence level used: 0.95 
 ## Conf-level adjustment: tukey method for comparing a family of 3 estimates</code></pre>
-<div class="sourceCode" id="cb241"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb242"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## letras (CLD)</span></span>
 <span><span class="va">tk_especie</span><span class="op">$</span><span class="va">emmeans</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">multcomp</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/multcomp/man/cld.html">cld</a></span><span class="op">(</span>Letters <span class="op">=</span> <span class="va">letters</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##  especie emmean    SE df lower.CL upper.CL .group
@@ -1850,15 +1847,15 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 ## Confidence level used: 0.95 
 ## P value adjustment: tukey method for comparing a family of 3 estimates 
 ## significance level used: alpha = 0.05 
-## NOTE: Compact letter displays can be misleading
-##       because they show NON-findings rather than findings.
-##       Consider using 'pairs()', 'pwpp()', or 'pwpm()' instead.</code></pre>
-<div class="sourceCode" id="cb243"><pre class="downlit sourceCode r">
+## NOTE: If two or more means share the same grouping symbol,
+##       then we cannot show them to be different.
+##       But we also did not show them to be the same.</code></pre>
+<div class="sourceCode" id="cb244"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## plot</span></span>
 <span><span class="va">tk_especie</span><span class="op">$</span><span class="va">emmeans</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-19-1.png" width="672"></div>
 <p>A Tabela abaixo mostra um exemplo de como os resultados do teste podem ser apresentados.</p>
-<div id="mmfxgbiela" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="mmfxgbiela" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
@@ -1898,6 +1895,11 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
   border-right-style: none;
   border-right-width: 1px;
   border-right-color: #D3D3D3;
+}
+
+#mmfxgbiela .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
 #mmfxgbiela .gt_title {
@@ -2020,6 +2022,7 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
   border-right-width: 1px;
   border-right-color: #D3D3D3;
   vertical-align: middle;
+  text-align: left;
 }
 
 #mmfxgbiela .gt_empty_group_heading {
@@ -2231,15 +2234,6 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
   font-size: 65%;
 }
 
-#mmfxgbiela .gt_two_val_uncert {
-  display: inline-block;
-  line-height: 1em;
-  text-align: right;
-  font-size: 60%;
-  vertical-align: -0.25em;
-  margin-left: 0.1em;
-}
-
 #mmfxgbiela .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
@@ -2252,22 +2246,24 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
   vertical-align: 0;
 }
 
-#mmfxgbiela .gt_slash_mark {
-  font-size: 0.7em;
-  line-height: 0.7em;
-  vertical-align: 0.15em;
+#mmfxgbiela .gt_indent_1 {
+  text-indent: 5px;
 }
 
-#mmfxgbiela .gt_fraction_numerator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: 0.45em;
+#mmfxgbiela .gt_indent_2 {
+  text-indent: 10px;
 }
 
-#mmfxgbiela .gt_fraction_denominator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: -0.05em;
+#mmfxgbiela .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#mmfxgbiela .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#mmfxgbiela .gt_indent_5 {
+  text-indent: 25px;
 }
 </style>
 <div class="inline-table"><table class="gt_table" style="table-layout: fixed;; width: 0px">
@@ -2277,28 +2273,28 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 <col style="width:15px;">
 </colgroup>
 <thead class="gt_header"><tr>
-<th colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Tabela X. Comprimento médio (mm) de flores de três espécies do gênero <em>Heliconia</em>.</th>
+<td colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Tabela X. Comprimento médio (mm) de flores de três espécies do gênero <em>Heliconia</em>.</td>
     </tr></thead>
 <thead class="gt_col_headings"><tr>
-<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Espécie</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Comprimento (mm)</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"></th>
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Espécie">Espécie</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Comprimento (mm)">Comprimento (mm)</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=""></th>
     </tr></thead>
 <tbody class="gt_table_body">
 <tr>
-<td class="gt_row gt_left">Hb</td>
-<td class="gt_row gt_center">47.60</td>
-<td class="gt_row gt_left"> a  </td>
+<td headers="especie" class="gt_row gt_left">Hb</td>
+<td headers="emmean" class="gt_row gt_center">47.60</td>
+<td headers="g" class="gt_row gt_left"> a  </td>
 </tr>
 <tr>
-<td class="gt_row gt_left">Hca</td>
-<td class="gt_row gt_center">36.18</td>
-<td class="gt_row gt_left">  b </td>
+<td headers="especie" class="gt_row gt_left">Hca</td>
+<td headers="emmean" class="gt_row gt_center">36.18</td>
+<td headers="g" class="gt_row gt_left">  b </td>
 </tr>
 <tr>
-<td class="gt_row gt_left">Hcv</td>
-<td class="gt_row gt_center">39.71</td>
-<td class="gt_row gt_left">   c</td>
+<td headers="especie" class="gt_row gt_left">Hcv</td>
+<td headers="emmean" class="gt_row gt_center">39.71</td>
+<td headers="g" class="gt_row gt_left">   c</td>
 </tr>
 </tbody>
 <tfoot class="gt_footnotes"><tr>
@@ -2318,7 +2314,7 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 <div class="example">
 <p><span id="exm:k" class="example"><strong>Exemplo 10.6  (Teste de Scott Knott) </strong></span>Exemplo de utilização do teste de Scott Knott no exemplo das flores de <em>Heliconia</em>
 .</p>
-<div class="sourceCode" id="cb244"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb245"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sk_bflor</span> <span class="op">&lt;-</span> <span class="fu">ScottKnott</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ScottKnott/man/SK.html">SK</a></span><span class="op">(</span><span class="va">aov_bflor</span><span class="op">)</span> </span>
 <span><span class="va">sk_bflor</span><span class="op">$</span><span class="va">out</span></span></code></pre></div>
 <pre><code>## $Result
@@ -2380,7 +2376,7 @@ A terceira é mais complexa e unilateral.</p>
 <p>Hipótese 3:</p>
 <p>H<sub>0</sub>: C<sub>3</sub> = 0</p>
 <p>H<sub>1</sub>: C<sub>3</sub> &gt; 0</p>
-<div class="sourceCode" id="cb246"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb247"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Contrastes</span></span>
 <span><span class="va">K.bes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="st">"C1"</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>  <span class="fl">0</span>, <span class="op">+</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span>,</span>
 <span>            </span>
@@ -2391,13 +2387,13 @@ A terceira é mais complexa e unilateral.</p>
 <span><span class="co">#verificar se contrastes são ortogonais (soma=0)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">K.bes</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span><span class="op">*</span><span class="va">K.bes</span><span class="op">[</span><span class="fl">2</span>,<span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
-<div class="sourceCode" id="cb248"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb249"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">K.bes</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span><span class="op">*</span><span class="va">K.bes</span><span class="op">[</span><span class="fl">3</span>,<span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
-<div class="sourceCode" id="cb250"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb251"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">K.bes</span><span class="op">[</span><span class="fl">2</span>,<span class="op">]</span><span class="op">*</span><span class="va">K.bes</span><span class="op">[</span><span class="fl">3</span>,<span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
-<div class="sourceCode" id="cb252"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb253"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://multcomp.R-forge.R-project.org">multcomp</a></span><span class="op">)</span></span>
 <span><span class="va">ctr_besouro</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/multcomp/man/glht.html">glht</a></span><span class="op">(</span><span class="va">aov_bes</span>, linfct<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/multcomp/man/glht.html">mcp</a></span><span class="op">(</span>cor<span class="op">=</span><span class="va">K.bes</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">ctr_besouro</span><span class="op">)</span></span></code></pre></div>
@@ -2417,7 +2413,7 @@ A terceira é mais complexa e unilateral.</p>
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)</code></pre>
-<div class="sourceCode" id="cb254"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb255"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Intervalo de confiança</span></span>
 <span><span class="va">ctr_besouro</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
@@ -2488,7 +2484,7 @@ A terceira é mais complexa e unilateral.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Bioestatística aplicada aos ecossistemas agrícolas e naturais</strong>" foi escrito por João B. Tolentino Jr.. Última atualização em 2023-04-05.</p>
+    <p>"<strong>Bioestatística aplicada aos ecossistemas agrícolas e naturais</strong>" foi escrito por João B. Tolentino Jr.. Última atualização em 2023-04-12.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

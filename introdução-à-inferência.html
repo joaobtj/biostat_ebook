@@ -7,7 +7,7 @@
 <title>Capítulo 7 Introdução à inferência | Bioestatística aplicada aos ecossistemas agrícolas e naturais</title>
 <meta name="author" content="João B. Tolentino Jr.">
 <meta name="description" content="A inferência estatística fornece métodos para se tirarem conclusões sobre uma população a partir de dados amostrais. Intervalos de confiança: para se estimar o valor de um parâmetro de uma...">
-<meta name="generator" content="bookdown 0.27 with bs4_book()">
+<meta name="generator" content="bookdown 0.33 with bs4_book()">
 <meta property="og:title" content="Capítulo 7 Introdução à inferência | Bioestatística aplicada aos ecossistemas agrícolas e naturais">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://biostat.tolentino.pro.br/introdução-à-inferência.html">
@@ -17,15 +17,15 @@
 <meta name="twitter:description" content="A inferência estatística fornece métodos para se tirarem conclusões sobre uma população a partir de dados amostrais. Intervalos de confiança: para se estimar o valor de um parâmetro de uma...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Montserrat-0.4.1/font.css" rel="stylesheet">
-<link href="libs/_Signika-0.4.1/font.css" rel="stylesheet">
-<script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Montserrat-0.4.5/font.css" rel="stylesheet">
+<link href="libs/Signika-0.4.5/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
 <script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="libs/datatables-binding-0.23/datatables.js"></script><link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet">
-<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+<script src="libs/datatables-binding-0.27/datatables.js"></script><link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
@@ -125,11 +125,13 @@
 <div class="example">
 <p><span id="exm:icm" class="example"><strong>Exemplo 7.1  (Intervalo de Confiança para a média) </strong></span>Considere o conjunto de dados <a href="data/dap.csv">dap.csv</a>. Por serem dados de uma população, vamos fazer uma amostragem (<code>sample</code>) de 10 indivíduos e calcular o IC de 95% <a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;valor padrão da função &lt;code&gt;t.test&lt;/code&gt;&lt;/p&gt;"><sup>24</sup></a>.</p>
 <div class="sourceCode" id="cb183"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">dap</span>, <span class="fl">10</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">dap_s</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">dap</span>, <span class="fl">10</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">dap_s</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
-## data:  .
+## data:  dap_s
 ## t = 23.04, df = 9, p-value = 2.598e-09
 ## alternative hypothesis: true mean is not equal to 0
 ## 95 percent confidence interval:
@@ -172,6 +174,11 @@
 ## [6,] 13.02743 15.27057</code></pre>
 <p>Quantos dos IC simulados não contém a verdadeira média<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Este valor já é conhecido: 12.95&lt;/p&gt;"><sup>26</sup></a> populacional?</p>
 <p>Por meio de uma análise gráfica:</p>
+<pre><code>## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## ℹ Please use `linewidth` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.</code></pre>
 <div class="figure">
 <span style="display:block;" id="fig:unnamed-chunk-7"></span>
 <img src="014-infer_files/figure-html/unnamed-chunk-7-1.png" alt="Intervalos de confiança simulados para várias amostragens de uma população. A média populacional é representada pela linha vertical violeta." width="672"><p class="caption">
@@ -179,19 +186,19 @@ Figura 7.1: Intervalos de confiança simulados para várias amostragens de uma p
 </p>
 </div>
 <p>Calculando a proporção de ICs que não contém a média populacional:</p>
-<div class="sourceCode" id="cb188"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb189"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">ic_simul</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span> <span class="op">&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dap</span><span class="op">)</span> <span class="op">|</span> <span class="va">ic_simul</span><span class="op">[</span><span class="fl">2</span>, <span class="op">]</span> <span class="op">&lt;</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dap</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0.06</code></pre>
 <p>Estes resultados mostram que 6 dos 100 ICs simulados não contém a média populacional. Para um IC de 95%, está
 bem próximo do valor esperado.</p>
 </div>
 <p>Também é possível alterar a probabilidade do IC, com o argumento <code>conf.level</code> da função <code>t.test</code>.</p>
-<div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">dap</span>, <span class="fl">10</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span>conf.level<span class="op">=</span><span class="fl">0.99</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">dap_s</span>, conf.level<span class="op">=</span><span class="fl">0.99</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
-## data:  .
+## data:  dap_s
 ## t = 23.04, df = 9, p-value = 2.598e-09
 ## alternative hypothesis: true mean is not equal to 0
 ## 99 percent confidence interval:
@@ -217,10 +224,10 @@ bem próximo do valor esperado.</p>
 <p>O p-valor é definido como a probabilidade calculada de que, supondo a hipótese nula verdadeira, o teste assuma um valor tão ou mais extremo que o valor realmente observado. Em outras palavras, é o menor valor de α para o qual ainda rejeitamos a hipótese H<sub>0</sub>.</p>
 <p>O valor de α mais comumente utilizado é de 0,05 ou 5%. No entanto, dependendo da área de conhecimento, este valor pode ser maior ou menor.</p>
 <p>Antes de realizar qualquer teste de hipóteses, como o teste t, as hipóteses devem ser claramente descritas.</p>
-<p>Hipóteses:
-* H<sub>0</sub>: hipótese nula, ou seja, a afirmativa a ser testada.</p>
+<p>Hipóteses:</p>
 <ul>
-<li>H<sub>1</sub> ou H<sub>a</sub>: a hipótese alternativa, ou seja, uma afirmativa que contradiz a hipótese nula.</li>
+<li><p>H<sub>0</sub>: hipótese nula, ou seja, a afirmativa a ser testada.</p></li>
+<li><p>H<sub>1</sub> ou H<sub>a</sub>: a hipótese alternativa, ou seja, uma afirmativa que contradiz a hipótese nula.</p></li>
 </ul>
 <p>As hipóteses alternativas podem ter três configurações, conforme o tipo do teste:</p>
 <ol style="list-style-type: decimal">
@@ -236,12 +243,12 @@ bem próximo do valor esperado.</p>
 <li>H<sub>1</sub>: esta amostra vem de uma população cuja média populacional é diferente de 12.95</li>
 </ul>
 <p>Na função <code>t.test</code>, passamos o valor da média da hipótese H<sub>0</sub> para o argumento <code>mu</code>. Neste exemplo, vamos passar na forma de uma função <code>mean(dap)</code> para evitar arredondamentos.</p>
-<div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">dap</span>, <span class="fl">10</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span>mu <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dap</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">dap_s</span>, mu <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dap</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
-## data:  .
+## data:  dap_s
 ## t = 0.65612, df = 9, p-value = 0.5282
 ## alternative hypothesis: true mean is not equal to 12.94553
 ## 95 percent confidence interval:
@@ -255,7 +262,7 @@ bem próximo do valor esperado.</p>
 <div class="example">
 <p><span id="exm:t1simul" class="example"><strong>Exemplo 7.4  (Teste t para uma amostra - simulações) </strong></span>Considere o conjunto de dados <a href="data/dap.csv">dap.csv</a>.</p>
 <p>Criamos uma função que faz uma amostragem de <em>n</em> elementos e retorna o p-valor do teste t.</p>
-<div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb195"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Função que amostra n elementos e retorna o p-valor do teste t</span></span>
 <span><span class="co">## data = conjunto de dados de onde será retirada a amostra</span></span>
 <span><span class="co">## n_sample = tamanho da amostra</span></span>
@@ -264,7 +271,7 @@ bem próximo do valor esperado.</p>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">ic_sample</span><span class="op">$</span><span class="va">p.value</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <p>Em seguida, procedemos com 100 simulações do teste t como descrito no Exemplo <a href="introdu%C3%A7%C3%A3o-%C3%A0-infer%C3%AAncia.html#exm:t1">7.3</a>.</p>
-<div class="sourceCode" id="cb195"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb196"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## 100 simulações com a função replicate</span></span>
 <span><span class="va">t1_simul</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fu">t1_amostr</span><span class="op">(</span><span class="va">dap</span>, <span class="fl">10</span>, mu <span class="op">=</span> <span class="fl">12.94553</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -280,7 +287,7 @@ Figura 5.15: p-valores simulados para várias amostragens de uma população. A 
 </p>
 </div>
 <p>Calculando a proporção de p-valores menores que o α pré-estabelecido de 5%:</p>
-<div class="sourceCode" id="cb197"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb198"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">t1_simul</span> <span class="op">&lt;</span> <span class="fl">0.05</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0.06</code></pre>
 <p>Os resultados mostram que em 6 de 100 amostras o teste t rejeitou a hipótese nula, ou seja, indicou uma diferença significativa entre a média amostral e a média populacional.</p>
@@ -315,7 +322,7 @@ Figura 5.15: p-valores simulados para várias amostragens de uma população. A 
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Bioestatística aplicada aos ecossistemas agrícolas e naturais</strong>" foi escrito por João B. Tolentino Jr.. Última atualização em 2023-04-05.</p>
+    <p>"<strong>Bioestatística aplicada aos ecossistemas agrícolas e naturais</strong>" foi escrito por João B. Tolentino Jr.. Última atualização em 2023-04-12.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

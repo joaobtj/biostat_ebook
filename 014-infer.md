@@ -34,14 +34,16 @@ Considere o conjunto de dados [dap.csv](data/dap.csv). Por serem dados de uma po
 
 
 ```r
-sample(dap, 10) %>% t.test()
+dap_s <- sample(dap, 10) 
+
+t.test(dap_s)
 ```
 
 ```
 ## 
 ## 	One Sample t-test
 ## 
-## data:  .
+## data:  dap_s
 ## t = 23.04, df = 9, p-value = 2.598e-09
 ## alternative hypothesis: true mean is not equal to 0
 ## 95 percent confidence interval:
@@ -113,6 +115,15 @@ Quantos dos IC simulados não contém a verdadeira média^[Este valor já é con
 
 Por meio de uma análise gráfica:
 
+
+```
+## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## ℹ Please use `linewidth` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.
+```
+
 <div class="figure">
 <img src="014-infer_files/figure-html/unnamed-chunk-7-1.png" alt="Intervalos de confiança simulados para várias amostragens de uma população. A média populacional é representada pela linha vertical violeta." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-7)Intervalos de confiança simulados para várias amostragens de uma população. A média populacional é representada pela linha vertical violeta.</p>
@@ -141,14 +152,14 @@ Também é possível alterar a probabilidade do IC, com o argumento `conf.level`
 
 
 ```r
-sample(dap, 10) %>% t.test(conf.level=0.99)
+t.test(dap_s, conf.level=0.99)
 ```
 
 ```
 ## 
 ## 	One Sample t-test
 ## 
-## data:  .
+## data:  dap_s
 ## t = 23.04, df = 9, p-value = 2.598e-09
 ## alternative hypothesis: true mean is not equal to 0
 ## 99 percent confidence interval:
@@ -180,6 +191,7 @@ O valor de α mais comumente utilizado é de 0,05 ou 5%. No entanto, dependendo 
 Antes de realizar qualquer teste de hipóteses, como o teste t, as hipóteses devem ser claramente descritas.
 
 Hipóteses:
+
 * H~0~: hipótese nula, ou seja, a afirmativa a ser testada.
 
 * H~1~ ou H~a~: a hipótese alternativa, ou seja, uma afirmativa que contradiz a hipótese nula. 
@@ -206,14 +218,14 @@ Na função `t.test`, passamos o valor da média da hipótese H~0~ para o argume
 
 
 ```r
-sample(dap, 10) %>% t.test(mu = mean(dap))
+t.test(dap_s, mu = mean(dap))
 ```
 
 ```
 ## 
 ## 	One Sample t-test
 ## 
-## data:  .
+## data:  dap_s
 ## t = 0.65612, df = 9, p-value = 0.5282
 ## alternative hypothesis: true mean is not equal to 12.94553
 ## 95 percent confidence interval:
