@@ -514,7 +514,6 @@ Uma Análise de Variância pode ser executada com as funções `lm` e `anova`, c
 
 ```r
 aov_dap5 <- lm(dap ~ amostra, data = dap5)
-
 anova(aov_dap5)
 ```
 
@@ -532,7 +531,7 @@ anova(aov_dap5)
 
 Queremos testar a hipótese nula de que não há diferenças entre os diâmetros médios das cinco populações de onde as amostras foram retiradas:
 
-H~0~:μ~1~ = μ~2~ = μ~3~ = μ~~4 = μ~5~
+H~0~:μ~1~ = μ~2~ = μ~3~ = μ~4~ = μ~5~
 
 A hipótese alternativa é a de que há alguma diferença, isto é, nem todas as três médias populacionais são iguais:
 
