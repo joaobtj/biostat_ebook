@@ -539,7 +539,7 @@ H~1~: nem todas as médias μ são iguais
 
 A priori, sabemos que as cinco amostras foram aleatoriamente retiradas da mesma população. Logo, o teste F da Análise de Variância é não significativo (como esperado). Seu p-valor foi de 0.73 e, por isso, não rejeitamos a hipótese H~0~, ou seja, não há evidências que os diâmetros médios das amostras sejam diferentes ou que venham de populações diferentes.
 
-Mas o que occoreria se houvesse um efeito aditivo em cada uma das amostras?
+Mas o que ocorreria se houvesse um efeito aditivo em cada uma das amostras?
 Vamos supor que a amostra 1 tenha um efeito aditivo de +5 unidades no DAP. A amostra 2 de -5, a amostra 3 de +3, a amostra 4 de +2 e, por fim, a amostra 5 não tenha nenhum efeito aditivo. O resultado é este mostrado no arquivo [dap5p.csv](data/dap5p.csv)
 
 
@@ -1080,11 +1080,15 @@ H~1~: nem todas as μ~1~, μ~2~ e μ~3~ são iguais
 Iniciemos com uma análise exploratória: 
 
 
+
+
 ```r
-bflor <- readxl::read_excel("data/bflor.xlsx") %>%
+bflor <- readxl::read_excel("bflor.xlsx") %>%
   mutate(especie = factor(especie))
+```
 
 
+```r
 bflor %>%
   group_by(especie) %>%
   summarise(
@@ -1108,7 +1112,7 @@ bflor %>%
 boxplot(comprimento ~ especie, data = bflor)
 ```
 
-<img src="017-anova_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+<img src="017-anova_files/figure-html/unnamed-chunk-14-1.png" width="672" />
 
 Efetuamos a Análise de Variância propriamente dita:
 
@@ -1202,14 +1206,14 @@ aov_bflor %>% residuals() %>% qqnorm()
 aov_bflor %>% residuals() %>% qqline()
 ```
 
-<img src="017-anova_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+<img src="017-anova_files/figure-html/unnamed-chunk-16-1.png" width="672" />
 
 ```r
 ## Histograma
 aov_bflor %>% residuals() %>% hist()
 ```
 
-<img src="017-anova_files/figure-html/unnamed-chunk-14-2.png" width="672" />
+<img src="017-anova_files/figure-html/unnamed-chunk-16-2.png" width="672" />
 
 ```r
 ## Ramo e folhas
@@ -1221,8 +1225,8 @@ aov_bflor %>% residuals() %>% stem()
 ##   The decimal point is at the |
 ## 
 ##   -2 | 3
-##   -1 | 98776665553200
-##   -0 | 9988877655522211
+##   -1 | 98776666553200
+##   -0 | 9988877655522111
 ##    0 | 1355666788999
 ##    1 | 8
 ##    2 | 00223557
@@ -1261,14 +1265,14 @@ mutate(razao=max(desvpad)/desvpad)
 boxplot(residuals(aov_bflor)~especie, data = bflor)
 ```
 
-<img src="017-anova_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+<img src="017-anova_files/figure-html/unnamed-chunk-17-1.png" width="672" />
 
 ```r
 ## resíduos vs ajustados
 plot(aov_bflor,1)
 ```
 
-<img src="017-anova_files/figure-html/unnamed-chunk-15-2.png" width="672" />
+<img src="017-anova_files/figure-html/unnamed-chunk-17-2.png" width="672" />
 
 ```r
 ## teste de Bartlett
@@ -1381,7 +1385,7 @@ dn_remedio$contrasts %>% confint()
 dn_remedio$emmeans %>% plot()
 ```
 
-<img src="017-anova_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+<img src="017-anova_files/figure-html/unnamed-chunk-19-1.png" width="672" />
 
 
 
@@ -1927,7 +1931,7 @@ tk_especie$emmeans %>% multcomp::cld(Letters = letters)
 tk_especie$emmeans %>% plot()
 ```
 
-<img src="017-anova_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+<img src="017-anova_files/figure-html/unnamed-chunk-21-1.png" width="672" />
 
 A Tabela abaixo mostra um exemplo de como os resultados do teste podem ser apresentados.
 
