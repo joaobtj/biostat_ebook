@@ -20,9 +20,9 @@
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Montserrat-0.4.5/font.css" rel="stylesheet">
 <link href="libs/Signika-0.4.5/font.css" rel="stylesheet">
 <script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
 <script src="libs/datatables-binding-0.27/datatables.js"></script><link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet">
 <script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
@@ -606,7 +606,7 @@
 </div>
 <p>Estes dados podem ser encontrados no arquivo <a href="data/dap5.csv">dap5.csv</a></p>
 <p>Uma Análise de Variância pode ser executada com as funções <code>lm</code> e <code>anova</code>, como a seguir:</p>
-<div class="sourceCode" id="cb206"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb207"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aov_dap5</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">dap</span> <span class="op">~</span> <span class="va">amostra</span>, data <span class="op">=</span> <span class="va">dap5</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="va">aov_dap5</span><span class="op">)</span></span></code></pre></div>
@@ -1103,7 +1103,7 @@ Vamos supor que a amostra 1 tenha um efeito aditivo de +5 unidades no DAP. A amo
 </table></div>
 </div>
 <p>A Análise de Variância, com estes valores atualizados, fica assim:</p>
-<div class="sourceCode" id="cb208"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb209"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aov_dap5p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">dap</span> <span class="op">~</span> <span class="va">amostra</span>, data <span class="op">=</span> <span class="va">dap5p</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="va">aov_dap5p</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Analysis of Variance Table
@@ -1139,7 +1139,7 @@ Vamos supor que a amostra 1 tenha um efeito aditivo de +5 unidades no DAP. A amo
 <p>A hipótese alternativa é a de que há alguma diferença, isto é, nem todas as três médias populacionais são iguais:</p>
 <p>H<sub>1</sub>: nem todas as μ<sub>1</sub>, μ<sub>2</sub> e μ<sub>3</sub> são iguais</p>
 <p>Iniciemos com uma análise exploratória:</p>
-<div class="sourceCode" id="cb210"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb211"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bflor</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/bflor.xlsx"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>especie <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">especie</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -1158,11 +1158,11 @@ Vamos supor que a amostra 1 tenha um efeito aditivo de +5 unidades no DAP. A amo
 ## 1 Hb         16  47.6   1.21  1.47 
 ## 2 Hca        15  36.2   0.975 0.951
 ## 3 Hcv        23  39.7   1.80  3.24</code></pre>
-<div class="sourceCode" id="cb212"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb213"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">comprimento</span> <span class="op">~</span> <span class="va">especie</span>, data <span class="op">=</span> <span class="va">bflor</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-12-1.png" width="672"></div>
 <p>Efetuamos a Análise de Variância propriamente dita:</p>
-<div class="sourceCode" id="cb213"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb214"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aov_bflor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">comprimento</span> <span class="op">~</span> <span class="va">especie</span>, data <span class="op">=</span> <span class="va">bflor</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="va">aov_bflor</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Analysis of Variance Table
@@ -1202,15 +1202,15 @@ Ao planejar um estudo, tente tomar amostras do mesmo tamanho aproximado de todos
 Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor.</p>
 <div class="example">
 <p><span id="exm:press2" class="example"><strong>Exemplo 10.2  (Verificação do pressuposto da Normalidade) </strong></span>.</p>
-<div class="sourceCode" id="cb215"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb216"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## curtose</span></span>
 <span><span class="va">aov_bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">moments</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/kurtosis.html">kurtosis</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 2.349862</code></pre>
-<div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb218"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## assimetria</span></span>
 <span><span class="va">aov_bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">moments</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/skewness.html">skewness</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0.5223018</code></pre>
-<div class="sourceCode" id="cb219"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb220"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Teste de Shapiro-Wilk</span></span>
 <span><span class="va">aov_bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/shapiro.test.html">shapiro.test</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
@@ -1218,24 +1218,24 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 ## 
 ## data:  .
 ## W = 0.94889, p-value = 0.02227</code></pre>
-<div class="sourceCode" id="cb221"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb222"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Gráfico dos quantis normais</span></span>
 <span><span class="va">aov_bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqnorm</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">aov_bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqline</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-14-1.png" width="672"></div>
-<div class="sourceCode" id="cb222"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb223"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Histograma</span></span>
 <span><span class="va">aov_bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-14-2.png" width="672"></div>
-<div class="sourceCode" id="cb223"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb224"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Ramo e folhas</span></span>
 <span><span class="va">aov_bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/graphics/stem.html">stem</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##   The decimal point is at the |
 ## 
 ##   -2 | 3
-##   -1 | 98776665553200
-##   -0 | 9988877655522211
+##   -1 | 98776666553200
+##   -0 | 9988877655522111
 ##    0 | 1355666788999
 ##    1 | 8
 ##    2 | 00223557
@@ -1245,7 +1245,7 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 <p>Pela análise do conjunto dos resultados acima, não há evidência de desvio severo da Normalidade.</p>
 <div class="example">
 <p><span id="exm:press3" class="example"><strong>Exemplo 10.3  (Verificação do pressuposto da homogeneidade das variâncias) </strong></span>.</p>
-<div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb226"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## razão maior/menor desvio-padrão</span></span>
 <span><span class="va">bflor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">especie</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>desvpad<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">comprimento</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>razao<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">desvpad</span><span class="op">)</span><span class="op">/</span><span class="va">desvpad</span><span class="op">)</span></span></code></pre></div>
@@ -1255,15 +1255,15 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 ## 1 Hb        1.21   1.48
 ## 2 Hca       0.975  1.84
 ## 3 Hcv       1.80   1</code></pre>
-<div class="sourceCode" id="cb227"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb228"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## boxplot condicional dos resíduos</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="va">aov_bflor</span><span class="op">)</span><span class="op">~</span><span class="va">especie</span>, data <span class="op">=</span> <span class="va">bflor</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-15-1.png" width="672"></div>
-<div class="sourceCode" id="cb228"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb229"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## resíduos vs ajustados</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">aov_bflor</span>,<span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-15-2.png" width="672"></div>
-<div class="sourceCode" id="cb229"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## teste de Bartlett</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/bartlett.test.html">bartlett.test</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="va">aov_bflor</span><span class="op">)</span><span class="op">~</span><span class="va">especie</span>, data<span class="op">=</span><span class="va">bflor</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
@@ -1271,7 +1271,7 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 ## 
 ## data:  residuals(aov_bflor) by especie
 ## Bartlett's K-squared = 6.4839, df = 2, p-value = 0.03909</code></pre>
-<div class="sourceCode" id="cb231"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb232"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## teste de Levene</span></span>
 <span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/leveneTest.html">leveneTest</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="va">aov_bflor</span><span class="op">)</span><span class="op">~</span><span class="va">especie</span>, data<span class="op">=</span><span class="va">bflor</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Levene's Test for Homogeneity of Variance (center = median)
@@ -1312,7 +1312,7 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 <p>As feridas eram examinadas diariamente para se determinar o tempo (em dias) até sua completa cicatrização. Os valores estão no arquivo <a href="data/homeopatia.xlsx">homeopatia.xlsx</a></p>
 <p>Há evidência significante de que o tempo de cicatrização dependa do tratamento recebido?</p>
 <p>Após efetuada a Análise de Variância e verificados os pressupostos<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Análise não mostrada aqui.&lt;/p&gt;"><sup>27</sup></a>, segue-se com o teste de Dunnett</p>
-<div class="sourceCode" id="cb233"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb234"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dn_remedio</span> <span class="op">&lt;-</span> <span class="fu">emmeans</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/emmeans/man/emmeans.html">emmeans</a></span><span class="op">(</span><span class="va">aov_hom</span>, <span class="op">~</span><span class="va">remedio</span>, contr<span class="op">=</span><span class="st">"dunnett"</span>, </span>
 <span>                                ref<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">hom</span><span class="op">$</span><span class="va">remedio</span><span class="op">)</span><span class="op">)</span><span class="op">==</span><span class="st">"Placebo"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -1326,7 +1326,7 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 ##  (Estafisagria-baixa) - Placebo    -5.53 0.442 70 -12.529  &lt;.0001
 ## 
 ## P value adjustment: dunnettx method for 4 tests</code></pre>
-<div class="sourceCode" id="cb235"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb236"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## intervalo de confiança</span></span>
 <span><span class="va">dn_remedio</span><span class="op">$</span><span class="va">contrasts</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##  contrast                       estimate    SE df lower.CL upper.CL
@@ -1337,7 +1337,7 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 ## 
 ## Confidence level used: 0.95 
 ## Conf-level adjustment: dunnettx method for 4 estimates</code></pre>
-<div class="sourceCode" id="cb237"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb238"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## plot</span></span>
 <span><span class="va">dn_remedio</span><span class="op">$</span><span class="va">emmeans</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-17-1.png" width="672"></div>
@@ -1756,7 +1756,7 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 <colgroup>
 <col style="width:200px;">
 <col style="width:150px;">
-<col style="width:15px;">
+<col style="width:20px;">
 </colgroup>
 <thead class="gt_header"><tr>
 <td colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Tabela X. Tempo de cicatrização médio (dias) para uma profunda ferida cirúrgica tratada com remédios homeopáticos.</td>
@@ -1764,33 +1764,33 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 <thead class="gt_col_headings"><tr>
 <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Remédio">Remédio</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Tempo de Cicatrização (dias)">Tempo de Cicatrização (dias)</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=""></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=" "> </th>
     </tr></thead>
 <tbody class="gt_table_body">
 <tr>
-<td headers="remedio" class="gt_row gt_left">Arnica-alta</td>
-<td headers="emmean" class="gt_row gt_center">15.67</td>
-<td headers="g" class="gt_row gt_left">*</td>
-</tr>
-<tr>
 <td headers="remedio" class="gt_row gt_left">Arnica-baixa</td>
-<td headers="emmean" class="gt_row gt_center">15.47</td>
-<td headers="g" class="gt_row gt_left">*</td>
+<td headers="estimate" class="gt_row gt_center">15.47</td>
+<td headers=".group" class="gt_row gt_left">*</td>
 </tr>
 <tr>
 <td headers="remedio" class="gt_row gt_left">Estafisagria-alta</td>
-<td headers="emmean" class="gt_row gt_center">15.60</td>
-<td headers="g" class="gt_row gt_left">*</td>
+<td headers="estimate" class="gt_row gt_center">15.60</td>
+<td headers=".group" class="gt_row gt_left">*</td>
+</tr>
+<tr>
+<td headers="remedio" class="gt_row gt_left">Arnica-alta</td>
+<td headers="estimate" class="gt_row gt_center">15.67</td>
+<td headers=".group" class="gt_row gt_left">*</td>
 </tr>
 <tr>
 <td headers="remedio" class="gt_row gt_left">Estafisagria-baixa</td>
-<td headers="emmean" class="gt_row gt_center">15.80</td>
-<td headers="g" class="gt_row gt_left">*</td>
+<td headers="estimate" class="gt_row gt_center">15.80</td>
+<td headers=".group" class="gt_row gt_left">*</td>
 </tr>
 <tr>
 <td headers="remedio" class="gt_row gt_left">Placebo</td>
-<td headers="emmean" class="gt_row gt_center">21.33</td>
-<td headers="g" class="gt_row gt_left"></td>
+<td headers="estimate" class="gt_row gt_center">21.33</td>
+<td headers=".group" class="gt_row gt_left"> </td>
 </tr>
 </tbody>
 <tfoot class="gt_footnotes"><tr>
@@ -1815,7 +1815,7 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 <div class="example">
 <p><span id="exm:tukey" class="example"><strong>Exemplo 10.5  (Teste de Tukey) </strong></span>Voltando ao exemplo anterior das Flores de <em>Heliconia</em> <a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Lembre-se de calcular a Análise de Variância antes de efetuar os testes de acompanhamento.&lt;/p&gt;"><sup>28</sup></a>.</p>
 <p>Utilizaremos o pacote <em>emmeans</em> para o cálculo do teste de Tukey.</p>
-<div class="sourceCode" id="cb238"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb239"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tk_especie</span> <span class="op">&lt;-</span> <span class="fu">emmeans</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/emmeans/man/emmeans.html">emmeans</a></span><span class="op">(</span><span class="va">aov_bflor</span>, <span class="op">~</span><span class="va">especie</span>, contr <span class="op">=</span> <span class="st">"tukey"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">## contrastes</span></span>
@@ -1826,7 +1826,7 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 ##  Hca - Hcv    -3.53 0.480 51  -7.361  &lt;.0001
 ## 
 ## P value adjustment: tukey method for comparing a family of 3 estimates</code></pre>
-<div class="sourceCode" id="cb240"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb241"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Intervalo de confiança</span></span>
 <span><span class="va">tk_especie</span><span class="op">$</span><span class="va">contrasts</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##  contrast  estimate    SE df lower.CL upper.CL
@@ -1836,7 +1836,7 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 ## 
 ## Confidence level used: 0.95 
 ## Conf-level adjustment: tukey method for comparing a family of 3 estimates</code></pre>
-<div class="sourceCode" id="cb242"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb243"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## letras (CLD)</span></span>
 <span><span class="va">tk_especie</span><span class="op">$</span><span class="va">emmeans</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">multcomp</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/multcomp/man/cld.html">cld</a></span><span class="op">(</span>Letters <span class="op">=</span> <span class="va">letters</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##  especie emmean    SE df lower.CL upper.CL .group
@@ -1850,7 +1850,7 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 ## NOTE: If two or more means share the same grouping symbol,
 ##       then we cannot show them to be different.
 ##       But we also did not show them to be the same.</code></pre>
-<div class="sourceCode" id="cb244"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb245"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## plot</span></span>
 <span><span class="va">tk_especie</span><span class="op">$</span><span class="va">emmeans</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="017-anova_files/figure-html/unnamed-chunk-19-1.png" width="672"></div>
@@ -2270,7 +2270,7 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 <colgroup>
 <col style="width:200px;">
 <col style="width:150px;">
-<col style="width:15px;">
+<col style="width:20px;">
 </colgroup>
 <thead class="gt_header"><tr>
 <td colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Tabela X. Comprimento médio (mm) de flores de três espécies do gênero <em>Heliconia</em>.</td>
@@ -2278,23 +2278,23 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 <thead class="gt_col_headings"><tr>
 <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Espécie">Espécie</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Comprimento (mm)">Comprimento (mm)</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=""></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=" "> </th>
     </tr></thead>
 <tbody class="gt_table_body">
 <tr>
-<td headers="especie" class="gt_row gt_left">Hb</td>
-<td headers="emmean" class="gt_row gt_center">47.60</td>
-<td headers="g" class="gt_row gt_left"> a  </td>
-</tr>
-<tr>
 <td headers="especie" class="gt_row gt_left">Hca</td>
-<td headers="emmean" class="gt_row gt_center">36.18</td>
-<td headers="g" class="gt_row gt_left">  b </td>
+<td headers="estimate" class="gt_row gt_center">36.18</td>
+<td headers=".group" class="gt_row gt_left"> a  </td>
 </tr>
 <tr>
 <td headers="especie" class="gt_row gt_left">Hcv</td>
-<td headers="emmean" class="gt_row gt_center">39.71</td>
-<td headers="g" class="gt_row gt_left">   c</td>
+<td headers="estimate" class="gt_row gt_center">39.71</td>
+<td headers=".group" class="gt_row gt_left">  b </td>
+</tr>
+<tr>
+<td headers="especie" class="gt_row gt_left">Hb</td>
+<td headers="estimate" class="gt_row gt_center">47.60</td>
+<td headers=".group" class="gt_row gt_left">   c</td>
 </tr>
 </tbody>
 <tfoot class="gt_footnotes"><tr>
@@ -2314,7 +2314,7 @@ Como regra prática: maior desvio-padrão não seja o dobro (ou triplo) do menor
 <div class="example">
 <p><span id="exm:k" class="example"><strong>Exemplo 10.6  (Teste de Scott Knott) </strong></span>Exemplo de utilização do teste de Scott Knott no exemplo das flores de <em>Heliconia</em>
 .</p>
-<div class="sourceCode" id="cb245"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb246"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sk_bflor</span> <span class="op">&lt;-</span> <span class="fu">ScottKnott</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ScottKnott/man/SK.html">SK</a></span><span class="op">(</span><span class="va">aov_bflor</span><span class="op">)</span> </span>
 <span><span class="va">sk_bflor</span><span class="op">$</span><span class="va">out</span></span></code></pre></div>
 <pre><code>## $Result
@@ -2376,7 +2376,7 @@ A terceira é mais complexa e unilateral.</p>
 <p>Hipótese 3:</p>
 <p>H<sub>0</sub>: C<sub>3</sub> = 0</p>
 <p>H<sub>1</sub>: C<sub>3</sub> &gt; 0</p>
-<div class="sourceCode" id="cb247"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb248"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Contrastes</span></span>
 <span><span class="va">K.bes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="st">"C1"</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>  <span class="fl">0</span>, <span class="op">+</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span>,</span>
 <span>            </span>
@@ -2387,13 +2387,13 @@ A terceira é mais complexa e unilateral.</p>
 <span><span class="co">#verificar se contrastes são ortogonais (soma=0)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">K.bes</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span><span class="op">*</span><span class="va">K.bes</span><span class="op">[</span><span class="fl">2</span>,<span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
-<div class="sourceCode" id="cb249"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb250"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">K.bes</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span><span class="op">*</span><span class="va">K.bes</span><span class="op">[</span><span class="fl">3</span>,<span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
-<div class="sourceCode" id="cb251"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb252"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">K.bes</span><span class="op">[</span><span class="fl">2</span>,<span class="op">]</span><span class="op">*</span><span class="va">K.bes</span><span class="op">[</span><span class="fl">3</span>,<span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
-<div class="sourceCode" id="cb253"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb254"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://multcomp.R-forge.R-project.org">multcomp</a></span><span class="op">)</span></span>
 <span><span class="va">ctr_besouro</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/multcomp/man/glht.html">glht</a></span><span class="op">(</span><span class="va">aov_bes</span>, linfct<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/multcomp/man/glht.html">mcp</a></span><span class="op">(</span>cor<span class="op">=</span><span class="va">K.bes</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">ctr_besouro</span><span class="op">)</span></span></code></pre></div>
@@ -2413,7 +2413,7 @@ A terceira é mais complexa e unilateral.</p>
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)</code></pre>
-<div class="sourceCode" id="cb255"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb256"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Intervalo de confiança</span></span>
 <span><span class="va">ctr_besouro</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
@@ -2484,7 +2484,7 @@ A terceira é mais complexa e unilateral.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Bioestatística aplicada aos ecossistemas agrícolas e naturais</strong>" foi escrito por João B. Tolentino Jr.. Última atualização em 2023-04-12.</p>
+    <p>"<strong>Bioestatística aplicada aos ecossistemas agrícolas e naturais</strong>" foi escrito por João B. Tolentino Jr.. Última atualização em 2023-05-31.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

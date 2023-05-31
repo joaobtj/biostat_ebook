@@ -1222,8 +1222,8 @@ aov_bflor %>% residuals() %>% stem()
 ##   The decimal point is at the |
 ## 
 ##   -2 | 3
-##   -1 | 98776665553200
-##   -0 | 9988877655522211
+##   -1 | 98776666553200
+##   -0 | 9988877655522111
 ##    0 | 1355666788999
 ##    1 | 8
 ##    2 | 00223557
@@ -1803,7 +1803,7 @@ dn_remedio$emmeans %>% plot()
   <colgroup>
     <col style="width:200px;"/>
     <col style="width:150px;"/>
-    <col style="width:15px;"/>
+    <col style="width:20px;"/>
   </colgroup>
   <thead class="gt_header">
     <tr>
@@ -1815,25 +1815,25 @@ dn_remedio$emmeans %>% plot()
     <tr>
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Remédio">Remédio</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Tempo de Cicatrização (dias)">Tempo de Cicatrização (dias)</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=""></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=" "> </th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
-    <tr><td headers="remedio" class="gt_row gt_left">Arnica-alta</td>
-<td headers="emmean" class="gt_row gt_center">15.67</td>
-<td headers="g" class="gt_row gt_left">*</td></tr>
     <tr><td headers="remedio" class="gt_row gt_left">Arnica-baixa</td>
-<td headers="emmean" class="gt_row gt_center">15.47</td>
-<td headers="g" class="gt_row gt_left">*</td></tr>
+<td headers="estimate" class="gt_row gt_center">15.47</td>
+<td headers=".group" class="gt_row gt_left">*</td></tr>
     <tr><td headers="remedio" class="gt_row gt_left">Estafisagria-alta</td>
-<td headers="emmean" class="gt_row gt_center">15.60</td>
-<td headers="g" class="gt_row gt_left">*</td></tr>
+<td headers="estimate" class="gt_row gt_center">15.60</td>
+<td headers=".group" class="gt_row gt_left">*</td></tr>
+    <tr><td headers="remedio" class="gt_row gt_left">Arnica-alta</td>
+<td headers="estimate" class="gt_row gt_center">15.67</td>
+<td headers=".group" class="gt_row gt_left">*</td></tr>
     <tr><td headers="remedio" class="gt_row gt_left">Estafisagria-baixa</td>
-<td headers="emmean" class="gt_row gt_center">15.80</td>
-<td headers="g" class="gt_row gt_left">*</td></tr>
+<td headers="estimate" class="gt_row gt_center">15.80</td>
+<td headers=".group" class="gt_row gt_left">*</td></tr>
     <tr><td headers="remedio" class="gt_row gt_left">Placebo</td>
-<td headers="emmean" class="gt_row gt_center">21.33</td>
-<td headers="g" class="gt_row gt_left"></td></tr>
+<td headers="estimate" class="gt_row gt_center">21.33</td>
+<td headers=".group" class="gt_row gt_left"> </td></tr>
   </tbody>
   
   <tfoot class="gt_footnotes">
@@ -2350,7 +2350,7 @@ A Tabela abaixo mostra um exemplo de como os resultados do teste podem ser apres
   <colgroup>
     <col style="width:200px;"/>
     <col style="width:150px;"/>
-    <col style="width:15px;"/>
+    <col style="width:20px;"/>
   </colgroup>
   <thead class="gt_header">
     <tr>
@@ -2362,19 +2362,19 @@ A Tabela abaixo mostra um exemplo de como os resultados do teste podem ser apres
     <tr>
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Espécie">Espécie</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Comprimento (mm)">Comprimento (mm)</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=""></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=" "> </th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
-    <tr><td headers="especie" class="gt_row gt_left">Hb</td>
-<td headers="emmean" class="gt_row gt_center">47.60</td>
-<td headers="g" class="gt_row gt_left"> a  </td></tr>
     <tr><td headers="especie" class="gt_row gt_left">Hca</td>
-<td headers="emmean" class="gt_row gt_center">36.18</td>
-<td headers="g" class="gt_row gt_left">  b </td></tr>
+<td headers="estimate" class="gt_row gt_center">36.18</td>
+<td headers=".group" class="gt_row gt_left"> a  </td></tr>
     <tr><td headers="especie" class="gt_row gt_left">Hcv</td>
-<td headers="emmean" class="gt_row gt_center">39.71</td>
-<td headers="g" class="gt_row gt_left">   c</td></tr>
+<td headers="estimate" class="gt_row gt_center">39.71</td>
+<td headers=".group" class="gt_row gt_left">  b </td></tr>
+    <tr><td headers="especie" class="gt_row gt_left">Hb</td>
+<td headers="estimate" class="gt_row gt_center">47.60</td>
+<td headers=".group" class="gt_row gt_left">   c</td></tr>
   </tbody>
   
   <tfoot class="gt_footnotes">
