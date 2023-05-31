@@ -360,40 +360,33 @@ dn_remedio$emmeans %>% plot()
 
 
 ```{r, echo=FALSE}
-library(gt)
-dn_remedio$emmeans %>%
-  as.data.frame() %>%
-
-  select(remedio, emmean)  %>%
-
-  bind_cols(g=c("*","*","*","*","")) %>%
-  gt() %>%
-  fmt_number(
-    columns = emmean,
-    decimals = 2
-
-  )  %>%
-  cols_label(
-    remedio = "Remédio",
-    emmean = "Tempo de Cicatrização (dias)",
-    g=""
-  ) %>%
-  cols_align(columns = remedio,
-             align = "left") %>%
-  cols_align(columns = emmean,
-             align = "center") %>%
-  cols_align(columns = g,
-             align = "left") %>%
+library(gt) 
+multcomp::cld(dn_remedio) %>% 
+   broom::tidy() %>% 
+   select(1,2,7) %>% 
+   mutate(.group=as.numeric(.group))%>%
+   mutate(.group=ifelse(.group==1,"*"," "))%>% 
+   gt()%>%
+  fmt_number(     columns = estimate,  
+                  decimals = 2)%>%
+   cols_label(remedio="Remédio",
+              estimate="Tempo de Cicatrização (dias)",
+              .group=" ")%>%
+   cols_align(columns = remedio,
+              align = "left") %>%
+   cols_align(columns = estimate,
+              align = "center") %>%
+   cols_align(columns = .group,
+              align = "left")%>%
   cols_width(
     remedio~px(200),
-    emmean~px(150),
-    g~px(15)
+    estimate~px(150),
+    .group~px(20)
     )%>%
   tab_footnote(
     footnote = "Médias seguidas por * diferem do tratamento placebo pelo teste de Dunnett (p<0,05).",
   ) %>%
   tab_header(title = md("Tabela X. Tempo de cicatrização médio (dias) para uma profunda ferida cirúrgica tratada com remédios homeopáticos."),)
-
 ```
 
 Pelo teste de Dunnett, verifica-se que todos os remédios homeopáticos levaram a um tempo de cicatrização menor do que o tratamento placebo.
@@ -444,41 +437,31 @@ A Tabela abaixo mostra um exemplo de como os resultados do teste podem ser apres
 
 
 ```{r, echo=FALSE}
-lt <- tk_especie$emmeans %>% multcomp::cld(Letters = letters)
 library(gt)
-tk_especie$emmeans %>%
-  as.data.frame() %>%
-  select(especie, emmean) %>%
-  bind_cols(g = lt$.group) %>%
-  gt() %>%
-  fmt_number(
-    columns = emmean,
-    decimals = 2
-  ) %>%
-  cols_label(
-    especie = "Espécie",
-    emmean = "Comprimento (mm)",
-    g = ""
-  ) %>%
-
-  cols_align(columns = especie,
-             align = "left") %>%
-  cols_align(columns = emmean,
-             align = "center") %>%
-  cols_align(columns = g,
-             align = "left") %>%
-  cols_width(
-    especie~px(200),
-    emmean~px(150),
-    g~px(15)
-    )%>%
-
-  tab_footnote(
-    footnote = "Médias seguidas por letras iguais não diferem entre si pelo teste de Tukey (p<0,05).",
-  ) %>%
-  tab_header(
-    title = md("Tabela X. Comprimento médio (mm) de flores de três espécies do gênero *Heliconia*.")
-)
+multcomp::cld(tk_especie, Letters=letters) %>% broom::tidy() %>%
+   select(1,2,7) %>%
+   gt()%>%
+   fmt_number(     columns = estimate,  
+                   decimals = 2)%>%
+   cols_label(especie="Espécie",
+              estimate="Comprimento (mm)",
+              .group=" ")%>%
+   cols_align(columns = especie,
+              align = "left") %>%
+   cols_align(columns = estimate,
+              align = "center") %>%
+   cols_align(columns = .group,
+              align = "left")%>%
+   cols_width(
+     especie~px(200),
+     estimate~px(150),
+     .group~px(20)
+   )%>%
+   tab_footnote(
+     footnote ="Médias seguidas por letras iguais não diferem entre si pelo teste de Tukey (p<0,05).",
+   ) %>%
+   tab_header(title = md("Tabela X. Comprimento médio (mm) de flores de três espécies do gênero *Heliconia*."),)
+ 
 ```
 
 
