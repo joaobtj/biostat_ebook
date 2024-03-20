@@ -123,12 +123,12 @@ Figura 3.1: Criando um arquivo R Markdown.
 <p>Várias opções estão disponíveis por padrão. Escolha aquela que julgar mais adequada ou então clique no botão <em>Create Empty Document</em>.</p>
 <p>Um arquivo Rmd é composto por três componentes básicos: Cabeçalho, Texto e Código.</p>
 <p>Abaixo, um exemplo do cabeçalho de um arquivo Rmd que exporta no formato HTML:</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb87-1"><a href="rmarkdown-1.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb87-2"><a href="rmarkdown-1.html#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Olá R Markdown"</span></span>
-<span id="cb87-3"><a href="rmarkdown-1.html#cb87-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Fulano"</span></span>
-<span id="cb87-4"><a href="rmarkdown-1.html#cb87-4" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"2022-04-19"</span></span>
-<span id="cb87-5"><a href="rmarkdown-1.html#cb87-5" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> html_document</span></span>
-<span id="cb87-6"><a href="rmarkdown-1.html#cb87-6" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb87-1"><a href="rmarkdown-1.html#cb87-1" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb87-2"><a href="rmarkdown-1.html#cb87-2" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Olá R Markdown"</span></span>
+<span id="cb87-3"><a href="rmarkdown-1.html#cb87-3" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Fulano"</span></span>
+<span id="cb87-4"><a href="rmarkdown-1.html#cb87-4" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"2022-04-19"</span></span>
+<span id="cb87-5"><a href="rmarkdown-1.html#cb87-5" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> html_document</span></span>
+<span id="cb87-6"><a href="rmarkdown-1.html#cb87-6" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 <p>Este cabeçalho deve ser escrito entre <code>---</code> (traço triplo) e utiliza a síntaxe YAML <a href="https://pt.wikipedia.org/wiki/YAML">(pt.wikipedia.org/wiki/YAML)</a>.</p>
 <p>O texto (ou narrativa) inicia logo após o cabeçalho e segue a síntaxe demonstrada na seção <a href="rmarkdown-1.html#rmdsintaxe">3.2</a>.</p>
 <p>O código inicia com <code>```{r}</code> (aspas triplas) em que <code>r</code> indica a linguagem utilizada e termina com <code>```</code> (aspas triplas) novamente. Opções do código podem ser escritas dentro das chaves: <code>```{r, out.width="90%"}</code>.</p>
@@ -162,11 +162,11 @@ Figura 3.1: Criando um arquivo R Markdown.
 <li>item 3</li>
 </ol>
 <p>Os títulos das seções são escritos após <code>#</code> (sustenido ou hashtag).</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb88-1"><a href="rmarkdown-1.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Título nível 1</span></span>
-<span id="cb88-2"><a href="rmarkdown-1.html#cb88-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb88-3"><a href="rmarkdown-1.html#cb88-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Título nível 2</span></span>
-<span id="cb88-4"><a href="rmarkdown-1.html#cb88-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb88-5"><a href="rmarkdown-1.html#cb88-5" aria-hidden="true" tabindex="-1"></a><span class="fu">### Título nível 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb88-1"><a href="rmarkdown-1.html#cb88-1" tabindex="-1"></a><span class="fu"># Título nível 1</span></span>
+<span id="cb88-2"><a href="rmarkdown-1.html#cb88-2" tabindex="-1"></a></span>
+<span id="cb88-3"><a href="rmarkdown-1.html#cb88-3" tabindex="-1"></a><span class="fu">## Título nível 2</span></span>
+<span id="cb88-4"><a href="rmarkdown-1.html#cb88-4" tabindex="-1"></a></span>
+<span id="cb88-5"><a href="rmarkdown-1.html#cb88-5" tabindex="-1"></a><span class="fu">### Título nível 3</span></span></code></pre></div>
 <p>Mais opções podem ser encontradas na folha de dicas do RStudio: <a href="https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">R Markdown Cheat Sheet</a></p>
 <p>Muito mais informações podem ser encontradas neste livro bastante completo: <a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a></p>
 </div>
@@ -220,7 +220,7 @@ Figura 3.1: Criando um arquivo R Markdown.
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Bioestatística aplicada aos ecossistemas agrícolas e naturais</strong>" foi escrito por João B. Tolentino Jr.. Última atualização em 2023-05-31.</p>
+    <p>"<strong>Bioestatística aplicada aos ecossistemas agrícolas e naturais</strong>" foi escrito por João B. Tolentino Jr.. Última atualização em 2024-03-20.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -22,7 +22,7 @@
 
 :::{.example #var1 name="Nível de potássio em bananas"}
  
-Muitos estudos de pesquisa sugerem que as bananas podem ser uma cura natural para diferentes doenças. As bananas tem alto teor de ferro, que pode ajudar as pessoas que sofrem de anemia, e há um antiácido nas bananas que pode ajudar aos que sofrem de azia. Um novo estudo se refere ao nível de potássio em uma banana típica. Cem bananas são selecionadas de todas as partes do mundo e mede-se e registra-se cuidadosamente o nível de potássio em cada uma delas. Descreva a população, a amostra e a variável nesse problema.
+Muitos estudos de pesquisa sugerem que as bananas podem ser uma cura natural para diferentes doenças. As bananas têm alto teor de ferro, que pode ajudar as pessoas que sofrem de anemia, e há um antiácido nas bananas que pode ajudar aos que sofrem de azia. Um novo estudo se refere ao nível de potássio em uma banana típica. Cem bananas são selecionadas de todas as partes do mundo e mede-se e registra-se cuidadosamente o nível de potássio em cada uma delas. Descreva a população, a amostra e a variável nesse problema.
 
 
 
@@ -30,7 +30,7 @@ Muitos estudos de pesquisa sugerem que as bananas podem ser uma cura natural par
 
 A população consiste em todas as bananas em todo o mundo. Embora essa população não seja infinita, certamente não podemos examinar cada banana unitariamente.
 
-A amostra são as 100 bananas selecionadas aleatoriamente. Esse é um sub-conjunto ou seleção (ou, bem, um cacho) da população.
+A amostra são as 100 bananas selecionadas aleatoriamente. Esse é um subconjunto ou seleção (ou, bem, um cacho) da população.
 
 A variável nesse problema é o nível de potássio. Essa característica será cuidadosamente medida para cada banana, e os dados serão resumidos ou usados para se tirar uma conclusão.
 
@@ -41,7 +41,7 @@ A variável nesse problema é o nível de potássio. Essa característica será 
 
 * Qualitativa ou Categórica: Posiciona um indivíduo em um de diversos grupos ou categorias. Também podemos dizer que expressa uma qualidade do indivíduo.
   * Nominais: São puramente qualitativas e não ordenadas, como a cor de uma flor, gênero de um mamífero, formato de uma folha, etc.
-  * Ordinais: Podem ser colocados em ordem, como a escalas de Likert (por exemplo, classifique de 0 a 5, com 0 para realmente não gosto e 5 para realmente gosto), comportamento de um animal (agressivo, neutro, submissivo), etc.
+  * Ordinais: Podem ser colocados em ordem, como a escalas de Likert (por exemplo, classifique de 0 a 5, com 0 para realmente não gosto e 5 para realmente gosto), comportamento de um animal (agressivo, neutro, submisso), etc.
 
 * Quantitativa ou Numérica: Assume valores numéricos e operações aritméticas (adição e cálculo de médias) fazem sentido.
   * Contínuas: Podem assumir qualquer valor em um intervalo, como o comprimento do caule de uma planta, temperatura corporal de um primata, etc.
@@ -50,7 +50,7 @@ A variável nesse problema é o nível de potássio. Essa característica será 
 
 :::{.example #var2 name="Tipos e variáveis"}
 
-Dados de um estudo podem conter valores de muitas variáveis para cada um dos sujeitas do estudo. Quais das seguintes variáveis são categóricas e quais são quantitativas?
+Dados de um estudo podem conter valores de muitas variáveis para cada um dos sujeitos do estudo. Quais das seguintes variáveis são categóricas e quais são quantitativas?
 
 1. Gênero
 1. Idade
@@ -103,7 +103,7 @@ a. Inferencial
 
 ## Estudo observacional vs Estudo experimental
 
-* Estudo observacional: Observamos a resposta para variáveis específicas para cada individuo. O objetivo de um estudo observacional é descrever algum grupo ou situação.
+* Estudo observacional: Observamos a resposta para variáveis específicas para cada indivíduo. O objetivo de um estudo observacional é descrever algum grupo ou situação.
 * Estudo experimental: Investigamos os efeitos de certas condições sobre indivíduos ou objetos na amostra. Os indivíduos são associados aleatoriamente a grupos específicos e certos fatores são sistematicamente controlados, ou impostos, para se investigar ou isolar efeitos específicos. O pesquisador impõe deliberadamente algum tratamento aos indivíduos para observar suas respostas.
 
 
@@ -139,7 +139,7 @@ Estudos observacionais falham, em geral, porque a variável explicativa se confu
 
 As pessoas que preferem vinho são diferentes daquelas que bebem cerveja. Os bebedores de vinho, como um grupo, são mais ricos e mais bem educados, comem mais frutas e vegetais e menos frituras. Sua dieta contém menos gordura e menos colesterol.
 
-A variável explicativa (Qual tipo de bebida alcoólica você bebe com mais frequência?) é confundida com muitas variáveis ocultas (educação, riqueza, alimnetação e outras).
+A variável explicativa (Qual tipo de bebida alcoólica você bebe com mais frequência?) é confundida com muitas variáveis ocultas (educação, riqueza, alimentação e outras).
 
 <img src="image/conf.png" width="90%" />
 

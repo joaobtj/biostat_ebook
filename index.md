@@ -1,7 +1,7 @@
 --- 
 title: "Bioestatística aplicada aos ecossistemas agrícolas e naturais"
 author: "João B. Tolentino Jr."
-date: "2023-05-31"
+date: "2024-03-20"
 description: " Livro texto da disciplina de Bioestatística do Programa de Pós-graduação em Ecossistemas Agrícolas e Naturais."
 #cover-image: image/cover.jpg
 #apple-touch-icon: image/cover.jpg
@@ -28,7 +28,7 @@ Este é um livro utilizado como texto-base para a disciplina de Bioestatística 
 ## Sessão {-}
 
 
-This version of the book was built with R version 4.3.0 (2023-04-21) and the following packages:
+This version of the book was built with R version 4.3.3 (2024-02-29) and the following packages:
 
 
 |package     |version |source         |
@@ -39,7 +39,7 @@ This version of the book was built with R version 4.3.0 (2023-04-21) and the fol
 |cli         |3.6.1   |RSPM (R 4.3.0) |
 |curl        |5.0.0   |RSPM (R 4.3.0) |
 |digest      |0.6.31  |RSPM (R 4.3.0) |
-|downlit     |0.4.2   |RSPM (R 4.3.0) |
+|downlit     |0.4.3   |RSPM (R 4.3.0) |
 |evaluate    |0.20    |RSPM (R 4.3.0) |
 |fastmap     |1.1.1   |RSPM (R 4.3.0) |
 |fs          |1.6.1   |RSPM (R 4.3.0) |
@@ -56,7 +56,7 @@ This version of the book was built with R version 4.3.0 (2023-04-21) and the fol
 |sessioninfo |1.2.2   |RSPM (R 4.3.0) |
 |withr       |2.5.0   |RSPM (R 4.3.0) |
 |xfun        |0.38    |RSPM (R 4.3.0) |
-|xml2        |1.3.4   |RSPM (R 4.3.0) |
+|xml2        |1.3.6   |RSPM (R 4.3.0) |
 |yaml        |2.3.7   |RSPM (R 4.3.0) |
 
  
