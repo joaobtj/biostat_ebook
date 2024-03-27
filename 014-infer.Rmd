@@ -48,9 +48,9 @@ dap_s <- sample(dap, 10)
 t.test(dap_s)
 ```
 
-O *output* da função `t.test` contém muitas informções, mas por hora, vamos nos focar apenas no intervalo de confiança, indicado pelo texto *95 percent confidence interval*
+O *output* da função `t.test` contém muitas informações, mas por hora, vamos nos focar apenas no intervalo de confiança, indicado pelo texto *95 percent confidence interval*
 
-Assim, o intervalo de confiança para a média populacional desta amostra está entre `r ic$conf.int[1] %>% round(2)` e `r ic$conf.int[2] %>% round(2)`. Em outras palavras, estamos 95% confiantes que a média populacional do DAP de árvores de Mogno Africano está compreendidade entre `r ic$conf.int[1] %>% round(2)` cm e `r ic$conf.int[2] %>% round(2)` cm.
+Assim, o intervalo de confiança para a média populacional desta amostra está entre `r ic$conf.int[1] %>% round(2)` e `r ic$conf.int[2] %>% round(2)`. Em outras palavras, estamos 95% confiantes que a média populacional do DAP de árvores de Mogno Africano está compreendida entre `r ic$conf.int[1] %>% round(2)` cm e `r ic$conf.int[2] %>% round(2)` cm.
 
 O valor da média amostral, `r ic$estimate %>% round(2)` cm, é a estimativa central e pode ser entendida como uma estimativa não enviesada da média populacional. 
 
@@ -111,7 +111,7 @@ tibble::tibble(
   tidyr::pivot_longer(cols = where(is.numeric), names_to = "ic") %>%
   ggplot(aes(x = value, y = n)) +
   geom_line(aes(group = n)) +
-  geom_vline(xintercept = mean(dap), color = "darkviolet", size = 0.5) +
+  geom_vline(xintercept = mean(dap), color = "darkviolet", linewidth = 0.5) +
   theme(
     axis.text.y = element_blank(),
     axis.ticks.y = element_blank(),
