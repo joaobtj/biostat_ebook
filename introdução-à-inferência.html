@@ -139,8 +139,8 @@
 ## sample estimates:
 ## mean of x 
 ##    13.325</code></pre>
-<p>O <em>output</em> da função <code>t.test</code> contém muitas informções, mas por hora, vamos nos focar apenas no intervalo de confiança, indicado pelo texto <em>95 percent confidence interval</em></p>
-<p>Assim, o intervalo de confiança para a média populacional desta amostra está entre 12.02 e 14.63. Em outras palavras, estamos 95% confiantes que a média populacional do DAP de árvores de Mogno Africano está compreendidade entre 12.02 cm e 14.63 cm.</p>
+<p>O <em>output</em> da função <code>t.test</code> contém muitas informações, mas por hora, vamos nos focar apenas no intervalo de confiança, indicado pelo texto <em>95 percent confidence interval</em></p>
+<p>Assim, o intervalo de confiança para a média populacional desta amostra está entre 12.02 e 14.63. Em outras palavras, estamos 95% confiantes que a média populacional do DAP de árvores de Mogno Africano está compreendida entre 12.02 cm e 14.63 cm.</p>
 <p>O valor da média amostral, 13.33 cm, é a estimativa central e pode ser entendida como uma estimativa não enviesada da média populacional.</p>
 </div>
 <p>A amostra deste exemplo vem de uma população conhecida, cuja média populacional é 12.95 cm. Vejam que a média amostral e a média populacional diferem entre si, mas o IC calculado contém a média populacional.</p>
@@ -174,11 +174,6 @@
 ## [6,] 13.02743 15.27057</code></pre>
 <p>Quantos dos IC simulados não contém a verdadeira média<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Este valor já é conhecido: 12.95&lt;/p&gt;"><sup>26</sup></a> populacional?</p>
 <p>Por meio de uma análise gráfica:</p>
-<pre><code>## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-## ℹ Please use `linewidth` instead.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-## generated.</code></pre>
 <div class="figure">
 <span style="display:block;" id="fig:unnamed-chunk-7"></span>
 <img src="014-infer_files/figure-html/unnamed-chunk-7-1.png" alt="Intervalos de confiança simulados para várias amostragens de uma população. A média populacional é representada pela linha vertical violeta." width="672"><p class="caption">
@@ -186,14 +181,14 @@ Figura 7.1: Intervalos de confiança simulados para várias amostragens de uma p
 </p>
 </div>
 <p>Calculando a proporção de ICs que não contém a média populacional:</p>
-<div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb189"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">ic_simul</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span> <span class="op">&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dap</span><span class="op">)</span> <span class="op">|</span> <span class="va">ic_simul</span><span class="op">[</span><span class="fl">2</span>, <span class="op">]</span> <span class="op">&lt;</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dap</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0.06</code></pre>
 <p>Estes resultados mostram que 6 dos 100 ICs simulados não contém a média populacional. Para um IC de 95%, está
 bem próximo do valor esperado.</p>
 </div>
 <p>Também é possível alterar a probabilidade do IC, com o argumento <code>conf.level</code> da função <code>t.test</code>.</p>
-<div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb191"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">dap_s</span>, conf.level<span class="op">=</span><span class="fl">0.99</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
@@ -243,7 +238,7 @@ bem próximo do valor esperado.</p>
 <li>H<sub>1</sub>: esta amostra vem de uma população cuja média populacional é diferente de 12.95</li>
 </ul>
 <p>Na função <code>t.test</code>, passamos o valor da média da hipótese H<sub>0</sub> para o argumento <code>mu</code>. Neste exemplo, vamos passar na forma de uma função <code>mean(dap)</code> para evitar arredondamentos.</p>
-<div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb193"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">dap_s</span>, mu <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dap</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
@@ -262,7 +257,7 @@ bem próximo do valor esperado.</p>
 <div class="example">
 <p><span id="exm:t1simul" class="example"><strong>Exemplo 7.4  (Teste t para uma amostra - simulações) </strong></span>Considere o conjunto de dados <a href="data/dap.csv">dap.csv</a>.</p>
 <p>Criamos uma função que faz uma amostragem de <em>n</em> elementos e retorna o p-valor do teste t.</p>
-<div class="sourceCode" id="cb196"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb195"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Função que amostra n elementos e retorna o p-valor do teste t</span></span>
 <span><span class="co">## data = conjunto de dados de onde será retirada a amostra</span></span>
 <span><span class="co">## n_sample = tamanho da amostra</span></span>
@@ -271,7 +266,7 @@ bem próximo do valor esperado.</p>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">ic_sample</span><span class="op">$</span><span class="va">p.value</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <p>Em seguida, procedemos com 100 simulações do teste t como descrito no Exemplo <a href="introdu%C3%A7%C3%A3o-%C3%A0-infer%C3%AAncia.html#exm:t1">7.3</a>.</p>
-<div class="sourceCode" id="cb197"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb196"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## 100 simulações com a função replicate</span></span>
 <span><span class="va">t1_simul</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fu">t1_amostr</span><span class="op">(</span><span class="va">dap</span>, <span class="fl">10</span>, mu <span class="op">=</span> <span class="fl">12.94553</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -280,6 +275,11 @@ bem próximo do valor esperado.</p>
 <pre><code>## [1] 0.52816007 0.73107989 0.67524680 0.92873704 0.92824148 0.03814826</code></pre>
 <p>Em quantas amostras o valor da média amostral é estatisticamente diferente do que o valor da média sob a hipótese nula? Utilize 5% de probabilidade.</p>
 <p>Por meio de uma análise gráfica:</p>
+<pre><code>## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## ℹ Please use `linewidth` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.</code></pre>
 <div class="figure">
 <span style="display:block;" id="fig:unnamed-chunk-16"></span>
 <img src="014-infer_files/figure-html/unnamed-chunk-16-1.png" alt="p-valores simulados para várias amostragens de uma população. A probabilidade de 5% é representada pela linha vertical verde." width="672"><p class="caption">

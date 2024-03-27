@@ -53,9 +53,9 @@ t.test(dap_s)
 ##    13.325
 ```
 
-O *output* da função `t.test` contém muitas informções, mas por hora, vamos nos focar apenas no intervalo de confiança, indicado pelo texto *95 percent confidence interval*
+O *output* da função `t.test` contém muitas informações, mas por hora, vamos nos focar apenas no intervalo de confiança, indicado pelo texto *95 percent confidence interval*
 
-Assim, o intervalo de confiança para a média populacional desta amostra está entre 12.02 e 14.63. Em outras palavras, estamos 95% confiantes que a média populacional do DAP de árvores de Mogno Africano está compreendidade entre 12.02 cm e 14.63 cm.
+Assim, o intervalo de confiança para a média populacional desta amostra está entre 12.02 e 14.63. Em outras palavras, estamos 95% confiantes que a média populacional do DAP de árvores de Mogno Africano está compreendida entre 12.02 cm e 14.63 cm.
 
 O valor da média amostral, 13.33 cm, é a estimativa central e pode ser entendida como uma estimativa não enviesada da média populacional. 
 
@@ -114,15 +114,6 @@ Quantos dos IC simulados não contém a verdadeira média^[Este valor já é con
 
 
 Por meio de uma análise gráfica:
-
-
-```
-## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-## ℹ Please use `linewidth` instead.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-## generated.
-```
 
 <div class="figure">
 <img src="014-infer_files/figure-html/unnamed-chunk-7-1.png" alt="Intervalos de confiança simulados para várias amostragens de uma população. A média populacional é representada pela linha vertical violeta." width="672" />
@@ -289,6 +280,15 @@ head(t1_simul)
 Em quantas amostras o valor da média amostral é estatisticamente diferente do que o valor da média sob a hipótese nula? Utilize 5% de probabilidade.
 
 Por meio de uma análise gráfica:
+
+
+```
+## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## ℹ Please use `linewidth` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.
+```
 
 <div class="figure">
 <img src="014-infer_files/figure-html/unnamed-chunk-16-1.png" alt="p-valores simulados para várias amostragens de uma população. A probabilidade de 5% é representada pela linha vertical verde." width="672" />
