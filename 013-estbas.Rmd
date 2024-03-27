@@ -43,7 +43,7 @@ Os dados também podem ser acessados no arquivo [dap.csv](data/dap.csv).
 
 **Média**
 
-A média aritmética é a medida de centro mais comum.
+A média aritmética é a medida de centro mais comum. É o resultado da soma de um conjunto de números dividido pelo número total de elementos nesse conjunto. 
 
 **Mediana**
 
@@ -134,7 +134,7 @@ sd(dap)
 
 ## Descrição de uma distribuição
 
-Qualquer conjunto de dados pode (e deve) ser descrito por meio dos resumos numéricos juntamente com a análise gráfica (Seção \@ref(graf_dist)).
+Qualquer conjunto de dados pode (e deve) ser descrito por meio dos resumos numéricos juntamente com a análise gráfica.
 
 Essa descrição visa também verificar a assimetria dos dados e a presença de valores discrepantes.
 
