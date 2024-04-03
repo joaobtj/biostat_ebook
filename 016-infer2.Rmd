@@ -24,7 +24,7 @@ Os dados podem ser encontrados no arquivo [floral.xlsx](data/floral.xlsx)
 
 ```{r}
 
-floral <- readxl::read_excel("data/floral.xlsx")
+floral <- readxl::read_excel("floral.xlsx")
 
 t.test(floral$sem, floral$com, paired=TRUE)
 ```
@@ -69,7 +69,7 @@ Há alguma evidência de que as latas de alumínio feitas pelo novo processo ten
 
 
 ```{r}
-lata <- readxl::read_excel("data/lata.xlsx")
+lata <- readxl::read_excel("lata.xlsx")
 
 t.test(lata$antigo, lata$novo)
 
