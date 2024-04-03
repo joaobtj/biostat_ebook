@@ -21,9 +21,13 @@ Os dados podem ser encontrados no arquivo [floral.xlsx](data/floral.xlsx)
 
 
 
-```r
-floral <- readxl::read_excel("data/floral.xlsx")
 
+```r
+floral <- readxl::read_excel("floral.xlsx")
+```
+
+
+```r
 t.test(floral$sem, floral$com, paired=TRUE)
 ```
 
@@ -40,6 +44,8 @@ t.test(floral$sem, floral$com, paired=TRUE)
 ## mean difference 
 ##       0.9566667
 ```
+
+
 
 Alternativamente, o teste t pode ser aplicado às diferenças entre as respostas de cada par.
 
@@ -94,9 +100,14 @@ Há alguma evidência de que as latas de alumínio feitas pelo novo processo ten
 
 
 
-```r
-lata <- readxl::read_excel("data/lata.xlsx")
 
+
+```r
+lata <- readxl::read_excel("lata.xlsx")
+```
+
+
+```r
 t.test(lata$antigo, lata$novo)
 ```
 
