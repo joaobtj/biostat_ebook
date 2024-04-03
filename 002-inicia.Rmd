@@ -312,7 +312,7 @@ Para importar arquivos do Excel, existem a função `read_excel` do pacote `read
 O arquivo [bflor.xlsx](data/bflor.xlsx) contám dados de um experimento que será estudado no capítulo (\@ref(anova1)). 
 
 ```r
-bflor <- readxl::read_excel("/bflor.xlsx")
+bflor <- readxl::read_excel("bflor.xlsx")
 bflor
 ```
 
