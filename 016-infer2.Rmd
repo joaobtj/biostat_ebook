@@ -21,13 +21,25 @@ Há evidência de que os sujeitos resolveram o labirinto mais depressa usando a 
 
 Os dados podem ser encontrados no arquivo [floral.xlsx](data/floral.xlsx)
 
+```{r, include=FALSE}
 
-```{r}
+floral <- readxl::read_excel("data/floral.xlsx")
+
+```
+
+```{r, eval=FALSE}
 
 floral <- readxl::read_excel("floral.xlsx")
 
-t.test(floral$sem, floral$com, paired=TRUE)
 ```
+
+```{r}
+
+t.test(floral$sem, floral$com, paired=TRUE)
+
+```
+
+
 
 Alternativamente, o teste t pode ser aplicado às diferenças entre as respostas de cada par.
 
@@ -67,9 +79,20 @@ Obtiveram-se amostras aleatórias independentes de latas de alumínio feitas pel
 
 Há alguma evidência de que as latas de alumínio feitas pelo novo processo tenham um peso médio populacional menor?
 
+```{r, include=FALSE}
+
+lata <- readxl::read_excel("data/lata.xlsx")
+
+```
+
+
+```{r, eval=FALSE}
+
+lata <- readxl::read_excel("lata.xlsx")
+
+```
 
 ```{r}
-lata <- readxl::read_excel("lata.xlsx")
 
 t.test(lata$antigo, lata$novo)
 
