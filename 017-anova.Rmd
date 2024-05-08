@@ -172,6 +172,7 @@ bflor <- readxl::read_excel("data/bflor.xlsx") %>%
 ```
 
 ```{r, eval=FALSE}
+library(tidyverse)
 bflor <- readxl::read_excel("bflor.xlsx") %>%
   mutate(especie = factor(especie))
 ```
